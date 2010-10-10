@@ -1,0 +1,49 @@
+Operators priority and associativity
+====================================
+
+(right)  =
+(left)   + -
+(left)   * /
+(left)   %
+(right)  - (unary) + (unary)
+(left)   ^
+(left)   !
+
+
+Notes:
+------
+Left associativity means:
+  5 + 5 + 5 + 5 = (((5 + 5) + 5) + 5)
+
+Right associativity means:
+  5 + 5 + 5 + 5 = (5 + (5 + (5 + 5)))
+
+
+Examples:
+==========
+
+Factorial (!)
+-------------
+
+5!5! => error (missing operator, ! is unary)
+
+-5!     = -(5!)       = -120
+5! * 5! = (5!) * (5!) = 14400
+5! ^ 5  = (5!) ^ 5    = 24883200000
+
+
+Power (^)
+---------
+
+5 ^ 5 * 5 = (5 ^ 5) * 5 = 125
+-5 ^ 2    = - (5 ^ 2)   = -25
+
+
+
+Modulo (%)
+----------
+
+5 % 3 * 5 = ((5 % 3) * 5) = 10
+5 * 5 % 3 = (5 * (5 % 3)) = 10
+
+
