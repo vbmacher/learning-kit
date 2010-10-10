@@ -22,7 +22,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include <alloc.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -72,12 +72,6 @@ static int quit = 0;
 /* non-terminal symbols values */
 %type <attr> Exp Primary
 %type <attr> Constant
-
-%{
-
-#include "lexyy.cpp"
-
-%}
 
 %%
 /* Rules */
@@ -346,6 +340,8 @@ Constant: INT_VAL
 
 %%
 /* Functions */
+
+#include "lexyy.c"
 
 void yyerror(char *s){
   fprintf(stdout,"ERROR: %s [%s]\n",s,yytext);
