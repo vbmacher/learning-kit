@@ -1,11 +1,47 @@
 %{
-  int yyparse(void), yylex(void);
+/*
+ * kcalc.y
+ *
+ * KEEP IT SIMPLE, STUPID
+ * some things just: YOU AREN'T GONNA NEED IT
+ *
+ * Copyright (C) 2010 Peter Jakubco <pjakubco at gmail.com>
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
 
-  typedef struct {
-    unsigned char sig;
-    int ival;
-    double dval;
-  } ATRV;
+#include <alloc.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int yyparse(void), yylex(void);
+
+typedef struct {
+  unsigned char sig;
+  int ival;
+  double dval;
+} ATRV;
+  
+struct { char *name; ATRV attr;} VARIABLES[30];
+int var_ix = 0;  // index to new variable
+
+int tmp, ttmp;
+double tmp2,ttmp2;
+static int quit = 0;
+  
 %}
 
 %union {
@@ -39,21 +75,8 @@
 
 %{
 
-struct { char *name; ATRV attr;} VARIABLES[30];
-int var_ix = 0;  // index to new variable
-
-int tmp, ttmp;
-double tmp2,ttmp2;
-
-#include <alloc.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-
-
 #include "lexyy.cpp"
 
-static int quit = 0;
 %}
 
 %%
@@ -333,10 +356,6 @@ void xxerror(char *s1,char *s2){
 }
 
 
-void initVAR(){
-  var_ix = 0;
-}
-
 int findVAR(char *name,int errorMissing) {
   int i;
   for(i=0; i < var_ix; i++) {
@@ -431,7 +450,7 @@ int main(int ac,char *av[]){
       yyin=stdin;
     }
   }
-  initVAR();
+  var_ix = 0;
   
   printf("kCalculator 0.11b\n(c) Copyright 2010,P.Jakubco\n\n(Type 'help' for help.)\n");
 
