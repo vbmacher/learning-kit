@@ -6,7 +6,7 @@
 //    Pouzity specifikacny subor: "kcalc.l".
 //    Pouzity skeleton subor:      "C:\Program Files\PPVP\ncform".
 // 
-//    Vytvorene:  Sun Oct 10 06:49:45 2010
+//    Vytvorene:  Sun Oct 10 07:18:12 2010
 // 
 // ------------------------------------------------------------------- */ 
 
@@ -174,22 +174,28 @@ case 28:
 { yywrap(); return QUIT; }
 break;
 case 29:
+   { return HELP; }
+break;
+case 30:
+{ return HELP; }
+break;
+case 31:
    { yylval.name = strdup(yytext);
            return VARIABLE; }
 break;
-case 30:
+case 32:
    { sscanf(yytext,"%d",&yylval.attr.ival);
            yylval.attr.sig = 1;
            return INT_VAL;
          }
 break;
-case 31:
+case 33:
 { sscanf(yytext+1,"%x",&yylval.attr.ival);
            yylval.attr.sig = 1;
            return INT_VAL;
          }
 break;
-case 32:
+case 34:
 { int i;
            for (i = yylval.attr.ival = 0; yytext[i+1] != 0; i++)
              yylval.attr.ival = yylval.attr.ival * 8 + yytext[i+1] - '0';
@@ -197,7 +203,7 @@ case 32:
            return INT_VAL;
          }
 break;
-case 33:
+case 35:
 { int i;
            for (i = yylval.attr.ival = 0; yytext[i+1] != 0; i++)
              yylval.attr.ival = yylval.attr.ival * 2 + yytext[i+1] - '0';
@@ -205,7 +211,7 @@ case 33:
            return INT_VAL;
          }
 break;
-case 34:
+case 36:
 { sscanf(yytext,"%lf", &yylval.attr.dval);
                 yylval.attr.sig = 2;
                 return DBL_VAL;
@@ -269,182 +275,196 @@ int   yyvstop[]  =  {
                          6,
                          0,
                          /* Akcia pre stav 12 */
-                         30,
+                         32,
                          0,
                          /* Akcia pre stav 13 */
                          11,
                          0,
                          /* Akcia pre stav 14 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 15 */
                          25,
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 16 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 17 */
                          8,
                          0,
                          /* Akcia pre stav 18 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 19 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 20 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 21 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 22 */
                          29,
+                         31,
                          0,
                          /* Akcia pre stav 23 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 24 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 25 */
-                         26,
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 26 */
-                         29,
+                         26,
+                         31,
                          0,
                          /* Akcia pre stav 27 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 28 */
-                         29,
+                         31,
                          0,
-                         /* Akcia pre stav 30 */
-                         24,
-                         29,
+                         /* Akcia pre stav 29 */
+                         31,
                          0,
                          /* Akcia pre stav 31 */
-                         33,
+                         24,
+                         31,
                          0,
                          /* Akcia pre stav 32 */
-                         29,
+                         35,
                          0,
                          /* Akcia pre stav 33 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 34 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 35 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 36 */
-                         20,
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 37 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 38 */
-                         29,
+                         20,
+                         31,
                          0,
                          /* Akcia pre stav 39 */
-                         32,
+                         31,
                          0,
                          /* Akcia pre stav 40 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 41 */
-                         29,
+                         34,
                          0,
                          /* Akcia pre stav 42 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 43 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 44 */
                          31,
                          0,
                          /* Akcia pre stav 45 */
-                         29,
                          31,
                          0,
                          /* Akcia pre stav 46 */
-                         34,
+                         33,
                          0,
                          /* Akcia pre stav 47 */
-                         29,
+                         31,
+                         33,
                          0,
                          /* Akcia pre stav 48 */
-                         15,
-                         29,
+                         36,
                          0,
                          /* Akcia pre stav 49 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 50 */
-                         29,
+                         15,
+                         31,
                          0,
                          /* Akcia pre stav 51 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 52 */
-                         18,
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 53 */
-                         10,
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 54 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 55 */
-                         14,
-                         29,
+                         18,
+                         31,
                          0,
                          /* Akcia pre stav 56 */
-                         29,
+                         10,
+                         31,
                          0,
                          /* Akcia pre stav 57 */
-                         16,
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 58 */
-                         22,
-                         29,
+                         14,
+                         31,
                          0,
                          /* Akcia pre stav 59 */
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 60 */
-                         28,
-                         29,
+                         16,
+                         31,
                          0,
                          /* Akcia pre stav 61 */
-                         29,
+                         22,
+                         31,
                          0,
                          /* Akcia pre stav 62 */
-                         19,
+                         31,
                          0,
                          /* Akcia pre stav 63 */
-                         27,
-                         29,
+                         28,
+                         31,
                          0,
                          /* Akcia pre stav 64 */
-                         21,
-                         29,
+                         31,
                          0,
                          /* Akcia pre stav 65 */
-                         17,
-                         29,
+                         30,
+                         31,
                          0,
                          /* Akcia pre stav 66 */
+                         19,
+                         0,
+                         /* Akcia pre stav 67 */
+                         27,
+                         31,
+                         0,
+                         /* Akcia pre stav 68 */
+                         21,
+                         31,
+                         0,
+                         /* Akcia pre stav 69 */
+                         17,
+                         31,
+                         0,
+                         /* Akcia pre stav 70 */
                          23,
-                         29,
+                         31,
                          0,
                          0
 };  /* koniec tabulky "yyvstop" */ 
@@ -477,15 +497,15 @@ struct  yywork   {
                       1,15,	1,17,	1,15,	1,15,	
                       1,15,	1,15,	1,15,	1,15,	
                       1,15,	1,15,	1,15,	1,15,	
-                      19,32,	19,32,	0,0,	1,18,	
+                      19,33,	19,33,	0,0,	1,18,	
                       0,0,	0,0,	1,15,	1,19,	
                       1,20,	1,15,	1,21,	1,22,	
-                      1,15,	1,15,	1,15,	1,15,	
-                      1,15,	1,23,	1,24,	1,15,	
-                      1,25,	1,15,	1,26,	1,15,	
-                      1,27,	1,28,	1,15,	1,15,	
-                      1,15,	1,29,	1,15,	1,15,	
-                      13,30,	17,31,	13,13,	13,13,	
+                      1,15,	1,23,	1,15,	1,15,	
+                      1,15,	1,24,	1,25,	1,15,	
+                      1,26,	1,15,	1,27,	1,15,	
+                      1,28,	1,29,	1,15,	1,15,	
+                      1,15,	1,30,	1,15,	1,15,	
+                      13,31,	17,32,	13,13,	13,13,	
                       13,13,	13,13,	13,13,	13,13,	
                       13,13,	13,13,	13,13,	13,13,	
                       15,15,	15,15,	15,15,	15,15,	
@@ -494,53 +514,53 @@ struct  yywork   {
                       15,15,	15,15,	15,15,	15,15,	
                       15,15,	15,15,	15,15,	15,15,	
                       15,15,	15,15,	15,15,	15,15,	
-                      15,15,	15,15,	21,35,	22,36,	
-                      23,37,	23,38,	24,39,	26,41,	
+                      15,15,	15,15,	21,36,	22,37,	
+                      23,38,	24,39,	24,40,	25,41,	
                       15,15,	15,15,	15,15,	15,15,	
                       15,15,	15,15,	15,15,	15,15,	
                       15,15,	15,15,	15,15,	15,15,	
                       15,15,	15,15,	15,15,	15,15,	
                       15,15,	15,15,	15,15,	15,15,	
                       15,15,	15,15,	15,15,	15,15,	
-                      15,15,	15,15,	20,33,	25,40,	
-                      25,40,	25,40,	25,40,	25,40,	
-                      25,40,	25,40,	25,40,	27,42,	
-                      20,34,	28,44,	32,32,	32,32,	
-                      33,48,	34,49,	34,50,	27,43,	
-                      29,45,	29,45,	29,45,	29,45,	
-                      29,45,	29,45,	29,45,	29,45,	
-                      29,45,	29,45,	35,51,	36,52,	
-                      38,53,	39,54,	41,55,	42,56,	
-                      43,57,	29,46,	29,46,	29,46,	
-                      29,46,	29,46,	29,46,	30,47,	
+                      15,15,	15,15,	20,34,	26,42,	
+                      26,42,	26,42,	26,42,	26,42,	
+                      26,42,	26,42,	26,42,	27,43,	
+                      20,35,	28,44,	29,46,	33,33,	
+                      33,33,	34,50,	35,51,	35,52,	
+                      36,53,	28,45,	30,47,	30,47,	
                       30,47,	30,47,	30,47,	30,47,	
                       30,47,	30,47,	30,47,	30,47,	
-                      30,47,	40,40,	40,40,	40,40,	
-                      40,40,	40,40,	40,40,	40,40,	
-                      40,40,	44,58,	48,59,	50,60,	
-                      51,61,	52,62,	53,63,	55,64,	
-                      57,65,	29,46,	29,46,	29,46,	
-                      29,46,	29,46,	29,46,	45,45,	
-                      45,45,	45,45,	45,45,	45,45,	
-                      45,45,	45,45,	45,45,	45,45,	
-                      45,45,	60,66,	62,67,	0,0,	
+                      37,54,	38,55,	40,56,	41,57,	
+                      43,58,	44,59,	45,60,	30,48,	
+                      30,48,	30,48,	30,48,	30,48,	
+                      30,48,	31,49,	31,49,	31,49,	
+                      31,49,	31,49,	31,49,	31,49,	
+                      31,49,	31,49,	31,49,	42,42,	
+                      42,42,	42,42,	42,42,	42,42,	
+                      42,42,	42,42,	42,42,	46,61,	
+                      50,62,	52,63,	53,64,	54,65,	
+                      55,66,	56,67,	58,68,	30,48,	
+                      30,48,	30,48,	30,48,	30,48,	
+                      30,48,	47,47,	47,47,	47,47,	
+                      47,47,	47,47,	47,47,	47,47,	
+                      47,47,	47,47,	47,47,	60,69,	
+                      63,70,	65,71,	0,0,	0,0,	
+                      0,0,	0,0,	47,47,	47,47,	
+                      47,47,	47,47,	47,47,	47,47,	
+                      48,47,	48,47,	48,47,	48,47,	
+                      48,47,	48,47,	48,47,	48,47,	
+                      48,47,	48,47,	0,0,	0,0,	
                       0,0,	0,0,	0,0,	0,0,	
-                      45,45,	45,45,	45,45,	45,45,	
-                      45,45,	45,45,	46,45,	46,45,	
-                      46,45,	46,45,	46,45,	46,45,	
-                      46,45,	46,45,	46,45,	46,45,	
-                      0,0,	0,0,	0,0,	0,0,	
-                      0,0,	0,0,	0,0,	46,46,	
-                      46,46,	46,46,	46,46,	46,46,	
-                      46,46,	0,0,	0,0,	0,0,	
-                      45,45,	45,45,	45,45,	45,45,	
-                      45,45,	45,45,	0,0,	0,0,	
+                      0,0,	48,48,	48,48,	48,48,	
+                      48,48,	48,48,	48,48,	0,0,	
+                      0,0,	0,0,	47,47,	47,47,	
+                      47,47,	47,47,	47,47,	47,47,	
                       0,0,	0,0,	0,0,	0,0,	
                       0,0,	0,0,	0,0,	0,0,	
                       0,0,	0,0,	0,0,	0,0,	
-                      0,0,	0,0,	0,0,	46,46,	
-                      46,46,	46,46,	46,46,	46,46,	
-                      46,46,	0,0,	0,0,	0,0,	
+                      0,0,	0,0,	0,0,	0,0,	
+                      0,0,	48,48,	48,48,	48,48,	
+                      48,48,	48,48,	48,48,	0,0,	
                       0,0
 };  /* koniec tabulky  "yycrank" */ 
 
@@ -568,55 +588,59 @@ yycrank+44,	yysvec+15,	yyvstop+34,		/* stav 18 */
 yycrank+93,	yysvec+15,	yyvstop+36,		/* stav 19 */
 yycrank+42,	yysvec+15,	yyvstop+38,		/* stav 20 */
 yycrank+55,	yysvec+15,	yyvstop+40,		/* stav 21 */
-yycrank+54,	yysvec+15,	yyvstop+42,		/* stav 22 */
-yycrank+55,	yysvec+15,	yyvstop+44,		/* stav 23 */
-yycrank+147,	yysvec+15,	yyvstop+46,		/* stav 24 */
-yycrank+50,	yysvec+15,	yyvstop+48,		/* stav 25 */
-yycrank+98,	yysvec+15,	yyvstop+51,		/* stav 26 */
-yycrank+108,	yysvec+15,	yyvstop+53,		/* stav 27 */
-yycrank+164,	yysvec+15,	yyvstop+55,		/* stav 28 */
-yycrank+187,	0,		0,			/* stav 29 */
-yycrank+0,	yysvec+15,	yyvstop+57,		/* stav 30 */
-yycrank+158,	0,		yyvstop+60,		/* stav 31 */
-yycrank+103,	yysvec+15,	yyvstop+62,		/* stav 32 */
-yycrank+94,	yysvec+15,	yyvstop+64,		/* stav 33 */
-yycrank+117,	yysvec+15,	yyvstop+66,		/* stav 34 */
-yycrank+112,	yysvec+15,	yyvstop+68,		/* stav 35 */
-yycrank+0,	yysvec+15,	yyvstop+70,		/* stav 36 */
-yycrank+121,	yysvec+15,	yyvstop+73,		/* stav 37 */
-yycrank+125,	yysvec+15,	yyvstop+75,		/* stav 38 */
-yycrank+197,	0,		yyvstop+77,		/* stav 39 */
-yycrank+121,	yysvec+15,	yyvstop+79,		/* stav 40 */
-yycrank+117,	yysvec+15,	yyvstop+81,		/* stav 41 */
-yycrank+114,	yysvec+15,	yyvstop+83,		/* stav 42 */
-yycrank+143,	yysvec+15,	yyvstop+85,		/* stav 43 */
-yycrank+219,	0,		yyvstop+87,		/* stav 44 */
-yycrank+242,	yysvec+15,	yyvstop+89,		/* stav 45 */
-yycrank+0,	yysvec+30,	yyvstop+92,		/* stav 46 */
-yycrank+146,	yysvec+15,	yyvstop+94,		/* stav 47 */
-yycrank+0,	yysvec+15,	yyvstop+96,		/* stav 48 */
-yycrank+158,	yysvec+15,	yyvstop+99,		/* stav 49 */
-yycrank+140,	yysvec+15,	yyvstop+101,		/* stav 50 */
-yycrank+146,	yysvec+15,	yyvstop+103,		/* stav 51 */
-yycrank+208,	yysvec+15,	yyvstop+105,		/* stav 52 */
-yycrank+0,	yysvec+15,	yyvstop+108,		/* stav 53 */
-yycrank+143,	yysvec+15,	yyvstop+111,		/* stav 54 */
-yycrank+0,	yysvec+15,	yyvstop+113,		/* stav 55 */
-yycrank+144,	yysvec+15,	yyvstop+116,		/* stav 56 */
-yycrank+0,	yysvec+15,	yyvstop+118,		/* stav 57 */
-yycrank+0,	yysvec+15,	yyvstop+121,		/* stav 58 */
-yycrank+167,	yysvec+15,	yyvstop+124,		/* stav 59 */
-yycrank+0,	yysvec+15,	yyvstop+126,		/* stav 60 */
-yycrank+164,	yysvec+15,	yyvstop+129,		/* stav 61 */
-yycrank+0,	0,		yyvstop+131,		/* stav 62 */
+yycrank+63,	yysvec+15,	yyvstop+42,		/* stav 22 */
+yycrank+55,	yysvec+15,	yyvstop+45,		/* stav 23 */
+yycrank+56,	yysvec+15,	yyvstop+47,		/* stav 24 */
+yycrank+147,	yysvec+15,	yyvstop+49,		/* stav 25 */
+yycrank+86,	yysvec+15,	yyvstop+51,		/* stav 26 */
+yycrank+100,	yysvec+15,	yyvstop+54,		/* stav 27 */
+yycrank+109,	yysvec+15,	yyvstop+56,		/* stav 28 */
+yycrank+166,	yysvec+15,	yyvstop+58,		/* stav 29 */
+yycrank+189,	0,		0,			/* stav 30 */
+yycrank+0,	yysvec+15,	yyvstop+60,		/* stav 31 */
+yycrank+159,	0,		yyvstop+63,		/* stav 32 */
+yycrank+104,	yysvec+15,	yyvstop+65,		/* stav 33 */
+yycrank+95,	yysvec+15,	yyvstop+67,		/* stav 34 */
+yycrank+107,	yysvec+15,	yyvstop+69,		/* stav 35 */
+yycrank+113,	yysvec+15,	yyvstop+71,		/* stav 36 */
+yycrank+117,	yysvec+15,	yyvstop+73,		/* stav 37 */
+yycrank+0,	yysvec+15,	yyvstop+75,		/* stav 38 */
+yycrank+123,	yysvec+15,	yyvstop+78,		/* stav 39 */
+yycrank+127,	yysvec+15,	yyvstop+80,		/* stav 40 */
+yycrank+199,	0,		yyvstop+82,		/* stav 41 */
+yycrank+123,	yysvec+15,	yyvstop+84,		/* stav 42 */
+yycrank+119,	yysvec+15,	yyvstop+86,		/* stav 43 */
+yycrank+116,	yysvec+15,	yyvstop+88,		/* stav 44 */
+yycrank+145,	yysvec+15,	yyvstop+90,		/* stav 45 */
+yycrank+221,	0,		yyvstop+92,		/* stav 46 */
+yycrank+244,	yysvec+15,	yyvstop+94,		/* stav 47 */
+yycrank+0,	yysvec+31,	yyvstop+97,		/* stav 48 */
+yycrank+148,	yysvec+15,	yyvstop+99,		/* stav 49 */
+yycrank+0,	yysvec+15,	yyvstop+101,		/* stav 50 */
+yycrank+160,	yysvec+15,	yyvstop+104,		/* stav 51 */
+yycrank+142,	yysvec+15,	yyvstop+106,		/* stav 52 */
+yycrank+148,	yysvec+15,	yyvstop+108,		/* stav 53 */
+yycrank+148,	yysvec+15,	yyvstop+110,		/* stav 54 */
+yycrank+211,	yysvec+15,	yyvstop+112,		/* stav 55 */
+yycrank+0,	yysvec+15,	yyvstop+115,		/* stav 56 */
+yycrank+146,	yysvec+15,	yyvstop+118,		/* stav 57 */
+yycrank+0,	yysvec+15,	yyvstop+120,		/* stav 58 */
+yycrank+163,	yysvec+15,	yyvstop+123,		/* stav 59 */
+yycrank+0,	yysvec+15,	yyvstop+125,		/* stav 60 */
+yycrank+0,	yysvec+15,	yyvstop+128,		/* stav 61 */
+yycrank+170,	yysvec+15,	yyvstop+131,		/* stav 62 */
 yycrank+0,	yysvec+15,	yyvstop+133,		/* stav 63 */
-yycrank+0,	yysvec+15,	yyvstop+136,		/* stav 64 */
-yycrank+0,	yysvec+15,	yyvstop+139,		/* stav 65 */
-yycrank+0,	yysvec+15,	yyvstop+142,		/* stav 66 */
+yycrank+167,	yysvec+15,	yyvstop+136,		/* stav 64 */
+yycrank+0,	yysvec+15,	yyvstop+138,		/* stav 65 */
+yycrank+0,	0,		yyvstop+141,		/* stav 66 */
+yycrank+0,	yysvec+15,	yyvstop+143,		/* stav 67 */
+yycrank+0,	yysvec+15,	yyvstop+146,		/* stav 68 */
+yycrank+0,	yysvec+15,	yyvstop+149,		/* stav 69 */
+yycrank+0,	yysvec+15,	yyvstop+152,		/* stav 70 */
 0,	0,	0
 };  /* koniec tabulky "yysvec" */ 
 
-struct  yywork   *yytop  = yycrank + 344;
+struct  yywork   *yytop  = yycrank + 346;
 struct  yysvf    *yybgin = yysvec  + 1;
 
 char  yymatch[]  =  {

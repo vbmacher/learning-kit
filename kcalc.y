@@ -18,7 +18,7 @@
 %token <attr> INT_VAL
 %token <attr> DBL_VAL
 
-%token LPAR RPAR OP_EQU
+%token LPAR RPAR OP_EQU HELP
 %token QUIT
 
 %token M_SIN M_COS M_TAN M_COTAN M_LOG M_LOG2 M_LOGE M_SQRT M_CEIL M_FLOOR
@@ -62,6 +62,8 @@ static int quit = 0;
 Subor  : 
        | Exp 
          { printResult(&$1); }
+       | HELP
+         { printHelp(); }
        | QUIT
          { quit = 1; }
        ;
@@ -269,9 +271,9 @@ Primary : VARIABLE
               $$.dval = VARIABLES[tmp].attr.dval;
 
               if ($$.sig == 1)
-                printf("[%s] = %d\n", $1, $$.ival);
+                printf("  [%s] = %d\n", $1, $$.ival);
               else if ($$.sig == 2)
-                printf("[%s] = %lf\n", $1, $$.dval);
+                printf("  [%s] = %lf\n", $1, $$.dval);
             } else {
               $$.sig = 1;
               $$.ival = 0;
@@ -291,9 +293,9 @@ Primary : VARIABLE
               $$.dval = $3.dval;
 
               if ($$.sig == 1)
-                printf("let [%s] = %d\n", $1, $$.ival);
+                printf("  let [%s] = %d\n", $1, $$.ival);
               else if ($$.sig == 2)
-                printf("let [%s] = %lf\n", $1, $$.dval);
+                printf("  let [%s] = %lf\n", $1, $$.dval);
             }
           }
         | Constant
@@ -373,9 +375,51 @@ void printResult(ATRV *attr) {
   int a = attr->ival;
   double b = attr->dval;
   if (attr->sig == 1)
-    printf("\n\t %d\n\tx%X\n",a,a);
+    printf("   %d\n  x%X\n",a,a);
   else if (attr->sig == 2)
-    printf("\n\t%lf\n",b);
+    printf("  %lf\n",b);
+}
+
+void printHelp() {
+  printf("This is a command-line calculator. It supports the following commands:\n" \
+         "  h, help - this command.\n" \
+         "  q, quit - quit the calculator.\n\n" \
+         "There are supported numbers of various format:\n" \
+         "  - integral\n" \
+         "      - in classical decadic radix (1, 2, 3, -10, ...)\n" \
+         "      - in hexadecimal radix (x4, xA, x5FC, -x5B, ...)\n" \
+         "      - in octal radix (o3, o7, o43, -o23, ...)\n" \
+         "      - in binary radix (b1, b10101, -b01101, ...)\n" \
+         "  - decimal (only in decadic radix, like 1.33, 4.53434, -12.40644, ...)\n\n" \
+         "Results are printed in:\n" \
+         "  - decadic and hexadecimal radix (for integral numbers)\n" \
+         "  - only in decadic radix (for decimal numbers)\n\n" \
+         "The following operators are supported:\n" \
+         "  + - addition, or unary plus (5+5=6)\n" \
+         "  - - substraction, or unary minus (3-2=1)\n" \
+         "  * - multiplication (5*6=30)\n" \
+         "  / - divide (4/2=2)\n" \
+         "  %, mod - divide remainder (6%3=0)\n" \
+         "  ^ - power (2^3=8)\n" \
+         "  ! - factorial (3!=6)\n\n" \
+         "The following math functions are supported:\n" \
+         "  sin   - sinus, input in radians (sin PI=0)\n" \
+         "  cos   - cosinus, input in radians (cos PI=-1)\n" \
+         "  tan   - tangens, input in radians (tan PI=0)\n" \
+         "  cotan - cotangens, input in radians (cotan (PI/2)=0)\n" \
+         "  log   - logarithm with base 10 (log 10=1)\n" \
+         "  log2  - logarithm with base 2 (log2 2=1)\n" \
+         "  ln    - logarithm with base E (ln E =1)\n" \
+         "  sqrt  - square root (sqrt 16=4)\n" \
+         "  ceil  - smallest integral value that is not less than input (ceil 4.3=5)\n" \
+         "  floor - greatest integral value that is not greater than input (floor 4.6=4)\n\n" \
+         "The following constants are supported:\n" \
+         "  PI - The Ludolf PI number (3.141592...)\n" \
+         "  E  - The Euler number (2.71828182...)\n\n" \
+         "This calculator also supports variables that store values, e.g.:\n" \
+         "  x = 5\n" \
+         "  var = 4.23 * x\n" \
+         "  (-2 * var + x)/ (4*var^2)\n");
 }
 
 int main(int ac,char *av[]){
@@ -389,8 +433,10 @@ int main(int ac,char *av[]){
   }
   initVAR();
   
+  printf("kCalculator 0.11b\n(c) Copyright 2010,P.Jakubco\n\n(Type 'help' for help.)\n");
+
   while(!quit) {
-    printf("\n>");
+    printf(">");
     (void)yyparse();
   }
   return(0);

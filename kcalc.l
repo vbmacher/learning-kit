@@ -50,6 +50,9 @@ BINNUM "b"[0-1]+
 "quit" { yywrap(); return QUIT; }
 "exit" { yywrap(); return QUIT; }
 
+"h"    { return HELP; }
+"help" { return HELP; }
+
 {ID}+    { yylval.name = strdup(yytext);
            return VARIABLE; }
 {NUM}    { sscanf(yytext,"%d",&yylval.attr.ival);

@@ -6,7 +6,7 @@
 //    Used specification file: "".
 //    Used skeleton file:      "C:\Program Files\PPVP\yaccpar".
 // 
-//    Created:  Sun Oct 10 06:56:01 2010
+//    Created:  Sun Oct 10 07:40:51 2010
 // 
 --------------------------------------------------------------------- */ 
 
@@ -31,28 +31,29 @@ typedef union  {
 # define LPAR 260
 # define RPAR 261
 # define OP_EQU 262
-# define QUIT 263
-# define M_SIN 264
-# define M_COS 265
-# define M_TAN 266
-# define M_COTAN 267
-# define M_LOG 268
-# define M_LOG2 269
-# define M_LOGE 270
-# define M_SQRT 271
-# define M_CEIL 272
-# define M_FLOOR 273
-# define CONST_PI 274
-# define CONST_E 275
-# define OP_ADD 276
-# define OP_SUB 277
-# define OP_MUL 278
-# define OP_DIV 279
-# define OP_MOD 280
-# define UADD 281
-# define USUB 282
-# define OP_POW 283
-# define OP_FACT 284
+# define HELP 263
+# define QUIT 264
+# define M_SIN 265
+# define M_COS 266
+# define M_TAN 267
+# define M_COTAN 268
+# define M_LOG 269
+# define M_LOG2 270
+# define M_LOGE 271
+# define M_SQRT 272
+# define M_CEIL 273
+# define M_FLOOR 274
+# define CONST_PI 275
+# define CONST_E 276
+# define OP_ADD 277
+# define OP_SUB 278
+# define OP_MUL 279
+# define OP_DIV 280
+# define OP_MOD 281
+# define UADD 282
+# define USUB 283
+# define OP_POW 284
+# define OP_FACT 285
 
 # line 41 "kcalc.y"
 
@@ -81,20 +82,16 @@ extern short yyerrflag;
 YYSTYPE yylval, yyval;
 # define YYERRCODE 256
 
-# line 322 "kcalc.y"
+# line 324 "kcalc.y"
 
 /* Functions */
 
-//static int errorCount = 0;
-
 void yyerror(char *s){
   fprintf(stdout,"ERROR: %s [%s]\n",s,yytext);
-//  errorCount++;
 }
 
 void xxerror(char *s1,char *s2){
   fprintf(stdout,"ERROR: %s %s\n",s1,s2);
-//  errorCount++;
 }
 
 
@@ -140,9 +137,51 @@ void printResult(ATRV *attr) {
   int a = attr->ival;
   double b = attr->dval;
   if (attr->sig == 1)
-    printf("\n\t %d\n\tx%X\n",a,a);
+    printf("   %d\n  x%X\n",a,a);
   else if (attr->sig == 2)
-    printf("\n\t%lf\n",b);
+    printf("  %lf\n",b);
+}
+
+void printHelp() {
+  printf("This is a command-line calculator. It supports the following commands:\n" \
+         "  h, help - this command.\n" \
+         "  q, quit - quit the calculator.\n\n" \
+         "There are supported numbers of various format:\n" \
+         "  - integral\n" \
+         "      - in classical decadic radix (1, 2, 3, -10, ...)\n" \
+         "      - in hexadecimal radix (x4, xA, x5FC, -x5B, ...)\n" \
+         "      - in octal radix (o3, o7, o43, -o23, ...)\n" \
+         "      - in binary radix (b1, b10101, -b01101, ...)\n" \
+         "  - decimal (only in decadic radix, like 1.33, 4.53434, -12.40644, ...)\n\n" \
+         "Results are printed in:\n" \
+         "  - decadic and hexadecimal radix (for integral numbers)\n" \
+         "  - only in decadic radix (for decimal numbers)\n\n" \
+         "The following operators are supported:\n" \
+         "  + - addition, or unary plus (5+5=6)\n" \
+         "  - - substraction, or unary minus (3-2=1)\n" \
+         "  * - multiplication (5*6=30)\n" \
+         "  / - divide (4/2=2)\n" \
+         "  %, mod - divide remainder (6%3=0)\n" \
+         "  ^ - power (2^3=8)\n" \
+         "  ! - factorial (3!=6)\n\n" \
+         "The following math functions are supported:\n" \
+         "  sin   - sinus, input in radians (sin PI=0)\n" \
+         "  cos   - cosinus, input in radians (cos PI=-1)\n" \
+         "  tan   - tangens, input in radians (tan PI=0)\n" \
+         "  cotan - cotangens, input in radians (cotan (PI/2)=0)\n" \
+         "  log   - logarithm with base 10 (log 10=1)\n" \
+         "  log2  - logarithm with base 2 (log2 2=1)\n" \
+         "  ln    - logarithm with base E (ln E =1)\n" \
+         "  sqrt  - square root (sqrt 16=4)\n" \
+         "  ceil  - smallest integral value that is not less than input (ceil 4.3=5)\n" \
+         "  floor - greatest integral value that is not greater than input (floor 4.6=4)\n\n" \
+         "The following constants are supported:\n" \
+         "  PI - The Ludolf PI number (3.141592...)\n" \
+         "  E  - The Euler number (2.71828182...)\n\n" \
+         "This calculator also supports variables that store values, e.g.:\n" \
+         "  x = 5\n" \
+         "  var = 4.23 * x\n" \
+         "  (-2 * var + x)/ (4*var^2)\n");
 }
 
 int main(int ac,char *av[]){
@@ -156,8 +195,10 @@ int main(int ac,char *av[]){
   }
   initVAR();
   
+  printf("kCalculator 0.11b\n(c) Copyright 2010,P.Jakubco\n\n(Type 'help' for help.)\n");
+
   while(!quit) {
-    printf("\n>");
+    printf(">");
     (void)yyparse();
   }
   return(0);
@@ -168,60 +209,61 @@ short yyexca[] ={
 	0, -1,
 	-2, 0,
 	};
-# define YYNPROD 32
-# define YYLAST 108
+# define YYNPROD 33
+# define YYLAST 111
 short yyact[]={
 
-  17,  20,  21,  19,  28,  30,   3,   5,   6,   7,
-   8,   9,  10,  11,  12,  13,  14,  22,  23,  16,
-  15,  17,  20,  21,  19,  30,   1,  52,   5,   6,
-   7,   8,   9,  10,  11,  12,  13,  14,  22,  23,
-  16,  15,  24,  25,  26,  27,  29,  43,  18,  28,
-  30,  24,  25,  26,  27,  29,   4,   0,  28,  30,
-  26,  27,  29,   2,  29,  28,  30,  28,  30,  31,
-  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,
-  42,   0,   0,  44,   0,   0,   0,   0,  45,  46,
-  47,  48,  49,  50,   0,   0,   0,   0,   0,   0,
-   0,   0,   0,   0,   0,   0,   0,  51 };
+  18,  21,  22,  20,  29,  31,   3,   4,   6,   7,
+   8,   9,  10,  11,  12,  13,  14,  15,  23,  24,
+  17,  16,  18,  21,  22,  20,  31,   1,  53,  19,
+   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,
+  23,  24,  17,  16,  25,  26,  27,  28,  30,  44,
+   5,  29,  31,  25,  26,  27,  28,  30,   0,   0,
+  29,  31,  27,  28,  30,   2,  30,  29,  31,  29,
+  31,   0,  32,  33,  34,  35,  36,  37,  38,  39,
+  40,  41,  42,  43,   0,   0,  45,   0,   0,   0,
+   0,  46,  47,  48,  49,  50,  51,   0,   0,   0,
+   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  52 };
 short yypact[]={
 
--257,-1000,-225,-1000,-1000,-236,-236,-236,-236,-236,
--236,-236,-236,-236,-236,-236,-236,-215,-1000,-236,
--1000,-1000,-1000,-1000,-236,-236,-236,-236,-236,-236,
--1000,-225,-225,-225,-225,-225,-225,-225,-225,-225,
--225,-279,-279,-236,-234,-218,-218,-216,-216,-259,
--279,-225,-1000 };
+-257,-1000,-224,-1000,-1000,-1000,-235,-235,-235,-235,
+-235,-235,-235,-235,-235,-235,-235,-235,-213,-1000,
+-235,-1000,-1000,-1000,-1000,-235,-235,-235,-235,-235,
+-235,-1000,-224,-224,-224,-224,-224,-224,-224,-224,
+-224,-224,-280,-280,-235,-233,-217,-217,-215,-215,
+-259,-280,-224,-1000 };
 short yypgo[]={
 
-   0,  63,  56,  48,  26 };
+   0,  65,  50,  29,  27 };
 short yyr1[]={
 
-   0,   4,   4,   4,   1,   1,   1,   1,   1,   1,
+   0,   4,   4,   4,   4,   1,   1,   1,   1,   1,
    1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
-   1,   1,   1,   1,   2,   2,   2,   2,   3,   3,
-   3,   3 };
+   1,   1,   1,   1,   1,   2,   2,   2,   2,   3,
+   3,   3,   3 };
 short yyr2[]={
 
-   0,   0,   1,   1,   1,   3,   3,   3,   3,   3,
-   3,   2,   2,   2,   2,   2,   2,   2,   2,   2,
-   2,   2,   2,   2,   1,   3,   1,   3,   1,   1,
-   1,   1 };
+   0,   0,   1,   1,   1,   1,   3,   3,   3,   3,
+   3,   3,   2,   2,   2,   2,   2,   2,   2,   2,
+   2,   2,   2,   2,   2,   1,   3,   1,   3,   1,
+   1,   1,   1 };
 short yychk[]={
 
--1000,  -4,  -1, 263,  -2, 264, 265, 266, 267, 268,
- 269, 270, 271, 272, 273, 277, 276, 257,  -3, 260,
- 258, 259, 274, 275, 276, 277, 278, 279, 283, 280,
- 284,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,
-  -1,  -1,  -1, 262,  -1,  -1,  -1,  -1,  -1,  -1,
-  -1,  -1, 261 };
+-1000,  -4,  -1, 263, 264,  -2, 265, 266, 267, 268,
+ 269, 270, 271, 272, 273, 274, 278, 277, 257,  -3,
+ 260, 258, 259, 275, 276, 277, 278, 279, 280, 284,
+ 281, 285,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,
+  -1,  -1,  -1,  -1, 262,  -1,  -1,  -1,  -1,  -1,
+  -1,  -1,  -1, 261 };
 short yydef[]={
 
-   1,  -2,   2,   3,   4,   0,   0,   0,   0,   0,
-   0,   0,   0,   0,   0,   0,   0,  24,  26,   0,
-  28,  29,  30,  31,   0,   0,   0,   0,   0,   0,
-  11,  12,  13,  14,  15,  16,  17,  18,  19,  20,
-  21,  22,  23,   0,   0,   5,   6,   7,   8,   9,
-  10,  25,  27 };
+   1,  -2,   2,   3,   4,   5,   0,   0,   0,   0,
+   0,   0,   0,   0,   0,   0,   0,   0,  25,  27,
+   0,  29,  30,  31,  32,   0,   0,   0,   0,   0,
+   0,  12,  13,  14,  15,  16,  17,  18,  19,  20,
+  21,  22,  23,  24,   0,   0,   6,   7,   8,   9,
+  10,  11,  26,  28 };
 
 /* ----------------------------------------------------------------------- */
 /*             Section copied from skeleton file  "yaccpar"                */
@@ -438,12 +480,15 @@ case 2:
 { printResult(&yypvt[-0].attr); } break;
 case 3:
 # line 66 "kcalc.y"
-{ quit = 1; } break;
+{ printHelp(); } break;
 case 4:
-# line 70 "kcalc.y"
-{ yyval.attr = yypvt[-0].attr; } break;
+# line 68 "kcalc.y"
+{ quit = 1; } break;
 case 5:
 # line 72 "kcalc.y"
+{ yyval.attr = yypvt[-0].attr; } break;
+case 6:
+# line 74 "kcalc.y"
 { if (yypvt[-2].attr.sig == 1)
             tmp2 = yypvt[-2].attr.ival;
           else if (yypvt[-2].attr.sig == 2)
@@ -459,8 +504,8 @@ case 5:
             yyval.attr.ival = (int)(tmp2+ttmp2);
           }
         } break;
-case 6:
-# line 88 "kcalc.y"
+case 7:
+# line 90 "kcalc.y"
 { if (yypvt[-2].attr.sig == 1)
             tmp2 = yypvt[-2].attr.ival;
           else if (yypvt[-2].attr.sig == 2)
@@ -476,8 +521,8 @@ case 6:
             yyval.attr.ival = (int)(tmp2-ttmp2);
           }
         } break;
-case 7:
-# line 104 "kcalc.y"
+case 8:
+# line 106 "kcalc.y"
 { if (yypvt[-2].attr.sig == 1)
             tmp2 = yypvt[-2].attr.ival;
           else if (yypvt[-2].attr.sig == 2)
@@ -493,8 +538,8 @@ case 7:
             yyval.attr.ival = (int)tmp2*ttmp2;
           }
         } break;
-case 8:
-# line 120 "kcalc.y"
+case 9:
+# line 122 "kcalc.y"
 { if (yypvt[-2].attr.sig == 1)
             tmp2 = yypvt[-2].attr.ival;
           else if (yypvt[-2].attr.sig == 2)
@@ -510,8 +555,8 @@ case 8:
             yyval.attr.ival = (int)tmp2/ttmp2;
           }
         } break;
-case 9:
-# line 136 "kcalc.y"
+case 10:
+# line 138 "kcalc.y"
 { if (yypvt[-2].attr.sig == 1)
             tmp2 = yypvt[-2].attr.ival;
           else if (yypvt[-2].attr.sig == 2)
@@ -523,8 +568,8 @@ case 9:
           yyval.attr.sig = 2;
           yyval.attr.dval = pow(tmp2,ttmp2);
         } break;
-case 10:
-# line 148 "kcalc.y"
+case 11:
+# line 150 "kcalc.y"
 { if (yypvt[-2].attr.sig == 1)
             tmp = yypvt[-2].attr.ival;
           else if (yypvt[-2].attr.sig == 2)
@@ -536,8 +581,8 @@ case 10:
           yyval.attr.sig = 1;
           yyval.attr.ival = tmp % ttmp;
         } break;
-case 11:
-# line 160 "kcalc.y"
+case 12:
+# line 162 "kcalc.y"
 { if (yypvt[-1].attr.sig == 1)
             tmp = yypvt[-1].attr.ival;
           else if (yypvt[-1].attr.sig == 2) {
@@ -547,8 +592,8 @@ case 11:
           yyval.attr.sig = 1;
           yyval.attr.ival = (int)fact(tmp);
         } break;
-case 12:
-# line 170 "kcalc.y"
+case 13:
+# line 172 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -556,8 +601,8 @@ case 12:
           yyval.attr.sig = 2;
           yyval.attr.dval = sin(tmp2);
         } break;
-case 13:
-# line 178 "kcalc.y"
+case 14:
+# line 180 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -565,8 +610,8 @@ case 13:
           yyval.attr.sig = 2;
           yyval.attr.dval = cos(tmp2);
         } break;
-case 14:
-# line 186 "kcalc.y"
+case 15:
+# line 188 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -574,8 +619,8 @@ case 14:
           yyval.attr.sig = 2;
           yyval.attr.dval = tan(tmp2);
         } break;
-case 15:
-# line 194 "kcalc.y"
+case 16:
+# line 196 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -587,8 +632,8 @@ case 15:
           else
             yyval.attr.dval = 1/ttmp2;
         } break;
-case 16:
-# line 206 "kcalc.y"
+case 17:
+# line 208 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -596,8 +641,8 @@ case 16:
           yyval.attr.sig = 2;
           yyval.attr.dval = log10(tmp2);
         } break;
-case 17:
-# line 214 "kcalc.y"
+case 18:
+# line 216 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -605,8 +650,8 @@ case 17:
           yyval.attr.sig = 2;
           yyval.attr.dval = log(tmp2)/log(2);
         } break;
-case 18:
-# line 222 "kcalc.y"
+case 19:
+# line 224 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -614,8 +659,8 @@ case 18:
           yyval.attr.sig = 2;
           yyval.attr.dval = log(tmp2);
         } break;
-case 19:
-# line 230 "kcalc.y"
+case 20:
+# line 232 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -623,8 +668,8 @@ case 19:
           yyval.attr.sig = 2;
           yyval.attr.dval = sqrt(tmp2);
         } break;
-case 20:
-# line 238 "kcalc.y"
+case 21:
+# line 240 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -632,8 +677,8 @@ case 20:
           yyval.attr.sig = 1;
           yyval.attr.ival = (int)ceil(tmp2);
         } break;
-case 21:
-# line 246 "kcalc.y"
+case 22:
+# line 248 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             tmp2 = yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
@@ -641,19 +686,19 @@ case 21:
           yyval.attr.sig = 1;
           yyval.attr.ival = (int)floor(tmp2);
         } break;
-case 22:
-# line 254 "kcalc.y"
+case 23:
+# line 256 "kcalc.y"
 { if (yypvt[-0].attr.sig == 1)
             yypvt[-0].attr.ival = -yypvt[-0].attr.ival;
           else if (yypvt[-0].attr.sig == 2)
             yypvt[-0].attr.dval = -yypvt[-0].attr.dval;
           yyval.attr = yypvt[-0].attr;
         } break;
-case 23:
-# line 261 "kcalc.y"
-{ yyval.attr = yypvt[-0].attr; } break;
 case 24:
-# line 265 "kcalc.y"
+# line 263 "kcalc.y"
+{ yyval.attr = yypvt[-0].attr; } break;
+case 25:
+# line 267 "kcalc.y"
 { tmp = findVAR(yypvt[-0].name,1);
             if (tmp != -1) {
               yyval.attr.sig = VARIABLES[tmp].attr.sig;
@@ -661,16 +706,16 @@ case 24:
               yyval.attr.dval = VARIABLES[tmp].attr.dval;
 
               if (yyval.attr.sig == 1)
-                printf("[%s] = %d\n", yypvt[-0].name, yyval.attr.ival);
+                printf("  [%s] = %d\n", yypvt[-0].name, yyval.attr.ival);
               else if (yyval.attr.sig == 2)
-                printf("[%s] = %lf\n", yypvt[-0].name, yyval.attr.dval);
+                printf("  [%s] = %lf\n", yypvt[-0].name, yyval.attr.dval);
             } else {
               yyval.attr.sig = 1;
               yyval.attr.ival = 0;
             }
           } break;
-case 25:
-# line 281 "kcalc.y"
+case 26:
+# line 283 "kcalc.y"
 { tmp = findVAR(yypvt[-2].name,0);
             if (tmp == -1)
               tmp = saveVAR(yypvt[-2].name,&yypvt[-0].attr);
@@ -684,34 +729,34 @@ case 25:
               yyval.attr.dval = yypvt[-0].attr.dval;
 
               if (yyval.attr.sig == 1)
-                printf("let [%s] = %d\n", yypvt[-2].name, yyval.attr.ival);
+                printf("  let [%s] = %d\n", yypvt[-2].name, yyval.attr.ival);
               else if (yyval.attr.sig == 2)
-                printf("let [%s] = %lf\n", yypvt[-2].name, yyval.attr.dval);
+                printf("  let [%s] = %lf\n", yypvt[-2].name, yyval.attr.dval);
             }
           } break;
-case 26:
-# line 300 "kcalc.y"
-{ yyval.attr = yypvt[-0].attr; } break;
 case 27:
 # line 302 "kcalc.y"
-{ yyval.attr = yypvt[-1].attr; } break;
+{ yyval.attr = yypvt[-0].attr; } break;
 case 28:
-# line 306 "kcalc.y"
+# line 304 "kcalc.y"
+{ yyval.attr = yypvt[-1].attr; } break;
+case 29:
+# line 308 "kcalc.y"
 { yyval.attr.sig=1;
             yyval.attr.ival = yypvt[-0].attr.ival;
           } break;
-case 29:
-# line 310 "kcalc.y"
+case 30:
+# line 312 "kcalc.y"
 { yyval.attr.sig=2;
             yyval.attr.dval = yypvt[-0].attr.dval;
           } break;
-case 30:
-# line 314 "kcalc.y"
+case 31:
+# line 316 "kcalc.y"
 { yyval.attr.sig=2;
             yyval.attr.dval = 3.14159265358979323846264338327950288419716939937510;
           } break;
-case 31:
-# line 318 "kcalc.y"
+case 32:
+# line 320 "kcalc.y"
 { yyval.attr.sig=2;
             yyval.attr.dval = 2.71828182845904523536028747135266249775724709369995;
           } break;
