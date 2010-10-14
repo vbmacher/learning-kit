@@ -27,11 +27,14 @@ The calculator supports the following commands:
 There are supported numbers of various format:
 
 * integral
-  * in classical decadic radix (`1`, `2`, `3`, `-10`, ...)
-  * in hexadecimal radix (`x4`, `xA`, `x5FC`, `-x5B`, ...)
-  * in octal radix (`o3`, `o7`, `o43`, `-o23`, ...)
-  * in binary radix (`b1`, `b10101`, `-b01101`, ...)
-* decimal (only in decadic radix, like `1.33`, `4.53434`, `-12.40644`, ...)
+* decimal
+
+Both number formats can be expressed in various radixes, such as:
+
+* in decadic radix (`1`, `2.3`, `3`, `-10.554`, ...)
+* in hexadecimal radix (`x4`, `xA.f3`, `x5FC`, `-x5B.12`, ...)
+* in octal radix (`o3`, `o7`, `o43.243`, `-o23.05`, ...)
+* in binary radix (`b1`, `b10101.10101`, `-b01101.11`, ...)
 
 Results are printed in:
 
