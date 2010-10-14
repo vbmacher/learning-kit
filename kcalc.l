@@ -103,6 +103,68 @@ BINNUM "b"[0-1]+
                 return DBL_VAL;
               }
 
+{HEXNUM}"."[0-9a-fA-F]+ {
+           yylval.attr.dval = 0;
+           yylval.attr.sig = 2;
+           
+           int i;
+           char xx = '0';
+           int num = 0;
+           for (i = 1; yytext[i] != '.'; i++) {
+             if (yytext[i] >= 'a' && yytext[i] <= 'f') {
+               xx = 'a';
+               num = 10;
+             }
+             else if (yytext[i] >= 'A' && yytext[i] <= 'F') {
+               xx = 'A';
+               num = 10;
+             }
+             yylval.attr.dval = yylval.attr.dval * 16 + yytext[i] - xx + num;
+           }
+           int j = i;
+           num = 0;
+           xx = '0';
+           for (i=j+1; yytext[i] != 0; i++) {
+             if (yytext[i] >= 'a' && yytext[i] <= 'f') {
+               xx = 'a';
+               num = 10;
+             }
+             else if (yytext[i] >= 'A' && yytext[i] <= 'F') {
+               xx = 'A';
+               num = 10;
+             }
+             yylval.attr.dval += (yytext[i] - xx + num)/pow(16,i-j);
+           }
+           return DBL_VAL;
+         }
+
+{BINNUM}"."[0-1]+ {
+           yylval.attr.dval = 0;
+           yylval.attr.sig = 2;
+           
+           int i;
+           for (i = 1; yytext[i] != '.'; i++)
+             yylval.attr.dval = yylval.attr.dval * 2 + yytext[i] - '0';
+
+           int j = i;
+           for (i=j+1; yytext[i] != 0; i++)
+             yylval.attr.dval += (yytext[i] - '0')/pow(2,i-j);
+           return DBL_VAL;
+         }
+
+{OCTNUM}"."[0-7]+ {
+           yylval.attr.dval = 0;
+           yylval.attr.sig = 2;
+           
+           int i;
+           for (i = 1; yytext[i] != '.'; i++)
+             yylval.attr.dval = yylval.attr.dval * 8 + yytext[i] - '0';
+
+           int j = i;
+           for (i=j+1; yytext[i] != 0; i++)
+             yylval.attr.dval += (yytext[i] - '0')/pow(8,i-j);
+           return DBL_VAL;
+         }
 
 %%
 
