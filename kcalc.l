@@ -128,8 +128,7 @@ BINNUM "b"[0-1]+
              if (yytext[i] >= 'a' && yytext[i] <= 'f') {
                xx = 'a';
                num = 10;
-             }
-             else if (yytext[i] >= 'A' && yytext[i] <= 'F') {
+             } else if (yytext[i] >= 'A' && yytext[i] <= 'F') {
                xx = 'A';
                num = 10;
              }

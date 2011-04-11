@@ -1,9 +1,9 @@
-/* A Bison parser, made by GNU Bison 2.4.2.  */
+/* A Bison parser, made by GNU Bison 2.4.3.  */
 
 /* Skeleton implementation for Bison's Yacc-like parsers in C
    
-      Copyright (C) 1984, 1989-1990, 2000-2006, 2009-2010 Free Software
-   Foundation, Inc.
+      Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+   2009, 2010 Free Software Foundation, Inc.
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.4.2"
+#define YYBISON_VERSION "2.4.3"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -2167,11 +2167,12 @@ void printHelp() {
          "  q, quit - quit the calculator.\n\n" \
          "There are supported numbers of various format:\n" \
          "  - integral\n" \
-         "      - in classical decadic radix (1, 2, 3, -10, ...)\n" \
-         "      - in hexadecimal radix (x4, xA, x5FC, -x5B, ...)\n" \
-         "      - in octal radix (o3, o7, o43, -o23, ...)\n" \
-         "      - in binary radix (b1, b10101, -b01101, ...)\n" \
-         "  - decimal (only in decadic radix, like 1.33, 4.53434, -12.40644, ...)\n\n" \
+         "  - decimal\n\n" \
+         "Both number formats can be expressed in various radixes, such as:\n" \
+         "  - in decadic radix (`1`, `2.3`, `3`, `-10.554`, ...)\n" \
+         "  - in hexadecimal radix (`x4`, `xA.f3`, `x5FC`, `-x5B.12`, ...)\n" \
+         "  - in octal radix (`o3`, `o7`, `o43.243`, `-o23.05`, ...)\n" \
+         "  - in binary radix (`b1`, `b10101.10101`, `-b01101.11`, ...)\n\n" \
          "Results are printed in:\n" \
          "  - decadic and hexadecimal radix (for integral numbers)\n" \
          "  - only in decadic radix (for decimal numbers)\n\n" \

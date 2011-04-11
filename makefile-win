@@ -1,5 +1,5 @@
 all: flex yacc kcalc.tab.c
-	gcc -o kcalc kcalc.tab.c -lm
+	gcc -o kcalc.exe kcalc.tab.c
 
 flex:
 	flex -olexyy.c kcalc.l
