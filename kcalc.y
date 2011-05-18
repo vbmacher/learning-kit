@@ -386,11 +386,25 @@ int fact(int x) {
     return -1;
 }
 
+char *intToOctal(int num) {
+  static char result[30];
+  int i = 0, j = 29;
+
+  result[29] = 0;
+  for (i = num; i > 0; i = i/8)
+    result[--j] = "01234567"[i % 8];
+
+  return (char*)(result + j);
+  
+}
+
 void printResult(ATRV *attr) {
   int a = attr->ival;
   double b = attr->dval;
-  if (attr->sig == 1)
+  if (attr->sig == 1) {
     printf("   %d\n  x%X\n",a,a);
+    printf("  o%s\n", intToOctal(a));
+  }
   else if (attr->sig == 2)
     printf("  %lf\n",b);
 }
