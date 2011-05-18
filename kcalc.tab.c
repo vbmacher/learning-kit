@@ -529,9 +529,9 @@ static const yytype_int8 yyrhs[] =
 static const yytype_uint16 yyrline[] =
 {
        0,    79,    79,    80,    82,    84,    88,    90,   106,   122,
-     138,   154,   166,   178,   188,   196,   204,   212,   224,   232,
-     240,   248,   256,   264,   272,   279,   283,   299,   318,   320,
-     324,   328,   332,   336
+     138,   158,   170,   182,   192,   200,   208,   216,   228,   236,
+     244,   252,   260,   268,   276,   283,   287,   303,   322,   324,
+     328,   332,   336,   340
 };
 #endif
 
@@ -1521,9 +1521,9 @@ yyreduce:
             ttmp2 = (yyvsp[(3) - (3)].attr).dval;
           (yyval.attr).sig = 2;
           (yyval.attr).dval = tmp2 + ttmp2;
-          if ((yyval.attr).dval == (double)((int)(yyval.attr).dval)) {
+          if ((yyval.attr).dval == (int)(yyval.attr).dval) {
             (yyval.attr).sig = 1;
-            (yyval.attr).ival = (int)(tmp2+ttmp2);
+            (yyval.attr).ival = (int)(yyval.attr).dval;
           }
         }
     break;
@@ -1542,9 +1542,9 @@ yyreduce:
             ttmp2 = (yyvsp[(3) - (3)].attr).dval;
           (yyval.attr).sig = 2;
           (yyval.attr).dval = tmp2 - ttmp2;
-          if ((yyval.attr).dval == (double)((int)(yyval.attr).dval)) {
+          if ((yyval.attr).dval == (int)(yyval.attr).dval) {
             (yyval.attr).sig = 1;
-            (yyval.attr).ival = (int)(tmp2-ttmp2);
+            (yyval.attr).ival = (int)(yyval.attr).dval;
           }
         }
     break;
@@ -1563,9 +1563,9 @@ yyreduce:
             ttmp2 = (yyvsp[(3) - (3)].attr).dval;
           (yyval.attr).sig = 2;
           (yyval.attr).dval = tmp2 * ttmp2;
-          if ((yyval.attr).dval == (double)((int)(yyval.attr).dval)) {
+          if ((yyval.attr).dval == (int)(yyval.attr).dval) {
             (yyval.attr).sig = 1;
-            (yyval.attr).ival = (int)tmp2*ttmp2;
+            (yyval.attr).ival = (int)(yyval.attr).dval;
           }
         }
     break;
@@ -1583,10 +1583,14 @@ yyreduce:
           else if ((yyvsp[(3) - (3)].attr).sig == 2)
             ttmp2 = (yyvsp[(3) - (3)].attr).dval;
           (yyval.attr).sig = 2;
+          if (ttmp2 == 0) {
+            xxerror("Divide by"," 0");
+            break;
+          }
           (yyval.attr).dval = tmp2 / ttmp2;
-          if ((yyval.attr).dval == (double)((int)(yyval.attr).dval)) {
+          if ((yyval.attr).dval == (int)(yyval.attr).dval) {
             (yyval.attr).sig = 1;
-            (yyval.attr).ival = (int)tmp2/ttmp2;
+            (yyval.attr).ival = (int)(yyval.attr).dval;
           }
         }
     break;
@@ -1594,7 +1598,7 @@ yyreduce:
   case 11:
 
 /* Line 1464 of yacc.c  */
-#line 155 "kcalc.y"
+#line 159 "kcalc.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp2 = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1611,7 +1615,7 @@ yyreduce:
   case 12:
 
 /* Line 1464 of yacc.c  */
-#line 167 "kcalc.y"
+#line 171 "kcalc.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1628,7 +1632,7 @@ yyreduce:
   case 13:
 
 /* Line 1464 of yacc.c  */
-#line 179 "kcalc.y"
+#line 183 "kcalc.y"
     { if ((yyvsp[(1) - (2)].attr).sig == 1)
             tmp = (yyvsp[(1) - (2)].attr).ival;
           else if ((yyvsp[(1) - (2)].attr).sig == 2) {
@@ -1643,7 +1647,7 @@ yyreduce:
   case 14:
 
 /* Line 1464 of yacc.c  */
-#line 189 "kcalc.y"
+#line 193 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1656,7 +1660,7 @@ yyreduce:
   case 15:
 
 /* Line 1464 of yacc.c  */
-#line 197 "kcalc.y"
+#line 201 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1669,7 +1673,7 @@ yyreduce:
   case 16:
 
 /* Line 1464 of yacc.c  */
-#line 205 "kcalc.y"
+#line 209 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1682,7 +1686,7 @@ yyreduce:
   case 17:
 
 /* Line 1464 of yacc.c  */
-#line 213 "kcalc.y"
+#line 217 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1699,7 +1703,7 @@ yyreduce:
   case 18:
 
 /* Line 1464 of yacc.c  */
-#line 225 "kcalc.y"
+#line 229 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1712,7 +1716,7 @@ yyreduce:
   case 19:
 
 /* Line 1464 of yacc.c  */
-#line 233 "kcalc.y"
+#line 237 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1725,7 +1729,7 @@ yyreduce:
   case 20:
 
 /* Line 1464 of yacc.c  */
-#line 241 "kcalc.y"
+#line 245 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1738,7 +1742,7 @@ yyreduce:
   case 21:
 
 /* Line 1464 of yacc.c  */
-#line 249 "kcalc.y"
+#line 253 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1751,7 +1755,7 @@ yyreduce:
   case 22:
 
 /* Line 1464 of yacc.c  */
-#line 257 "kcalc.y"
+#line 261 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1764,7 +1768,7 @@ yyreduce:
   case 23:
 
 /* Line 1464 of yacc.c  */
-#line 265 "kcalc.y"
+#line 269 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1777,7 +1781,7 @@ yyreduce:
   case 24:
 
 /* Line 1464 of yacc.c  */
-#line 273 "kcalc.y"
+#line 277 "kcalc.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             (yyvsp[(2) - (2)].attr).ival = -(yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1789,14 +1793,14 @@ yyreduce:
   case 25:
 
 /* Line 1464 of yacc.c  */
-#line 280 "kcalc.y"
+#line 284 "kcalc.y"
     { (yyval.attr) = (yyvsp[(2) - (2)].attr); }
     break;
 
   case 26:
 
 /* Line 1464 of yacc.c  */
-#line 284 "kcalc.y"
+#line 288 "kcalc.y"
     { tmp = findVAR((yyvsp[(1) - (1)].name),1);
             if (tmp != -1) {
               (yyval.attr).sig = VARIABLES[tmp].attr.sig;
@@ -1817,7 +1821,7 @@ yyreduce:
   case 27:
 
 /* Line 1464 of yacc.c  */
-#line 300 "kcalc.y"
+#line 304 "kcalc.y"
     { tmp = findVAR((yyvsp[(1) - (3)].name),0);
             if (tmp == -1)
               tmp = saveVAR((yyvsp[(1) - (3)].name),&(yyvsp[(3) - (3)].attr));
@@ -1841,21 +1845,21 @@ yyreduce:
   case 28:
 
 /* Line 1464 of yacc.c  */
-#line 319 "kcalc.y"
+#line 323 "kcalc.y"
     { (yyval.attr) = (yyvsp[(1) - (1)].attr); }
     break;
 
   case 29:
 
 /* Line 1464 of yacc.c  */
-#line 321 "kcalc.y"
+#line 325 "kcalc.y"
     { (yyval.attr) = (yyvsp[(2) - (3)].attr); }
     break;
 
   case 30:
 
 /* Line 1464 of yacc.c  */
-#line 325 "kcalc.y"
+#line 329 "kcalc.y"
     { (yyval.attr).sig=1;
             (yyval.attr).ival = (yyvsp[(1) - (1)].attr).ival;
           }
@@ -1864,7 +1868,7 @@ yyreduce:
   case 31:
 
 /* Line 1464 of yacc.c  */
-#line 329 "kcalc.y"
+#line 333 "kcalc.y"
     { (yyval.attr).sig=2;
             (yyval.attr).dval = (yyvsp[(1) - (1)].attr).dval;
           }
@@ -1873,7 +1877,7 @@ yyreduce:
   case 32:
 
 /* Line 1464 of yacc.c  */
-#line 333 "kcalc.y"
+#line 337 "kcalc.y"
     { (yyval.attr).sig=2;
             (yyval.attr).dval = 3.14159265358979323846264338327950288419716939937510;
           }
@@ -1882,7 +1886,7 @@ yyreduce:
   case 33:
 
 /* Line 1464 of yacc.c  */
-#line 337 "kcalc.y"
+#line 341 "kcalc.y"
     { (yyval.attr).sig=2;
             (yyval.attr).dval = 2.71828182845904523536028747135266249775724709369995;
           }
@@ -1891,7 +1895,7 @@ yyreduce:
 
 
 /* Line 1464 of yacc.c  */
-#line 1895 "kcalc.tab.c"
+#line 1899 "kcalc.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2103,7 +2107,7 @@ yyreturn:
 
 
 /* Line 1684 of yacc.c  */
-#line 341 "kcalc.y"
+#line 345 "kcalc.y"
 
 /* Functions */
 
@@ -2161,8 +2165,32 @@ char *intToOctal(int num) {
     result[--j] = "01234567"[i % 8];
 
   return (char*)(result + j);
-  
 }
+
+char *doubleToRadix(double num, int radix) {
+  static char result[40];
+  int i = 0, j = 19;
+  double x;
+
+  int integer = (int)num;
+
+  i = 0;
+  result[j] = '.';
+  for (x = (num-(int)num)*radix; i < 20; x *= radix, i++) {
+    result[++j] = "0123456789ABCDEF"[(int)x];
+    x = x - (int)x;
+  }
+  result[39] = 0;
+  j = 19;
+  result[18] = '0';
+  for (i = (int)num; i > 0; i = i/radix)
+    result[--j] = "0123456789ABCDEF"[i % radix];
+  if (j == 19)
+    j--;
+
+  return (char*)(result + j);
+}
+
 
 void printResult(ATRV *attr) {
   int a = attr->ival;
@@ -2171,8 +2199,11 @@ void printResult(ATRV *attr) {
     printf("   %d\n  x%X\n",a,a);
     printf("  o%s\n", intToOctal(a));
   }
-  else if (attr->sig == 2)
+  else if (attr->sig == 2) {
     printf("  %lf\n",b);
+    printf(" o%s\n",doubleToRadix(b,8));
+    printf(" x%s\n",doubleToRadix(b,16));
+  }
 }
 
 void printHelp() {

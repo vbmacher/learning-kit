@@ -98,9 +98,9 @@ Exp   : Primary
             ttmp2 = $3.dval;
           $$.sig = 2;
           $$.dval = tmp2 + ttmp2;
-          if ($$.dval == (double)((int)$$.dval)) {
+          if ($$.dval == (int)$$.dval) {
             $$.sig = 1;
-            $$.ival = (int)(tmp2+ttmp2);
+            $$.ival = (int)$$.dval;
           }
         }
       | Exp OP_SUB Exp
@@ -114,9 +114,9 @@ Exp   : Primary
             ttmp2 = $3.dval;
           $$.sig = 2;
           $$.dval = tmp2 - ttmp2;
-          if ($$.dval == (double)((int)$$.dval)) {
+          if ($$.dval == (int)$$.dval) {
             $$.sig = 1;
-            $$.ival = (int)(tmp2-ttmp2);
+            $$.ival = (int)$$.dval;
           }
         }
       | Exp OP_MUL Exp
@@ -130,9 +130,9 @@ Exp   : Primary
             ttmp2 = $3.dval;
           $$.sig = 2;
           $$.dval = tmp2 * ttmp2;
-          if ($$.dval == (double)((int)$$.dval)) {
+          if ($$.dval == (int)$$.dval) {
             $$.sig = 1;
-            $$.ival = (int)tmp2*ttmp2;
+            $$.ival = (int)$$.dval;
           }
         }
       | Exp OP_DIV Exp
@@ -145,10 +145,14 @@ Exp   : Primary
           else if ($3.sig == 2)
             ttmp2 = $3.dval;
           $$.sig = 2;
+          if (ttmp2 == 0) {
+            xxerror("Divide by"," 0");
+            break;
+          }
           $$.dval = tmp2 / ttmp2;
-          if ($$.dval == (double)((int)$$.dval)) {
+          if ($$.dval == (int)$$.dval) {
             $$.sig = 1;
-            $$.ival = (int)tmp2/ttmp2;
+            $$.ival = (int)$$.dval;
           }
         }
       | Exp OP_POW Exp
@@ -395,8 +399,32 @@ char *intToOctal(int num) {
     result[--j] = "01234567"[i % 8];
 
   return (char*)(result + j);
-  
 }
+
+char *doubleToRadix(double num, int radix) {
+  static char result[40];
+  int i = 0, j = 19;
+  double x;
+
+  int integer = (int)num;
+
+  i = 0;
+  result[j] = '.';
+  for (x = (num-(int)num)*radix; i < 20; x *= radix, i++) {
+    result[++j] = "0123456789ABCDEF"[(int)x];
+    x = x - (int)x;
+  }
+  result[39] = 0;
+  j = 19;
+  result[18] = '0';
+  for (i = (int)num; i > 0; i = i/radix)
+    result[--j] = "0123456789ABCDEF"[i % radix];
+  if (j == 19)
+    j--;
+
+  return (char*)(result + j);
+}
+
 
 void printResult(ATRV *attr) {
   int a = attr->ival;
@@ -405,8 +433,11 @@ void printResult(ATRV *attr) {
     printf("   %d\n  x%X\n",a,a);
     printf("  o%s\n", intToOctal(a));
   }
-  else if (attr->sig == 2)
+  else if (attr->sig == 2) {
     printf("  %lf\n",b);
+    printf(" o%s\n",doubleToRadix(b,8));
+    printf(" x%s\n",doubleToRadix(b,16));
+  }
 }
 
 void printHelp() {
@@ -422,8 +453,7 @@ void printHelp() {
          "  - in octal radix (`o3`, `o7`, `o43.243`, `-o23.05`, ...)\n" \
          "  - in binary radix (`b1`, `b10101.10101`, `-b01101.11`, ...)\n\n" \
          "Results are printed in:\n" \
-         "  - decadic and hexadecimal radix (for integral numbers)\n" \
-         "  - only in decadic radix (for decimal numbers)\n\n" \
+         "  - decadic, octal and hexadecimal radix\n\n" \
          "The following operators are supported:\n" \
          "  + - addition, or unary plus (5+5=6)\n" \
          "  - - substraction, or unary minus (3-2=1)\n" \
