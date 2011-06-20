@@ -390,14 +390,29 @@ int fact(int x) {
     return -1;
 }
 
-char *intToOctal(int num) {
+/* radix should be either 2 or 8. */
+char *intToRadix(int num, int radix) {
   static char result[30];
   int i = 0, j = 29;
+  unsigned char sign;
+
+  if (num < 0) {
+    sign = 1;
+    num = 0 - num;
+  } else
+    sign = 0;
 
   result[29] = 0;
-  for (i = num; i > 0; i = i/8)
-    result[--j] = "01234567"[i % 8];
+  for (i = num; i > 0; i = i/radix)
+    result[--j] = "01234567"[i % radix];
 
+  if (radix == 8)
+    result[--j] = 'o';
+  else if (radix == 2)
+    result[--j] = 'b';
+
+  if (sign)
+    result[--j] = '-';
   return (char*)(result + j);
 }
 
@@ -425,18 +440,19 @@ char *doubleToRadix(double num, int radix) {
   return (char*)(result + j);
 }
 
-
 void printResult(ATRV *attr) {
   int a = attr->ival;
   double b = attr->dval;
   if (attr->sig == 1) {
     printf("   %d\n  x%X\n",a,a);
-    printf("  o%s\n", intToOctal(a));
+    printf("   %s\n", intToRadix(a,8));
+    printf("   %s\n", intToRadix(a,2));
   }
   else if (attr->sig == 2) {
     printf("  %lf\n",b);
-    printf(" o%s\n",doubleToRadix(b,8));
     printf(" x%s\n",doubleToRadix(b,16));
+    printf(" o%s\n",doubleToRadix(b,8));
+    printf(" b%s\n",doubleToRadix(b,2));
   }
 }
 
@@ -453,7 +469,7 @@ void printHelp() {
          "  - in octal radix (`o3`, `o7`, `o43.243`, `-o23.05`, ...)\n" \
          "  - in binary radix (`b1`, `b10101.10101`, `-b01101.11`, ...)\n\n" \
          "Results are printed in:\n" \
-         "  - decadic, octal and hexadecimal radix\n\n" \
+         "  - decadic, octal, hexadecimal and binary radix\n\n" \
          "The following operators are supported:\n" \
          "  + - addition, or unary plus (5+5=6)\n" \
          "  - - substraction, or unary minus (3-2=1)\n" \

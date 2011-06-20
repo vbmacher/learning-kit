@@ -38,8 +38,7 @@ Both number formats can be expressed in various radixes, such as:
 
 Results are printed in:
 
-* decadic and hexadecimal radix (for integral numbers)
-* only in decadic radix (for decimal numbers)
+*decadic, octal, hexadecimal and binary radix
 
 The following operators are supported:
 
