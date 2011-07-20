@@ -73,6 +73,8 @@ This calculator also supports variables that store values, e.g.:
 *  `x = 5`
 *  `var = 4.23 * x`
 *  `(-2 * var + x)/ (4*var^2)`
+
+Every result is stored to the R variable.
         
 Operator priorities and associativity
 =====================================

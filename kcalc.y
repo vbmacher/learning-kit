@@ -78,7 +78,17 @@ static int quit = 0;
 
 Subor  : 
        | Exp 
-         { printResult(&$1); }
+         { 
+            tmp = findVAR("R",0);
+            if (tmp == -1)
+              tmp = saveVAR("R",&$1);
+            if (tmp != -1) {
+              VARIABLES[tmp].attr.sig = $1.sig;
+              VARIABLES[tmp].attr.ival = $1.ival;
+              VARIABLES[tmp].attr.dval = $1.dval;
+            }
+            printResult(&$1); 
+         }
        | HELP
          { printHelp(); }
        | QUIT
@@ -443,6 +453,7 @@ char *doubleToRadix(double num, int radix) {
 void printResult(ATRV *attr) {
   int a = attr->ival;
   double b = attr->dval;
+  printf("Result was saved to variable R.\n");
   if (attr->sig == 1) {
     printf("   %d\n  x%X\n",a,a);
     printf("   %s\n", intToRadix(a,8));
@@ -495,7 +506,7 @@ void printHelp() {
          "This calculator also supports variables that store values, e.g.:\n" \
          "  x = 5\n" \
          "  var = 4.23 * x\n" \
-         "  (-2 * var + x)/ (4*var^2)\n");
+         "  (-2 * var + x)/ (4*var^2)\nEvery result is stored to the R variable.\n");
 }
 
 int main(int ac,char *av[]){
