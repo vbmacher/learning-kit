@@ -1,6 +1,6 @@
-#line 2 "lexyy.c"
+#line 2 "lexer.c"
 
-#line 4 "lexyy.c"
+#line 4 "lexer.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -509,8 +509,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "kcalc.l"
-#line 2 "kcalc.l"
+#line 1 "lexer.l"
+#line 2 "lexer.l"
 /*
  * kcalc.l
  *
@@ -539,7 +539,7 @@ char *yytext;
 int yywrap(void);
 extern YYSTYPE yylval;
 
-#line 543 "lexyy.c"
+#line 543 "lexer.c"
 
 #define INITIAL 0
 
@@ -721,11 +721,11 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 39 "kcalc.l"
+#line 39 "lexer.l"
 
 
 
-#line 729 "lexyy.c"
+#line 729 "lexer.c"
 
 	if ( !(yy_init) )
 		{
@@ -811,163 +811,163 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 42 "kcalc.l"
+#line 42 "lexer.l"
 { return 0; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 43 "kcalc.l"
+#line 43 "lexer.l"
 { }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 44 "kcalc.l"
+#line 44 "lexer.l"
 { return OP_ADD; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 45 "kcalc.l"
+#line 45 "lexer.l"
 { return OP_SUB; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 46 "kcalc.l"
+#line 46 "lexer.l"
 { return OP_MUL; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 47 "kcalc.l"
+#line 47 "lexer.l"
 { return OP_DIV; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 48 "kcalc.l"
+#line 48 "lexer.l"
 { return OP_FACT; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 49 "kcalc.l"
+#line 49 "lexer.l"
 { return OP_POW; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 50 "kcalc.l"
+#line 50 "lexer.l"
 { return OP_MOD; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 51 "kcalc.l"
+#line 51 "lexer.l"
 { return OP_MOD; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 52 "kcalc.l"
+#line 52 "lexer.l"
 { return OP_EQU; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 54 "kcalc.l"
+#line 54 "lexer.l"
 { return LPAR; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 55 "kcalc.l"
+#line 55 "lexer.l"
 { return RPAR; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 57 "kcalc.l"
+#line 57 "lexer.l"
 { return M_SIN; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 58 "kcalc.l"
+#line 58 "lexer.l"
 { return M_COS; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 59 "kcalc.l"
+#line 59 "lexer.l"
 { return M_TAN; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 60 "kcalc.l"
+#line 60 "lexer.l"
 { return M_COTAN; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 61 "kcalc.l"
+#line 61 "lexer.l"
 { return M_LOG; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 62 "kcalc.l"
+#line 62 "lexer.l"
 { return M_LOG2; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 63 "kcalc.l"
+#line 63 "lexer.l"
 { return M_LOGE; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 64 "kcalc.l"
+#line 64 "lexer.l"
 { return M_SQRT; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 65 "kcalc.l"
+#line 65 "lexer.l"
 { return M_CEIL; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 66 "kcalc.l"
+#line 66 "lexer.l"
 { return M_FLOOR; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 68 "kcalc.l"
+#line 68 "lexer.l"
 { return CONST_PI; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 69 "kcalc.l"
+#line 69 "lexer.l"
 { return CONST_E; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 71 "kcalc.l"
+#line 71 "lexer.l"
 { yywrap(); return QUIT; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 72 "kcalc.l"
+#line 72 "lexer.l"
 { yywrap(); return QUIT; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 73 "kcalc.l"
+#line 73 "lexer.l"
 { yywrap(); return QUIT; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 75 "kcalc.l"
+#line 75 "lexer.l"
 { return HELP; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 76 "kcalc.l"
+#line 76 "lexer.l"
 { return HELP; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 78 "kcalc.l"
+#line 78 "lexer.l"
 { yylval.name = strdup(yytext);
            return VARIABLE; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 80 "kcalc.l"
+#line 80 "lexer.l"
 { sscanf(yytext,"%d",&yylval.attr.ival);
            yylval.attr.sig = 1;
            return INT_VAL;
@@ -975,7 +975,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 84 "kcalc.l"
+#line 84 "lexer.l"
 { sscanf(yytext+1,"%x",&yylval.attr.ival);
            yylval.attr.sig = 1;
            return INT_VAL;
@@ -983,7 +983,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 88 "kcalc.l"
+#line 88 "lexer.l"
 { int i;
            for (i = yylval.attr.ival = 0; yytext[i+1] != 0; i++)
              yylval.attr.ival = yylval.attr.ival * 8 + yytext[i+1] - '0';
@@ -993,7 +993,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 94 "kcalc.l"
+#line 94 "lexer.l"
 { int i;
            for (i = yylval.attr.ival = 0; yytext[i+1] != 0; i++)
              yylval.attr.ival = yylval.attr.ival * 2 + yytext[i+1] - '0';
@@ -1003,7 +1003,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 101 "kcalc.l"
+#line 101 "lexer.l"
 { sscanf(yytext,"%lf", &yylval.attr.dval);
                 yylval.attr.sig = 2;
                 return DBL_VAL;
@@ -1011,7 +1011,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 106 "kcalc.l"
+#line 106 "lexer.l"
 {
            yylval.attr.dval = 0;
            yylval.attr.sig = 2;
@@ -1048,7 +1048,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 140 "kcalc.l"
+#line 140 "lexer.l"
 {
            yylval.attr.dval = 0;
            yylval.attr.sig = 2;
@@ -1065,7 +1065,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 154 "kcalc.l"
+#line 154 "lexer.l"
 {
            yylval.attr.dval = 0;
            yylval.attr.sig = 2;
@@ -1082,10 +1082,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 168 "kcalc.l"
+#line 168 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1089 "lexyy.c"
+#line 1089 "lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2083,7 +2083,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 168 "kcalc.l"
+#line 168 "lexer.l"
 
 
 

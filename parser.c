@@ -66,15 +66,15 @@
 /* Copy the first part of user declarations.  */
 
 /* Line 268 of yacc.c  */
-#line 1 "kcalc.y"
+#line 1 "parser.y"
 
 /*
- * kcalc.y
+ * parser.y
  *
  * KEEP IT SIMPLE, STUPID
  * some things just: YOU AREN'T GONNA NEED IT
  *
- * Copyright (C) 2010 Peter Jakubco <pjakubco at gmail.com>
+ * Copyright (C) 2010-2011 Peter Jakubco <pjakubco at gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -114,7 +114,7 @@ static int quit = 0;
 
 
 /* Line 268 of yacc.c  */
-#line 118 "kcalc.tab.c"
+#line 118 "parser.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -211,7 +211,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 47 "kcalc.y"
+#line 47 "parser.y"
 
   char* name;
   ATRV attr;
@@ -219,7 +219,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 223 "kcalc.tab.c"
+#line 223 "parser.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -231,7 +231,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 235 "kcalc.tab.c"
+#line 235 "parser.c"
 
 #ifdef short
 # undef short
@@ -1504,7 +1504,7 @@ yyreduce:
         case 3:
 
 /* Line 1806 of yacc.c  */
-#line 81 "kcalc.y"
+#line 81 "parser.y"
     { 
             tmp = findVAR("R",0);
             if (tmp == -1)
@@ -1521,28 +1521,28 @@ yyreduce:
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 93 "kcalc.y"
+#line 93 "parser.y"
     { printHelp(); }
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 95 "kcalc.y"
+#line 95 "parser.y"
     { quit = 1; }
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 99 "kcalc.y"
+#line 99 "parser.y"
     { (yyval.attr) = (yyvsp[(1) - (1)].attr); }
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 101 "kcalc.y"
+#line 101 "parser.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp2 = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1563,7 +1563,7 @@ yyreduce:
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 117 "kcalc.y"
+#line 117 "parser.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp2 = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1584,7 +1584,7 @@ yyreduce:
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 133 "kcalc.y"
+#line 133 "parser.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp2 = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1605,7 +1605,7 @@ yyreduce:
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 149 "kcalc.y"
+#line 149 "parser.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp2 = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1630,7 +1630,7 @@ yyreduce:
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 169 "kcalc.y"
+#line 169 "parser.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp2 = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1647,7 +1647,7 @@ yyreduce:
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 181 "kcalc.y"
+#line 181 "parser.y"
     { if ((yyvsp[(1) - (3)].attr).sig == 1)
             tmp = (yyvsp[(1) - (3)].attr).ival;
           else if ((yyvsp[(1) - (3)].attr).sig == 2)
@@ -1664,7 +1664,7 @@ yyreduce:
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 193 "kcalc.y"
+#line 193 "parser.y"
     { if ((yyvsp[(1) - (2)].attr).sig == 1)
             tmp = (yyvsp[(1) - (2)].attr).ival;
           else if ((yyvsp[(1) - (2)].attr).sig == 2) {
@@ -1679,7 +1679,7 @@ yyreduce:
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 203 "kcalc.y"
+#line 203 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1692,7 +1692,7 @@ yyreduce:
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 211 "kcalc.y"
+#line 211 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1705,7 +1705,7 @@ yyreduce:
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 219 "kcalc.y"
+#line 219 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1718,7 +1718,7 @@ yyreduce:
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 227 "kcalc.y"
+#line 227 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1735,7 +1735,7 @@ yyreduce:
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 239 "kcalc.y"
+#line 239 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1748,7 +1748,7 @@ yyreduce:
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 247 "kcalc.y"
+#line 247 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1761,7 +1761,7 @@ yyreduce:
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 255 "kcalc.y"
+#line 255 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1774,7 +1774,7 @@ yyreduce:
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 263 "kcalc.y"
+#line 263 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1787,7 +1787,7 @@ yyreduce:
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 271 "kcalc.y"
+#line 271 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1800,7 +1800,7 @@ yyreduce:
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 279 "kcalc.y"
+#line 279 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             tmp2 = (yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1813,7 +1813,7 @@ yyreduce:
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 287 "kcalc.y"
+#line 287 "parser.y"
     { if ((yyvsp[(2) - (2)].attr).sig == 1)
             (yyvsp[(2) - (2)].attr).ival = -(yyvsp[(2) - (2)].attr).ival;
           else if ((yyvsp[(2) - (2)].attr).sig == 2)
@@ -1825,14 +1825,14 @@ yyreduce:
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 294 "kcalc.y"
+#line 294 "parser.y"
     { (yyval.attr) = (yyvsp[(2) - (2)].attr); }
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 298 "kcalc.y"
+#line 298 "parser.y"
     { tmp = findVAR((yyvsp[(1) - (1)].name),1);
             if (tmp != -1) {
               (yyval.attr).sig = VARIABLES[tmp].attr.sig;
@@ -1853,7 +1853,7 @@ yyreduce:
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 314 "kcalc.y"
+#line 314 "parser.y"
     { tmp = findVAR((yyvsp[(1) - (3)].name),0);
             if (tmp == -1)
               tmp = saveVAR((yyvsp[(1) - (3)].name),&(yyvsp[(3) - (3)].attr));
@@ -1877,21 +1877,21 @@ yyreduce:
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 333 "kcalc.y"
+#line 333 "parser.y"
     { (yyval.attr) = (yyvsp[(1) - (1)].attr); }
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 335 "kcalc.y"
+#line 335 "parser.y"
     { (yyval.attr) = (yyvsp[(2) - (3)].attr); }
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 339 "kcalc.y"
+#line 339 "parser.y"
     { (yyval.attr).sig=1;
             (yyval.attr).ival = (yyvsp[(1) - (1)].attr).ival;
           }
@@ -1900,7 +1900,7 @@ yyreduce:
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 343 "kcalc.y"
+#line 343 "parser.y"
     { (yyval.attr).sig=2;
             (yyval.attr).dval = (yyvsp[(1) - (1)].attr).dval;
           }
@@ -1909,7 +1909,7 @@ yyreduce:
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 347 "kcalc.y"
+#line 347 "parser.y"
     { (yyval.attr).sig=2;
             (yyval.attr).dval = 3.14159265358979323846264338327950288419716939937510;
           }
@@ -1918,7 +1918,7 @@ yyreduce:
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 351 "kcalc.y"
+#line 351 "parser.y"
     { (yyval.attr).sig=2;
             (yyval.attr).dval = 2.71828182845904523536028747135266249775724709369995;
           }
@@ -1927,7 +1927,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 1931 "kcalc.tab.c"
+#line 1931 "parser.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2158,11 +2158,11 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 355 "kcalc.y"
+#line 355 "parser.y"
 
 /* Functions */
 
-#include "lexyy.c"
+#include "lexer.c"
 
 void yyerror(char *s){
   fprintf(stdout,"ERROR: %s [%s]\n",s,yytext);

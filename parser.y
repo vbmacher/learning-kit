@@ -1,11 +1,11 @@
 %{
 /*
- * kcalc.y
+ * parser.y
  *
  * KEEP IT SIMPLE, STUPID
  * some things just: YOU AREN'T GONNA NEED IT
  *
- * Copyright (C) 2010 Peter Jakubco <pjakubco at gmail.com>
+ * Copyright (C) 2010-2011 Peter Jakubco <pjakubco at gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -355,7 +355,7 @@ Constant: INT_VAL
 %%
 /* Functions */
 
-#include "lexyy.c"
+#include "lexer.c"
 
 void yyerror(char *s){
   fprintf(stdout,"ERROR: %s [%s]\n",s,yytext);
