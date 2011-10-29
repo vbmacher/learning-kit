@@ -5,5 +5,5 @@ flex:
 	flex -i -olexer.c lexer.l
 
 yacc: flex lexer.c
-	yacc -o parser.c --defines parser.y
+	yacc -o parser.c --report=all --warnings=error --defines parser.y
 

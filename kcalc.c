@@ -218,6 +218,10 @@ double evalTree(Tree *tree) {
         case M_LOGE:
           return log(right);
         case M_SQRT:
+          if (right < 0) {
+            xxerror("Square root of a number must not be negative","!");
+            break;
+          }
           return sqrt(right);
         case M_CEIL:
           return ceil(right);

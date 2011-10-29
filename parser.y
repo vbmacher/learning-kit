@@ -89,26 +89,26 @@ Start  :
        ;
 
 Exp   : Primary        { $$ = $1;                               }
-      | Exp OP_ADD Exp { $$ = make_operator($1, OP_ADD, $3);    }
-      | Exp OP_SUB Exp { $$ = make_operator($1, OP_SUB, $3);    }
-      | Exp OP_MUL Exp { $$ = make_operator($1, OP_MUL, $3);    }
-      | Exp OP_DIV Exp { $$ = make_operator($1, OP_DIV, $3);    }
-      | Exp OP_POW Exp { $$ = make_operator($1, OP_POW, $3);    }
-      | Exp OP_MOD Exp { $$ = make_operator($1, OP_MOD, $3);    }
+      | Exp OP_ADD Primary { $$ = make_operator($1, OP_ADD, $3);    }
+      | Exp OP_SUB Primary { $$ = make_operator($1, OP_SUB, $3);    }
+      | Exp OP_MUL Primary { $$ = make_operator($1, OP_MUL, $3);    }
+      | Exp OP_DIV Primary { $$ = make_operator($1, OP_DIV, $3);    }
+      | Exp OP_POW Primary { $$ = make_operator($1, OP_POW, $3);    }
+      | Exp OP_MOD Primary { $$ = make_operator($1, OP_MOD, $3);    }
       | Exp OP_FACT    { $$ = make_operator($1, OP_FACT, NULL); }
-      | M_SIN Exp      { $$ = make_operator(NULL, M_SIN, $2);   }
-      | M_COS Exp      { $$ = make_operator(NULL, M_COS, $2);   }
-      | M_TAN Exp      { $$ = make_operator(NULL, M_TAN, $2);   }
-      | M_COTAN Exp    { $$ = make_operator(NULL, M_COTAN, $2); }
-      | M_LOG Exp      { $$ = make_operator(NULL, M_LOG, $2);   }
-      | M_LOG2 Exp     { $$ = make_operator(NULL, M_LOG2, $2);  }
-      | M_LOGE Exp     { $$ = make_operator(NULL, M_LOGE, $2);  }
-      | M_SQRT Exp     { $$ = make_operator(NULL, M_SQRT, $2);  }
-      | M_CEIL Exp     { $$ = make_operator(NULL, M_CEIL, $2);  }
-      | M_FLOOR Exp    { $$ = make_operator(NULL, M_FLOOR, $2); }
-      | OP_SUB Exp %prec USUB
+      | M_SIN Primary      { $$ = make_operator(NULL, M_SIN, $2);   }
+      | M_COS Primary      { $$ = make_operator(NULL, M_COS, $2);   }
+      | M_TAN Primary      { $$ = make_operator(NULL, M_TAN, $2);   }
+      | M_COTAN Primary    { $$ = make_operator(NULL, M_COTAN, $2); }
+      | M_LOG Primary      { $$ = make_operator(NULL, M_LOG, $2);   }
+      | M_LOG2 Primary     { $$ = make_operator(NULL, M_LOG2, $2);  }
+      | M_LOGE Primary     { $$ = make_operator(NULL, M_LOGE, $2);  }
+      | M_SQRT Primary     { $$ = make_operator(NULL, M_SQRT, $2);  }
+      | M_CEIL Primary     { $$ = make_operator(NULL, M_CEIL, $2);  }
+      | M_FLOOR Primary    { $$ = make_operator(NULL, M_FLOOR, $2); }
+      | OP_SUB Primary %prec USUB
                        { $$ = make_operator(NULL, OP_SUB, $2);  }
-      | OP_ADD Exp %prec UADD
+      | OP_ADD Primary %prec UADD
                        { $$ = make_operator(NULL, OP_ADD, $2);  }
       ;
 
