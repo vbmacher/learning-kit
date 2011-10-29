@@ -75,9 +75,12 @@ Start  :
        | Exp 
          { 
             double dbl = evalTree($1); // TODO: check for evaluation error
-            Tree *tree = make_value(dbl); 
-            saveVAR("R", tree);
-            printResult(dbl); 
+            if (!isEvalError()) {
+              Tree *tree = make_value(dbl); 
+              saveVAR("R", tree);
+              printResult(dbl); 
+            } else 
+              xxerror("Evaluation"," error");
          }
        | HELP
          { printHelp(); }

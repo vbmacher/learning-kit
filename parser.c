@@ -527,10 +527,10 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    74,    74,    75,    82,    84,    88,    89,    90,    91,
-      92,    93,    94,    95,    96,    97,    98,    99,   100,   101,
-     102,   103,   104,   105,   106,   108,   112,   113,   117,   118,
-     121,   122,   123,   124
+       0,    74,    74,    75,    85,    87,    91,    92,    93,    94,
+      95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
+     105,   106,   107,   108,   109,   111,   115,   116,   120,   121,
+     124,   125,   126,   127
 };
 #endif
 
@@ -1503,177 +1503,180 @@ yyreduce:
 #line 76 "parser.y"
     { 
             double dbl = evalTree((yyvsp[(1) - (1)].tree)); // TODO: check for evaluation error
-            Tree *tree = make_value(dbl); 
-            saveVAR("R", tree);
-            printResult(dbl); 
+            if (!isEvalError()) {
+              Tree *tree = make_value(dbl); 
+              saveVAR("R", tree);
+              printResult(dbl); 
+            } else 
+              xxerror("Evaluation"," error");
          }
     break;
 
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 83 "parser.y"
+#line 86 "parser.y"
     { printHelp(); }
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 85 "parser.y"
+#line 88 "parser.y"
     { quit = 1; }
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 88 "parser.y"
+#line 91 "parser.y"
     { (yyval.tree) = (yyvsp[(1) - (1)].tree);                               }
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 89 "parser.y"
+#line 92 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_ADD, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 90 "parser.y"
+#line 93 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_SUB, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 91 "parser.y"
+#line 94 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_MUL, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 92 "parser.y"
+#line 95 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_DIV, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 93 "parser.y"
+#line 96 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_POW, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 94 "parser.y"
+#line 97 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_MOD, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 95 "parser.y"
+#line 98 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (2)].tree), OP_FACT, NULL); }
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 96 "parser.y"
+#line 99 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_SIN, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 97 "parser.y"
+#line 100 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_COS, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 98 "parser.y"
+#line 101 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_TAN, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 99 "parser.y"
+#line 102 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_COTAN, (yyvsp[(2) - (2)].tree)); }
     break;
 
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 100 "parser.y"
+#line 103 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_LOG, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 101 "parser.y"
+#line 104 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_LOG2, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 102 "parser.y"
+#line 105 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_LOGE, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 103 "parser.y"
+#line 106 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_SQRT, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 104 "parser.y"
+#line 107 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_CEIL, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 105 "parser.y"
+#line 108 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_FLOOR, (yyvsp[(2) - (2)].tree)); }
     break;
 
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 107 "parser.y"
+#line 110 "parser.y"
     { (yyval.tree) = make_operator(NULL, OP_SUB, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 109 "parser.y"
+#line 112 "parser.y"
     { (yyval.tree) = make_operator(NULL, OP_ADD, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 112 "parser.y"
+#line 115 "parser.y"
     { (yyval.tree) = make_variable(strdup((yyvsp[(1) - (1)].name))); }
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 113 "parser.y"
+#line 116 "parser.y"
     {
             saveVAR((yyvsp[(1) - (3)].name),(yyvsp[(3) - (3)].tree));
             (yyval.tree) = (yyvsp[(3) - (3)].tree);
@@ -1683,49 +1686,49 @@ yyreduce:
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 117 "parser.y"
+#line 120 "parser.y"
     { (yyval.tree) = (yyvsp[(1) - (1)].tree); }
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 118 "parser.y"
+#line 121 "parser.y"
     { (yyval.tree) = (yyvsp[(2) - (3)].tree); }
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 121 "parser.y"
+#line 124 "parser.y"
     { (yyval.tree) = make_value((yyvsp[(1) - (1)].value)); }
     break;
 
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 122 "parser.y"
+#line 125 "parser.y"
     { (yyval.tree) = make_value((yyvsp[(1) - (1)].value)); }
     break;
 
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 123 "parser.y"
+#line 126 "parser.y"
     { (yyval.tree) = make_value(3.14159265358979323846264338327950288419716939937510); }
     break;
 
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 124 "parser.y"
+#line 127 "parser.y"
     { (yyval.tree) = make_value(2.71828182845904523536028747135266249775724709369995); }
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1729 "parser.c"
+#line 1732 "parser.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1956,7 +1959,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 127 "parser.y"
+#line 130 "parser.y"
 
 
 void yyerror(char *s){

@@ -49,5 +49,6 @@ char *doubleToRadix(double num, int radix);
 double evalTree(Tree *tree);
 void printResult(double value);
 void printHelp();
+int isEvalError();
 
 #endif

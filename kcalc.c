@@ -29,6 +29,7 @@
 
 struct { char *name; Tree *tree;} VARIABLES[MAX_VARIABLES]; // variable can be a function
 int var_ix = 0;  // index to new variable
+static int eval_error = 0; // evaluation error?
 
 void xxerror(char *s1,char *s2){
   fprintf(stdout,"ERROR: %s %s\n",s1,s2);
@@ -156,6 +157,11 @@ char *doubleToRadix(double num, int radix) {
   return (char*)(result + j);
 }
 
+int isEvalError() {
+  return eval_error;
+}
+
+
 /**
  * Evaluate a tree.
  *
@@ -164,15 +170,19 @@ char *doubleToRadix(double num, int radix) {
 double evalTree(Tree *tree) {
   double left = 0.0;
   double right = 0.0;
+  eval_error = 0;
 
   switch(tree->nodetype) {
     case operator_node:
       if (tree->body.an_operator.left != NULL)
         left = evalTree(tree->body.an_operator.left);
+      if (eval_error)
+        return;
+
       if (tree->body.an_operator.right != NULL)
         right = evalTree(tree->body.an_operator.right);
-//      if ((left == -1) || (right == -1))  // TODO...
-  //      return -1;
+      if (eval_error)
+        return;
 
       switch (tree->body.an_operator.oper) {
         case OP_ADD:
@@ -228,7 +238,6 @@ double evalTree(Tree *tree) {
     case variable_node: {
       int idx = findVAR(tree->body.variable, 1);
       if (idx == -1) {
-//        xxerror("Unknown variable:", tree->body.variable);
         break;
       }
       Tree *tr = VARIABLES[idx].tree;
@@ -239,7 +248,8 @@ double evalTree(Tree *tree) {
       return evalTree(tr);
     }
   }
-  return -1; // TODO: not good
+  eval_error = 1;
+  return 0;
 }
 
 void printResult(double value) {
