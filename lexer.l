@@ -5,7 +5,7 @@
  * KEEP IT SIMPLE, STUPID
  * some things just: YOU AREN'T GONNA NEED IT
  *
- * Copyright (C) 2010 Peter Jakubco <pjakubco at gmail.com>
+ * Copyright (C) 2010-2011 Peter Jakubco <pjakubco at gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,10 +22,10 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include <math.h>
 #include <string.h>
-
-int yywrap(void);
-extern YYSTYPE yylval;
+#include "kcalc.h"
+#include "parser.h"
 
 %}
 
@@ -77,35 +77,35 @@ BINNUM "b"[0-1]+
 
 {ID}+    { yylval.name = strdup(yytext);
            return VARIABLE; }
-{NUM}    { sscanf(yytext,"%d",&yylval.attr.ival);
-           yylval.attr.sig = 1;
+{NUM}    { int i;
+           sscanf(yytext,"%d",&i);
+           yylval.value = (double)i;
            return INT_VAL;
          }
-{HEXNUM} { sscanf(yytext+1,"%x",&yylval.attr.ival);
-           yylval.attr.sig = 1;
+{HEXNUM} { int i;
+           sscanf(yytext+1,"%x",&i);
+           yylval.value = (double)i;
            return INT_VAL;
          }
 {OCTNUM} { int i;
-           for (i = yylval.attr.ival = 0; yytext[i+1] != 0; i++)
-             yylval.attr.ival = yylval.attr.ival * 8 + yytext[i+1] - '0';
-           yylval.attr.sig = 1;
+           yylval.value = 0;
+           for (i = 0; yytext[i+1] != 0; i++)
+             yylval.value = yylval.value * 8 + yytext[i+1] - '0';
            return INT_VAL;
          }
 {BINNUM} { int i;
-           for (i = yylval.attr.ival = 0; yytext[i+1] != 0; i++)
-             yylval.attr.ival = yylval.attr.ival * 2 + yytext[i+1] - '0';
-           yylval.attr.sig = 1;
+           yylval.value = 0;
+           for (i = 0; yytext[i+1] != 0; i++)
+             yylval.value = yylval.value * 2 + yytext[i+1] - '0';
            return INT_VAL;
          }
 
-{NUM}"."{NUM} { sscanf(yytext,"%lf", &yylval.attr.dval);
-                yylval.attr.sig = 2;
+{NUM}"."{NUM} { sscanf(yytext,"%lf", &yylval.value);
                 return DBL_VAL;
               }
 
 {HEXNUM}"."[0-9a-fA-F]+ {
-           yylval.attr.dval = 0;
-           yylval.attr.sig = 2;
+           yylval.value = 0;
            
            int i;
            char xx = '0';
@@ -119,7 +119,7 @@ BINNUM "b"[0-1]+
                xx = 'A';
                num = 10;
              }
-             yylval.attr.dval = yylval.attr.dval * 16 + yytext[i] - xx + num;
+             yylval.value = yylval.value * 16 + yytext[i] - xx + num;
            }
            int j = i;
            num = 0;
@@ -132,36 +132,34 @@ BINNUM "b"[0-1]+
                xx = 'A';
                num = 10;
              }
-             yylval.attr.dval += (yytext[i] - xx + num)/pow(16,i-j);
+             yylval.value += (yytext[i] - xx + num)/pow(16,i-j);
            }
            return DBL_VAL;
          }
 
 {BINNUM}"."[0-1]+ {
-           yylval.attr.dval = 0;
-           yylval.attr.sig = 2;
+           yylval.value = 0;
            
            int i;
            for (i = 1; yytext[i] != '.'; i++)
-             yylval.attr.dval = yylval.attr.dval * 2 + yytext[i] - '0';
+             yylval.value = yylval.value * 2 + yytext[i] - '0';
 
            int j = i;
            for (i=j+1; yytext[i] != 0; i++)
-             yylval.attr.dval += (yytext[i] - '0')/pow(2,i-j);
+             yylval.value += (yytext[i] - '0')/pow(2,i-j);
            return DBL_VAL;
          }
 
 {OCTNUM}"."[0-7]+ {
-           yylval.attr.dval = 0;
-           yylval.attr.sig = 2;
+           yylval.value = 0;
            
            int i;
            for (i = 1; yytext[i] != '.'; i++)
-             yylval.attr.dval = yylval.attr.dval * 8 + yytext[i] - '0';
+             yylval.value = yylval.value * 8 + yytext[i] - '0';
 
            int j = i;
            for (i=j+1; yytext[i] != 0; i++)
-             yylval.attr.dval += (yytext[i] - '0')/pow(8,i-j);
+             yylval.value += (yytext[i] - '0')/pow(8,i-j);
            return DBL_VAL;
          }
 

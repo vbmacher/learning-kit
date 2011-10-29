@@ -1,9 +1,9 @@
-all: flex yacc kcalc.c parser.c
-	gcc -o kcalc parser.c kcalc.c -lm
+all: flex yacc kcalc.c parser.c lexer.c
+	gcc -o kcalc parser.c kcalc.c lexer.c -lm
 
 flex:
-	flex -olexer.c lexer.l
+	flex -i -olexer.c lexer.l
 
 yacc: flex lexer.c
-	yacc -o parser.c parser.y
+	yacc -o parser.c --defines parser.y
 
