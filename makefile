@@ -1,9 +1,10 @@
 all: flex yacc kcalc.c parser.c lexer.c
-	gcc -o kcalc parser.c kcalc.c lexer.c -lm
+	gcc -g -o kcalc parser.c kcalc.c lexer.c -lm
 
 flex:
-	flex -i -olexer.c lexer.l
+	flex -i -olexer.c --header-file=lexer.h lexer.l
 
+## yacc -o parser.c --report=all --warnings=error --defines parser.y
 yacc: flex lexer.c
-	yacc -o parser.c --report=all --warnings=error --defines parser.y
+	yacc -o parser.c parser.y
 

@@ -22,25 +22,17 @@ Usage
 The calculator supports the following commands:
 
 * `h`, `help`
-* `q`, `quit` - quit the calculator.
+* `use 'file'` - process external file.
+* `q`, `quit`  - quit the calculator.
 
-There are supported numbers of various format:
+There are supported integral and decimal numbers in following radixes:
 
-* integral
-* decimal
+* decadic (`1`, `2.3`, `3`, `-10.554`, ...)
+* hexadecimal (`4x`, `A.f3x`, `5FCx`, `-5B.12x`, ...)
+* octal (`3o`, `7o`, `43.243o`, `-23.05o`, ...)
+* binary (`1b`, `10101.10101b`, `-01101.11b`, ...)
 
-Both number formats can be expressed in various radixes, such as:
-
-* in decadic radix (`1`, `2.3`, `3`, `-10.554`, ...)
-* in hexadecimal radix (`x4`, `xA.f3`, `x5FC`, `-x5B.12`, ...)
-* in octal radix (`o3`, `o7`, `o43.243`, `-o23.05`, ...)
-* in binary radix (`b1`, `b10101.10101`, `-b01101.11`, ...)
-
-Results are printed in:
-
-*decadic, octal, hexadecimal and binary radix
-
-The following operators are supported:
+Results are printed in all these radixes. The following operators are supported:
 
 * `+` - addition, or unary plus (`5+5=6`)
 * `-` - substraction, or unary minus (`3-2=1`)
@@ -68,11 +60,16 @@ The following constants are supported:
 *  `PI` - The Ludolf PI number (`3.141592`...)
 *  `E`  - The Euler number (`2.71828182`...)
 
-This calculator also supports variables that store values, e.g.:
+This calculator also supports variables that store values AND expressions. However,
+recursion is not supported, e.g.:
 
-*  `x = 5`
-*  `var = 4.23 * x`
-*  `(-2 * var + x)/ (4*var^2)`
+*  `D = b^2 - 4 * a * c`
+*  `x1 = (-b + sqrt(D))/(2*a)`
+*  `x2 = (-b - sqrt(D))/(2*a)`
+*  `a = 1`
+*  `b = -1`
+*  `c = -1`
+*  `x1` (prints `1.168034`)
 
 Every result is stored to the R variable.
         

@@ -38,66 +38,72 @@
       know about them.  */
    enum yytokentype {
      VARIABLE = 258,
-     INT_VAL = 259,
-     DBL_VAL = 260,
-     LPAR = 261,
-     RPAR = 262,
-     OP_EQU = 263,
-     HELP = 264,
-     QUIT = 265,
-     M_SIN = 266,
-     M_COS = 267,
-     M_TAN = 268,
-     M_COTAN = 269,
-     M_LOG = 270,
-     M_LOG2 = 271,
-     M_LOGE = 272,
-     M_SQRT = 273,
-     M_CEIL = 274,
-     M_FLOOR = 275,
-     CONST_PI = 276,
-     CONST_E = 277,
-     OP_SUB = 278,
-     OP_ADD = 279,
-     OP_DIV = 280,
-     OP_MUL = 281,
-     OP_MOD = 282,
-     USUB = 283,
-     UADD = 284,
-     OP_POW = 285,
-     OP_FACT = 286
+     FILENAME = 259,
+     INT_VAL = 260,
+     DBL_VAL = 261,
+     LPAR = 262,
+     RPAR = 263,
+     OP_EQU = 264,
+     HELP = 265,
+     USE = 266,
+     QUIT = 267,
+     EOL = 268,
+     M_SIN = 269,
+     M_COS = 270,
+     M_TAN = 271,
+     M_COTAN = 272,
+     M_LOG = 273,
+     M_LOG2 = 274,
+     M_LOGE = 275,
+     M_SQRT = 276,
+     M_CEIL = 277,
+     M_FLOOR = 278,
+     CONST_PI = 279,
+     CONST_E = 280,
+     OP_SUB = 281,
+     OP_ADD = 282,
+     OP_DIV = 283,
+     OP_MUL = 284,
+     OP_MOD = 285,
+     USUB = 286,
+     UADD = 287,
+     OP_POW = 288,
+     OP_FACT = 289
    };
 #endif
 /* Tokens.  */
 #define VARIABLE 258
-#define INT_VAL 259
-#define DBL_VAL 260
-#define LPAR 261
-#define RPAR 262
-#define OP_EQU 263
-#define HELP 264
-#define QUIT 265
-#define M_SIN 266
-#define M_COS 267
-#define M_TAN 268
-#define M_COTAN 269
-#define M_LOG 270
-#define M_LOG2 271
-#define M_LOGE 272
-#define M_SQRT 273
-#define M_CEIL 274
-#define M_FLOOR 275
-#define CONST_PI 276
-#define CONST_E 277
-#define OP_SUB 278
-#define OP_ADD 279
-#define OP_DIV 280
-#define OP_MUL 281
-#define OP_MOD 282
-#define USUB 283
-#define UADD 284
-#define OP_POW 285
-#define OP_FACT 286
+#define FILENAME 259
+#define INT_VAL 260
+#define DBL_VAL 261
+#define LPAR 262
+#define RPAR 263
+#define OP_EQU 264
+#define HELP 265
+#define USE 266
+#define QUIT 267
+#define EOL 268
+#define M_SIN 269
+#define M_COS 270
+#define M_TAN 271
+#define M_COTAN 272
+#define M_LOG 273
+#define M_LOG2 274
+#define M_LOGE 275
+#define M_SQRT 276
+#define M_CEIL 277
+#define M_FLOOR 278
+#define CONST_PI 279
+#define CONST_E 280
+#define OP_SUB 281
+#define OP_ADD 282
+#define OP_DIV 283
+#define OP_MUL 284
+#define OP_MOD 285
+#define USUB 286
+#define UADD 287
+#define OP_POW 288
+#define OP_FACT 289
 
 
 
@@ -107,7 +113,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 42 "parser.y"
+#line 51 "parser.y"
 
   char*  name;
   double value;
@@ -116,13 +122,13 @@ typedef union YYSTYPE
 
 
 /* Line 2068 of yacc.c  */
-#line 120 "parser.h"
+#line 126 "parser.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
-extern YYSTYPE yylval;
+
 
 

@@ -274,26 +274,14 @@ void printResult(double value) {
 
 void printHelp() {
   printf("This is a command-line calculator. It supports the following commands:\n" \
-         "  h, help - this command.\n" \
-         "  q, quit - quit the calculator.\n\n" \
-         "There are supported numbers of various format:\n" \
-         "  - integral\n" \
-         "  - decimal\n\n" \
-         "Both number formats can be expressed in various radixes, such as:\n" \
-         "  - in decadic radix (`1`, `2.3`, `3`, `-10.554`, ...)\n" \
-         "  - in hexadecimal radix (`x4`, `xA.f3`, `x5FC`, `-x5B.12`, ...)\n" \
-         "  - in octal radix (`o3`, `o7`, `o43.243`, `-o23.05`, ...)\n" \
-         "  - in binary radix (`b1`, `b10101.10101`, `-b01101.11`, ...)\n\n" \
-         "Results are printed in:\n" \
-         "  - decadic, octal, hexadecimal and binary radix\n\n" \
-         "The following operators are supported:\n" \
-         "  + - addition, or unary plus (5+5=6)\n" \
-         "  - - substraction, or unary minus (3-2=1)\n" \
-         "  * - multiplication (5*6=30)\n" \
-         "  / - divide (4/2=2)\n" \
-         "  %, mod - divide remainder (6%3=0)\n" \
-         "  ^ - power (2^3=8)\n" \
-         "  ! - factorial (3!=6)\n\n" \
+         "  h, help    - this command.\n" \
+         "  use 'file' - process external file.\n" \
+         "  q, quit    - quit the calculator.\n\n" \
+         "There are supported both integral and decimal numbers, in various radixes:\n" \
+         "  decadic (`1.3`), hexadecimal (`4x`), octal (`-23.05o`), binary (`101b`)\n\n" \
+         "Results are printed in all radixes. The following operators are supported:\n" \
+         "  + (addition, unary plus), - (substraction, unary minus), * (multiplication),\n" \
+         "  / (divide), %, mod (divide remainder), ^ (power), ! (factorial)\n\n" \
          "The following math functions are supported:\n" \
          "  sin   - sinus, input in radians (sin PI=0)\n" \
          "  cos   - cosinus, input in radians (cos PI=-1)\n" \
@@ -308,10 +296,8 @@ void printHelp() {
          "The following constants are supported:\n" \
          "  PI - The Ludolf PI number (3.141592...)\n" \
          "  E  - The Euler number (2.71828182...)\n\n" \
-         "This calculator also supports variables that store values, e.g.:\n" \
-         "  x = 5\n" \
+         "This calculator also supports variables that store values and expressions:\n" \
          "  var = 4.23 * x\n" \
-         "  (-2 * var + x)/ (4*var^2)\nEvery result is stored to the R variable.\n");
+         "  y=(-2 * var + x)/ (4*var^2)\nEvery result is stored to the R variable.\n");
 }
-
 

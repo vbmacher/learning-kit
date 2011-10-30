@@ -28,16 +28,25 @@
 #include <math.h>
 
 #include "kcalc.h"
+#include "parser.h"
+#include "lexer.h"
 
-int yyparse(void), yylex(void);
+//void yyrestart  (FILE * input_file);
 static Tree *make_operator (Tree *left, int oper, Tree *right);
 static Tree *make_value (double n);
 static Tree *make_variable(char* var);
-void yyerror(char *s);
+int yyerror(yyscan_t *scanner, char *s);
 
 static int quit = 0;
-extern char*yytext;  
+static int use = 0;
+char *filename=  NULL;
+
 %}
+
+%pure_parser
+%defines
+%lex-param {yyscan_t *scanner}
+%parse-param {void *scanner}
 
 %union {
   char*  name;
@@ -46,11 +55,11 @@ extern char*yytext;
 }
 
 /* terminal symbols */
-%token <name> VARIABLE
+%token <name> VARIABLE FILENAME
 %token <value> INT_VAL DBL_VAL
 
-%token LPAR RPAR OP_EQU HELP
-%token QUIT
+%token LPAR RPAR OP_EQU HELP USE
+%token QUIT EOL
 
 %token M_SIN M_COS M_TAN M_COTAN M_LOG M_LOG2 M_LOGE M_SQRT M_CEIL M_FLOOR
 %token CONST_PI CONST_E
@@ -72,50 +81,50 @@ extern char*yytext;
 /* Rules */
 
 Start  : 
-       | Exp 
-         { 
-            double dbl = evalTree($1); // TODO: check for evaluation error
-            if (!isEvalError()) {
-              Tree *tree = make_value(dbl); 
-              saveVAR("R", tree);
-              printResult(dbl); 
-            } else 
-              xxerror("Evaluation"," error");
+       | Exp { 
+            if ($1 != NULL) {
+              double dbl = evalTree($1);
+              if (!isEvalError()) {
+                Tree *tree = make_value(dbl); 
+                saveVAR("R", tree);
+                printResult(dbl); 
+              } else 
+                xxerror("Evaluation"," error");
+            }
          }
-       | HELP
-         { printHelp(); }
-       | QUIT
-         { quit = 1; }
+       | HELP         { printHelp(); }
+       | USE FILENAME { use = 1; filename = $2; }
+       | QUIT         { quit = 1;    }
        ;
 
 Exp   : Primary        { $$ = $1;                               }
-      | Exp OP_ADD Primary { $$ = make_operator($1, OP_ADD, $3);    }
-      | Exp OP_SUB Primary { $$ = make_operator($1, OP_SUB, $3);    }
-      | Exp OP_MUL Primary { $$ = make_operator($1, OP_MUL, $3);    }
-      | Exp OP_DIV Primary { $$ = make_operator($1, OP_DIV, $3);    }
-      | Exp OP_POW Primary { $$ = make_operator($1, OP_POW, $3);    }
-      | Exp OP_MOD Primary { $$ = make_operator($1, OP_MOD, $3);    }
+      | Exp OP_ADD Exp { $$ = make_operator($1, OP_ADD, $3);    }
+      | Exp OP_SUB Exp { $$ = make_operator($1, OP_SUB, $3);    }
+      | Exp OP_MUL Exp { $$ = make_operator($1, OP_MUL, $3);    }
+      | Exp OP_DIV Exp { $$ = make_operator($1, OP_DIV, $3);    }
+      | Exp OP_POW Exp { $$ = make_operator($1, OP_POW, $3);    }
+      | Exp OP_MOD Exp { $$ = make_operator($1, OP_MOD, $3);    }
       | Exp OP_FACT    { $$ = make_operator($1, OP_FACT, NULL); }
-      | M_SIN Primary      { $$ = make_operator(NULL, M_SIN, $2);   }
-      | M_COS Primary      { $$ = make_operator(NULL, M_COS, $2);   }
-      | M_TAN Primary      { $$ = make_operator(NULL, M_TAN, $2);   }
-      | M_COTAN Primary    { $$ = make_operator(NULL, M_COTAN, $2); }
-      | M_LOG Primary      { $$ = make_operator(NULL, M_LOG, $2);   }
-      | M_LOG2 Primary     { $$ = make_operator(NULL, M_LOG2, $2);  }
-      | M_LOGE Primary     { $$ = make_operator(NULL, M_LOGE, $2);  }
-      | M_SQRT Primary     { $$ = make_operator(NULL, M_SQRT, $2);  }
-      | M_CEIL Primary     { $$ = make_operator(NULL, M_CEIL, $2);  }
-      | M_FLOOR Primary    { $$ = make_operator(NULL, M_FLOOR, $2); }
-      | OP_SUB Primary %prec USUB
+      | M_SIN Exp      { $$ = make_operator(NULL, M_SIN, $2);   }
+      | M_COS Exp      { $$ = make_operator(NULL, M_COS, $2);   }
+      | M_TAN Exp      { $$ = make_operator(NULL, M_TAN, $2);   }
+      | M_COTAN Exp    { $$ = make_operator(NULL, M_COTAN, $2); }
+      | M_LOG Exp      { $$ = make_operator(NULL, M_LOG, $2);   }
+      | M_LOG2 Exp     { $$ = make_operator(NULL, M_LOG2, $2);  }
+      | M_LOGE Exp     { $$ = make_operator(NULL, M_LOGE, $2);  }
+      | M_SQRT Exp     { $$ = make_operator(NULL, M_SQRT, $2);  }
+      | M_CEIL Exp     { $$ = make_operator(NULL, M_CEIL, $2);  }
+      | M_FLOOR Exp    { $$ = make_operator(NULL, M_FLOOR, $2); }
+      | OP_SUB Exp %prec USUB
                        { $$ = make_operator(NULL, OP_SUB, $2);  }
-      | OP_ADD Primary %prec UADD
+      | OP_ADD Exp %prec UADD
                        { $$ = make_operator(NULL, OP_ADD, $2);  }
       ;
 
-Primary : VARIABLE { $$ = make_variable(strdup($1)); }
+Primary : VARIABLE { $$ = make_variable($1); }
         | VARIABLE OP_EQU Exp {
             saveVAR($1,$3);
-            $$ = $3;
+            $$ = NULL; // what impact has this?
           }
         | Constant      { $$ = $1; }
         | LPAR Exp RPAR { $$ = $2; }
@@ -129,9 +138,6 @@ Constant: INT_VAL  { $$ = make_value($1); }
 
 %%
 
-void yyerror(char *s){
-  fprintf(stdout,"ERROR: %s [%s]\n",s,yytext);
-}
 
 /* Borrowed from: http://www.cs.man.ac.uk/~pjj/cs212/ho/node8.html */
 
@@ -158,23 +164,47 @@ static Tree *make_variable (char* var) {
   return result;
 }
 
-
 int main(int ac,char *av[]){
-  extern FILE *yyin;
-  int i;
-  if(ac>1){
-    yyin=fopen(av[1],"r");
-    if(yyin==NULL){
-      yyin=stdin;
+  FILE *ff = stdin;
+
+  if (ac > 1) {
+    ff = fopen(av[1], "r");
+    if (ff == NULL)
+      ff = stdin;
+  }
+ 
+  printf("kCalculator 0.11b\n(c) Copyright 2010,P.Jakubco\n\n(Type 'help' for help.)\n");
+  
+  yyscan_t yyscanner;
+  yylex_init(&yyscanner);
+  yyset_in(ff, yyscanner);
+  yyset_out(stdout, yyscanner);
+
+  while(!quit && !feof(ff)) {
+    printf(">");
+    yyparse(yyscanner);
+    if (use == 1) {
+      use = 0;
+      FILE *fin = fopen(filename, "r");
+      if (fin == NULL) {
+        xxerror("File name cannot be opened:", filename);
+        continue;
+      }
+      yyset_in(fin, yyscanner);
+      while (!quit && !feof(fin)) {
+        yyparse(yyscanner);
+        if (use == 1) {
+          use = 0;
+          xxerror("USE command cannot be used now", "");
+        }
+      }
+      yyset_in(ff, yyscanner);
+      fclose(fin);
+      yyrestart(ff,yyscanner);
     }
   }
-  
-  printf("kCalculator 0.11b\n(c) Copyright 2010,P.Jakubco\n\n(Type 'help' for help.)\n");
+  yylex_destroy(yyscanner);
 
-  while(!quit) {
-    printf(">");
-    (void)yyparse();
-  }
   return(0);
 }
 
