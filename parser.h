@@ -46,29 +46,30 @@
      OP_EQU = 264,
      HELP = 265,
      USE = 266,
-     QUIT = 267,
-     EOL = 268,
-     M_SIN = 269,
-     M_COS = 270,
-     M_TAN = 271,
-     M_COTAN = 272,
-     M_LOG = 273,
-     M_LOG2 = 274,
-     M_LOGE = 275,
-     M_SQRT = 276,
-     M_CEIL = 277,
-     M_FLOOR = 278,
-     CONST_PI = 279,
-     CONST_E = 280,
-     OP_SUB = 281,
-     OP_ADD = 282,
-     OP_DIV = 283,
-     OP_MUL = 284,
-     OP_MOD = 285,
-     USUB = 286,
-     UADD = 287,
-     OP_POW = 288,
-     OP_FACT = 289
+     VARS = 267,
+     QUIT = 268,
+     EOL = 269,
+     M_SIN = 270,
+     M_COS = 271,
+     M_TAN = 272,
+     M_COTAN = 273,
+     M_LOG = 274,
+     M_LOG2 = 275,
+     M_LOGE = 276,
+     M_SQRT = 277,
+     M_CEIL = 278,
+     M_FLOOR = 279,
+     CONST_PI = 280,
+     CONST_E = 281,
+     OP_SUB = 282,
+     OP_ADD = 283,
+     OP_DIV = 284,
+     OP_MUL = 285,
+     OP_MOD = 286,
+     USUB = 287,
+     UADD = 288,
+     OP_POW = 289,
+     OP_FACT = 290
    };
 #endif
 /* Tokens.  */
@@ -81,29 +82,30 @@
 #define OP_EQU 264
 #define HELP 265
 #define USE 266
-#define QUIT 267
-#define EOL 268
-#define M_SIN 269
-#define M_COS 270
-#define M_TAN 271
-#define M_COTAN 272
-#define M_LOG 273
-#define M_LOG2 274
-#define M_LOGE 275
-#define M_SQRT 276
-#define M_CEIL 277
-#define M_FLOOR 278
-#define CONST_PI 279
-#define CONST_E 280
-#define OP_SUB 281
-#define OP_ADD 282
-#define OP_DIV 283
-#define OP_MUL 284
-#define OP_MOD 285
-#define USUB 286
-#define UADD 287
-#define OP_POW 288
-#define OP_FACT 289
+#define VARS 267
+#define QUIT 268
+#define EOL 269
+#define M_SIN 270
+#define M_COS 271
+#define M_TAN 272
+#define M_COTAN 273
+#define M_LOG 274
+#define M_LOG2 275
+#define M_LOGE 276
+#define M_SQRT 277
+#define M_CEIL 278
+#define M_FLOOR 279
+#define CONST_PI 280
+#define CONST_E 281
+#define OP_SUB 282
+#define OP_ADD 283
+#define OP_DIV 284
+#define OP_MUL 285
+#define OP_MOD 286
+#define USUB 287
+#define UADD 288
+#define OP_POW 289
+#define OP_FACT 290
 
 
 
@@ -122,7 +124,7 @@ typedef union YYSTYPE
 
 
 /* Line 2068 of yacc.c  */
-#line 126 "parser.h"
+#line 128 "parser.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

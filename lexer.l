@@ -83,6 +83,8 @@ SPACE { }
 "h"    { return HELP; }
 "help" { return HELP; }
 
+"vars" { return VARS; }
+
 {FILENAME} { int len = strlen(yytext)-2;
              yylval->name = (char *)malloc(len+1);
              memcpy(yylval->name, yytext+1,len);

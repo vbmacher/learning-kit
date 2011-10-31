@@ -58,7 +58,7 @@ char *filename=  NULL;
 %token <name> VARIABLE FILENAME
 %token <value> INT_VAL DBL_VAL
 
-%token LPAR RPAR OP_EQU HELP USE
+%token LPAR RPAR OP_EQU HELP USE VARS
 %token QUIT EOL
 
 %token M_SIN M_COS M_TAN M_COTAN M_LOG M_LOG2 M_LOGE M_SQRT M_CEIL M_FLOOR
@@ -94,6 +94,8 @@ Start  :
          }
        | HELP         { printHelp(); }
        | USE FILENAME { use = 1; filename = $2; }
+       | VARS {}
+       | VARS VARIABLE {}
        | QUIT         { quit = 1;    }
        ;
 
@@ -173,7 +175,7 @@ int main(int ac,char *av[]){
       ff = stdin;
   }
  
-  printf("kCalculator 0.11b\n(c) Copyright 2010,P.Jakubco\n\n(Type 'help' for help.)\n");
+  printf("kCalculator 0.12b\n(c) Copyright 2010-2011, P.Jakubco\n\n(Type 'help' for help.)\n");
   
   yyscan_t yyscanner;
   yylex_init(&yyscanner);
