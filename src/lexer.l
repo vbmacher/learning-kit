@@ -28,6 +28,7 @@
 #include "parser.h"
 
 //option reentrant noyywrap never-interactive nounistd yylineno
+// %option header-file="lexer.h"
 
 %}
 

@@ -22,12 +22,14 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include <config.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 
-#include "kcalc.h"
+#include <kcalc.h>
 #include "parser.h"
 #include "lexer.h"
 
@@ -175,7 +177,7 @@ int main(int ac,char *av[]){
       ff = stdin;
   }
  
-  printf("kCalculator 0.12b\n(c) Copyright 2010-2011, P.Jakubco\n\n(Type 'help' for help.)\n");
+  printf(PACKAGE_STRING "\n(c) Copyright 2010-2011, P.Jakubco <" PACKAGE_BUGREPORT ">\n\nStarting interactive mode.\n(Type 'help' for help.)\n");
   
   yyscan_t yyscanner;
   yylex_init(&yyscanner);

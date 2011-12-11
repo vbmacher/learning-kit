@@ -91,12 +91,14 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include <config.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 
-#include "kcalc.h"
+#include <kcalc.h>
 #include "parser.h"
 #include "lexer.h"
 
@@ -113,7 +115,7 @@ char *filename=  NULL;
 
 
 /* Line 268 of yacc.c  */
-#line 117 "parser.c"
+#line 119 "parser.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -218,7 +220,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 51 "parser.y"
+#line 53 "parser.y"
 
   char*  name;
   double value;
@@ -227,7 +229,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 231 "parser.c"
+#line 233 "parser.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -239,7 +241,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 243 "parser.c"
+#line 245 "parser.c"
 
 #ifdef short
 # undef short
@@ -541,10 +543,10 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    83,    83,    84,    95,    96,    97,    98,    99,   102,
-     103,   104,   105,   106,   107,   108,   109,   110,   111,   112,
-     113,   114,   115,   116,   117,   118,   119,   120,   122,   126,
-     127,   131,   132,   135,   136,   137,   138
+       0,    85,    85,    86,    97,    98,    99,   100,   101,   104,
+     105,   106,   107,   108,   109,   110,   111,   112,   113,   114,
+     115,   116,   117,   118,   119,   120,   121,   122,   124,   128,
+     129,   133,   134,   137,   138,   139,   140
 };
 #endif
 
@@ -1521,7 +1523,7 @@ yyreduce:
         case 3:
 
 /* Line 1806 of yacc.c  */
-#line 84 "parser.y"
+#line 86 "parser.y"
     { 
             if ((yyvsp[(1) - (1)].tree) != NULL) {
               double dbl = evalTree((yyvsp[(1) - (1)].tree));
@@ -1538,189 +1540,189 @@ yyreduce:
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 95 "parser.y"
+#line 97 "parser.y"
     { printHelp(); }
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 96 "parser.y"
+#line 98 "parser.y"
     { use = 1; filename = (yyvsp[(2) - (2)].name); }
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 97 "parser.y"
+#line 99 "parser.y"
     {}
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 98 "parser.y"
+#line 100 "parser.y"
     {}
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 99 "parser.y"
+#line 101 "parser.y"
     { quit = 1;    }
     break;
 
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 102 "parser.y"
+#line 104 "parser.y"
     { (yyval.tree) = (yyvsp[(1) - (1)].tree);                               }
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 103 "parser.y"
+#line 105 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_ADD, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 104 "parser.y"
+#line 106 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_SUB, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 105 "parser.y"
+#line 107 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_MUL, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 106 "parser.y"
+#line 108 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_DIV, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 107 "parser.y"
+#line 109 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_POW, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 108 "parser.y"
+#line 110 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (3)].tree), OP_MOD, (yyvsp[(3) - (3)].tree));    }
     break;
 
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 109 "parser.y"
+#line 111 "parser.y"
     { (yyval.tree) = make_operator((yyvsp[(1) - (2)].tree), OP_FACT, NULL); }
     break;
 
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 110 "parser.y"
+#line 112 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_SIN, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 111 "parser.y"
+#line 113 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_COS, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 112 "parser.y"
+#line 114 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_TAN, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 113 "parser.y"
+#line 115 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_COTAN, (yyvsp[(2) - (2)].tree)); }
     break;
 
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 114 "parser.y"
+#line 116 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_LOG, (yyvsp[(2) - (2)].tree));   }
     break;
 
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 115 "parser.y"
+#line 117 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_LOG2, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 116 "parser.y"
+#line 118 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_LOGE, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 117 "parser.y"
+#line 119 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_SQRT, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 118 "parser.y"
+#line 120 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_CEIL, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 119 "parser.y"
+#line 121 "parser.y"
     { (yyval.tree) = make_operator(NULL, M_FLOOR, (yyvsp[(2) - (2)].tree)); }
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 121 "parser.y"
+#line 123 "parser.y"
     { (yyval.tree) = make_operator(NULL, OP_SUB, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 123 "parser.y"
+#line 125 "parser.y"
     { (yyval.tree) = make_operator(NULL, OP_ADD, (yyvsp[(2) - (2)].tree));  }
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 126 "parser.y"
+#line 128 "parser.y"
     { (yyval.tree) = make_variable((yyvsp[(1) - (1)].name)); }
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 127 "parser.y"
+#line 129 "parser.y"
     {
             saveVAR((yyvsp[(1) - (3)].name),(yyvsp[(3) - (3)].tree));
             (yyval.tree) = NULL; // what impact has this?
@@ -1730,49 +1732,49 @@ yyreduce:
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 131 "parser.y"
+#line 133 "parser.y"
     { (yyval.tree) = (yyvsp[(1) - (1)].tree); }
     break;
 
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 132 "parser.y"
+#line 134 "parser.y"
     { (yyval.tree) = (yyvsp[(2) - (3)].tree); }
     break;
 
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 135 "parser.y"
+#line 137 "parser.y"
     { (yyval.tree) = make_value((yyvsp[(1) - (1)].value)); }
     break;
 
   case 34:
 
 /* Line 1806 of yacc.c  */
-#line 136 "parser.y"
+#line 138 "parser.y"
     { (yyval.tree) = make_value((yyvsp[(1) - (1)].value)); }
     break;
 
   case 35:
 
 /* Line 1806 of yacc.c  */
-#line 137 "parser.y"
+#line 139 "parser.y"
     { (yyval.tree) = make_value(3.14159265358979323846264338327950288419716939937510); }
     break;
 
   case 36:
 
 /* Line 1806 of yacc.c  */
-#line 138 "parser.y"
+#line 140 "parser.y"
     { (yyval.tree) = make_value(2.71828182845904523536028747135266249775724709369995); }
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1776 "parser.c"
+#line 1778 "parser.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2003,7 +2005,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 141 "parser.y"
+#line 143 "parser.y"
 
 
 
@@ -2041,7 +2043,7 @@ int main(int ac,char *av[]){
       ff = stdin;
   }
  
-  printf("kCalculator 0.12b\n(c) Copyright 2010-2011, P.Jakubco\n\n(Type 'help' for help.)\n");
+  printf(PACKAGE_STRING "\n(c) Copyright 2010-2011, P.Jakubco <" PACKAGE_BUGREPORT ">\n\nStarting interactive mode.\n(Type 'help' for help.)\n");
   
   yyscan_t yyscanner;
   yylex_init(&yyscanner);

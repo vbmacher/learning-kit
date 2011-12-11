@@ -24,8 +24,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "kcalc.h"
-#include "parser.h"
+#include <kcalc.h>
+#include <parser.h>
 
 struct { char *name; Tree *tree;} VARIABLES[MAX_VARIABLES]; // variable can be a function
 int var_ix = 0;  // index to new variable
