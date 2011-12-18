@@ -20,12 +20,18 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include <config.h>
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <kcalc.h>
-#include <parser.h>
+#include "parser.h"
+#include "lexer.h"
+
+extern int quit;
+extern int use;
 
 struct { char *name; Tree *tree;} VARIABLES[MAX_VARIABLES]; // variable can be a function
 int var_ix = 0;  // index to new variable
@@ -299,5 +305,49 @@ void printHelp() {
          "This calculator also supports variables that store values and expressions:\n" \
          "  var = 4.23 * x\n" \
          "  y=(-2 * var + x)/ (4*var^2)\nEvery result is stored to the R variable.\n");
+}
+
+int main(int ac,char *av[]){
+  FILE *ff = stdin;
+
+  if (ac > 1) {
+    ff = fopen(av[1], "r");
+    if (ff == NULL)
+      ff = stdin;
+  }
+ 
+  printf(PACKAGE_STRING "\n(c) Copyright 2010-2011, P.Jakubco <" PACKAGE_BUGREPORT ">\n\nStarting interactive mode.\n(Type 'help' for help.)\n");
+  
+  yyscan_t yyscanner;
+  yylex_init(&yyscanner);
+  yyset_in(ff, yyscanner);
+  yyset_out(stdout, yyscanner);
+
+  while(!quit && !feof(ff)) {
+    printf(">");
+    yyparse(yyscanner);
+    if (use == 1) {
+      use = 0;
+      FILE *fin = fopen(filename, "r");
+      if (fin == NULL) {
+        xxerror("File name cannot be opened:", filename);
+        continue;
+      }
+      yyset_in(fin, yyscanner);
+      while (!quit && !feof(fin)) {
+        yyparse(yyscanner);
+        if (use == 1) {
+          use = 0;
+          xxerror("USE command cannot be used now", "");
+        }
+      }
+      yyset_in(ff, yyscanner);
+      fclose(fin);
+      yyrestart(ff,yyscanner);
+    }
+  }
+  yylex_destroy(yyscanner);
+
+  return(0);
 }
 

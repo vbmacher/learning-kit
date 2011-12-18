@@ -22,8 +22,6 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include <config.h>
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -39,8 +37,8 @@ static Tree *make_value (double n);
 static Tree *make_variable(char* var);
 int yyerror(yyscan_t *scanner, char *s);
 
-static int quit = 0;
-static int use = 0;
+int quit = 0;
+int use = 0;
 char *filename=  NULL;
 
 %}
@@ -168,47 +166,4 @@ static Tree *make_variable (char* var) {
   return result;
 }
 
-int main(int ac,char *av[]){
-  FILE *ff = stdin;
-
-  if (ac > 1) {
-    ff = fopen(av[1], "r");
-    if (ff == NULL)
-      ff = stdin;
-  }
- 
-  printf(PACKAGE_STRING "\n(c) Copyright 2010-2011, P.Jakubco <" PACKAGE_BUGREPORT ">\n\nStarting interactive mode.\n(Type 'help' for help.)\n");
-  
-  yyscan_t yyscanner;
-  yylex_init(&yyscanner);
-  yyset_in(ff, yyscanner);
-  yyset_out(stdout, yyscanner);
-
-  while(!quit && !feof(ff)) {
-    printf(">");
-    yyparse(yyscanner);
-    if (use == 1) {
-      use = 0;
-      FILE *fin = fopen(filename, "r");
-      if (fin == NULL) {
-        xxerror("File name cannot be opened:", filename);
-        continue;
-      }
-      yyset_in(fin, yyscanner);
-      while (!quit && !feof(fin)) {
-        yyparse(yyscanner);
-        if (use == 1) {
-          use = 0;
-          xxerror("USE command cannot be used now", "");
-        }
-      }
-      yyset_in(ff, yyscanner);
-      fclose(fin);
-      yyrestart(ff,yyscanner);
-    }
-  }
-  yylex_destroy(yyscanner);
-
-  return(0);
-}
 

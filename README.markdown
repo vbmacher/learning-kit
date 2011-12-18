@@ -1,16 +1,19 @@
-What's this?
-============
+What is kcalc?
+==============
 
-This is a command-line calculator, written in C. Supported platforms are all that supports utilities FLEX, YACC and GNU C.
+kCalc is aimed to be extremely light-weight, simple, and powerful calculator. It is written in C. The main goal is to apply DRY principle into human mathematical work. In other words, it should provide automatic computation defined either in input file(s) or interactively from standard input stream. It prints results to standard output stream or at user-specified place (file). It can be used either as interactive calculator or in shell scripts as computation result generator.
 
+I believe it could help people perform their daily computations, either students or scientists.
 
 Build and Install
 =================
 
-This is free software, released under GNU GPL v2 license. The source code is written for
-the FLEX [[1]] and YACC [[2]] compiler generators. To build it, you must have installed these utilities.
+This is free software, released under GNU GPL v2 license. The parser is written using FLEX [[1]] and YACC/Bison [[2]]. The source code was written in GNU C. To build it in easy way, execute following commands:
 
-The project was then written in GNU C. For easy build, use the 'make' utility.
+1. `configure`
+2. `make`
+
+If you want to install it, type `make install` in root environment. If you want later uninstall the software, execute command `make uninstall`.
 
 [1]: http://flex.sourceforge.net/
 [2]: http://gnuwin32.sourceforge.net/packages/byacc.htm
@@ -19,13 +22,16 @@ The project was then written in GNU C. For easy build, use the 'make' utility.
 Usage
 ======
 
-The calculator supports the following commands:
+In interactive mode, the calculator supports following commands:
 
 * `h`, `help`
 * `use 'file'` - process external file.
 * `q`, `quit`  - quit the calculator.
 
-There are supported integral and decimal numbers in following radixes:
+Radix
+-----
+
+There are supported integral and decimal numbers in many radixes and with any precision. 
 
 * decadic (`1`, `2.3`, `3`, `-10.554`, ...)
 * hexadecimal (`4x`, `A.f3x`, `5FCx`, `-5B.12x`, ...)
@@ -42,6 +48,9 @@ Results are printed in all these radixes. The following operators are supported:
 * `^` - power (`2^3=8`)
 * `!` - factorial (`3!=6`)
 
+Math functions
+--------------
+
 The following math functions are supported:
 
 * `sin`   - sinus, input in radians (`sin PI=0`)
@@ -55,10 +64,16 @@ The following math functions are supported:
 * `ceil`  - smallest integral value that is not less than input (`ceil 4.3=5`)
 * `floor` - greatest integral value that is not greater than input (`floor 4.6=4`)
 
+Constants
+----------
+
 The following constants are supported:
 
 *  `PI` - The Ludolf PI number (`3.141592`...)
 *  `E`  - The Euler number (`2.71828182`...)
+
+Variables, expressions
+----------------------
 
 This calculator also supports variables that store values AND expressions. However,
 recursion is not supported, e.g.:
