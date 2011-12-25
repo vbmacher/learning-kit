@@ -41,14 +41,18 @@ typedef struct tree {
   } body;
 } Tree;
 
+enum {
+  MODE_INTERACTIVE,
+  MODE_FILE
+};
+
+
 int findVAR(char *name,int errorMissing);
 int saveVAR(char *name, Tree *tree);
 int fact(int x);
 char *intToRadix(int num, int radix);
 char *doubleToRadix(double num, int radix);
 double evalTree(Tree *tree);
-void printResult(double value);
-void printHelp();
 int isEvalError();
 
 #endif

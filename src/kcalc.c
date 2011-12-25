@@ -32,13 +32,19 @@
 
 extern int quit;
 extern int use;
+extern char *filename;
+extern int help;
+extern double result;
 
 struct { char *name; Tree *tree;} VARIABLES[MAX_VARIABLES]; // variable can be a function
 int var_ix = 0;  // index to new variable
 static int eval_error = 0; // evaluation error?
 
+static int mode_of_operation;
+static yyscan_t yyscanner; //Lexical analyzer
+
 void xxerror(char *s1,char *s2){
-  fprintf(stdout,"ERROR: %s %s\n",s1,s2);
+  fprintf(stderr,"ERROR: %s %s\n",s1,s2);
 }
 
 /**
@@ -84,18 +90,21 @@ int saveVAR(char *name, Tree *tree) {
 }
 
 /**
- * Recursively compute a factorial.
+ * Compute a factorial (non-recursive version).
  *
  * @param x the number
- * @return factorial of x
+ * @return factorial of x, or -1 if (x<0)
  */
 int fact(int x) {
-  if (x == 0)
-    return 1;
-  else if (x > 0)
-    return x * fact(x-1);
-  else
+  if (x < 0) {
     return -1;
+  }
+
+  int result;
+  for (result = 1; x > 1; x--) {
+    result *= x;
+  }
+  return result;
 }
 
 /**
@@ -262,24 +271,29 @@ double evalTree(Tree *tree) {
   return 0;
 }
 
-void printResult(double value) {
-  printf("Result was saved to variable R.\n");
+void printResult(FILE *output_file, double value) {
+  if (mode_of_operation == MODE_INTERACTIVE)
+    fprintf(output_file, "Result was saved to variable R.\n");
+
   if ((int)value == value) {
     int a = (int)value;
-    printf("   %d\n  x%X\n",a,a);
-    printf("   %s\n", intToRadix(a,8));
-    printf("   %s\n", intToRadix(a,2));
+    fprintf(output_file, "   %d\n  x%X\n",a,a);
+    fprintf(output_file, "   %s\n", intToRadix(a,8));
+    fprintf(output_file, "   %s\n", intToRadix(a,2));
   }
   else {
-    printf("  %lf\n",value);
-    printf(" x%s\n",doubleToRadix(value,16));
-    printf(" o%s\n",doubleToRadix(value,8));
-    printf(" b%s\n",doubleToRadix(value,2));
+    fprintf(output_file, "  %lf\n",value);
+    fprintf(output_file, " x%s\n",doubleToRadix(value,16));
+    fprintf(output_file, " o%s\n",doubleToRadix(value,8));
+    fprintf(output_file, " b%s\n",doubleToRadix(value,2));
   }
 }
 
-void printHelp() {
-  printf("This is a command-line calculator. It supports the following commands:\n" \
+/**
+ * Print usage and help using kCalc.
+ */
+void printHelp(FILE *output_file) {
+  fprintf(output_file,"This is a command-line calculator. It supports the following commands:\n" \
          "  h, help    - this command.\n" \
          "  use 'file' - process external file.\n" \
          "  q, quit    - quit the calculator.\n\n" \
@@ -307,43 +321,82 @@ void printHelp() {
          "  y=(-2 * var + x)/ (4*var^2)\nEvery result is stored to the R variable.\n");
 }
 
-int main(int ac,char *av[]){
-  FILE *ff = stdin;
-
-  if (ac > 1) {
-    ff = fopen(av[1], "r");
-    if (ff == NULL)
-      ff = stdin;
+/**
+ * Initialize parser.
+ */
+void initialize(FILE *input_file, FILE *output_file) {
+  if (mode_of_operation == MODE_INTERACTIVE) {
+    fprintf(output_file, PACKAGE_STRING "\n(c) Copyright 2010-2011, P.Jakubco <" 
+           PACKAGE_BUGREPORT ">\n\nStarting interactive mode.\n(Type 'help' for help.)\n");
   }
- 
-  printf(PACKAGE_STRING "\n(c) Copyright 2010-2011, P.Jakubco <" PACKAGE_BUGREPORT ">\n\nStarting interactive mode.\n(Type 'help' for help.)\n");
-  
-  yyscan_t yyscanner;
-  yylex_init(&yyscanner);
-  yyset_in(ff, yyscanner);
-  yyset_out(stdout, yyscanner);
 
-  while(!quit && !feof(ff)) {
-    printf(">");
+  yylex_init(&yyscanner);
+  yyset_in(input_file, yyscanner);
+  yyset_out(output_file, yyscanner);
+}
+
+/**
+ * Process external file.
+ *
+ * @param input_file
+ *   File stream of main input file
+ * @param file_name
+ *   Processed file name
+ */
+void process_file(FILE *input_file, char *file_name) {
+  FILE *use_file = fopen(file_name, "r");
+  if (use_file == NULL) {
+    xxerror("File name cannot be processed:", file_name);
+    return;
+  }
+  yyset_in(use_file, yyscanner);
+  while (!quit && !feof(use_file)) {
     yyparse(yyscanner);
     if (use == 1) {
       use = 0;
-      FILE *fin = fopen(filename, "r");
-      if (fin == NULL) {
-        xxerror("File name cannot be opened:", filename);
-        continue;
-      }
-      yyset_in(fin, yyscanner);
-      while (!quit && !feof(fin)) {
-        yyparse(yyscanner);
-        if (use == 1) {
-          use = 0;
-          xxerror("USE command cannot be used now", "");
-        }
-      }
-      yyset_in(ff, yyscanner);
-      fclose(fin);
-      yyrestart(ff,yyscanner);
+      xxerror("USE command cannot be used now", "");
+    }
+    if (help == 1) {
+      // ignore help requests in processed file
+      help = 0;
+    }
+  }
+  yyset_in(input_file, yyscanner);
+  fclose(use_file);
+  yyrestart(input_file,yyscanner);
+}
+
+int main(int ac,char *av[]){
+  FILE *input_file = stdin;
+  FILE *output_file = stdout;
+  mode_of_operation = MODE_INTERACTIVE;
+  if (ac > 1) {
+    input_file = fopen(av[1], "r");
+    if (input_file == NULL)
+      input_file = stdin;
+    else
+      mode_of_operation = MODE_FILE;
+  }
+  initialize(input_file, output_file);
+
+  while(!quit && !feof(input_file)) {
+    if (mode_of_operation == MODE_INTERACTIVE) {
+      fprintf(output_file, "\n> ");
+      fflush(output_file);
+    }
+
+    // Parse expression
+    yyparse(yyscanner);
+    if (use == 1) {
+      use = 0;
+      process_file(input_file, filename);
+    }
+    if (help == 1) {
+      help = 0;
+      if (mode_of_operation == MODE_INTERACTIVE)
+        printHelp(output_file);
+    } else {
+      printResult(output_file, result);
     }
   }
   yylex_destroy(yyscanner);

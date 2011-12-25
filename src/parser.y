@@ -31,7 +31,6 @@
 #include "parser.h"
 #include "lexer.h"
 
-//void yyrestart  (FILE * input_file);
 static Tree *make_operator (Tree *left, int oper, Tree *right);
 static Tree *make_value (double n);
 static Tree *make_variable(char* var);
@@ -39,6 +38,8 @@ int yyerror(yyscan_t *scanner, char *s);
 
 int quit = 0;
 int use = 0;
+int help = 0;
+double result = 0.0;
 char *filename=  NULL;
 
 %}
@@ -83,16 +84,15 @@ char *filename=  NULL;
 Start  : 
        | Exp { 
             if ($1 != NULL) {
-              double dbl = evalTree($1);
+              result = evalTree($1);
               if (!isEvalError()) {
-                Tree *tree = make_value(dbl); 
+                Tree *tree = make_value(result); 
                 saveVAR("R", tree);
-                printResult(dbl); 
               } else 
                 xxerror("Evaluation"," error");
             }
          }
-       | HELP         { printHelp(); }
+       | HELP         { help = 1; }
        | USE FILENAME { use = 1; filename = $2; }
        | VARS {}
        | VARS VARIABLE {}

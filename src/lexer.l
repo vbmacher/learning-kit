@@ -190,6 +190,7 @@ SPACE { }
 
 
 int yyerror(yyscan_t *scanner, char *s){
+   // This weird variable is used in a macro by flex
    struct yyguts_t * yyg = (struct yyguts_t*)scanner;
    fprintf(stderr,"ERROR: %s [%s]\n",s,yytext);
 }
