@@ -11,3 +11,16 @@
 *.lai
 *.la
 *.a
+
+# Cache, temp
+*~
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# Projects, binary
+.kdev4/
+nbproject/
+Pong
