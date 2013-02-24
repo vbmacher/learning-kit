@@ -46,7 +46,7 @@ namespace github {
                     if (active.get()) {
                         Player& activePlayer = dynamic_cast<Player&>(*active);
                         if (activePlayer.collision(ball->getX(), ball->getY())) {
-                            std::cout << "A: " << activePlayer.getName() << " COL " << std::endl;
+                            std::cout << "A: " << activePlayer.getName() << " COLLISION " << std::endl;
                             ball->updateVector(0, activePlayer.getMovingVectorY());
                         }
                     }

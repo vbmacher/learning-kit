@@ -8,8 +8,6 @@
 #ifndef BALL_H
 #define	BALL_H
 
-#include <boost/thread.hpp>
-
 #include "component.h"
 
 namespace github {
@@ -21,7 +19,6 @@ namespace github {
         class Ball : public Component {
             Uint16 x;
             Uint16 y;
-            boost::thread ballMover;
             
             Uint16 vector[2];
             Uint16 velocity;

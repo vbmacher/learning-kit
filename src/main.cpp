@@ -20,8 +20,8 @@ int main(int argc, char *argv[]) {
         
         Uint16 yMax = canvas->getHeight()- 10;
         
-        game.addPlayer(boost::shared_ptr<Player>(new Player("Petko", 8,8, 8, yMax)));
-        game.addPlayer(boost::shared_ptr<Player>(new Player("Dominka", canvas->getWidth()-22,8,8,yMax)));
+        game.addPlayer(boost::shared_ptr<Player>(new Player("PlayerLeft", 8,8, 8, yMax)));
+        game.addPlayer(boost::shared_ptr<Player>(new Player("PlayerRight", canvas->getWidth()-22,8,8,yMax)));
         
         game.start();
         
