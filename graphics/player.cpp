@@ -14,7 +14,6 @@ namespace github {
 
         Player::Player(std::string name, Uint16 x, Uint16 y, Uint16 yMin, Uint16 yMax) 
                 : name(name), x(x), y(y), minY(yMin), maxY(yMax) {
-            movingVectorY = 1;
         }
 
         void Player::draw(Canvas &canvas) {
@@ -23,37 +22,18 @@ namespace github {
 
         void Player::move(Uint16 new_x, Uint16 new_y) {
             if (checkY(new_y)) {
-                if (y < new_y) {
-                    movingVectorY = 1;
-                } else {
-                    movingVectorY = 0;
-                }
                 y = new_y;
             }
         }
 
-        bool Player::collision(Uint16 colX, Uint16 colY) {
-            Uint16 circleDistanceX = Canvas::abs((Sint16)(colX - x));
-            Uint16 circleDistanceY = abs((Sint16)(colY - y));
-
-            if (circleDistanceX > (WIDTH / 2 + 5)) {
-                return false;
+        const Component* Player::collision(Uint16 colX, Uint16 colY, Uint16 radius) {
+            if (colX <= (x - radius) || colX >= (x + WIDTH + radius)) {
+                return NULL;
             }
-            if (circleDistanceY > (HEIGHT / 2 + 5)) {
-                return false;
+            if (colY <= (y - radius) || colY >= (y + HEIGHT + radius)) {
+                return NULL;
             }
-
-            if (circleDistanceX <= (WIDTH / 2)) {
-                return true;
-            }
-            if (circleDistanceY <= (HEIGHT / 2)) {
-                return true;
-            }
-
-            Uint16 cornerDistance_sq = (circleDistanceX - WIDTH / 2)^2 +
-                    (circleDistanceY - HEIGHT / 2)^2;
-
-            return (cornerDistance_sq <= (5^2));
+            return this;
         }
 
     }

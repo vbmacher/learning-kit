@@ -162,7 +162,7 @@ namespace github {
                        *bufp = color;
 
 
-        void Canvas::fillCircle(Uint16 x0, Uint16 y0, Uint16 radius, Uint32 color) {
+        void Canvas::drawCircle(Uint16 x0, Uint16 y0, Uint16 radius, Uint32 color) {
             int f = 1 - radius;
             int ddF_x = 1;
             int ddF_y = -2 * radius;

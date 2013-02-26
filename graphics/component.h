@@ -22,11 +22,15 @@ namespace github {
         
         class Component : private boost::noncopyable {
         public:
+            Component() {}
+            
             virtual ~Component() {}
 
             virtual void draw(Canvas &canvas) = 0;
             
             virtual void move(Uint16 x, Uint16 y) = 0;
+            
+            virtual const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius) = 0;
         };
 
         class CompositeComponent : public Component {
@@ -51,6 +55,8 @@ namespace github {
             }
 
             void draw(Canvas &canvas);
+            
+            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius);
             
             void move(Uint16 x, Uint16 y) {
                 for (ComponentsType::iterator it = children.begin(); it != children.end(); it++) {

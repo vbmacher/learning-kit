@@ -79,11 +79,11 @@ namespace github {
                 fillRect(x, y, right_x, bottom_y, colorWhite);
             }
 
-            void fillCircle(Uint16 x, Uint16 y, Uint16 radius) {
-                fillCircle(x, y, radius, colorWhite);
+            void drawCircle(Uint16 x, Uint16 y, Uint16 radius) {
+                drawCircle(x, y, radius, colorWhite);
             }
             
-            void fillCircle(Uint16 x, Uint16 y, Uint16 radius, Uint32 color);
+            void drawCircle(Uint16 x, Uint16 y, Uint16 radius, Uint32 color);
             
             int getWidth() const { return width; }
             

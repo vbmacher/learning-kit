@@ -6,15 +6,25 @@
  */
 
 #include <iostream>
+#include <boost/make_shared.hpp>
 
 #include "game.h"
+#include "../graphics/canvas.h"
+#include "../graphics/table.h"
+#include "../graphics/wall.h"
 
 namespace github {
     namespace pong {
 
-        Game::Game(boost::shared_ptr<Canvas> canvas) : canvas(canvas), table(new Table()), running(false) {
-            component.addChild(table);
-            ball.reset(new Ball(canvas->getWidth()/2, canvas->getHeight()/2));
+        Game::Game(boost::shared_ptr<Canvas> canvas) : canvas(canvas), players(new Players()), running(false) {
+            int width = canvas->getWidth();
+            int height = canvas->getHeight();
+            
+            component.addChild(boost::make_shared<Table>());
+            component.addChild(players);
+            ball.reset(new Ball(width/2, height/2, width, height));
+            component.addChild(boost::make_shared<Wall>(5,5,width-10, 5));
+            component.addChild(boost::make_shared<Wall>(5,height-5,width-10, height-5));
         }
 
         void Game::start() {
@@ -33,26 +43,28 @@ namespace github {
             }
         }
         
-
         void Game::dispatchEvents() {
             while (running) {
                 if (canvas.get()) {
                     canvas->clearScreen();
                     component.draw(*canvas);
                     ball->draw(*canvas);
+                    canvas->updateScreen();
                     
-                    CompositeComponent::ComponentsType::value_type active = table->getActive();
-                    
-                    if (active.get()) {
-                        Player& activePlayer = dynamic_cast<Player&>(*active);
-                        if (activePlayer.collision(ball->getX(), ball->getY())) {
-                            std::cout << "A: " << activePlayer.getName() << " COLLISION " << std::endl;
-                            ball->updateVector(0, activePlayer.getMovingVectorY());
+                    if (!players->getActive().get()) {
+                        continue;
+                    }
+
+                    const Component* collide = component.collision(ball->getX(), ball->getY(), Ball::RADIUS);
+                    if (collide != NULL) {
+                        ball->changeAngle();
+
+                        const Player* player = dynamic_cast<const Player*> (collide);
+                        if (player != NULL) {
+                            std::cout << player->getName() << " HIT THE BALL!" << std::endl;
                         }
                     }
                     ball->moveAhead();
-                    
-                    canvas->updateScreen();
                 }
                 SDL_Delay(timeLeft(TICK_INTERVAL));
             }
@@ -67,7 +79,7 @@ namespace github {
         }
 
         void Game::onMouseClick() {
-            table->next();
+            players->next();
         }
 
         Uint32 Game::timeLeft(Uint32 tickInterval) {

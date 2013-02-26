@@ -9,36 +9,23 @@
 #define	TABLE_H
 
 #include "component.h"
-#include "canvas.h"
 
 namespace github {
     namespace pong {
         
         class Canvas;
 
-        class Table : public CompositeComponent {
-            int activeIndex;
+        class Table : public Component {
         public:
             Table();
             ~Table();
             
-            void removeChild(ComponentsType::iterator component);
-            
             void draw(Canvas &canvas);
             
-            void move(Uint16 x, Uint16 y);
+            void move(Uint16 x, Uint16 y) {}
             
-            void next() {
-                if (!children.empty()) {
-                  activeIndex = (activeIndex + 1) % children.size();
-                }
-            }
-            
-            ComponentsType::value_type getActive() {
-                if (!children.empty() && activeIndex >= 0) {
-                    return children[activeIndex];
-                }
-                return ComponentsType::value_type();
+            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius) {
+                return NULL;
             }
             
         };

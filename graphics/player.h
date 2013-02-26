@@ -25,8 +25,6 @@ namespace github {
             Uint16 minY;
             Uint16 maxY;
             
-            Uint16 movingVectorY;
-            
         public:
             static const int WIDTH = 10;
             static const int HEIGHT = 60;
@@ -44,11 +42,7 @@ namespace github {
                 return name;
             }
             
-            bool collision(Uint16 colX, Uint16 colY);
-            
-            Uint16 getMovingVectorY() const {
-                return movingVectorY;
-            }
+            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius);
             
         private:
             bool checkY(Uint16 newY) {

@@ -15,9 +15,9 @@
 #include <boost/thread.hpp>
 
 #include "../graphics/component.h"
-#include "../graphics/table.h"
 #include "../graphics/ball.h"
 #include "../graphics/player.h"
+#include "../graphics/players.h"
 #include "../graphics/eventHandler.h"
 
 #include "synchronization.h"
@@ -36,7 +36,7 @@ namespace github {
             boost::shared_ptr<Canvas> canvas;
             CompositeComponent component;
             
-            boost::shared_ptr<Table> table;
+            boost::shared_ptr<Players> players;
             boost::shared_ptr<Ball> ball;
             
             boost::shared_ptr<boost::thread> eventDispatcher;
@@ -53,15 +53,15 @@ namespace github {
             }
             
             void addPlayer(boost::shared_ptr<Player> player) {
-                table->addChild(player);
+                players->addChild(player);
             }
             
             void removePlayer(CompositeComponent::ComponentsType::iterator player) {
-                table->removeChild(player);
+                players->removeChild(player);
             }
             
             void nextPlayer() {
-                table->next();
+                players->next();
             }
             
             void start();

@@ -8,6 +8,8 @@
 #ifndef BALL_H
 #define	BALL_H
 
+#include <math.h>
+
 #include "component.h"
 
 namespace github {
@@ -17,13 +19,27 @@ namespace github {
         class Canvas;
 
         class Ball : public Component {
-            Uint16 x;
-            Uint16 y;
+            static const double M_2PI = 2 * M_PI;
+            double x;
+            double y;
             
-            Uint16 vector[2];
-            Uint16 velocity;
+            double tan_angle;
+            
+            Uint16 middleX;
+            Uint16 middleY;
+            
+            double angle;
+            double velocity;
+            
+            enum CollisionDirection {
+                LEFT, RIGHT, TOP, BOTTOM
+            };
+            
+            CollisionDirection collisionDirection;
         public:
-            Ball(Uint16 x, Uint16 y);
+            static const Uint16 RADIUS = 5;
+            
+            Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY);
             virtual ~Ball();
             
             Uint16 getX() const { return x; }
@@ -34,18 +50,15 @@ namespace github {
             
             void move(Uint16 x, Uint16 y);
             
-            void moveAhead() {
-                x = x + vector[0] * velocity;
-                y = y + vector[1] * velocity;
+            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius) {
+                return NULL;
             }
             
-            void updateVector(Uint16 normalX, Uint16 normalY) {
-                //Uint16 dot = vector[0] * normalX + vector[1] * normalY;
-                //vector[0] = vector[0] - 2 * dot * normalX;
-                //vector[1] = vector[1] - 2 * dot * normalY;
-                vector[0] = -vector[0];
-            }
-
+            void moveAhead();
+            
+            void changeAngle();
+        private:
+            void updateCollisionDirection();
         };
     }
 }
