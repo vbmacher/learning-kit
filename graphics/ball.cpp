@@ -16,11 +16,9 @@ namespace github {
 
     namespace pong {
 
-        Ball::Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY) : x(x), y(y), middleX(maxX/2), middleY(maxY/2),
-                velocity(5), angle(rand() % (int)(M_2PI + 1.0)) {
+        Ball::Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY) : x(x), y(y), maxX(maxX), maxY(maxY), velocity(5),
+                middleX(maxX/2), middleY(maxY/2), angle(rand() % (int)(M_2PI + 1.0)) {
             assert(maxX > 0);
-            tan_angle = tan(maxY/maxX);
-            updateCollisionDirection();
         }
 
         Ball::~Ball() {
@@ -38,52 +36,48 @@ namespace github {
         void Ball::moveAhead() {
             x += cos(angle) * velocity;
             y += sin(angle) * velocity;
-            updateCollisionDirection();
         }
 
         void Ball::changeAngle() {
-            switch (collisionDirection) {
-                case LEFT:
-                case RIGHT:
-                    angle = M_2PI - angle;
-                    break;
+            switch (getCollisionDirection()) {
                 case TOP:
                 case BOTTOM:
+                    angle = M_2PI - angle;
+                    break;
+                case LEFT:
+                case RIGHT:
                     angle = M_PI - angle;
                     break;
             }
         }
+        
+#define dotProduct(x0,y0,x1,y1) ((x0) * (x1) + (y0) * (y1))
+        static bool inTriangle(double x0, double y0, double x1, double y1, double x2, double y2, double px, double py) {
+            double dot00 = dotProduct(x2-x0, y2-y0, x2-x0, y2-y0);
+            double dot01 = dotProduct(x2-x0, y2-y0, x1-x0, y1-y0);
+            double dot02 = dotProduct(x2-x0, y2-y0, px-x0, py-y0);
+            double dot11 = dotProduct(x1-x0, y1-y0, x1-x0, y1-y0);
+            double dot12 = dotProduct(x1-x0, y1-y0, px-x0, py-y0);
 
-        void Ball::updateCollisionDirection() {
-            if (x <= middleX) {
-                if (y <= middleY) {
-                    if (tan(y / x) <= tan_angle) {
-                        collisionDirection = TOP;
-                    } else {
-                        collisionDirection = LEFT;
-                    }
-                } else {
-                    if (tan((middleY * 2 - y) / x) <= tan_angle) {
-                        collisionDirection = BOTTOM;
-                    } else {
-                        collisionDirection = LEFT;
-                    }
-                }
-            } else {
-                if (y <= middleY) {
-                    if (tan(y / (2 * middleX - x)) <= tan_angle) {
-                        collisionDirection = TOP;
-                    } else {
-                        collisionDirection = RIGHT;
-                    }
-                } else {
-                    if (tan((middleY * 2 - y) / (2 * middleX - x)) <= tan_angle) {
-                        collisionDirection = BOTTOM;
-                    } else {
-                        collisionDirection = RIGHT;
-                    }
-                }
+            // Compute barycentric coordinates
+            double invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
+            double u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+            double v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+
+            // Check if point is in triangle
+            return (u >= 0) && (v >= 0) && (u + v < 1);
+        }
+#undef dotProduct
+       
+        Ball::CollisionDirection Ball::getCollisionDirection() {
+            if (inTriangle(0, 0, maxX, 0, middleX, middleY, x, y)) {
+                return TOP;
+            } else if (inTriangle(0,0,middleX, middleY, 0, maxY, x, y)) {
+                return LEFT;
+            } else if (inTriangle(0, maxY, middleX, middleY, maxX, maxY, x, y)) {
+                return BOTTOM;
             }
+            return RIGHT;
         }
 
     }

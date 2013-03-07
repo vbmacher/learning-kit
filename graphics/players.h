@@ -9,6 +9,7 @@
 #define	PLAYERS_H
 
 #include "component.h"
+#include "player.h"
 
 namespace github {
     namespace pong {
@@ -19,7 +20,7 @@ namespace github {
             Players();
             ~Players();
             
-            void removeChild(ComponentsType::iterator component);
+            void removeChild(ComponentsIterator component);
             
             void move(Uint16 x, Uint16 y);
             
@@ -29,12 +30,7 @@ namespace github {
                 }
             }
             
-            ComponentsType::value_type getActive() {
-                if (!children.empty() && activeIndex >= 0) {
-                    return children[activeIndex];
-                }
-                return ComponentsType::value_type();
-            }
+            CompositeComponent::ComponentType getActive() const;
 
         };
     }

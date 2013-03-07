@@ -23,8 +23,10 @@ namespace github {
             component.addChild(boost::make_shared<Table>());
             component.addChild(players);
             ball.reset(new Ball(width/2, height/2, width, height));
-            component.addChild(boost::make_shared<Wall>(5,5,width-10, 5));
-            component.addChild(boost::make_shared<Wall>(5,height-5,width-10, height-5));
+            component.addChild(boost::make_shared<Wall>(5,5,width-10, 5, false));
+            component.addChild(boost::make_shared<Wall>(5,height-5,width-10, height-5, false));
+            component.addChild(boost::make_shared<Wall>(0,0,0, height-1, true));
+            component.addChild(boost::make_shared<Wall>(width-1,0,width-1, height-1, true));
         }
 
         void Game::start() {
@@ -32,38 +34,37 @@ namespace github {
                 stop();
             }
             running = true;
-            eventDispatcher.reset(new boost::thread(boost::bind(&Game::dispatchEvents, this)));
+            dispatcher.reset(new boost::thread(boost::bind(&Game::dispatchEvents, this)));
         }
 
         void Game::stop() {
             running = false;
-            if (eventDispatcher.get()) {
-                eventDispatcher->join();
-                eventDispatcher.reset();
+            if (dispatcher.get()) {
+                if (dispatcher->joinable()) {
+                    dispatcher->join();
+                }
+                dispatcher.reset();
             }
         }
         
         void Game::dispatchEvents() {
             while (running) {
-                if (canvas.get()) {
+                if (canvas) {
                     canvas->clearScreen();
                     component.draw(*canvas);
                     ball->draw(*canvas);
                     canvas->updateScreen();
                     
-                    if (!players->getActive().get()) {
+                    if (!players->getActive()) {
                         continue;
                     }
 
-                    const Component* collide = component.collision(ball->getX(), ball->getY(), Ball::RADIUS);
-                    if (collide != NULL) {
+                    bool collision = component.actionIfCollision(ball->getX(), ball->getY(), Ball::RADIUS);
+                    if (collision) {
                         ball->changeAngle();
-
-                        const Player* player = dynamic_cast<const Player*> (collide);
-                        if (player != NULL) {
-                            std::cout << player->getName() << " HIT THE BALL!" << std::endl;
-                        }
                     }
+                    
+                    // TODO: check for game end
                     ball->moveAhead();
                 }
                 SDL_Delay(timeLeft(TICK_INTERVAL));

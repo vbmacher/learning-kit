@@ -9,15 +9,20 @@ namespace github {
             }
         }
 
-        const Component* CompositeComponent::collision(Uint16 colX, Uint16 colY, Uint16 radius) {
-            for (ComponentsType::iterator it = children.begin(); it != children.end(); it++) {
-                const Component* collide = (*it)->collision(colX, colY, radius);
-                if (collide != NULL) {
-                    return collide;
-                }
+        void CompositeComponent::move(Uint16 x, Uint16 y) {
+            for (ComponentsIterator it = children.begin(); it != children.end(); it++) {
+                (*it)->move(x, y);
             }
-            return NULL;
         }
+
+        bool CompositeComponent::actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
+            bool collision = false;
+            for (ComponentsIterator it = children.begin(); it != children.end(); it++) {
+                collision |= (*it)->actionIfCollision(colX, colY, radius);
+            }
+            return collision;
+        }
+        
 
     }
 }

@@ -17,25 +17,33 @@
 
 namespace github {
     namespace pong {
-        
+
         class Canvas;
-        
+
         class Component : private boost::noncopyable {
+        protected:
+
+            Component() {
+            }
+
         public:
-            Component() {}
-            
-            virtual ~Component() {}
+            virtual ~Component() {
+            }
 
             virtual void draw(Canvas &canvas) = 0;
-            
+
             virtual void move(Uint16 x, Uint16 y) = 0;
-            
-            virtual const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius) = 0;
+
+            virtual bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) = 0;
         };
 
         class CompositeComponent : public Component {
         public:
-            typedef ::std::vector<boost::shared_ptr<Component> > ComponentsType;
+            typedef typename boost::shared_ptr<Component> ComponentType;
+        private:
+            typedef ::std::vector<ComponentType> ComponentsType;
+        public:
+            typedef typename ComponentsType::iterator ComponentsIterator;
         protected:
             ComponentsType children;
 
@@ -44,25 +52,23 @@ namespace github {
             CompositeComponent() : children() {
             }
 
-            virtual ~CompositeComponent() {}
+            virtual ~CompositeComponent() {
+            }
 
-            void addChild(ComponentsType::value_type component) {
+            void addChild(ComponentType component) {
                 children.push_back(component);
             }
 
-            void removeChild(ComponentsType::iterator component) {
+            void removeChild(ComponentsIterator component) {
                 children.erase(component);
             }
 
             void draw(Canvas &canvas);
-            
-            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius);
-            
-            void move(Uint16 x, Uint16 y) {
-                for (ComponentsType::iterator it = children.begin(); it != children.end(); it++) {
-                    (*it)->move(x, y);
-                }
-            }
+
+            void move(Uint16 x, Uint16 y);
+
+            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius);
+
         };
     }
 }

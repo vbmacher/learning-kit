@@ -8,6 +8,8 @@
 #ifndef TABLE_H
 #define	TABLE_H
 
+#include <boost/shared_ptr.hpp>
+
 #include "component.h"
 
 namespace github {
@@ -23,11 +25,11 @@ namespace github {
             void draw(Canvas &canvas);
             
             void move(Uint16 x, Uint16 y) {}
-            
-            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius) {
-                return NULL;
+
+            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
+                return false;
             }
-            
+
         };
 
     }

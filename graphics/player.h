@@ -10,6 +10,7 @@
 
 #include <string>
 #include <SDL.h>
+#include <boost/shared_ptr.hpp>
 
 #include "component.h"
 
@@ -33,7 +34,7 @@ namespace github {
 
             ~Player() {
             }
-
+            
             void draw(Canvas &canvas);
 
             void move(Uint16 new_x, Uint16 new_y);
@@ -42,8 +43,7 @@ namespace github {
                 return name;
             }
             
-            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius);
-            
+            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius);            
         private:
             bool checkY(Uint16 newY) {
                 return (newY + HEIGHT) <= maxY && (newY >= minY);

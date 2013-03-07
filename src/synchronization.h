@@ -16,7 +16,7 @@ namespace github {
         
         template<typename T>
         class Locked {
-            T var;
+            volatile T var;
             boost::mutex varMutex;
             
         public:

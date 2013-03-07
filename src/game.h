@@ -29,7 +29,7 @@ namespace github {
 
         class Game : private boost::noncopyable, public EventHandler {
         public:
-           // typedef std::vector<boost::shared_ptr<Player> > PlayersType;
+            typedef CompositeComponent::ComponentType ComponentType;
         private:
             const static int TICK_INTERVAL = 30;
             
@@ -39,25 +39,21 @@ namespace github {
             boost::shared_ptr<Players> players;
             boost::shared_ptr<Ball> ball;
             
-            boost::shared_ptr<boost::thread> eventDispatcher;
+            boost::shared_ptr<boost::thread> dispatcher;
             Locked<bool> running;
             friend class boost::thread;
         public:
             Game(boost::shared_ptr<Canvas> canvas);
                         
             ~Game() {
-                if (eventDispatcher.get()) {
+                if (dispatcher.get()) {
                     running = false;
-                    eventDispatcher->join();
+                    dispatcher->join();
                 }
             }
             
-            void addPlayer(boost::shared_ptr<Player> player) {
-                players->addChild(player);
-            }
-            
-            void removePlayer(CompositeComponent::ComponentsType::iterator player) {
-                players->removeChild(player);
+            boost::shared_ptr<Players> getPlayers() const {
+                return players;
             }
             
             void nextPlayer() {

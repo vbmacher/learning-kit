@@ -5,6 +5,8 @@
  * Created on Nedeľa, 2013, február 24, 16:05
  */
 
+#include <boost/enable_shared_from_this.hpp>
+
 #include "player.h"
 #include "canvas.h"
 
@@ -26,14 +28,14 @@ namespace github {
             }
         }
 
-        const Component* Player::collision(Uint16 colX, Uint16 colY, Uint16 radius) {
+        bool Player::actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
             if (colX <= (x - radius) || colX >= (x + WIDTH + radius)) {
-                return NULL;
+                return false;
             }
             if (colY <= (y - radius) || colY >= (y + HEIGHT + radius)) {
-                return NULL;
+                return false;
             }
-            return this;
+            return true;
         }
 
     }

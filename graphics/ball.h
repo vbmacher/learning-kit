@@ -9,6 +9,7 @@
 #define	BALL_H
 
 #include <math.h>
+#include <boost/shared_ptr.hpp>
 
 #include "component.h"
 
@@ -23,19 +24,14 @@ namespace github {
             double x;
             double y;
             
-            double tan_angle;
-            
             Uint16 middleX;
             Uint16 middleY;
+
+            Uint16 maxX;
+            Uint16 maxY;
             
             double angle;
             double velocity;
-            
-            enum CollisionDirection {
-                LEFT, RIGHT, TOP, BOTTOM
-            };
-            
-            CollisionDirection collisionDirection;
         public:
             static const Uint16 RADIUS = 5;
             
@@ -50,15 +46,19 @@ namespace github {
             
             void move(Uint16 x, Uint16 y);
             
-            const Component* collision(Uint16 colX, Uint16 colY, Uint16 radius) {
-                return NULL;
+            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
+                return false;
             }
             
             void moveAhead();
             
             void changeAngle();
         private:
-            void updateCollisionDirection();
+            enum CollisionDirection {
+                LEFT, RIGHT, TOP, BOTTOM
+            };
+            
+            CollisionDirection getCollisionDirection();
         };
     }
 }

@@ -24,8 +24,8 @@ namespace github {
             
             // Middle dotted line
             Uint16 middle_x = (width - 5) / 2;
-            canvas.dottedLine(middle_x, (Uint16)5, middle_x, (Uint16)(height - 10));
+            canvas.dottedLine(middle_x, (Uint16) 5, middle_x, (Uint16) (height - 10));
         }
-
+        
     }
 }

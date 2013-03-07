@@ -35,13 +35,6 @@ namespace github {
             Canvas(int width, int height);
             ~Canvas();
             
-            static Sint16 abs(Sint16 val) {
-                if (val < 0) {
-                    return -val;
-                }
-                return val;
-            }
-            
             void updateScreen() {
                 SDL_UpdateRect(screen, 0, 0, width, height);
             }
