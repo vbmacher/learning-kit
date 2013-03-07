@@ -17,6 +17,8 @@
 namespace github {
 
     namespace pong {
+        
+        class Ball;
 
         class Player : public Component {
             std::string name;
@@ -43,7 +45,7 @@ namespace github {
                 return name;
             }
             
-            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius);            
+            void actionIfCollision(Ball &ball);
         private:
             bool checkY(Uint16 newY) {
                 return (newY + HEIGHT) <= maxY && (newY >= minY);

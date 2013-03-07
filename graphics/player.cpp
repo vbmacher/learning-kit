@@ -9,6 +9,7 @@
 
 #include "player.h"
 #include "canvas.h"
+#include "ball.h"
 
 namespace github {
 
@@ -28,14 +29,17 @@ namespace github {
             }
         }
 
-        bool Player::actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
-            if (colX <= (x - radius) || colX >= (x + WIDTH + radius)) {
-                return false;
+        void Player::actionIfCollision(Ball &ball) {
+            Uint16 colX = ball.getX();
+            Uint16 colY = ball.getY();
+            if (colX <= (x - Ball::RADIUS) || colX >= (x + WIDTH + Ball::RADIUS)) {
+                return;
             }
-            if (colY <= (y - radius) || colY >= (y + HEIGHT + radius)) {
-                return false;
+            if (colY <= (y - Ball::RADIUS) || colY >= (y + HEIGHT + Ball::RADIUS)) {
+                return;
             }
-            return true;
+            // We have collision
+            ball.changeAngle();
         }
 
     }

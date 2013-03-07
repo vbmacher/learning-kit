@@ -15,6 +15,8 @@
 
 namespace github {
     namespace pong {
+        
+        class Ball;
 
         class Wall : public Component {
             Uint16 x0;
@@ -49,7 +51,7 @@ namespace github {
                 return hits;
             }
 
-            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius);
+            void actionIfCollision(Ball &ball);
 
         };
 

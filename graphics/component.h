@@ -19,6 +19,8 @@ namespace github {
     namespace pong {
 
         class Canvas;
+        
+        class Ball;
 
         class Component : private boost::noncopyable {
         protected:
@@ -34,7 +36,7 @@ namespace github {
 
             virtual void move(Uint16 x, Uint16 y) = 0;
 
-            virtual bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) = 0;
+            virtual void actionIfCollision(Ball &ball) = 0;
         };
 
         class CompositeComponent : public Component {
@@ -67,7 +69,7 @@ namespace github {
 
             void move(Uint16 x, Uint16 y);
 
-            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius);
+            void actionIfCollision(Ball &ball);
 
         };
     }

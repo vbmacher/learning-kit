@@ -59,13 +59,10 @@ namespace github {
                         continue;
                     }
 
-                    bool collision = component.actionIfCollision(ball->getX(), ball->getY(), Ball::RADIUS);
-                    if (collision) {
-                        ball->changeAngle();
-                    }
+                    component.actionIfCollision(*ball);
+                    ball->moveAhead();
                     
                     // TODO: check for game end
-                    ball->moveAhead();
                 }
                 SDL_Delay(timeLeft(TICK_INTERVAL));
             }

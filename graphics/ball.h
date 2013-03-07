@@ -46,8 +46,7 @@ namespace github {
             
             void move(Uint16 x, Uint16 y);
             
-            bool actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
-                return false;
+            void actionIfCollision(Ball &ball) {
             }
             
             void moveAhead();

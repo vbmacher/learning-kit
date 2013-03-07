@@ -8,6 +8,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include "wall.h"
+#include "ball.h"
 
 namespace github {
     namespace pong {
@@ -16,15 +17,18 @@ namespace github {
         , goalKeeper(goalKeeper), hits(0) {
         }
 
-        bool Wall::actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
-            if (colX < (x0 - radius) || colX > (x1 + radius)) {
-                return false;
+        void Wall::actionIfCollision(Ball &ball) {
+            Uint16 colX = ball.getX();
+            Uint16 colY = ball.getY();
+            
+            if (colX < (x0 - Ball::RADIUS) || colX > (x1 + Ball::RADIUS)) {
+                return;
             }
-            if (colY < (y0 - radius) || colY > (y1 + radius)) {
-                return false;
+            if (colY < (y0 - Ball::RADIUS) || colY > (y1 + Ball::RADIUS)) {
+                return;
             }
             hits++;
-            return true;
+            ball.changeAngle();
         }
     }
 }

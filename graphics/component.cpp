@@ -1,4 +1,5 @@
 #include "component.h"
+#include "ball.h"
 
 namespace github {
     namespace pong {
@@ -15,12 +16,10 @@ namespace github {
             }
         }
 
-        bool CompositeComponent::actionIfCollision(Uint16 colX, Uint16 colY, Uint16 radius) {
-            bool collision = false;
+        void CompositeComponent::actionIfCollision(Ball &ball) {
             for (ComponentsIterator it = children.begin(); it != children.end(); it++) {
-                collision |= (*it)->actionIfCollision(colX, colY, radius);
+                (*it)->actionIfCollision(ball);
             }
-            return collision;
         }
         
 
