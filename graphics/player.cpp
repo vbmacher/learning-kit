@@ -6,7 +6,7 @@
  */
 
 #include <math.h>
-#include <boost/enable_shared_from_this.hpp>
+#include <iostream>
 
 #include "player.h"
 #include "canvas.h"
@@ -20,7 +20,7 @@ namespace github {
         const Uint16 Player::HEIGHT = 100;
         
         Player::Player(std::string name, Uint16 x, Uint16 y, Uint16 yMin, Uint16 yMax) 
-                : name(name), x(x), y(y), minY(yMin), maxY(yMax) {
+                : name(name), x(x), y(y), minY(yMin), maxY(yMax), velocityY(0) {
         }
 
         void Player::draw(Canvas &canvas) {
@@ -29,6 +29,7 @@ namespace github {
 
         void Player::move(Uint16 new_x, Uint16 new_y) {
             if (checkY(new_y)) {
+                velocityY = 15.0 * ((double)new_y - (double)y) / (double)(maxY - HEIGHT);
                 y = new_y;
             }
         }
@@ -46,8 +47,8 @@ namespace github {
         void Player::actionIfCollision(Ball &ball) {
             if (isCollision(ball.getX(), ball.getY())) {
                 double half = (double)y + HEIGHT/2;
-                double influence = (30 * (ball.getY() - (double)(half)) / (HEIGHT/2)) * M_PI / 180;
-                ball.changeAngle(influence);
+                double influence = (30 * (ball.getY() - half) / (HEIGHT/2)) * M_PI / 180;
+                ball.changeAngle(influence, velocityY);
             }
 
             // just to be sure that the ball is out of the borders

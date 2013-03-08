@@ -29,6 +29,8 @@ namespace github {
             Uint16 minY;
             Uint16 maxY;
             
+            double velocityY;
+            
         public:
             static const Uint16 WIDTH;
             static const Uint16 HEIGHT;

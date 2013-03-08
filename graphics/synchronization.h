@@ -44,7 +44,7 @@ namespace github {
                 boost::lock_guard<boost::mutex> lock(varMutex);
                 return var - value;
             }
-            
+
             T operator*(const T& value) {
                 boost::lock_guard<boost::mutex> lock(varMutex);
                 return var * value;

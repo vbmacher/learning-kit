@@ -29,8 +29,7 @@ namespace github {
         
         void Wall::actionIfCollision(Ball &ball) {
             if (isCollision(ball.getX(), ball.getY())) {
-                //     double influence = (45 * (colY - (y+HEIGHT/2)) / (HEIGHT/2)) * M_PI / 180;
-                ball.changeAngle(0);
+                ball.changeAngle(0,0);
                 hits++;
             }
 

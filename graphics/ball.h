@@ -31,8 +31,9 @@ namespace github {
             Uint16 maxX;
             Uint16 maxY;
             
-            double angle;
-            Locked<double> velocity;
+            Locked<double> angle;
+            Locked<double> velocityX;
+            Locked<double> velocityY;
         public:
             static const double RADIUS;
             
@@ -56,15 +57,18 @@ namespace github {
             
             void moveAhead();
             
-            void setVelocity(double _velocity) {
-                velocity = _velocity;
+            void setVelocity(double _velocityX, double _velocityY) {
+                velocityX = _velocityX;
+                velocityY = _velocityY;
             }
             
             double getVelocity() const {
-                return velocity;
+                double velX = (double)velocityX;
+                double velY = (double)velocityY;
+                return sqrt(velX * velX + velY * velY);
             }
             
-            void changeAngle(double influence);
+            void changeAngle(double angleInfluence, double velocityInfluence);
         private:
             enum CollisionDirection {
                 LEFT, RIGHT, TOP, BOTTOM

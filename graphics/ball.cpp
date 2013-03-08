@@ -18,7 +18,8 @@ namespace github {
         
         const double Ball::RADIUS = 5;
 
-        Ball::Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY) : x(x), y(y), maxX(maxX), maxY(maxY), velocity(1.5),
+        Ball::Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY) : x(x), y(y), maxX(maxX), maxY(maxY),
+                velocityX(1.4), velocityY(1.4),
                 middleX(maxX/2), middleY(maxY/2), angle(rand() % (int)(M_2PI + 1.0)) {
             assert(maxX > 0);
         }
@@ -33,17 +34,17 @@ namespace github {
         void Ball::correctXY() {
             if (x <= RADIUS) {
                 x = RADIUS + 1;
-                changeAngle(0);
-            } else if (x >= (Uint16)(maxX - RADIUS)) {
+                changeAngle(0,0);
+            } else if (x >= (double)(maxX - RADIUS)) {
                 x = maxX - 1 - RADIUS;
-                changeAngle(0);
+                changeAngle(0,0);
             }
             if (y <= RADIUS) {
                 y = RADIUS + 1;
-                changeAngle(0);
-            } else if (y >= (Uint16)(maxY - RADIUS)) {
+                changeAngle(0,0);
+            } else if (y >= (double)(maxY - RADIUS)) {
                 y = maxY - 1 - RADIUS;
-                changeAngle(0);
+                changeAngle(0,0);
             }
         }
 
@@ -55,26 +56,27 @@ namespace github {
         }
 
         void Ball::moveAhead() {
-            x += cos(angle) * (double)velocity;
-            y += sin(angle) * (double)velocity;
+            x += cos(angle) * (double)velocityX;
+            y += sin(angle) * (double)velocityY;
             correctXY();
         }
 
-        void Ball::changeAngle(double influence) {
+        void Ball::changeAngle(double angleInfluence, double velocityInfluence) {
             switch (getCollisionDirection()) {
                 case TOP:
-                    angle = M_2PI - (angle - influence);
+                    angle = M_2PI - (angle - angleInfluence);
                     break;
                 case BOTTOM:
-                    angle = M_2PI - (angle + influence);
+                    angle = M_2PI - (angle + angleInfluence);
                     break;
                 case LEFT:
-                    angle = M_PI - (angle - influence);
+                    angle = M_PI - (angle - angleInfluence);
                     break;
                 case RIGHT:
-                    angle = M_PI - (angle + influence);
+                    angle = M_PI - (angle + angleInfluence);
                     break;
             }
+            velocityY += velocityInfluence;
         }
         
 #define dotProduct(x0,y0,x1,y1) ((x0) * (x1) + (y0) * (y1))
