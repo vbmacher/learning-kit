@@ -19,25 +19,18 @@ namespace github {
         class Ball;
 
         class Wall : public Component {
-            Uint16 x0;
-            Uint16 y0;
-            Uint16 x1;
-            Uint16 y1;
+            Uint16 x;
+            Uint16 y;
+            Uint16 width;
+            Uint16 height;
             bool goalKeeper;
             
             int hits;
         public:
-            Wall(Uint16 x0, Uint16 y0, Uint16 x1, Uint16 y1, bool goalKeeper);
+            Wall(Uint16 x, Uint16 y, Uint16 width, Uint16 height, bool goalKeeper);
             ~Wall() {}
 
             void draw(Canvas &canvas) {
-                if (!goalKeeper) {
-                    for (int i = x0; i <= x1; i+=2) {
-                        for (int j = y0; j <= y1; j++) {
-                            canvas.dottedLine(i,j,i+2,j+2);
-                        }
-                    }
-                }
             }
 
             void move(Uint16 x, Uint16 y) {
@@ -50,6 +43,8 @@ namespace github {
             int getHits() const {
                 return hits;
             }
+            
+            bool isCollision(Uint16 colX, Uint16 colY);
 
             void actionIfCollision(Ball &ball);
 

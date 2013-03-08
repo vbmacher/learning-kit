@@ -12,6 +12,7 @@
 #include "../graphics/canvas.h"
 #include "../graphics/table.h"
 #include "../graphics/wall.h"
+#include "../graphics/ball.h"
 
 namespace github {
     namespace pong {
@@ -23,10 +24,13 @@ namespace github {
             component.addChild(boost::make_shared<Table>());
             component.addChild(players);
             ball.reset(new Ball(width/2, height/2, width, height));
-            component.addChild(boost::make_shared<Wall>(5,5,width-10, 5, false));
-            component.addChild(boost::make_shared<Wall>(5,height-5,width-10, height-5, false));
-            component.addChild(boost::make_shared<Wall>(0,0,0, height-1, true));
-            component.addChild(boost::make_shared<Wall>(width-1,0,width-1, height-1, true));
+            
+            Uint16 min = Ball::RADIUS;
+            
+            component.addChild(boost::make_shared<Wall>(min,min,width - 2*min-1, 1, false));
+            component.addChild(boost::make_shared<Wall>(min,height-min-1,width-2*min-1, 1, false));
+            component.addChild(boost::make_shared<Wall>(min,min,1, height-1-min, true));
+            component.addChild(boost::make_shared<Wall>(width-min-1,min,1, height-1-min, true));
         }
 
         void Game::start() {
@@ -46,28 +50,24 @@ namespace github {
                 dispatcher.reset();
             }
         }
-        
+
         void Game::dispatchEvents() {
             while (running) {
-                if (canvas) {
-                    canvas->clearScreen();
-                    component.draw(*canvas);
-                    ball->draw(*canvas);
-                    canvas->updateScreen();
-                    
-                    if (!players->getActive()) {
-                        continue;
-                    }
-
-                    component.actionIfCollision(*ball);
-                    ball->moveAhead();
-                    
-                    // TODO: check for game end
+                if (!players->getActive()) {
+                    continue;
                 }
+                canvas->clearScreen();
+                component.draw(*canvas);
+                ball->draw(*canvas);
+                canvas->updateScreen();
+                component.actionIfCollision(*ball);
+
+                ball->moveAhead();
+                // TODO: check for game end
                 SDL_Delay(timeLeft(TICK_INTERVAL));
             }
         }
-        
+
         void Game::onWindowResize(int new_width, int new_height) {
             
         }

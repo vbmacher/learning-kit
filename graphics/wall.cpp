@@ -13,22 +13,31 @@
 namespace github {
     namespace pong {
 
-        Wall::Wall(Uint16 x0, Uint16 y0, Uint16 x1, Uint16 y1, bool goalKeeper) : x0(x0), y0(y0), x1(x1), y1(y1)
+        Wall::Wall(Uint16 x, Uint16 y, Uint16 width, Uint16 height, bool goalKeeper) : x(x), y(y), width(width), height(height)
         , goalKeeper(goalKeeper), hits(0) {
         }
 
+        bool Wall::isCollision(Uint16 colX, Uint16 colY) {
+            if (colX < (x - Ball::RADIUS) || colX > ((x+width) + Ball::RADIUS)) {
+                return false;
+            }
+            if (colY < (y - Ball::RADIUS) || colY > ((y+height) + Ball::RADIUS)) {
+                return false;
+            }
+            return true;
+        }
+        
         void Wall::actionIfCollision(Ball &ball) {
-            Uint16 colX = ball.getX();
-            Uint16 colY = ball.getY();
-            
-            if (colX < (x0 - Ball::RADIUS) || colX > (x1 + Ball::RADIUS)) {
-                return;
+            if (isCollision(ball.getX(), ball.getY())) {
+                //     double influence = (45 * (colY - (y+HEIGHT/2)) / (HEIGHT/2)) * M_PI / 180;
+                ball.changeAngle(0);
+                hits++;
             }
-            if (colY < (y0 - Ball::RADIUS) || colY > (y1 + Ball::RADIUS)) {
-                return;
-            }
-            hits++;
-            ball.changeAngle();
+
+            // just to be sure that the ball is out of the borders
+            do {
+                ball.moveAhead();
+            } while (isCollision(ball.getX(), ball.getY()));
         }
     }
 }

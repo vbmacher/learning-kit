@@ -15,8 +15,10 @@
 namespace github {
 
     namespace pong {
+        
+        const double Ball::RADIUS = 5;
 
-        Ball::Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY) : x(x), y(y), maxX(maxX), maxY(maxY), velocity(5),
+        Ball::Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY) : x(x), y(y), maxX(maxX), maxY(maxY), velocity(1.5),
                 middleX(maxX/2), middleY(maxY/2), angle(rand() % (int)(M_2PI + 1.0)) {
             assert(maxX > 0);
         }
@@ -27,26 +29,50 @@ namespace github {
         void Ball::draw(Canvas &canvas) {
             canvas.drawCircle(x, y, RADIUS);
         }
+        
+        void Ball::correctXY() {
+            if (x <= RADIUS) {
+                x = RADIUS + 1;
+                changeAngle(0);
+            } else if (x >= (Uint16)(maxX - RADIUS)) {
+                x = maxX - 1 - RADIUS;
+                changeAngle(0);
+            }
+            if (y <= RADIUS) {
+                y = RADIUS + 1;
+                changeAngle(0);
+            } else if (y >= (Uint16)(maxY - RADIUS)) {
+                y = maxY - 1 - RADIUS;
+                changeAngle(0);
+            }
+        }
+
 
         void Ball::move(Uint16 new_x, Uint16 new_y) {
             x = new_x;
             y = new_y;
+            correctXY();
         }
 
         void Ball::moveAhead() {
-            x += cos(angle) * velocity;
-            y += sin(angle) * velocity;
+            x += cos(angle) * (double)velocity;
+            y += sin(angle) * (double)velocity;
+            correctXY();
         }
 
-        void Ball::changeAngle() {
+        void Ball::changeAngle(double influence) {
             switch (getCollisionDirection()) {
                 case TOP:
+                    angle = M_2PI - (angle - influence);
+                    break;
                 case BOTTOM:
-                    angle = M_2PI - angle;
+                    angle = M_2PI - (angle + influence);
                     break;
                 case LEFT:
+                    angle = M_PI - (angle - influence);
+                    break;
                 case RIGHT:
-                    angle = M_PI - angle;
+                    angle = M_PI - (angle + influence);
                     break;
             }
         }

@@ -12,6 +12,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include "component.h"
+#include "synchronization.h"
 
 namespace github {
 
@@ -21,8 +22,8 @@ namespace github {
 
         class Ball : public Component {
             static const double M_2PI = 2 * M_PI;
-            double x;
-            double y;
+            Locked<double> x;
+            Locked<double> y;
             
             Uint16 middleX;
             Uint16 middleY;
@@ -31,16 +32,20 @@ namespace github {
             Uint16 maxY;
             
             double angle;
-            double velocity;
+            Locked<double> velocity;
         public:
-            static const Uint16 RADIUS = 5;
+            static const double RADIUS;
             
             Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY);
             virtual ~Ball();
             
-            Uint16 getX() const { return x; }
+            Uint16 getX() const { 
+                return x;
+            }
 
-            Uint16 getY() const { return y; }
+            Uint16 getY() const { 
+                return y;
+            }
             
             void draw(Canvas &canvas);
             
@@ -51,13 +56,23 @@ namespace github {
             
             void moveAhead();
             
-            void changeAngle();
+            void setVelocity(double _velocity) {
+                velocity = _velocity;
+            }
+            
+            double getVelocity() const {
+                return velocity;
+            }
+            
+            void changeAngle(double influence);
         private:
             enum CollisionDirection {
                 LEFT, RIGHT, TOP, BOTTOM
             };
             
             CollisionDirection getCollisionDirection();
+            
+            void correctXY();
         };
     }
 }

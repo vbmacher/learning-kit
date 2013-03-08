@@ -107,7 +107,7 @@ namespace github {
             }
         }
 
-        void Canvas::dottedLine(Uint16 x0, Uint16 y0, Uint16 x1, Uint16 y1, Uint32 color) {
+        void Canvas::dottedLine(Uint16 x0, Uint16 y0, Uint16 x1, Uint16 y1, Uint32 color, int dotGap) {
             Sint16 dx = abs((Sint16) x1 - (Sint16) x0);
             Sint16 dy = abs((Sint16) y1 - (Sint16) y0);
             Sint16 sx, sy;
@@ -137,7 +137,9 @@ namespace github {
                     Uint16 *bufp = (Uint16 *) screen->pixels + y0 * screen->pitch / 2 + x0;
                     *bufp = color;
                 }
-                dontPixel = (dontPixel + 1) % 5;
+                if (dotGap) {
+                    dontPixel = (dontPixel + 1) % dotGap;
+                }
 
                 if ((x0 == x1) && (y0 == y1)) {
                     break;
@@ -157,7 +159,7 @@ namespace github {
                 SDL_UnlockSurface(screen);
             }
         }
-        
+
 #define setPixel(x, y) bufp = (Uint16 *) screen->pixels + (y) * screen->pitch / 2 + (x); \
                        *bufp = color;
 

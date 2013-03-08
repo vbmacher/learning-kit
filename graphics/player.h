@@ -13,6 +13,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include "component.h"
+#include "synchronization.h"
 
 namespace github {
 
@@ -22,15 +23,15 @@ namespace github {
 
         class Player : public Component {
             std::string name;
-            Uint16 x;
-            Uint16 y;
+            Locked<Uint16> x;
+            Locked<Uint16> y;
             
             Uint16 minY;
             Uint16 maxY;
             
         public:
-            static const int WIDTH = 10;
-            static const int HEIGHT = 60;
+            static const Uint16 WIDTH;
+            static const Uint16 HEIGHT;
             
             Player(std::string name, Uint16 x, Uint16 y, Uint16 yMin, Uint16 yMax);
 
@@ -51,6 +52,7 @@ namespace github {
                 return (newY + HEIGHT) <= maxY && (newY >= minY);
             }
 
+            bool isCollision(Uint16 colX, Uint16 colY);
         };
 
     }
