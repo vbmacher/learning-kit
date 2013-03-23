@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Player.h
  * Author: vbmacher
  *
@@ -18,28 +18,25 @@
 namespace github {
 
     namespace pong {
-        
+
         class Ball;
 
         class Player : public Component {
             std::string name;
-            Locked<Uint16> x;
-            Locked<Uint16> y;
-            
-            Uint16 minY;
-            Uint16 maxY;
-            
+
+            Uint32 lastDrawTime;
+            Uint16 lastY;
             double velocityY;
-            
+
         public:
             static const Uint16 WIDTH;
             static const Uint16 HEIGHT;
-            
-            Player(std::string name, Uint16 x, Uint16 y, Uint16 yMin, Uint16 yMax);
+
+            Player(std::string name, Uint16 x, Uint16 y, Uint16 yMin, Uint16 yMax, Uint16 collisionTolerance);
 
             ~Player() {
             }
-            
+
             void draw(Canvas &canvas);
 
             void move(Uint16 new_x, Uint16 new_y);
@@ -47,14 +44,21 @@ namespace github {
             std::string const &getName() const {
                 return name;
             }
-            
+
             void actionIfCollision(Ball &ball);
-        private:
+        protected:
+            Locked<Uint16> x;
+            Locked<Uint16> y;
+
+            Uint16 minY;
+            Uint16 maxY;
+
             bool checkY(Uint16 newY) {
                 return (newY + HEIGHT) <= maxY && (newY >= minY);
             }
+            void computeVelocity();
 
-            bool isCollision(Uint16 colX, Uint16 colY);
+            virtual bool isCollision(Uint16 colX, Uint16 colY) = 0;
         };
 
     }

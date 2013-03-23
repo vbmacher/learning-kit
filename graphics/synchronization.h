@@ -23,16 +23,21 @@ namespace github {
         public:
             Locked(T variable) : var(variable) {}
             
-            Locked &operator=(const T& value) {
+            Locked<T> &operator=(const T& value) {
                 boost::lock_guard<boost::mutex> lock(varMutex);
                 var = value;
                 return *this;
             }
             
-            Locked &operator+=(const T& value) {
+            Locked<T> &operator+=(const Locked<T>& value) {
                 boost::lock_guard<boost::mutex> lock(varMutex);
-                var += value;
+                var += (T)value;
                 return *this;
+            }
+            
+            Locked<T> &operator+(const Locked<T>& value) const {
+                boost::lock_guard<boost::mutex> lock(varMutex);
+                return Locked<T>(var + (T)value);
             }
             
             T operator+(const T& value) const {
@@ -40,14 +45,19 @@ namespace github {
                 return var + value;
             }
             
+            Locked<T> &operator-(const Locked<T>& value) const {
+                boost::lock_guard<boost::mutex> lock(varMutex);
+                return Locked<T>(var - (T)value);
+            }
+
             T operator-(const T& value) const {
                 boost::lock_guard<boost::mutex> lock(varMutex);
                 return var - value;
             }
-
-            T operator*(const T& value) {
+            
+            Locked<T> &operator*(const Locked<T>& value) const {
                 boost::lock_guard<boost::mutex> lock(varMutex);
-                return var * value;
+                return Locked<T>(var * (T)value);
             }
             
             bool operator==(const T& value) const {
@@ -55,7 +65,16 @@ namespace github {
                 return var == value;
             }
             
+            bool operator==(const Locked<T>& value) const {
+                boost::lock_guard<boost::mutex> lock(varMutex);
+                return var == (T)value;
+            }
+            
             bool operator!=(const T& value) const {
+                return !(*this == value);
+            }
+            
+            bool operator!=(const Locked<T>& value) const {
                 return !(*this == value);
             }
             
@@ -69,17 +88,7 @@ namespace github {
                 return var >= value;
             }
             
-            operator bool() const {
-                boost::lock_guard<boost::mutex> lock(varMutex);
-                return var;
-            }
-
-            operator double() const {
-                boost::lock_guard<boost::mutex> lock(varMutex);
-                return var;
-            }
-            
-            operator Uint16() const {
+            operator T() const {
                 boost::lock_guard<boost::mutex> lock(varMutex);
                 return var;
             }

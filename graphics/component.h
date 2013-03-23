@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Component.h
  * Author: vbmacher
  *
@@ -19,13 +19,14 @@ namespace github {
     namespace pong {
 
         class Canvas;
-        
+
         class Ball;
 
         class Component : private boost::noncopyable {
         protected:
+            Uint16 collisionTolerance;
 
-            Component() {
+            Component(Uint16 collisionTolerance) : collisionTolerance(collisionTolerance) {
             }
 
         public:
@@ -39,30 +40,22 @@ namespace github {
             virtual void actionIfCollision(Ball &ball) = 0;
         };
 
-        class CompositeComponent : public Component {
+        class CompositeComponent : public Component, public ::std::vector<boost::shared_ptr<Component> > {
         public:
-            typedef typename boost::shared_ptr<Component> ComponentType;
-        private:
+            typedef boost::shared_ptr<Component> ComponentType;
             typedef ::std::vector<ComponentType> ComponentsType;
-        public:
-            typedef typename ComponentsType::iterator ComponentsIterator;
-        protected:
-            ComponentsType children;
 
-        public:
+            CompositeComponent(Uint16 collisionTolerance) : Component(collisionTolerance) {}
 
-            CompositeComponent() : children() {
-            }
+            virtual ~CompositeComponent() {}
 
-            virtual ~CompositeComponent() {
-            }
-
-            void addChild(ComponentType component) {
-                children.push_back(component);
-            }
-
-            void removeChild(ComponentsIterator component) {
-                children.erase(component);
+            void erase(ComponentType component) {
+                for (ComponentsType::iterator it = begin(); it != end(); ++it) {
+                    if ((*it) == component) {
+                        ComponentsType::erase(it);
+                        return;
+                    }
+                }
             }
 
             void draw(Canvas &canvas);
