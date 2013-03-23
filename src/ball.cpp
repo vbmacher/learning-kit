@@ -19,7 +19,7 @@ namespace github {
         const Uint16 Ball::RADIUS = 5;
 
         Ball::Ball(Uint16 x, Uint16 y, Uint16 maxX, Uint16 maxY)
-                : Component(0), x(x), y(y), maxX(maxX), maxY(maxY), velocityX(20), velocityY(20), middleX(maxX/2),
+                : Component(0), x(x), y(y), maxX(maxX), maxY(maxY), velocityX(10), velocityY(10), middleX(maxX/2),
                   middleY(maxY/2), angle(rand() % (int)(M_2PI + 1.0)) {
             assert(maxX > 0);
         }

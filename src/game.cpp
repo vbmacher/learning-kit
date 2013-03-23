@@ -127,14 +127,14 @@ namespace github {
 
                 component.actionIfCollision(*ball);
                 ball->moveAhead();
-/*
+
                 if (leftWall->isGoal()) {
                     running = false;
                     std::cout << "Winner is on the RIGHT side" << std::endl;
                 } else if (rightWall->isGoal()) {
                     running = false;
                     std::cout << "Winner is on the LEFT side" << std::endl;
-                }*/
+                }
 
                 SDL_Delay(timeLeft(TICK_INTERVAL));
             }
