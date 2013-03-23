@@ -65,7 +65,8 @@ namespace github {
 
             CollisionDirection getCollisionDirection();
 
-            void correctXY();
+            Uint16 correctX();
+            Uint16 correctY();
         };
     }
 }
