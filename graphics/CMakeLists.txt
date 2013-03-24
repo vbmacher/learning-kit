@@ -1,5 +1,5 @@
 ADD_LIBRARY(Graphics STATIC
-    canvas.cpp component.cpp
+    canvas.cpp
 )
 
 TARGET_LINK_LIBRARIES(Graphics m)

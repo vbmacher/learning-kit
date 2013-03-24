@@ -101,7 +101,7 @@ namespace github {
             canvas->fillRect(200, 440, 340, 450);
 
             canvas->fillRect(400, 60, 410, 450);
-            canvas->fillLine(390, 50, 540, 440, 20);
+            canvas->fillLine(400, 60, 540, 440, 10);
             canvas->fillRect(540, 60, 550, 450);
 
             canvas->fillRect(600, 60, 610, 450);

@@ -15,10 +15,9 @@
 #include <boost/thread.hpp>
 #include <boost/thread/mutex.hpp>
 
-#include "../graphics/component.h"
 #include "../graphics/eventHandler.h"
-
-#include "synchronization.h"
+#include "../components/component.h"
+#include "../components/synchronization.h"
 
 namespace github {
     namespace pong {
