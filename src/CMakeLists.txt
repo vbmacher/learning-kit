@@ -5,6 +5,6 @@ link_directories(${Pong_BINARY_DIR}/src)
 
 add_executable(Pong main.cpp game.cpp)
 
-set(CORELIBS ${SDL_LIBRARY} Graphics Components)
+set(PONGLIBS Graphics Components)
 
-target_link_libraries(Pong ${CORELIBS} ${Boost_LIBRARIES})
+target_link_libraries(Pong ${PONGLIBS} ${SDL_LIBRARY} ${SDL_ttf_LIBRARY} ${Boost_LIBRARIES})

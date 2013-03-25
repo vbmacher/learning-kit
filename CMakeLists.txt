@@ -30,6 +30,10 @@ find_package(SDL)
 if (SDL_FOUND)
     include_directories(${SDL_INCLUDE_DIR})
 endif()
+find_package(SDL_ttf REQUIRED )
+if (SDL_ttf_FOUND)
+    include_directories(${SDL_ttf_INCLUDE_DIR})
+endif()
 
 ################################
 # Pong
