@@ -46,7 +46,7 @@ namespace github {
         void Player::computeVelocity() {
             Uint32 time = SDL_GetTicks();
             Uint16 _y = y;
-            double diffY = (_y - lastY) / 100.0;
+            double diffY = (_y - lastY) / 50.0;
             lastY = _y;
 
             velocityY = diffY / (time - lastDrawTime + 1);

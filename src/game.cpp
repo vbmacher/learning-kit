@@ -69,7 +69,7 @@ namespace github {
             Uint16 yMax = canvas->getHeight() - 10;
             Uint16 xMax = canvas->getWidth() - 22;
 
-            Uint16 yMin = Ball::RADIUS + 3;
+            Uint16 yMin = Ball::RADIUS;
             Uint16 xMin = Ball::RADIUS + 3;
 
             if (playground == PLAYGROUND_LEFT) {
