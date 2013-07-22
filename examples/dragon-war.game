@@ -1,6 +1,7 @@
-Game.name = 'Lost in forest'
 
-Game.objects {
+game.name = 'Lost in forest'
+
+game.objects {
 
     sword(
         name:'Kings sword',
@@ -22,7 +23,7 @@ Game.objects {
 
 }
 
-Game.rooms {
+game.rooms {
 
     start(
         name:'Sharewood land',
@@ -52,7 +53,7 @@ Game.rooms {
     )
 }
 
-Game.action { rooms, objects ->
+game.action { rooms, objects ->
         
     objects.with {
         dragon.lives = 100

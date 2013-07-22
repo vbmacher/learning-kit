@@ -3,33 +3,33 @@ package storyteller
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 
+// Thread safe.
 class Game {
     static final int WINNER = 0;
     static final int LOSER = 1;
     static final int CONTINUE = 2;
 
-    static final ConcurrentMap<String, GameObject> objects = new ConcurrentHashMap<String,GameObject>();
-    static final ConcurrentMap<String, Room> rooms = new ConcurrentHashMap<String, Room>();
+    final ConcurrentMap<String, GameObject> objects = new ConcurrentHashMap<String,GameObject>();
+    final ConcurrentMap<String, Room> rooms = new ConcurrentHashMap<String, Room>();
+    def volatile String name = 'A story'
 
-    static {
+    Game() {
         objects.put('player', new Player())
     }
 
-    def static volatile String name = 'A story'
-
-    def static objects(Closure closure) {
+    def objects(Closure closure) {
         def builder = new GameObjectBuilder(objects)
         closure.delegate = builder
         closure()
     }
 
-    def static rooms(Closure closure) {
+    def rooms(Closure closure) {
         def builder = new RoomBuilder(rooms, objects)
         closure.delegate = builder
         closure()
     }
 
-    def static action(Closure closure) {
+    def action(Closure closure) {
         closure.delegate = Game
         closure(rooms, objects)
     }

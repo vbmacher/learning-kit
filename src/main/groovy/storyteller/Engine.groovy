@@ -1,23 +1,20 @@
 package storyteller
 
 class Engine {
+    private final Script gameScript
 
-    private void initObjects() {
+    private Game game;
+    private Binding binding;
 
-    }
-
-    private void initRooms() {
-
-    }
-
-    private void initAction() {
-
+    Engine(Script gameScript) {
+        this.gameScript = gameScript;
     }
 
     def newGame() {
-        initObjects()
-        initRooms()
-        initAction()
+        game = new Game()
+        binding = new Binding(game: game)
     }
+
+
 }
 

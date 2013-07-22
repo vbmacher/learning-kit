@@ -3,7 +3,7 @@ package storyteller
 import java.awt.Point
 import java.util.concurrent.CopyOnWriteArrayList
 
-// Thread safe, only if you use methods inside this class.
+// Thread-safe, only if you use methods inside this class. Expando is not thread-safe.
 class GameObject extends Expando {
     private final List<GameObject> children = new CopyOnWriteArrayList<GameObject>();
     def volatile image
@@ -35,8 +35,8 @@ class GameObject extends Expando {
     private void updateImage(imageFile) {
         try {
             this.image = image(file: imageFile)
-        } catch (Exception e) {
-            println(Arrays.toString(e.getStackTrace()))
+        } catch (Throwable e) {
+            e.printStackTrace()
         }
     }
 

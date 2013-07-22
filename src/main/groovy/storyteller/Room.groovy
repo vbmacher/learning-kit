@@ -3,7 +3,7 @@ package storyteller
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 
-// Thread-safe only when using methods inside this class.
+// Thread-safe only when using methods inside this class. Expando is not thread-safe.
 class Room extends Expando {
     def volatile image
     def final objectName
@@ -41,8 +41,8 @@ class Room extends Expando {
     private void updateImage(imageFile) {
         try {
             this.image = image(file: imageFile)
-        } catch (Exception e) {
-            println(Arrays.toString(e.getStackTrace()))
+        } catch (Throwable e) {
+            e.printStackTrace()
         }
     }
 

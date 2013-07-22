@@ -1,14 +1,14 @@
 package storyteller
 
 class GameTest extends GroovyTestCase {
+    def Game game
 
-    void tearDown() {
-        Game.objects.clear()
-        Game.rooms.clear()
+    void setUp() {
+        game = new Game()
     }
 
     void testMakeObjects() {
-        Game.objects {
+        game.objects {
             sword(
                 name:'Kings sword',
                 position: [x:500,y:1000],
@@ -21,14 +21,14 @@ class GameTest extends GroovyTestCase {
                 image:'dragon.png'
             )
         }
-        assert Game.objects['sword'] instanceof GameObject
-        assert Game.objects['dragon'] instanceof GameObject
+        assert game.objects['sword'] instanceof GameObject
+        assert game.objects['dragon'] instanceof GameObject
 
-        assert Game.objects.sword.name == 'Kings sword'
+        assert game.objects.sword.name == 'Kings sword'
     }
 
     void testMakeRooms() {
-        Game.rooms {
+        game.rooms {
             start(
                 name:'Sharewood land',
                 image:'forest.png',
@@ -41,14 +41,14 @@ class GameTest extends GroovyTestCase {
             )
         }
 
-        assert Game.rooms['start'] instanceof Room
-        assert Game.rooms['start'].name == 'Sharewood land'
+        assert game.rooms['start'] instanceof Room
+        assert game.rooms['start'].name == 'Sharewood land'
     }
 
     void testAction() {
-        Game.objects { sword(name:'Kings sword'); dragon(name:'Dragon') }
-        Game.rooms { start(name:'Sharewood land', objects: [ 'sword', 'dragon' ]); forest(name:'Deep forest') }
-        Game.action { rooms, objects ->
+        game.objects { sword(name:'Kings sword'); dragon(name:'Dragon') }
+        game.rooms { start(name:'Sharewood land', objects: [ 'sword', 'dragon' ]); forest(name:'Deep forest') }
+        game.action { rooms, objects ->
             objects.with {
                 dragon.lives = 100
                 sword.moveable = true
@@ -71,15 +71,15 @@ class GameTest extends GroovyTestCase {
             }
         }
 
-        assert Game.objects.size() == 2
-        assert Game.rooms.size() == 3
-        assert Game.objects.dragon.lives == 100
-        assert Game.objects.sword.moveable == true
-        assert Game.objects.sword.useable instanceof Closure
-        assert Game.objects.dragon.timer instanceof Map
-        assert Game.objects.dragon.timer.action instanceof Closure
-        assert Game.rooms.current == Game.rooms.start
-        assert Game.rooms.forest.init instanceof Closure
+        assert game.objects.size() == 3 // including player
+        assert game.rooms.size() == 3 // including current
+        assert game.objects.dragon.lives == 100
+        assert game.objects.sword.moveable == true
+        assert game.objects.sword.useable instanceof Closure
+        assert game.objects.dragon.timer instanceof Map
+        assert game.objects.dragon.timer.action instanceof Closure
+        assert game.rooms.current == game.rooms.start
+        assert game.rooms.forest.init instanceof Closure
     }
 }
 
