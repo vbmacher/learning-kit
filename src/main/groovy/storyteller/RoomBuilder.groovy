@@ -12,6 +12,7 @@ class RoomBuilder extends BuilderSupport {
 
     @Override
     protected void setParent(Object parent, Object child) {
+        throw new UnsupportedOperationException("Rooms cannot have children")
     }
 
     public Iterator iterator() {

@@ -29,7 +29,7 @@ class RoomBuilderTest extends GroovyTestCase {
             castle: 'Walk on the road',
             forest: 'Look into the forest'
         ]
-        assert room.objects == []
+        assert room.objects == [:]
         assert rooms.start == room
     }
 
@@ -39,11 +39,11 @@ class RoomBuilderTest extends GroovyTestCase {
         def builder = new RoomBuilder(rooms, objects)
 
         def room = builder.someRoom(
-            objects: [ 'sword']
+            objects: [ 'sword' ]
         )
 
-        assert room.objects == [ gameObject ]
-        assert room.sword == gameObject
+        assert room.objects == [ 'sword':gameObject ]
+        assert room.objects.sword == gameObject
     }
 
     void testInsertAndRemoveObject() {
@@ -52,14 +52,15 @@ class RoomBuilderTest extends GroovyTestCase {
         def builder = new RoomBuilder(rooms, objects)
 
         def room = builder.someRoom(name:'room')
-        room.insertObject(gameObject)
+        room.put(gameObject)
 
-        assert room.objects == [ gameObject ]
-        assert room.sword == gameObject
+        assert room.objects == [ 'sword':gameObject ]
+        assert room.objects.sword == gameObject
 
-        room.removeObject(gameObject)
-        assert room.objects == []
-        assert room.sword == null
+        def tmp = room.take('sword')
+        assert tmp == gameObject
+        assert room.objects == [:]
+        assert room.objects.sword == null
     }
 }
 

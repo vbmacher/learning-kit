@@ -59,11 +59,11 @@ Game.action { rooms, objects ->
         player.lives = 100
 
         apple.health = 10
-         apple.moveable = true    
+        apple.moveable = true    
         sword.moveable = true
         
-        sword.useable = { currentRoom ->
-            if (currentRoom.dragon?.kill(20)) {
+        sword.useable = { objectsInTheRoom ->
+            if (objectsInTheRoom.dragon?.kill(20)) {
                 WINNER
             }
         }

@@ -16,7 +16,7 @@ class Room extends Expando {
         attributes.remove('objects')?.each {
             object = allObjects[it]
             if (object != null) {
-                this.objects << object
+                objects.put(it, object)
             }
         }
         setProperty('objects', objects)
