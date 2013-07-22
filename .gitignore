@@ -4,3 +4,8 @@
 *.jar
 *.war
 *.ear
+
+# IDE #
+build/
+.gradle/
+.nb-gradle/

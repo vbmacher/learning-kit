@@ -1,0 +1,88 @@
+Game.name = 'Lost in forest'
+
+Game.objects {
+
+	sword(
+		name:'Kings sword',
+		position: [500,1000],
+		image: 'sword.png'
+	)
+		
+	dragon(
+		name:'Dragon Helicop',
+		position: [10,10],
+		image: 'dragon.png'
+	)
+
+	apple(
+		name: 'Energizing apple',
+		position: [100,100],
+		image: 'apple.png'
+	)
+
+}
+
+Game.rooms {
+
+	start(
+		name:'Sharewood land',
+		image:'forest.png',
+		info: 'What you gonna do?',
+		actions: [
+		    castle: 'Walk on the road',
+			forest: 'Look into the forest'
+		],
+		objects: [ 'sword', 'player' ]
+	)
+
+	castle(
+	    name: 'Old castle',
+		image:'castle.png',
+		info: 'Oh my god! Dragon! What next?',
+		actions: [
+		    start: 'Run away...'
+		],
+		objects: [ 'dragon', 'apple' ]
+	)
+	
+	forest(
+	    name: 'Deep forest',
+		image: 'forest.png',
+		info: 'You were killed by horrible forest monster'
+	)
+}
+
+Game.action { rooms, objects ->
+    	
+	objects.with {
+        dragon.lives = 100
+        player.lives = 100
+
+        apple.health = 10
+     	apple.moveable = true	
+        sword.moveable = true
+		
+	    sword.useable = { currentRoom ->
+            if (currentRoom.dragon?.kill(20)) {
+		        WINNER
+	        }
+	    }
+	
+	    dragon.timer = [
+			start: 1,
+			repeat: 1,
+			action: {
+				if (player.kill(20)) {
+					LOSER
+				}
+		    }
+	    ]
+
+	}
+	
+	rooms.with {
+        current = start
+	    forest.init = { LOSER }
+	}
+
+}
