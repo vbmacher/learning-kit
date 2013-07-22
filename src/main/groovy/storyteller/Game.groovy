@@ -13,10 +13,6 @@ class Game {
     final ConcurrentMap<String, Room> rooms = new ConcurrentHashMap<String, Room>();
     def volatile String name = 'A story'
 
-    Game() {
-        objects.put('player', new Player())
-    }
-
     def objects(Closure closure) {
         def builder = new GameObjectBuilder(objects)
         closure.delegate = builder

@@ -1,20 +1,32 @@
 package storyteller
 
+// Thread-safe.
 class Engine {
-    private final Script gameScript
+    private final String gameScript
+    private Game game; // Guarded by "this"
+    private Player player = new Player();
 
-    private Game game;
-    private Binding binding;
+    Engine(File gameFile) {
+        this.gameScript = gameFile.text
+    }
 
-    Engine(Script gameScript) {
-        this.gameScript = gameScript;
+    Engine(String gameScript) {
+        this.gameScript = gameScript
     }
 
     def newGame() {
-        game = new Game()
-        binding = new Binding(game: game)
+        stop()
+        synchronized(this) {
+            game = new Game()
+            new GroovyShell(new Binding(game: game, player:player)).evaluate(gameScript)
+        }
     }
 
+    def synchronized start() {
+    }
 
+    def synchronized stop() {
+
+    }
 }
 

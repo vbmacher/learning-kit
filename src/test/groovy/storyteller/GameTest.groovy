@@ -37,7 +37,7 @@ class GameTest extends GroovyTestCase {
                     castle: 'Walk on the road',
                     forest: 'Look into the forest'
                 ],
-                objects: ['sword', 'player']
+                objects: ['sword']
             )
         }
 
@@ -71,7 +71,7 @@ class GameTest extends GroovyTestCase {
             }
         }
 
-        assert game.objects.size() == 3 // including player
+        assert game.objects.size() == 2
         assert game.rooms.size() == 3 // including current
         assert game.objects.dragon.lives == 100
         assert game.objects.sword.moveable == true

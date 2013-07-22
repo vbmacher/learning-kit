@@ -33,7 +33,7 @@ game.rooms {
             castle: 'Walk on the road',
             forest: 'Look into the forest'
         ],
-        objects: [ 'sword', 'player' ]
+        objects: [ 'sword' ]
     )
 
     castle(
