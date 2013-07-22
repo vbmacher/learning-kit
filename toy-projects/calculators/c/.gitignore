@@ -1,0 +1,8 @@
+*.*~
+lecalc
+*~
+*.cache
+*.log
+*.status
+src/.deps
+*.o

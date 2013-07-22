@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://en.wikipedia.org/wiki/Interval_tree -->
+<html lang="en" dir="ltr" class="ve-not-available client-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"><title>Interval tree - Wikipedia, the free encyclopedia</title>
+<meta name="generator" content="MediaWiki 1.23wmf6">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit">
+<link rel="edit" title="Edit this page" href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit">
+<link rel="apple-touch-icon" href="http://bits.wikimedia.org/apple-touch/wikipedia.png">
+<link rel="shortcut icon" href="http://bits.wikimedia.org/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://en.wikipedia.org/w/opensearch_desc.php" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://en.wikipedia.org/w/api.php?action=rsd">
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="http://en.wikipedia.org/w/index.php?title=Special:RecentChanges&feed=atom">
+<link rel="canonical" href="./Interval tree - Wikipedia, the free encyclopedia_files/Interval tree - Wikipedia, the free encyclopedia.htm">
+<link rel="stylesheet" href="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&lang=en&modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cteahouse%7Cext.geshi.local%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cext.wikihiero%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmw.PopUpMediaTransform%7Cskins.vector&only=styles&skin=vector&*">
+<style>
+@media print{#centralNotice{display:none}}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:ddb0c98a055632ae8e349c9cf48ac703 */
+.tipsy{padding:5px;position:absolute;z-index:100000;cursor:default}.tipsy-inner{padding:5px 8px 4px 8px; background-color:#ffffff;border:solid 1px #a7d7f9;color:black;max-width:15em;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px; }.tipsy-arrow{position:absolute;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALAgMAAADUwp+1AAAACVBMVEX5+fmn1/n///9s6BFKAAAAAXRSTlMAQObYZgAAACpJREFUCB1jZBD4wMiQMoeRcUU4I9uSaYxSE54xZjn8AtMgPkgcJA9UBwAeDw1Qrb3pVAAAAABJRU5ErkJggg==) no-repeat top left;background:url(//bits.wikimedia.org/static-1.23wmf6/resources/jquery.tipsy/images/tipsy.png?2013-12-05T18:28:20Z) no-repeat top left!ie;width:11px;height:6px} .tipsy-n .tipsy-arrow{top:0px;left:50%;margin-left:-5px} .tipsy-nw .tipsy-arrow{top:1px;left:10px} .tipsy-ne .tipsy-arrow{top:1px;right:10px} .tipsy-s .tipsy-arrow{bottom:0px;left:50%;margin-left:-5px;background-position:bottom left} .tipsy-sw .tipsy-arrow{bottom:0px;left:10px;background-position:bottom left} .tipsy-se .tipsy-arrow{bottom:0px;right:10px;background-position:bottom left} .tipsy-e .tipsy-arrow{top:50%;margin-top:-5px;right:1px;width:5px;height:11px;background-position:top right} .tipsy-w .tipsy-arrow{top:50%;margin-top:-5px;left:0px;width:6px;height:11px}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:15c56f3076ea9dafc7cd64accbdb35f9 */
+.mw-editsection{white-space:nowrap;padding-right:0.25em; unicode-bidi:-moz-isolate;unicode-bidi:-webkit-isolate;unicode-bidi:isolate}.mw-editsection-divider{color:#555} .mw-content-ltr .mw-editsection-expanded .mw-editsection-bracket:first-of-type,.mw-content-rtl .mw-editsection-expanded .mw-editsection-bracket:not(:first-of-type){margin-left:-0.25em;margin-right:0.25em;color:#555} .mw-content-rtl .mw-editsection-expanded .mw-editsection-bracket:first-of-type,.mw-content-ltr .mw-editsection-expanded .mw-editsection-bracket:not(:first-of-type){margin-right:-0.25em;margin-left:0.25em;color:#555}.ve-tabmessage-appendix{font-size:0.7em;vertical-align:top;line-height:1.43em;padding-left:0.5em; background-image:none !important;display:inline !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:090fd3347dcd0c5874946aed9d85e0b9 */
+@-webkit-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-webkit-transform:translateY(-20px)}100%{opacity:1;-webkit-transform:translateY(0)}}@-moz-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-moz-transform:translateY(-20px)}100%{opacity:1;-moz-transform:translateY(0)}}@-o-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-o-transform:translateY(-20px)}100%{opacity:1;-o-transform:translateY(0)}}@keyframes centralAuthPPersonalAnimation{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}.centralAuthPPersonalAnimation{-webkit-animation-duration:1s;-moz-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-name:centralAuthPPersonalAnimation;-moz-animation-name:centralAuthPPersonalAnimation;-o-animation-name:centralAuthPPersonalAnimation;animation-name:centralAuthPPersonalAnimation}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:0dcacc990dd02e7db9669ab3090b80f1 */
+.uls-trigger{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAQCAMAAADQzfSkAAABqlBMVEX////f3/+Ov+/n5+fp6enp6eno6Ojp6enn5+ff39/q6urp6enp6enp6enq6urp6en////q6urr6+upv+rU1NTJycnR0dEaGhrp6enT4/SEuuK9vb3l5eU2ktCxsbFdXV1paWmzwc9ITFDo6OhaWlpsbGxtbW2BipSZpK/X19d2dnZ8hI2/v79PT09gZm2CgoLIyMjD0eGksL1JTVHM2+spKywnKCkcHBzAzt3I1+cxMzZxcXFkZGSvr69WW2C8vLyFjphqcXiLlZ8dHh4gISLa2trQ3/Dc3NzZ2dl7e3uioqIfHyBCRko9QEPh4eFgYGDGxsZoaGiPj4/Ly8uRm6a6yNcbGxuSnKfL2uqVn6scHR20tLR/f3+Kioq4uLienp54gIipqanA2e+71u9GSk5yeoKgoKCAgIB0dHRLS0tlZWWDg4PBwcHFxcWxvsxkanGapbCKlJ7O4fNXo9hQn9bM3/OPmaRfZWve3t6mpqbR0dG+vr6JiYnKyspPVFl1s99+fn5srdzm5ubNzc1BREh2s99xsN7S0tIxMzUiIyQ2OTt/iJFwcHBbYWc3S28lAAAAF3RSTlMACBAg7P3LiTYIX6LmmDzeAYMnDN+1MJx17ncAAAEQSURBVHheddBTb0VREIbhVduYWVuHRm3btm3bNv9zJ2v3IE36Xk3yZG4+xkMKw0BREYwJMzkcO38MY37tG6AmYN48YZFxwsbeiys6y/02rT1Wa4TxwoYgpx4adLMbfRubs9tk0cJuYK8ACv1/Xy5LLlIYS5bf2FTUUlJapptiqKwyuOfJEsjq4M3j+YBPYc02X6utTWnvQEwk6wJRNxn29Pb1D2iIg0bEJMaHYWTU6RyfABPZ5BTa7xBxxo2YzPgcPPGFRb4Ey2Qrq2vrXlRk6xampDK+a94/ODw6PjGfkp2dX1y6ZOvVNWKavsutqt6HbGZ5QCqdMUmSnlXqhY6M12CZtKcaUnhtsKz/Tc5m7AfjN0jzWIipawAAAABJRU5ErkJggg==) no-repeat scroll left center;background:transparent url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../../lib/jquery.uls/images/icon-language.png?2013-12-05T18:33:20Z) no-repeat scroll left center!ie;background-image:-webkit-linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../../lib/jquery.uls/images/icon-language.svg?2013-12-05T18:33:20Z);background-image:-moz-linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../../lib/jquery.uls/images/icon-language.svg?2013-12-05T18:33:20Z);background-image:linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../../lib/jquery.uls/images/icon-language.svg?2013-12-05T18:33:20Z);padding-left:30px}#pt-uls a.uls-trigger{padding-left:30px}#p-lang .uls-settings-trigger{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAgCAMAAAAVMLmlAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALpQTFRF////W1tbgICAWVlZgICAUVFRgICAWVlZhYWFUlJShYWFVFRUgYGBVVVVgYGBVVVVgICAVFRUVVVVVlZWgYGBgICAVFRUgYGBVFRUgICAgYGBVVVVVVVVgYGBVlZWgYGBVFRUgICAVFRUgICAVVVVgICAVlZWgICAVFRUgICAVVVVgICAVFRUgICAVlZWgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICA9Fa9bgAAADx0Uk5TAA4OFBQWFhcXGRlJSUtLWlpbXV9fYGFhZGRlZmlpa2twcIiIioqPj5GRn5+goKGh6+vv7/Dw+fn8/P7+YuRUVgAAAOlJREFUGBmNwcdWAgEURMFLFCUaAcWAEhQYHBRmCN3//1u+BYcVC6s4p2U3OLrrVxN7Xn7uELoH5w65Dx1g6JNnoLazfz++VnZehkZir4pQ3NjzBg5TwtgBhzFh6kDr294UobiykxZc7ezVdLyx8yrw6pM+8GjnDjsf7gj3/WpiJ7Vhl6OW3eC/mlKdo5teZSHNSoM24XqvTCHTvg0MdDIASpn08/6ZSlkJ6jMpLUBhLc3qKEwIIwUURoSJAs2ltC5AIZUWTbjcSulktJayCvCikx7wJG0VttrfEp5eLpfS4uLtgaOmVOeMP8BAM9RClMO9AAAAAElFTkSuQmCC) no-repeat right top;background:transparent url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.png?2013-12-05T18:33:20Z) no-repeat right top!ie;background-image:-webkit-linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.svg?2013-12-05T18:33:20Z);background-image:-moz-linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.svg?2013-12-05T18:33:20Z);background-image:linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.svg?2013-12-05T18:33:20Z);height:16px;width:14px;float:right;cursor:pointer}.skin-vector #p-lang .uls-settings-trigger{ margin-top:3px}#p-lang .uls-settings-trigger:hover{background-position:right -16px}   x:-o-prefocus,body.rtl li#pt-uls{ direction:ltr}#settings-block{border-top:1px solid #C9C9C9;background:#f8f8f8;background:-webkit-gradient(linear,left top,left bottom,from(#FBFBFB),to(#F0F0F0));background:-webkit-linear-gradient(top,#FBFBFB,#F0F0F0);background:-moz-linear-gradient(top,#FBFBFB,#F0F0F0);background:-o-linear-gradient(top,#FBFBFB,#F0F0F0);background:linear-gradient(#FBFBFB,#F0F0F0);padding-left:10px;line-height:1.2em;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px}.uls-menu a{cursor:pointer}.uls-menu.callout .caret-before{border-top:20px solid transparent;border-right:20px solid #AAA;border-bottom:20px solid transparent;display:inline-block;left:-21px;top:30px;position:absolute}.uls-menu.callout .caret-after{border-top:20px solid transparent;border-right:20px solid #FCFCFC;border-bottom:20px solid transparent;display:inline-block;left:-20px;top:30px;position:absolute}#settings-block div.display-settings-block,#settings-block div.input-settings-block{display:inline-block;margin:8px 15px;color:#565656}#settings-block div.display-settings-block:hover,#settings-block div.input-settings-block:hover{color:#252525}.uls-ui-languages button{width:23%;text-overflow:ellipsis;margin-right:4%}button.uls-more-languages{width:auto}.settings-title{font-size:11pt}.settings-text{color:#555555;font-size:9pt}div.display-settings-block:hover .settings-text{color:#252525} .ime-perime-help{display:none}.ime-checked .ime-perime-help{display:inline-block;width:20px;height:100%;position:absolute;top:0;bottom:0;right:0;opacity:0.75;padding:0;background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAFdQTFRF////AAAAZmZmVVVVSUlJW1tbVVVVV1dXWFhYVVVVV1dXVlZWWFhYV1dXWFhYVlZWV1dXVlZWV1dXV1dXWFhYV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXrNxhuAAAABx0Uk5TAAEFBgcOJCkxNlVla3KDi5WrsrbJ09ny9vf9/uWqFuIAAACESURBVBjTdZDBDsIgEERHai2KUqmllfr+/zs9AFYTnMsmL7uTmZX+yVjnrPkCnU8AyXeVDJGiOJSdCLzmsAIx73ngeZKOC+AlySSA8LjrCiQjyRafmzyAleQymQ7nFcDt6NItVFQOp5Cn/dgzjlDts+vW9xs1RI7KPLNHbRRq1W4951dvPF4RAFiSul8AAAAASUVORK5CYII=) left center no-repeat;background:transparent url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../images/help.png?2013-12-05T18:33:20Z) left center no-repeat!ie;background-image:-webkit-linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB2ZXJzaW9uPSIxLjEiCiAgIHdpZHRoPSIxOCIKICAgaGVpZ2h0PSIxOCIKICAgdmlld0JveD0iMCAwIDE4IDE4LjAwMDAwMSIKICAgaWQ9IkxheWVyXzEiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiPjxtZXRhZGF0YQogICBpZD0ibWV0YWRhdGE5Ij48cmRmOlJERj48Y2M6V29yawogICAgICAgcmRmOmFib3V0PSIiPjxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PjxkYzp0eXBlCiAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+PGRjOnRpdGxlPjwvZGM6dGl0bGU+PC9jYzpXb3JrPjwvcmRmOlJERj48L21ldGFkYXRhPjxkZWZzCiAgIGlkPSJkZWZzNyIgLz4KPHBhdGgKICAgZD0ibSA5LjAwMDAwMDMsMS40OTk2NDM3IGMgLTQuMTQxNDE5MSwwIC03LjUwMDAwMDQsMy4zNTc4NjkgLTcuNTAwMDAwNCw3LjUwMDAwMTQgMCw0LjE0MjEzMDkgMy4zNTg1ODEzLDcuNTAwNzExOSA3LjUwMDAwMDQsNy41MDA3MTE5IEMgMTMuMTQyODQ0LDE2LjUwMDM1NyAxNi41LDEzLjE0MTc3NiAxNi41LDguOTk5NjQ1MSAxNi41LDQuODU3NTEyNyAxMy4xNDM1NTYsMS40OTk2NDM3IDkuMDAwMDAwMywxLjQ5OTY0MzcgeiBtIC0wLjAwMTQyLDExLjk0MzQ0MjMgYyAtMC42MTMzMDYyLDAgLTEuMDY3MDUzLC0wLjQ5MDA3NCAtMS4wNjcwNTMsLTEuMDc5ODc0IDAsLTAuNjE0MDE4IDAuNDUzNzQ2OCwtMS4wOTI2OTcgMS4wNjcwNTMsLTEuMDkyNjk3IDAuNTg5Nzk5NSwwIDEuMDY4NDc4NywwLjQ3ODY3OSAxLjA2ODQ3ODcsMS4wOTI2OTcgMCwwLjU4OTA4NyAtMC40Nzg2NzkyLDEuMDc5ODc0IC0xLjA2ODQ3ODcsMS4wNzk4NzQgeiBNIDEwLjUyMDgwOCw4LjgwNDQ3MDIgQyAxMC4wMDU4MDMsOS4yMDkwNjY4IDkuODA4NDg5Myw5LjQ2NzYzODQgOS44MDg0ODkzLDEwLjA0MzE5MSBWIDEwLjM5OTM1IEggOC4yMzc4MTk1IFYgOS45Njk4MjI2IGMgMCwtMS4wODA1ODY2IDAuMzE5ODMxLC0xLjUyMTUxMyAwLjgyMjAxNTgsLTEuOTE0NzEzIDAuNTAzNjA5MywtMC4zOTMxOTkxIDAuODExMzMwNiwtMC42MDE5MDkxIDAuODExMzMwNiwtMS4xNjYwNjQ4IDAsLTAuNDc4Njc4MSAtMC4yOTQ5LC0wLjc0ODY0NjcgLTAuODgzMjc0OCwtMC43NDg2NDY3IC0wLjUwMzYwOTQsMCAtMC45NDU5NTkxLDAuMTM0NjI4MSAtMS40MTE4MTUzLDAuNDU0NDU5MiBMIDYuODI3NDI5MSw1LjMwNzY5NzggQyA3LjQ0MDczNTMsNC44Nzc0NTc1IDguMjAyMjAzNiw0LjU3MTE2MDcgOS4yMDc5OTY5LDQuNTcxMTYwNyBjIDEuMzYxOTUzMSwwIDIuNTA0NTEyMSwwLjc0ODY0NjUgMi41MDQ1MTIxLDIuMTgzOTY4MiAtNy4xMmUtNCwxLjAxODYxNDkgLTAuNTY1NTgsMS41NTg1NTI1IC0xLjE5MTcwOSwyLjA0OTM0MTMgeiIKICAgaWQ9InBhdGgzIgogICBzdHlsZT0iZmlsbDojNTc1NzU3IiAvPgo8L3N2Zz4=);background-image:-webkit-linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../images/help.svg?2013-12-05T18:33:20Z)!ie;background-image:linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB2ZXJzaW9uPSIxLjEiCiAgIHdpZHRoPSIxOCIKICAgaGVpZ2h0PSIxOCIKICAgdmlld0JveD0iMCAwIDE4IDE4LjAwMDAwMSIKICAgaWQ9IkxheWVyXzEiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiPjxtZXRhZGF0YQogICBpZD0ibWV0YWRhdGE5Ij48cmRmOlJERj48Y2M6V29yawogICAgICAgcmRmOmFib3V0PSIiPjxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PjxkYzp0eXBlCiAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+PGRjOnRpdGxlPjwvZGM6dGl0bGU+PC9jYzpXb3JrPjwvcmRmOlJERj48L21ldGFkYXRhPjxkZWZzCiAgIGlkPSJkZWZzNyIgLz4KPHBhdGgKICAgZD0ibSA5LjAwMDAwMDMsMS40OTk2NDM3IGMgLTQuMTQxNDE5MSwwIC03LjUwMDAwMDQsMy4zNTc4NjkgLTcuNTAwMDAwNCw3LjUwMDAwMTQgMCw0LjE0MjEzMDkgMy4zNTg1ODEzLDcuNTAwNzExOSA3LjUwMDAwMDQsNy41MDA3MTE5IEMgMTMuMTQyODQ0LDE2LjUwMDM1NyAxNi41LDEzLjE0MTc3NiAxNi41LDguOTk5NjQ1MSAxNi41LDQuODU3NTEyNyAxMy4xNDM1NTYsMS40OTk2NDM3IDkuMDAwMDAwMywxLjQ5OTY0MzcgeiBtIC0wLjAwMTQyLDExLjk0MzQ0MjMgYyAtMC42MTMzMDYyLDAgLTEuMDY3MDUzLC0wLjQ5MDA3NCAtMS4wNjcwNTMsLTEuMDc5ODc0IDAsLTAuNjE0MDE4IDAuNDUzNzQ2OCwtMS4wOTI2OTcgMS4wNjcwNTMsLTEuMDkyNjk3IDAuNTg5Nzk5NSwwIDEuMDY4NDc4NywwLjQ3ODY3OSAxLjA2ODQ3ODcsMS4wOTI2OTcgMCwwLjU4OTA4NyAtMC40Nzg2NzkyLDEuMDc5ODc0IC0xLjA2ODQ3ODcsMS4wNzk4NzQgeiBNIDEwLjUyMDgwOCw4LjgwNDQ3MDIgQyAxMC4wMDU4MDMsOS4yMDkwNjY4IDkuODA4NDg5Myw5LjQ2NzYzODQgOS44MDg0ODkzLDEwLjA0MzE5MSBWIDEwLjM5OTM1IEggOC4yMzc4MTk1IFYgOS45Njk4MjI2IGMgMCwtMS4wODA1ODY2IDAuMzE5ODMxLC0xLjUyMTUxMyAwLjgyMjAxNTgsLTEuOTE0NzEzIDAuNTAzNjA5MywtMC4zOTMxOTkxIDAuODExMzMwNiwtMC42MDE5MDkxIDAuODExMzMwNiwtMS4xNjYwNjQ4IDAsLTAuNDc4Njc4MSAtMC4yOTQ5LC0wLjc0ODY0NjcgLTAuODgzMjc0OCwtMC43NDg2NDY3IC0wLjUwMzYwOTQsMCAtMC45NDU5NTkxLDAuMTM0NjI4MSAtMS40MTE4MTUzLDAuNDU0NDU5MiBMIDYuODI3NDI5MSw1LjMwNzY5NzggQyA3LjQ0MDczNTMsNC44Nzc0NTc1IDguMjAyMjAzNiw0LjU3MTE2MDcgOS4yMDc5OTY5LDQuNTcxMTYwNyBjIDEuMzYxOTUzMSwwIDIuNTA0NTEyMSwwLjc0ODY0NjUgMi41MDQ1MTIxLDIuMTgzOTY4MiAtNy4xMmUtNCwxLjAxODYxNDkgLTAuNTY1NTgsMS41NTg1NTI1IC0xLjE5MTcwOSwyLjA0OTM0MTMgeiIKICAgaWQ9InBhdGgzIgogICBzdHlsZT0iZmlsbDojNTc1NzU3IiAvPgo8L3N2Zz4=);background-image:linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.23wmf6/extensions/UniversalLanguageSelector/resources/css/../images/help.svg?2013-12-05T18:33:20Z)!ie}.ime-checked .ime-perime-help:hover{opacity:1}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:317a048ad4b52e0110cb14d69e96aa92 */
+#p-lang li.interlanguage-link,.autonym{ font-family:'Autonym',sans-serif}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:ddc946d0b392bcbc2c1fb86246818001 */
+.wbc-editpage{list-style:none none;text-align:right;padding-right:.5em !important}.wbc-editpage > a{padding-left:11px;background:no-repeat left center}.wbc-editpage > a:link,.wbc-editpage > a:visited{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAAD1BMVEUZAAD///95eXmqqqrY2NjEIQ0cAAAAAXRSTlMAQObYZgAAACdJREFUCNdjYGBgYGIAASUFENNJCUiqmADZTM5OqExFFZAKRSG4YgBjcwODynSgDwAAAABJRU5ErkJggg==);background-image:url(//bits.wikimedia.org/static-1.23wmf6/extensions/Wikibase/client/resources/images/WBC-Asset-Pencil.png?2013-12-06T00:16:40Z)!ie;color:#797979 !important}.wbc-editpage > a:hover{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAAD1BMVEWBAADY2Nj///8GRa0zZrtW2AECAAAAAXRSTlMAQObYZgAAACdJREFUCNdjYGBgYGYAAWMDEFPYGEgaOgLZzCLCqEwjQ5AKI2W4YgBg5QOTQPzBuAAAAABJRU5ErkJggg==);background-image:url(//bits.wikimedia.org/static-1.23wmf6/extensions/Wikibase/client/resources/images/WBC-Asset-Pencil-Hover.png?2013-12-06T00:16:40Z)!ie;color:#0645AD !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:39f242f1ffda6c5ce7fb4cd57a04e5d2 */</style><style>
+.referencetooltip{position:absolute;list-style:none;list-style-image:none;opacity:0;font-size:10px;margin:0;z-index:5;padding:0}.referencetooltip li{border:#080086 2px solid;max-width:260px;padding:10px 8px 13px 8px;margin:0px;background-color:#F7F7F7;box-shadow:2px 4px 2px rgba(0,0,0,0.3);-moz-box-shadow:2px 4px 2px rgba(0,0,0,0.3);-webkit-box-shadow:2px 4px 2px rgba(0,0,0,0.3)}.referencetooltip li+li{margin-left:7px;margin-top:-2px;border:0;padding:0;height:3px;width:0px;background-color:transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;border-top:12px #080086 solid;border-right:7px transparent solid;border-left:7px transparent solid}.referencetooltip>li+li::after{content:'';border-top:8px #F7F7F7 solid;border-right:5px transparent solid;border-left:5px transparent solid;margin-top:-12px;margin-left:-5px;z-index:1;height:0px;width:0px;display:block}.client-js body .referencetooltip li li{border:none;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;height:auto;width:auto;margin:auto;padding:0;position:static}.RTflipped{padding-top:13px}.referencetooltip.RTflipped li+li{position:absolute;top:2px;border-top:0;border-bottom:12px #080086 solid}.referencetooltip.RTflipped li+li::after{border-top:0;border-bottom:8px #F7F7F7 solid;position:absolute;margin-top:7px}.RTsettings{float:right;height:16px;width:16px;cursor:pointer;background-image:url(//upload.wikimedia.org/wikipedia/commons/e/ed/Cog.png);margin-top:-9px;margin-right:-7px;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-o-transition:opacity 0.15s;-ms-transition:opacity 0.15s;transition:opacity 0.15s;opacity:0.6;filter:alpha(opacity=60)}.RTsettings:hover{opacity:1;filter:alpha(opacity=100)}.RTTarget{border:#080086 2px solid}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3c614aa75cecefe56b27b5e3c9197b7e */
+div#editpage-specialchars{display:block;margin-top:.5em;border:1px solid #c0c0c0;padding:.3em}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:29386c84f9c8f19dfb410df7e5be154b */
+.wp-teahouse-question-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}#wp-th-question-ask{float:right}.wp-teahouse-ask a.external{background-image:none !important}.wp-teahouse-respond-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}.wp-th-respond{float:right}.wp-teahouse-respond a.external{background-image:none !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:ba4e3603af357b5172e85672664d39a8 */
+.mw-collapsible-toggle{float:right} caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:a69d6f9ef6a7fa7065c5da3b52c08eb2 */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:9780324491b653a3780e2d029bdc140c */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;-webkit-box-shadow:0 2px 5px 0 #ccc;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(//bits.wikimedia.org/static-1.23wmf6/resources/mediawiki.action/images/green-checkmark.png?2013-12-05T18:28:20Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:66f3e9be79fef67f37d8409d07a12682 */
+#container{position:relative;min-height:100%}#container,video{width:100%;height:100%}#playerContainer{overflow:hidden;position:relative;height:100%;background:#000}#videoHolder{position:relative;overflow:hidden}.fullscreen #playerContainer{position:absolute !important;width:100% !important;height:100%! important;z-index:9999;min-height:100%;top:0;left:0;margin:0}.mwEmbedPlayer{width:100%;height:100%;overflow:hidden;position:absolute;top:0;left:0}.modal_editor{ left:10px;top:10px;right:10px;bottom:10px;position:fixed;z-index:100}.displayHTML a:visited{color:white}.loadingSpinner{width:32px;height:32px;display:block;padding:0px;background-image:url(//bits.wikimedia.org/static-1.23wmf6/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/loading_ani.gif?2013-12-05T18:31:40Z)}.mw-imported-resource{border:thin solid black}.kaltura-icon{background-image:url(//bits.wikimedia.org/static-1.23wmf6/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/kaltura_logo_sm_transparent.png?2013-12-05T18:31:40Z) !important;background-repeat:no-repeat;display:block;height:12px;width:12px;margin-top:2px !important;margin-left:3px !important}.mw-fullscreen-overlay{background:rgb(0,0,0) none repeat scroll 0% 0%;position:fixed;top:0pt;left:0pt;width:100%;height:100%;-moz-background-clip:border;-moz-background-origin:padding;-moz-background-inline-policy:continuous} .play-btn-large{width:70px;height:53px;background :url(//bits.wikimedia.org/static-1.23wmf6/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/player_big_play_button.png?2013-12-05T18:31:40Z);position :absolute;cursor :pointer;border :none !important;z-index :1}.play-btn-large:hover{background :url(//bits.wikimedia.org/static-1.23wmf6/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/player_big_play_button_hover.png?2013-12-05T18:31:40Z)}.carouselContainer{position :absolute;width :100%;z-index :2}.carouselVideoTitle{position :absolute;top :0px;left :0px;width :100%;background :rgba(0,0,0,0.8);color :white;font-size :small;font-weight :bold;z-index :2}.carouselVideoTitleText{display :block;padding :10px 10px 10px 20px}.carouselTitleDuration{position :absolute;top :0px;right :0px;padding :2px;background-color :#5A5A5A;color :#D9D9D9;font-size :smaller;z-index :2}.carouselImgTitle{position :absolute;width :100%;text-align :center;color :white;font-size :small;background :rgba(0,0,0,0.4)}.carouselImgDuration{position :absolute;top :2px;left :2px;background :rgba( 0,0,0,0.7 );color :white;padding :1px 6px;font-size :small}.carouselPrevButton,.carouselNextButton{display :block;position :absolute;bottom:23px}.carouselPrevButton{left :5px}.carouselNextButton{right:6px}.alert-container{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-image:linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-o-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-moz-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-webkit-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-ms-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.04,rgb(215,215,215)),color-stop(0.55,rgb(230,230,230)),color-stop(1,rgb(255,255,255)));margin:auto;position:absolute;top:0;left:0;right:0;bottom:0;max-width:80%;max-height:30%}.alert-title{background-color :#E6E6E6;padding :5px;border-bottom :1px solid #D1D1D1;font-weight :normal !important;font-size:14px !important;-webkit-border-top-left-radius:3px;-moz-border-radius-topleft:3px;border-top-left-radius:3px;-webkit-border-top-right-radius:3px;-moz-border-radius-topright:3px;border-top-right-radius:3px }.alert-message{padding :5px;font-weight :normal !important;text-align:center;font-size:14px !important}.alert-buttons-container{text-align:center;padding-bottom:5px}.alert-button{background-color:#474747;color:white;-webkit-border-radius:.5em;-moz-border-radius:.5em;border-radius:.5em;padding:2px 10px;background-image:linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-o-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-moz-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-webkit-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-ms-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-webkit-gradient( linear,left bottom,left top,color-stop(0.04,rgb(25,25,25)),color-stop(0.55,rgb(47,47,47)),color-stop(0.68,rgb(71,71,71)) )}.alert-text{color :black !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:208c9fb9a67428a8f057af592adec706 */
+.PopUpMediaTransform a .play-btn-large{position :absolute;top:50%;left :50%;width:70px;height:53px;margin-left:-35px;margin-top:-25px;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAA1CAMAAADLRm3ZAAABnlBMVEUAAAAAAAAAAABaWlp4eHh7e3t/f393d3eDg4N0dHRtbW2FhYVra2uJiYmNjY1nZ2eRkZFkZGSUlJRiYmKYmJhgYGCcnJxeXl5cXFyfn58AAACioqKlpaWsrKwAAACpqakAAAAAAAAAAAAAAABEREQFBQUHBwdMTEwAAAAYGBgAAAAAAAABAQEXFxcAAAAAAAAAAABxcXGoqKh3d3eampp8fHyIiIgUFBQcHBw0NDSFhYV+fn5FRUUmJiaNjY11dXWPj4+Hh4c9PT14eHifn59nZ2eBgYFISEiBgYFubm5vb28ODg4lJSVra2tiYmJoaGgEBAQmJiZmZmaLi4saGhpiYmKYmJhZWVlgYGBfX19vb29DQ0MGBgZcXFyBgYFKSkoPDw9ZWVlzc3NQUFBXV1eKiopUVFQdHR1VVVUQEBBYWFglJSVTU1NXV1cKCgosLCySkpJRUVFISEgyMjJPT08dHR2GhoY4ODhNTU09PT0MDAwuLi57e3sTExNJSUkgICBOTk4hISEbGxtTU1MoKChBQUEsLCxXV1cAAABycnIdNM6eAAAAinRSTlOzj6jO1dbX1NfU09nS2drR29Hc0N3Q3c/O3gDf3+Ce4EgIGW7HtbXKnLouq7S5cHIq1ODQ3NTXuLq/1tXEvNjT2NjC093N18bW0dC2vNHM0LW90Ne5z9rLzsrTxbXN1Me3zdDKzdfLu8y3zb3Lyba/2svFwcq618PKxLa/1LjJu8q8u8y+xsDKrdJqj5XQAAABYklEQVR4Xu3XVVNCQRjH4VdQEbvFVRAOIRl2d3d3d3d317d2GEaGOOfM1oUXPB/gN7NX/30BIYPeGMPAqDcgBMhrBUZWLwJBAcwcAriBAzfogAMdKIADBUUmmqm64JAxl2m1k/XMmZkin+YaxsxYqd9iA1OmsfDPajVDZqMgoL1jhzpTmR+k/OCQMlObG+L4dJgq050d5rKVJlOXGaHijjxzny6i94k005YqatBFlmlKEdfy1UeS+UmS0tllwc/0JEhT9WNnBuJlqCy4maE4OSO4mdFYOeO4mQm1jCnAzUyXSJqdm8fOLCRKWVomWIaVZHFrLqJlWE8Ts7lFuAzbGZF294iXYT8rnPLICcSZk5xQyjMzzTKc5wXTXFnoluFaE+TmlnYZipUBpgcA5syjjWU1Tf7I8wvbhr/6Im/vTmDLgO3D9Gn+R5+2aIbXzeABDjwgOIDZtwDIzvwsnR1xujV/AS6zSfMs2bS9AAAAAElFTkSuQmCC);background-image:url(//bits.wikimedia.org/static-1.23wmf6/extensions/TimedMediaHandler/resources/player_big_play_button.png?2013-12-05T18:31:40Z)!ie}.PopUpMediaTransform a .play-btn-large :hover{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAA1CAMAAADLRm3ZAAABtlBMVEUAAAAAAAAAAAC5ubm1tbWwsLC+vr6Li4vExMSrq6umpqbIyMjOzs6ioqLT09OdnZ3Y2NiZmZnc3NyWlpbh4eGSkpLn5+eQkJCNjY0AAADr6+vv7+/z8/P39/cAAAD9/f0AAAAAAAAAAAAAAAB2dnYAAAAoKCj5+flra2sMDAwAAAAAAAAAAAAAAAAAAAACAgLW1tbPz88wMDCHh4fExMS8vLxKSkpubm6vr6+qqqo0NDQQEBDCwsK1tbUmJiaysrLT09PLy8uIiIgXFxetra2+vr7r6+tycnIbGxvMzMyTk5O1tbU8PDyjo6PR0dG0tLQLCwufn58HBwc9PT2bm5shISEqKiqXl5cICAiJiYmTk5Pj4+OoqKhpaWkKCgqOjo5TU1OXl5cYGBiKioo9PT18fHwlJSWGhoYuLi6CgoIvLy+Dg4Ofn5+oqKg7OzuAgIDk5OSLi4tHR0fIyMh9fX3Z2dlycnJPT08JCQl7e3vJyclhYWFZWVl4eHhhYWEUFBS6urpqamofHx9ycnK2trZzc3N6eno1NTUsLCyKioqAgIBBQUFmZmZHR0cICAjBwcEAAACIiIg+YVJpAAAAknRSTlOzj6jt6+ru4O/p5/Hy5vPl9eT24/ji+eHgAPr7/P2e/hlICG7YLr7+07accipwq7Tw777X6erGzuLjv7fs4rzn8PDYuObr+dK57tjqwuTu6rbjtcPiur3htdvg8+jRtt7H3Lndwdi83b7bwNze5cPb9t/G7drz0Mq22e7MzdjPuOrUu9fo1NnCwN/cxdLItu6t3VahkKcAAAFlSURBVHhe7dfFcgJBFIbRGyLEXegIDBAITtzd3d3d3d3d88ZJigqFzExNyyILzgN8Vb36+wJCGrXWj4JWrUEIkMUElEwWBJwMqNk4sAIDVlACA0qQAQMygowv05fNIDNYplKNFFBnmjN+ZU5SZtrTHHJnqTKVqX8KFykyWSlO9auNxJmmZBebOSWEmZ1EN3v73USZ0ngPxyckmbpYL3n5+JnLaB5FxbiZ20heU+V4mYpwflXVNTiZ2jAhHw1G6Zm1YGEtrZIzbUEiOjqlZrr8xfRIzfQGiOmXmhkIFDEEUjPDIYJGx8YlZyZChdxNYyzDTAS/uXmsZViI4rO0jLkMKzHevtaxl2EjztPWth2wM7sJ7uQHhyTLcJTkSnFqJFuGM4WL8wvSZUiXO11dA1BnbvQ0q2lwRO4f6Db88ekn8vxiB7oM6F8Nb+//6NPmy7C6GczAgBk4G1D75ADpqJ+l1CFGt+Y3XGRJEJqP8KwAAAAASUVORK5CYII=);background-image:url(//bits.wikimedia.org/static-1.23wmf6/extensions/TimedMediaHandler/resources/player_big_play_button_hover.png?2013-12-05T18:31:40Z)!ie}.PopUpMediaTransform{position :relative;display:inline-block}li.gallerybox div.thumb div.PopUpMediaTransform{margin:0 auto}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:5ffd004a18b05c0c7eefa04375ae2752 */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{text-decoration:none;color:black}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:52b1797f70c7e4094dfa4191101944e8 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&lang=en&modules=site&only=styles&skin=vector&*">
+<style>a:lang(ar),a:lang(ckb),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:0de201fdea5d684523607ed88007b127 */</style>
+
+<script src="./Interval tree - Wikipedia, the free encyclopedia_files/load.php"></script><script src="./Interval tree - Wikipedia, the free encyclopedia_files/load(1).php"></script><style title="spinjs"></style>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Interval_tree","wgTitle":"Interval tree","wgCurRevisionId":569416067,"wgRevisionId":569416067,"wgArticleId":1533767,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Trees (data structures)"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Interval_tree","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false},"wgArticleFeedbackv5Permissions":{"aft-reader":true,"aft-member":false,"aft-editor":false,"aft-monitor":false,"aft-administrator":false,"aft-oversighter":false,"aft-noone":false},"wgBetaFeaturesFeatures":[],"wgVisualEditor":{"isPageWatched":false,"magnifyClipIconURL":"//bits.wikimedia.org/static-1.23wmf6/skins/common/images/magnify-clip.png","pageLanguageCode":"en","pageLanguageDir":"ltr"},"wikilove-recipient":"","wikilove-anon":0,"wgGuidedTourHelpGuiderUrl":"Help:Guided tours/guider","wgULSAcceptLanguageList":["en-us","en"],"wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","Geo":{"city":"","country":""},"wgNoticeProject":"wikipedia","aftv5Article":{"id":1533767,"title":"Interval tree","namespace":0,"categories":["Trees (data structures)"],"permissionLevel":false},"wgWikibaseItemId":"Q6057306"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":0,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":false,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots"
+:0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"flaggedrevssimpleui":1,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"aftv5-last-filter":null,"visualeditor-enable":0,"visualeditor-enable-experimental":0,"visualeditor-enable-mwmath":0,"visualeditor-betatempdisable":0,"wikilove-enabled":1,"echo-subscriptions-web-page-review":true,"echo-subscriptions-email-page-review":false,"ep_showtoplink":false,"ep_bulkdelorgs":false,"ep_bulkdelcourses":true,"ep_showdyk":true,"echo-notify-show-link":true,"echo-show-alert":true,"echo-email-frequency":0,"echo-email-format":"html","echo-subscriptions-email-system":true,"echo-subscriptions-web-system":true,"echo-subscriptions-email-other":false,"echo-subscriptions-web-other":true,"echo-subscriptions-email-edit-user-talk":false,"echo-subscriptions-web-edit-user-talk":true,
+"echo-subscriptions-email-reverted":false,"echo-subscriptions-web-reverted":true,"echo-subscriptions-email-article-linked":false,"echo-subscriptions-web-article-linked":false,"echo-subscriptions-email-mention":false,"echo-subscriptions-web-mention":true,"echo-subscriptions-web-edit-thank":true,"echo-subscriptions-email-edit-thank":false,"gettingstarted-task-toolbar-show-intro":true,"uls-preferences":"","language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"searchNs108":false,"searchNs109":false,"searchNs446":false,"searchNs447":false
+,"searchNs710":false,"searchNs711":false,"searchNs828":false,"searchNs829":false,"gadget-teahouse":1,"gadget-ReferenceTooltips":1,"gadget-DRN-wizard":1,"gadget-charinsert":1,"gadget-mySandbox":1,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: enwiki:resourceloader:filter:minify-js:7:664b3f39123c8f67ad841d996d382105 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","ext.visualEditor.viewPageTarget.init","ext.wikimediaShopLink.core","ext.uls.init","ext.uls.interface","wikibase.client.init","ext.centralNotice.bannerController","skins.vector.js"]);
+}</script><script src="./Interval tree - Wikipedia, the free encyclopedia_files/load(2).php"></script>
+<style type="text/css">/*<![CDATA[*/
+.source-java {line-height: normal;}
+.source-java li, .source-java pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for java
+ * CSS class: source-java, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.java.source-java .de1, .java.source-java .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;font-family: monospace, monospace;}
+.java.source-java  {font-family:monospace;}
+.java.source-java .imp {font-weight: bold; color: red;}
+.java.source-java li, .java.source-java .li1 {font-weight: normal; vertical-align:top;}
+.java.source-java .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.java.source-java .li2 {font-weight: bold; vertical-align:top;}
+.java.source-java .kw1 {color: #000000; font-weight: bold;}
+.java.source-java .kw2 {color: #000066; font-weight: bold;}
+.java.source-java .kw3 {color: #003399;}
+.java.source-java .kw4 {color: #000066; font-weight: bold;}
+.java.source-java .co1 {color: #666666; font-style: italic;}
+.java.source-java .co2 {color: #006699;}
+.java.source-java .co3 {color: #008000; font-style: italic; font-weight: bold;}
+.java.source-java .coMULTI {color: #666666; font-style: italic;}
+.java.source-java .es0 {color: #000099; font-weight: bold;}
+.java.source-java .br0 {color: #009900;}
+.java.source-java .sy0 {color: #339933;}
+.java.source-java .st0 {color: #0000ff;}
+.java.source-java .nu0 {color: #cc66cc;}
+.java.source-java .me1 {color: #006633;}
+.java.source-java .me2 {color: #006633;}
+.java.source-java .ln-xtra, .java.source-java li.ln-xtra, .java.source-java div.ln-xtra {background-color: #ffc;}
+.java.source-java span.xtra { display:block; }
+
+/*]]>*/
+</style><script src="./Interval tree - Wikipedia, the free encyclopedia_files/geoiplookup"></script><link rel="dns-prefetch" href="http://meta.wikimedia.org/"><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/static-1.23wmf6/skins/vector/csshover.min.htc")}</style><![endif]--><style>@font-face { font-family: 'Autonym';
+	src: url('https://bits.wikimedia.org/static-current/extensions/UniversalLanguageSelector/data/fontrepo/fonts/Autonym/Autonym.eot?version=20131205');
+	src: local('Autonym'),		url('https://bits.wikimedia.org/static-current/extensions/UniversalLanguageSelector/data/fontrepo/fonts/Autonym/Autonym.woff?version=20131205') format('woff'),		url('https://bits.wikimedia.org/static-current/extensions/UniversalLanguageSelector/data/fontrepo/fonts/Autonym/Autonym.ttf?version=20131205') format('truetype');
+	font-style: normal;}
+</style><script async="" src="./Interval tree - Wikipedia, the free encyclopedia_files/load(3).php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Interval_tree skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<div id="siteNotice"><div id="centralNotice"></div><!-- CentralNotice --></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Interval tree</span></h1>
+			<div id="bodyContent">
+								<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="http://en.wikipedia.org/wiki/Interval_tree#mw-navigation">navigation</a>, 					<a href="http://en.wikipedia.org/wiki/Interval_tree#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>In <a href="http://en.wikipedia.org/wiki/Computer_science" title="Computer science">computer science</a>, an <b>interval tree</b> is an <a href="http://en.wikipedia.org/wiki/Ordered_tree_data_structure" title="Ordered tree data structure" class="mw-redirect">ordered tree</a> <a href="http://en.wikipedia.org/wiki/Data_structure" title="Data structure">data structure</a> to hold <a href="http://en.wikipedia.org/wiki/Interval_(mathematics)" title="Interval (mathematics)">intervals</a>. Specifically, it allows one to efficiently find all intervals that overlap with any given interval or point. It is often used for windowing queries, for instance, to find all roads on a computerized map inside a rectangular viewport, or to find all visible elements inside a three-dimensional scene. A similar data structure is the <a href="http://en.wikipedia.org/wiki/Segment_tree" title="Segment tree">segment tree</a>.</p>
+<p>The trivial solution is to visit each interval and test whether it intersects the given point or interval, which requires Θ(<i>n</i>) time, where <i>n</i> is the number of intervals in the collection. Since a query may return all intervals, for example if the query is a large interval intersecting all intervals in the collection, this is <a href="http://en.wikipedia.org/wiki/Asymptotically_optimal" title="Asymptotically optimal" class="mw-redirect">asymptotically optimal</a>; however, we can do better by considering <a href="http://en.wikipedia.org/wiki/Output-sensitive_algorithm" title="Output-sensitive algorithm">output-sensitive algorithms</a>, where the runtime is expressed in terms of <i>m</i>, the number of intervals produced by the query. Interval trees are dynamic, i.e., they allow insertion and deletion of intervals. They obtain a query time of O(log <i>n</i>) while the preprocessing time to construct the data structure is O(<i>n</i> log <i>n</i>) (but the space consumption is O(<i>n</i>)). If the endpoints of intervals are within a small integer range (e.g., in the range [1,...,O(<i>n</i>)]), faster data structures exist with preprocessing time O(<i>n</i>) and query time O(1+<i>m</i>) for reporting <i>m</i> intervals containing a given query point.</p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+<span class="toctoggle">&nbsp;[<a href="http://en.wikipedia.org/wiki/Interval_tree#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="http://en.wikipedia.org/wiki/Interval_tree#Naive_approach"><span class="tocnumber">1</span> <span class="toctext">Naive approach</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="http://en.wikipedia.org/wiki/Interval_tree#Centered_interval_tree"><span class="tocnumber">2</span> <span class="toctext">Centered interval tree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="http://en.wikipedia.org/wiki/Interval_tree#Construction"><span class="tocnumber">2.1</span> <span class="toctext">Construction</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="http://en.wikipedia.org/wiki/Interval_tree#Intersecting"><span class="tocnumber">2.2</span> <span class="toctext">Intersecting</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="http://en.wikipedia.org/wiki/Interval_tree#With_an_Interval"><span class="tocnumber">2.2.1</span> <span class="toctext">With an Interval</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="http://en.wikipedia.org/wiki/Interval_tree#With_a_Point"><span class="tocnumber">2.2.2</span> <span class="toctext">With a Point</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="http://en.wikipedia.org/wiki/Interval_tree#Higher_Dimensions"><span class="tocnumber">2.3</span> <span class="toctext">Higher Dimensions</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="http://en.wikipedia.org/wiki/Interval_tree#Deletion"><span class="tocnumber">2.4</span> <span class="toctext">Deletion</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="http://en.wikipedia.org/wiki/Interval_tree#Balancing"><span class="tocnumber">2.5</span> <span class="toctext">Balancing</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="http://en.wikipedia.org/wiki/Interval_tree#Augmented_tree"><span class="tocnumber">3</span> <span class="toctext">Augmented tree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="http://en.wikipedia.org/wiki/Interval_tree#Java_Example:_Adding_a_new_interval_to_the_tree"><span class="tocnumber">3.1</span> <span class="toctext">Java Example: Adding a new interval to the tree</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="http://en.wikipedia.org/wiki/Interval_tree#Java_Example:_Searching_a_point_or_an_interval_in_the_tree"><span class="tocnumber">3.2</span> <span class="toctext">Java Example: Searching a point or an interval in the tree</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="http://en.wikipedia.org/wiki/Interval_tree#Higher_dimension"><span class="tocnumber">3.3</span> <span class="toctext">Higher dimension</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="http://en.wikipedia.org/wiki/Interval_tree#Medial.2Flength_oriented_tree"><span class="tocnumber">4</span> <span class="toctext">Medial/length oriented tree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-15"><a href="http://en.wikipedia.org/wiki/Interval_tree#Overlap_test"><span class="tocnumber">4.1</span> <span class="toctext">Overlap test</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="http://en.wikipedia.org/wiki/Interval_tree#Adding_interval"><span class="tocnumber">4.2</span> <span class="toctext">Adding interval</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="http://en.wikipedia.org/wiki/Interval_tree#Searching_for_all_overlapping_intervals"><span class="tocnumber">4.3</span> <span class="toctext">Searching for all overlapping intervals</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-18"><a href="http://en.wikipedia.org/wiki/Interval_tree#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="http://en.wikipedia.org/wiki/Interval_tree#External_links"><span class="tocnumber">6</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="Naive_approach">Naive approach</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=1" title="Edit section: Naive approach">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>In a simple case, the intervals do not overlap and they can be inserted into a simple <a href="http://en.wikipedia.org/wiki/Binary_search_tree" title="Binary search tree">binary search tree</a> and queried in O(log <i>n</i>) time. However, with arbitrarily overlapping intervals, there is no way to compare two intervals for insertion into the tree since orderings sorted by the beginning points or the ending points may be different. A naive approach might be to build two parallel trees, one ordered by the beginning point, and one ordered by the ending point of each interval. This allows discarding half of each tree in O(log <i>n</i>) time, but the results must be merged, requiring O(<i>n</i>) time. This gives us queries in O(<i>n</i> + log <i>n</i>) = O(<i>n</i>), which is no better than brute-force.</p>
+<p>Interval trees solve this problem. This article describes two alternative designs for an interval tree, dubbed the <i>centered interval tree</i> and the <i>augmented tree</i>.</p>
+<h2><span class="mw-headline" id="Centered_interval_tree">Centered interval tree</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=2" title="Edit section: Centered interval tree">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Queries require O(log <i>n</i> + <i>m</i>) time, with <i>n</i> being the total number of intervals and <i>m</i> being the number of reported results. Construction requires O(<i>n</i> log <i>n</i>) time, and storage requires O(<i>n</i>) space.</p>
+<h3><span class="mw-headline" id="Construction">Construction</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=3" title="Edit section: Construction">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Given a set of <i>n</i> intervals on the number line, we want to construct a data structure so that we can efficiently retrieve all intervals overlapping another interval or point.</p>
+<p>We start by taking the entire range of all the intervals and dividing it in half at <i>x_center</i> (in practice, <i>x_center</i> should be picked to keep the tree relatively balanced). This gives three sets of intervals, those completely to the left of <i>x_center</i> which we'll call <i>S_left</i>, those completely to the right of <i>x_center</i> which we'll call <i>S_right</i>, and those overlapping <i>x_center</i> which we'll call <i>S_center</i>.</p>
+<p>The intervals in <i>S_left</i> and <i>S_right</i> are recursively divided in the same manner until there are no intervals left.</p>
+<p>The intervals in S_center that overlap the center point are stored in a separate data structure linked to the node in the interval tree. This data structure consists of two lists, one containing all the intervals sorted by their beginning points, and another containing all the intervals sorted by their ending points.</p>
+<p>The result is a tertiary tree with each node storing:</p>
+<ul>
+<li>A center point</li>
+<li>A pointer to another node containing all intervals completely to the left of the center point</li>
+<li>A pointer to another node containing all intervals completely to the right of the center point</li>
+<li>All intervals overlapping the center point sorted by their beginning point</li>
+<li>All intervals overlapping the center point sorted by their ending point</li>
+</ul>
+<h3><span class="mw-headline" id="Intersecting">Intersecting</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=4" title="Edit section: Intersecting">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Given the data structure constructed above, we receive queries consisting of ranges or points, and return all the ranges in the original set overlapping this input.</p>
+<h4><span class="mw-headline" id="With_an_Interval">With an Interval</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=5" title="Edit section: With an Interval">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>First, we can reduce the case where an interval <i>R</i> is given as input to the simpler case where a single point is given as input. We first find all ranges with beginning or end points inside the input interval <i>R</i> using a separately constructed tree. In the one-dimensional case, we can use a simple tree containing all the beginning and ending points in the interval set, each with a pointer to its corresponding interval.</p>
+<p>A binary search in O(log <i>n</i>) time for the beginning and end of R reveals the minimum and maximum points to consider. Each point within this range references an interval that overlaps our range and is added to the result list. Care must be taken to avoid duplicates, since an interval might both begin and end within <i>R</i>. This can be done using a binary flag on each interval to mark whether or not it has been added to the result set.</p>
+<p>The only intervals not yet considered are those overlapping <i>R</i> that do not have an endpoint inside <i>R</i>, in other words, intervals that enclose it. To find these, we pick any point inside <i>R</i> and use the algorithm below to find all intervals intersecting that point (again, being careful to remove duplicates).</p>
+<h4><span class="mw-headline" id="With_a_Point">With a Point</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=6" title="Edit section: With a Point">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The task is to find all intervals in the tree that overlap a given point <i>x</i>. The tree is walked with a similar recursive algorithm as would be used to traverse a traditional binary tree, but with extra affordance for the intervals overlapping the "center" point at each node.</p>
+<p>For each tree node, <i>x</i> is compared to <i>x_center</i>, the midpoint used in node construction above. If <i>x</i> is less than <i>x_center</i>, the leftmost set of intervals, <i>S_left</i>, is considered. If <i>x</i> is greater than <i>x_center</i>, the rightmost set of intervals, <i>S_right</i>, is considered.</p>
+<p>As each node is processed as we traverse the tree from the root to a leaf, the ranges in its <i>S_center</i> are processed. If <i>x</i> is less than <i>x_center</i>, we know that all intervals in <i>S_center</i> end after <i>x</i>, or they could not also overlap <i>x_center</i>. Therefore, we need only find those intervals in <i>S_center</i> that begin before <i>x</i>. We can consult the lists of <i>S_center</i> that have already been constructed. Since we only care about the interval beginnings in this scenario, we can consult the list sorted by beginnings. Suppose we find the closest number no greater than <i>x</i> in this list. All ranges from the beginning of the list to that found point overlap <i>x</i> because they begin before <i>x</i> and end after <i>x</i> (as we know because they overlap <i>x_center</i> which is larger than <i>x</i>). Thus, we can simply start enumerating intervals in the list until the endpoint value exceeds <i>x</i>.</p>
+<p>Likewise, if <i>x</i> is greater than <i>x_center</i>, we know that all intervals in <i>S_center</i> must begin before <i>x</i>, so we find those intervals that end after <i>x</i> using the list sorted by interval endings.</p>
+<p>If <i>x</i> exactly matches <i>x_center</i>, all intervals in <i>S_center</i> can be added to the results without further processing and tree traversal can be stopped.</p>
+<h3><span class="mw-headline" id="Higher_Dimensions">Higher Dimensions</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=7" title="Edit section: Higher Dimensions">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The interval tree data structure can be generalized to a higher dimension <i>N</i> with identical query and construction time and O(<i>n</i> log <i>n</i>) space.</p>
+<p>First, a <a href="http://en.wikipedia.org/wiki/Range_tree" title="Range tree">range tree</a> in <i>N</i> dimensions is constructed that allows efficient retrieval of all intervals with beginning and end points inside the query region <i>R</i>. Once the corresponding ranges are found, the only thing that is left are those ranges that enclose the region in some dimension. To find these overlaps, N interval trees are created, and one axis intersecting <i>R</i> is queried for each. For example, in two dimensions, the bottom of the square <i>R</i> (or any other horizontal line intersecting R) would be queried against the interval tree constructed for the horizontal axis. Likewise, the left (or any other vertical line intersecting R) would be queried against the interval tree constructed on the vertical axis.</p>
+<p>Each interval tree also needs an addition for higher dimensions. At each node we traverse in the tree, <i>x</i> is compared with <i>S_center</i> to find overlaps. Instead of two sorted lists of points as was used in the one-dimensional case, a range tree is constructed. This allows efficient retrieval of all points in <i>S_center</i> that overlap region <i>R</i>.</p>
+<h3><span class="mw-headline" id="Deletion">Deletion</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=8" title="Edit section: Deletion">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>If after deleting an interval from the tree, the node containing that interval contains no more intervals, that node may be deleted from the tree. This is more complex than a normal binary tree deletion operation.</p>
+<p>An interval may overlap the center point of several nodes in the tree. Since each node stores the intervals that overlap it, with all intervals completely to the left of its center point in the left subtree, similarly for the right subtree, it follows that each interval is stored in the node closest to the root from the set of nodes whose center point it overlaps.</p>
+<p>Normal deletion operations in a binary tree (for the case where the node being deleted has two children) involve promoting a node further from the root to the position of the node being deleted (usually the leftmost child of the right subtree, or the rightmost child of the left subtree). As a result of this promotion, some nodes that were above the promoted node will become descendents of it; it is necessary to search these nodes for intervals that also overlap the promoted node, and move those intervals into the promoted node. As a consequence, this may result in new empty nodes, which must be deleted, following the same algorithm again.</p>
+<h3><span class="mw-headline" id="Balancing">Balancing</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=9" title="Edit section: Balancing">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The same issues that affect deletion also affect rotation operations; rotation must preserve the invariant that intervals are stored as close to the root as possible.</p>
+<h2><span class="mw-headline" id="Augmented_tree">Augmented tree</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=10" title="Edit section: Augmented tree">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Another way to represent intervals is described in <a href="http://en.wikipedia.org/wiki/Interval_tree#CITEREFCormenLeisersonRivestStein2001">Cormen et al. (2001</a>, Section 14.3: Interval trees, pp.&nbsp;311–317).</p>
+<p>Both insertion and deletion require O(log <i>n</i>) time, with <i>n</i> being the total number of intervals.</p>
+<p>Use a simple ordered tree, for example a <a href="http://en.wikipedia.org/wiki/Binary_search_tree" title="Binary search tree">binary search tree</a> or <a href="http://en.wikipedia.org/wiki/Self-balancing_binary_search_tree" title="Self-balancing binary search tree">self-balancing binary search tree</a>, where the tree is ordered by the 'low' values of the intervals, and an extra annotation is added to every node recording the maximum high value of both its subtrees. It is simple to maintain this attribute in only O(<i>h</i>) steps during each addition or removal of a node, where <i>h</i> is the height of the node added or removed in the tree, by updating all ancestors of the node from the bottom up. Additionally, the <a href="http://en.wikipedia.org/wiki/Tree_rotation" title="Tree rotation">tree rotations</a> used during insertion and deletion may require updating the high value of the affected nodes.</p>
+<p>Now, it is known that two intervals <i>A</i> and <i>B</i> overlap only when both <i>A</i>.low ≤ <i>B</i>.high and <i>A</i>.high ≥ <i>B</i>.low. When searching the trees for nodes overlapping with a given interval, you can immediately skip:</p>
+<ul>
+<li>all nodes to the right of nodes whose low value is past the end of the given interval.</li>
+<li>all nodes that have their maximum 'high' value below the start of the given interval.</li>
+</ul>
+<p>A total order can be defined on the intervals by ordering them first by their 'low' value and finally by their 'high' value. This ordering can be used to prevent duplicate intervals from being inserted into the tree in O(log <i>n</i>) time, versus the O(<i>k</i> + log <i>n</i>) time required to find duplicates if <i>k</i> intervals overlap a new interval.</p>
+<h3><span class="mw-headline" id="Java_Example:_Adding_a_new_interval_to_the_tree">Java Example: Adding a new interval to the tree</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=11" title="Edit section: Java Example: Adding a new interval to the tree">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The key of each node is the interval itself and the value of each node is the end point of the interval:</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="java source-java">
+<pre class="de1"> <span class="kw1">public</span> <span class="kw4">void</span> add<span class="br0">(</span>Interval i<span class="br0">)</span> <span class="br0">{</span>
+     put<span class="br0">(</span>i, i.<span class="me1">getEnd</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span>
+ <span class="br0">}</span>
+</pre></div>
+</div>
+<h3><span class="mw-headline" id="Java_Example:_Searching_a_point_or_an_interval_in_the_tree">Java Example: Searching a point or an interval in the tree</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=12" title="Edit section: Java Example: Searching a point or an interval in the tree">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>To search for an interval, you walk the tree, omitting those branches which can't contain what you're looking for. The simple case is looking for a point:</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="java source-java">
+<pre class="de1"> <span class="co1">// Search for all intervals which contain "p", starting with the</span>
+ <span class="co1">// node "n" and adding matching intervals to the list "result"</span>
+ <span class="kw1">public</span> <span class="kw4">void</span> search<span class="br0">(</span>IntervalNode n, <span class="kw3">Point</span> p, List<span class="sy0">&lt;</span>Interval<span class="sy0">&gt;</span> result<span class="br0">)</span> <span class="br0">{</span>
+     <span class="co1">// Don't search nodes that don't exist</span>
+     <span class="kw1">if</span> <span class="br0">(</span>n <span class="sy0">==</span> <span class="kw2">null</span><span class="br0">)</span>
+         <span class="kw1">return</span><span class="sy0">;</span>
+ 
+     <span class="co1">// If p is to the right of the rightmost point of any interval</span>
+     <span class="co1">// in this node and all children, there won't be any matches.</span>
+     <span class="kw1">if</span> <span class="br0">(</span>p.<span class="me1">compareTo</span><span class="br0">(</span>n.<span class="me1">getValue</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">)</span>
+         <span class="kw1">return</span><span class="sy0">;</span>
+ 
+     <span class="co1">// Search left children</span>
+     <span class="kw1">if</span> <span class="br0">(</span>n.<span class="me1">getLeft</span><span class="br0">(</span><span class="br0">)</span> <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">)</span>
+         search<span class="br0">(</span>IntervalNode <span class="br0">(</span>n.<span class="me1">getLeft</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>, p, result<span class="br0">)</span><span class="sy0">;</span>
+ 
+     <span class="co1">// Check this node</span>
+     <span class="kw1">if</span> <span class="br0">(</span>n.<span class="me1">getKey</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">contains</span><span class="br0">(</span>p<span class="br0">)</span><span class="br0">)</span>
+         result.<span class="me1">add</span><span class="br0">(</span>n.<span class="me1">getKey</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span>
+ 
+     <span class="co1">// If p is to the left of the start of this interval,</span>
+     <span class="co1">// then it can't be in any child to the right.</span>
+     <span class="kw1">if</span> <span class="br0">(</span>p.<span class="me1">compareTo</span><span class="br0">(</span>n.<span class="me1">getKey</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">getStart</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy0">&lt;</span> <span class="nu0">0</span><span class="br0">)</span>
+         <span class="kw1">return</span><span class="sy0">;</span>
+ 
+     <span class="co1">// Otherwise, search right children</span>
+     <span class="kw1">if</span> <span class="br0">(</span>n.<span class="me1">getRight</span><span class="br0">(</span><span class="br0">)</span> <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">)</span>
+         search<span class="br0">(</span>IntervalNode <span class="br0">(</span>n.<span class="me1">getRight</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>, p, result<span class="br0">)</span><span class="sy0">;</span>
+ <span class="br0">}</span>
+</pre></div>
+</div>
+<p>The code to search for an interval is similar, except for the check in the middle:</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="java source-java">
+<pre class="de1"> <span class="co1">// Check this node</span>
+ <span class="kw1">if</span> <span class="br0">(</span>n.<span class="me1">getKey</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">overlapsWith</span><span class="br0">(</span>i<span class="br0">)</span><span class="br0">)</span>
+     result.<span class="me1">add</span> <span class="br0">(</span>n.<span class="me1">getKey</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p><tt>overlapsWith()</tt> is defined as:</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="java source-java">
+<pre class="de1"> <span class="kw1">public</span> <span class="kw4">boolean</span> overlapsWith<span class="br0">(</span>Interval other<span class="br0">)</span> <span class="br0">{</span>
+     <span class="kw1">return</span> start.<span class="me1">compareTo</span><span class="br0">(</span>other.<span class="me1">getEnd</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy0">&lt;=</span> <span class="nu0">0</span> <span class="sy0">&amp;&amp;</span>
+            end.<span class="me1">compareTo</span><span class="br0">(</span>other.<span class="me1">getStart</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy0">&gt;=</span> <span class="nu0">0</span><span class="sy0">;</span>
+ <span class="br0">}</span>
+</pre></div>
+</div>
+<h3><span class="mw-headline" id="Higher_dimension">Higher dimension</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=13" title="Edit section: Higher dimension">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This can be extended to higher dimensions by cycling through the dimensions at each level of the tree. For example, for two dimensions, the odd levels of the tree might contain ranges for the <i>x</i>&nbsp;coordinate, while the even levels contain ranges for the <i>y</i>&nbsp;coordinate. However, it is not quite obvious how the rotation logic will have to be extended for such cases to keep the tree balanced.</p>
+<p>A much simpler solution is to use nested interval trees. First, create a tree using the ranges for the <i>y</i>&nbsp;coordinate. Now, for each node in the tree, add another interval tree on the <i>x</i>&nbsp;ranges, for all elements whose <i>y</i>&nbsp;range intersect that node's <i>y</i>&nbsp;range.</p>
+<p>The advantage of this solution is that it can be extended to an arbitrary amount of dimensions using the same code base.</p>
+<p>At first, the cost for the additional trees might seem prohibitive but that is usually not the case. As with the solution above, you need one node per <i>x</i>&nbsp;coordinate, so this cost is the same in both solutions. The only difference is that you need an additional tree structure per vertical interval. This structure is typically very small (a pointer to the root node plus maybe the number of nodes and the height of the tree).</p>
+<h2><span class="mw-headline" id="Medial.2Flength_oriented_tree">Medial/length oriented tree</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=14" title="Edit section: Medial/length oriented tree">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Similar to Augmented tree, but in a symmetrical way, where the <a href="http://en.wikipedia.org/wiki/Binary_Search_Tree" title="Binary Search Tree" class="mw-redirect">Binary Search Tree</a> is ordered by the Medial point of intervals. And there is a Maximum-oriented <a href="http://en.wikipedia.org/wiki/Binary_Heap" title="Binary Heap" class="mw-redirect">Binary Heap</a> in every node, ordered by the length of interval (or half of the length). Also we store minimum possible value of the subtree in each node, additional to maximum possible value (this is how it is symmetrical).</p>
+<h3><span class="mw-headline" id="Overlap_test">Overlap test</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=15" title="Edit section: Overlap test">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Using only start and end values of two intervals <img class="tex" alt="\left( a_{i}, b_i \right)" src="./Interval tree - Wikipedia, the free encyclopedia_files/abe26cf59c55672c9e45b1c6640f80ef.png">, for <img class="tex" alt="i=0,1" src="./Interval tree - Wikipedia, the free encyclopedia_files/ba09723afc7dc13bdf1f9d4db20d4f26.png">, the overlap test can be performed like:</p>
+<p><img class="tex" alt="a_0 \leqslant a_1 &lt; b_0" src="./Interval tree - Wikipedia, the free encyclopedia_files/a348e0e4727b0ee659f7450ae0edc57e.png"> &nbsp;&nbsp; OR &nbsp;&nbsp; <img class="tex" alt="a_0 &lt; b_1 \leqslant b_0" src="./Interval tree - Wikipedia, the free encyclopedia_files/a6e8918ab59601e474d89e8d28ef5f8e.png"> &nbsp;&nbsp; OR &nbsp;&nbsp; <img class="tex" alt="a_1 \leqslant a_0 &lt; b_1" src="./Interval tree - Wikipedia, the free encyclopedia_files/0b1cbe1f15c98387e6e724d893f11767.png"> &nbsp;&nbsp; OR &nbsp;&nbsp; <img class="tex" alt="a_1 &lt; b_0 \leqslant b_1" src="./Interval tree - Wikipedia, the free encyclopedia_files/e25af6b5358c1f5d958bdb49b8516914.png"></p>
+<p><br>
+But with defining:</p>
+<p><img class="tex" alt="m_i = \frac{a_i + b_i}{2}" src="./Interval tree - Wikipedia, the free encyclopedia_files/d17254fa8bba688e82dc164a2d7479a8.png"></p>
+<p><img class="tex" alt="d_i = \frac{b_i - a_i}{2}" src="./Interval tree - Wikipedia, the free encyclopedia_files/cc01b00354f55e246fa5b95d4feee1e0.png"></p>
+<p>The overlap test is simpler:</p>
+<p><img class="tex" alt="\left| m_1 - m_0 \right| &lt; d_0 + d_1" src="./Interval tree - Wikipedia, the free encyclopedia_files/22b5477ebe5e2d0aa45f99de26ec3c80.png"></p>
+<h3><span class="mw-headline" id="Adding_interval">Adding interval</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=16" title="Edit section: Adding interval">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Adding new intervals to the tree is the same as BST, just we use medial value as the key, and when we found/created the node to put the interval. We should push <img class="tex" alt="d_i" src="./Interval tree - Wikipedia, the free encyclopedia_files/35b35a527030cca017dbc36fcd8a0387.png"> to the <a href="http://en.wikipedia.org/wiki/Binary_Heap" title="Binary Heap" class="mw-redirect">Binary Heap</a> associated to node. And update minimum and maximum possible values associated with all higher nodes.</p>
+<p><br></p>
+<h3><span class="mw-headline" id="Searching_for_all_overlapping_intervals">Searching for all overlapping intervals</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=17" title="Edit section: Searching for all overlapping intervals">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Let's use <img class="tex" alt="a_q, b_q, m_q, d_q" src="./Interval tree - Wikipedia, the free encyclopedia_files/ebde0ef0a73f9d2c36a68d1425bda731.png"> for the query interval, and <img class="tex" alt="M_n" src="./Interval tree - Wikipedia, the free encyclopedia_files/1547a74739c1e2b6be3ebe927017bfbb.png"> for the key of a node (compared to <img class="tex" alt="m_i" src="./Interval tree - Wikipedia, the free encyclopedia_files/212abcc00be63b38e4cd48603ee59f7d.png"> of intervals)</p>
+<p>Starting with root node, in each node, first we check if it is possible that our query interval overlaps with the node subtree using minimum and maximum values of node (if it is not, we don't continue for this node).</p>
+<p>Then we calculate <img class="tex" alt="\min \left\{ d_i \right\}" src="./Interval tree - Wikipedia, the free encyclopedia_files/965a783553d3d308ee7c6a1fbbea9f8a.png"> for intervals inside this node (not its children) to overlap with query interval (knowing <img class="tex" alt="m_i = M_n" src="./Interval tree - Wikipedia, the free encyclopedia_files/07ff8dcd285b1936ed43c2b3058fab57.png">):</p>
+<p><img class="tex" alt="\min \left\{ d_i \right\} = \left| m_q - M_n \right| - d_q" src="./Interval tree - Wikipedia, the free encyclopedia_files/3445a5bef7a67d4e3d0acd5c086c516d.png"></p>
+<p>And perform a query on its <a href="http://en.wikipedia.org/wiki/Binary_Heap" title="Binary Heap" class="mw-redirect">Binary Heap</a> for the <img class="tex" alt="d_i" src="./Interval tree - Wikipedia, the free encyclopedia_files/35b35a527030cca017dbc36fcd8a0387.png">'s bigger than <img class="tex" alt="\min \left\{ d_i \right\}" src="./Interval tree - Wikipedia, the free encyclopedia_files/965a783553d3d308ee7c6a1fbbea9f8a.png"></p>
+<p>Then we pass through both left and right children of node, doing the same thing. In the worst-case, we have to scan all nodes of BST, but since <a href="http://en.wikipedia.org/wiki/Binary_Heap" title="Binary Heap" class="mw-redirect">Binary Heap</a> query is optimum, there is not much worries (a 2- dimensional problem can not be optimum in both dimensions)</p>
+<p>This algorithm is expected to be faster than traditional Interval Tree (Augmented tree) in search operation, adding is just a little bit slower (order of growth is the same).</p>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=18" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="http://en.wikipedia.org/w/index.php?title=Mark_de_Berg&action=edit&redlink=1" class="new" title="Mark de Berg (page does not exist)">Mark de Berg</a>, <a href="http://en.wikipedia.org/w/index.php?title=Marc_van_Kreveld&action=edit&redlink=1" class="new" title="Marc van Kreveld (page does not exist)">Marc van Kreveld</a>, <a href="http://en.wikipedia.org/wiki/Mark_Overmars" title="Mark Overmars">Mark Overmars</a>, and <a href="http://en.wikipedia.org/w/index.php?title=Otfried_Schwarzkopf&action=edit&redlink=1" class="new" title="Otfried Schwarzkopf (page does not exist)">Otfried Schwarzkopf</a>. <i>Computational Geometry</i>, Second Revised Edition. Springer-Verlag 2000. Section 10.1: Interval Trees, pp.&nbsp;212–217.</li>
+<li><span id="CITEREFCormenLeisersonRivestStein2001" class="citation"><a href="http://en.wikipedia.org/wiki/Thomas_H._Cormen" title="Thomas H. Cormen">Cormen, Thomas H.</a>; <a href="http://en.wikipedia.org/wiki/Charles_E._Leiserson" title="Charles E. Leiserson">Leiserson, Charles E.</a>; <a href="http://en.wikipedia.org/wiki/Ronald_L._Rivest" title="Ronald L. Rivest" class="mw-redirect">Rivest, Ronald L.</a>; <a href="http://en.wikipedia.org/wiki/Clifford_Stein" title="Clifford Stein">Stein, Clifford</a> (2001), <i><a href="http://en.wikipedia.org/wiki/Introduction_to_Algorithms" title="Introduction to Algorithms">Introduction to Algorithms</a></i> (2nd ed.), MIT Press and McGraw-Hill, <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&nbsp;<a href="http://en.wikipedia.org/wiki/Special:BookSources/0-262-03293-7" title="Special:BookSources/0-262-03293-7">0-262-03293-7</a></span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AInterval+tree&amp;rft.au=Cormen%2C+Thomas+H.&amp;rft.aufirst=Thomas+H.&amp;rft.aulast=Cormen&amp;rft.au=Leiserson%2C+Charles+E.&amp;rft.au=Rivest%2C+Ronald+L.&amp;rft.au=Stein%2C+Clifford&amp;rft.btitle=Introduction+to+Algorithms&amp;rft.date=2001&amp;rft.edition=2nd&amp;rft.genre=book&amp;rft.isbn=0-262-03293-7&amp;rft.pub=MIT+Press+and+McGraw-Hill&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></li>
+<li><a href="http://en.wikipedia.org/wiki/Franco_P._Preparata" title="Franco P. Preparata">Franco P. Preparata</a> and <a href="http://en.wikipedia.org/wiki/Michael_Ian_Shamos" title="Michael Ian Shamos">Michael Ian Shamos</a>. <i>Computational Geometry: An Introduction</i>. Springer-Verlag, 1985</li>
+<li><a href="http://en.wikipedia.org/w/index.php?title=Jens_M._Schmidt&action=edit&redlink=1" class="new" title="Jens M. Schmidt (page does not exist)">Jens M. Schmidt</a>. <i>Interval Stabbing Problems in Small Integer Ranges</i>. <a rel="nofollow" class="external text" href="http://dx.doi.org/10.1007/978-3-642-10631-6_18">DOI</a>. ISAAC'09, 2009</li>
+</ul>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit&section=19" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://www.cgal.org/">CGAL&nbsp;: Computational Geometry Algorithms Library in C++</a> contains a robust implementation of Range Trees</li>
+<li><a rel="nofollow" class="external text" href="http://code.google.com/p/intervaltree/">Interval Tree (an augmented self balancing avl tree implementation)</a></li>
+<li><a rel="nofollow" class="external text" href="https://github.com/gam3/interval-tree/">Interval Tree (a ruby implementation)</a></li>
+</ul>
+<table cellspacing="0" class="navbox" style="border-spacing:0;">
+<tbody><tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;" id="collapsibleTable0">
+<tbody><tr>
+<th scope="col" class="navbox-title" colspan="2"><span class="collapseButton">[<a id="collapseButton0" href="http://en.wikipedia.org/wiki/Interval_tree#">hide</a>]</span>
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="http://en.wikipedia.org/wiki/Template:CS_trees" title="Template:CS trees"><span title="View this template" style=";;background:none transparent;border:none;;">v</span></a></li>
+<li class="nv-talk"><a href="http://en.wikipedia.org/wiki/Template_talk:CS_trees" title="Template talk:CS trees"><span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="http://en.wikipedia.org/w/index.php?title=Template:CS_trees&action=edit"><span title="Edit this template" style=";;background:none transparent;border:none;;">e</span></a></li>
+</ul>
+</div>
+<div style="font-size:110%;"><a href="http://en.wikipedia.org/wiki/Tree_(data_structure)" title="Tree (data structure)">Trees</a> in <a href="http://en.wikipedia.org/wiki/Computer_science" title="Computer science">computer science</a></div>
+</th>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/Binary_tree" title="Binary tree">Binary trees</a></th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Binary_search_tree" title="Binary search tree">Binary search tree (BST)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cartesian_tree" title="Cartesian tree">Cartesian tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/MVP_Tree" title="MVP Tree">MVP Tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Top_tree" title="Top tree">Top tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/T-tree" title="T-tree">T-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Left-child_right-sibling_binary_tree" title="Left-child right-sibling binary tree">Left-child right-sibling binary tree</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/Self-balancing_binary_search_tree" title="Self-balancing binary search tree">Self-balancing binary search trees</a></th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/AA_tree" title="AA tree">AA tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/AVL_tree" title="AVL tree">AVL tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Left-leaning_red%E2%80%93black_tree" title="Left-leaning red–black tree">LLRB tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Red%E2%80%93black_tree" title="Red–black tree">Red–black tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Scapegoat_tree" title="Scapegoat tree">Scapegoat tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Splay_tree" title="Splay tree">Splay tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Treap" title="Treap">Treap</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/B-tree" title="B-tree">B-trees</a></th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/B%2B_tree" title="B+ tree">B+ tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/B*-tree" title="B*-tree" class="mw-redirect">B*-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Bx-tree" title="Bx-tree">B<small><sup>x</sup></small>-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/UB-tree" title="UB-tree">UB-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/2%E2%80%933_tree" title="2–3 tree">2–3 tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/2%E2%80%933%E2%80%934_tree" title="2–3–4 tree">2–3–4 tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/(a,b)-tree" title="(a,b)-tree">(a,b)-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Dancing_tree" title="Dancing tree">Dancing tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/HTree" title="HTree">HTree</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/Trie" title="Trie">Tries</a></th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Suffix_tree" title="Suffix tree">Suffix tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Radix_tree" title="Radix tree">Radix tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Hash_tree_(persistent_data_structure)" title="Hash tree (persistent data structure)">Hash tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Ternary_search_tree" title="Ternary search tree">Ternary search tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/X-fast_trie" title="X-fast trie">X-fast trie</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Y-fast_trie" title="Y-fast trie">Y-fast trie</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/Binary_space_partitioning" title="Binary space partitioning">Binary space partitioning (BSP)</a> trees</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Quadtree" title="Quadtree">Quadtree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Octree" title="Octree">Octree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/K-d_tree" title="K-d tree"><i>k</i>-d tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Implicit_k-d_tree" title="Implicit k-d tree">Implicit <i>k</i>-d tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Vantage-point_tree" title="Vantage-point tree">VP tree</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Non-binary trees</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Exponential_tree" title="Exponential tree">Exponential tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Fusion_tree" title="Fusion tree">Fusion tree</a></li>
+<li><strong class="selflink">Interval tree</strong></li>
+<li><a href="http://en.wikipedia.org/wiki/PQ_tree" title="PQ tree">PQ tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Range_tree" title="Range tree">Range tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/SPQR_tree" title="SPQR tree">SPQR tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Van_Emde_Boas_tree" title="Van Emde Boas tree">Van Emde Boas tree</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="http://en.wikipedia.org/wiki/Spatial_index" title="Spatial index" class="mw-redirect">Spatial</a> data partitioning trees</th>
+<td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/R-tree" title="R-tree">R-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/R%2B_tree" title="R+ tree">R+ tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/R*_tree" title="R* tree">R* tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/X-tree" title="X-tree">X-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/M-tree" title="M-tree">M-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Segment_tree" title="Segment tree">Segment tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Hilbert_R-tree" title="Hilbert R-tree">Hilbert R-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Priority_R-tree" title="Priority R-tree">Priority R-tree</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Other trees</th>
+<td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Heap_(data_structure)" title="Heap (data structure)">Heap</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Hash_calendar" title="Hash calendar">Hash calendar</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Merkle_tree" title="Merkle tree">Merkle tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Finger_tree" title="Finger tree">Finger tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Order_statistic_tree" title="Order statistic tree">Order statistic tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Metric_tree" title="Metric tree">Metric tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Cover_tree" title="Cover tree">Cover tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/BK-tree" title="BK-tree">BK-tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Doubly_chained_tree" title="Doubly chained tree">Doubly chained tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/IDistance" title="IDistance">iDistance</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Link/cut_tree" title="Link/cut tree">Link/cut tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Fenwick_tree" title="Fenwick tree">Fenwick tree</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Log-structured_merge-tree" title="Log-structured merge-tree">Log-structured merge-tree</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1021
+CPU time usage: 0.624 seconds
+Real time usage: 0.761 seconds
+Preprocessor visited node count: 495/1000000
+Preprocessor generated node count: 2298/1500000
+Post‐expand include size: 16783/2048000 bytes
+Template argument size: 82/2048000 bytes
+Highest expansion depth: 5/40
+Expensive parser function count: 2/500
+Lua time usage: 0.031s
+Lua memory usage: 1.09 MB
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:1533767-0!0!0!!en!*!* and timestamp 20131211201910
+ -->
+<noscript>&lt;img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /&gt;</noscript></div>								<div class="printfooter">
+				Retrieved from "<a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&oldid=569416067">http://en.wikipedia.org/w/index.php?title=Interval_tree&amp;oldid=569416067</a>"				</div>
+												<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://en.wikipedia.org/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="http://en.wikipedia.org/wiki/Category:Trees_(data_structures)" title="Category:Trees (data structures)">Trees (data structures)</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+				<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+	<h3 id="p-personal-label">Personal tools</h3>
+	<ul>
+<li id="pt-createaccount"><a href="http://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Interval+tree&type=signup">Create account</a></li><li id="pt-login"><a href="http://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Interval+tree" title="You&#39;re encouraged to log in; however, it&#39;s not mandatory. [alt-shift-o]" accesskey="o">Log in</a></li>	</ul>
+</div>
+				<div id="left-navigation">
+					<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+	<h3 id="p-namespaces-label">Namespaces</h3>
+	<ul>
+					<li id="ca-nstab-main" class="selected"><span><a href="./Interval tree - Wikipedia, the free encyclopedia_files/Interval tree - Wikipedia, the free encyclopedia.htm" title="View the content page [alt-shift-c]" accesskey="c">Article</a></span></li>
+					<li id="ca-talk"><span><a href="http://en.wikipedia.org/wiki/Talk:Interval_tree" title="Discussion about the content page [alt-shift-t]" accesskey="t">Talk</a></span></li>
+			</ul>
+</div>
+<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+	<h3 id="mw-vector-current-variant">
+		</h3>
+	<h3 id="p-variants-label" tabindex="0"><span>Variants</span><a href="http://en.wikipedia.org/wiki/Interval_tree#" tabindex="-1"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+				</div>
+				<div id="right-navigation">
+					<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+	<h3 id="p-views-label">Views</h3>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="./Interval tree - Wikipedia, the free encyclopedia_files/Interval tree - Wikipedia, the free encyclopedia.htm">Read</a></span></li>
+					<li id="ca-edit"><span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=edit" title="You can edit this page. 
+Please review your changes before saving. [alt-shift-e]" accesskey="e">Edit</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=history" title="Past versions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+	<h3 id="p-cactions-label" tabindex="0"><span>Actions</span><a href="http://en.wikipedia.org/wiki/Interval_tree#" tabindex="-1"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+<div id="p-search" role="search">
+	<h3><label for="searchInput">Search</label></h3>
+	<form action="http://en.wikipedia.org/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input name="search" placeholder="Search" title="Search Wikipedia [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off">						<button type="submit" name="button" title="Search Wikipedia for this text" id="searchButton"><img src="./Interval tree - Wikipedia, the free encyclopedia_files/search-ltr.png" alt="Search" width="12" height="13"></button>								<input type="hidden" name="title" value="Special:Search">
+		</div>
+	</form>
+</div>
+				</div>
+			</div>
+			<div id="mw-panel" class="collapsible-nav">
+					<div id="p-logo" role="banner"><a style="background-image: url(//upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="http://en.wikipedia.org/wiki/Main_Page" title="Visit the main page"></a></div>
+				<div class="portal first persistent" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+	<h3 id="p-navigation-label">Navigation</h3>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="http://en.wikipedia.org/wiki/Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main page</a></li>
+			<li id="n-contents"><a href="http://en.wikipedia.org/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+			<li id="n-featuredcontent"><a href="http://en.wikipedia.org/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+			<li id="n-currentevents"><a href="http://en.wikipedia.org/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-randompage"><a href="http://en.wikipedia.org/wiki/Special:Random" title="Load a random article [alt-shift-x]" accesskey="x">Random article</a></li>
+			<li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&utm_medium=sidebar&utm_campaign=C13_en.wikipedia.org&uselang=en" title="Support us">Donate to Wikipedia</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal expanded" role="navigation" id="p-interaction" aria-labelledby="p-interaction-label">
+	<h3 id="p-interaction-label" tabindex="2"><a href="http://en.wikipedia.org/wiki/Interval_tree#" aria-haspopup="true" aria-controls="p-interaction-list" role="button" aria-pressed="true" aria-expanded="true">Interaction</a></h3>
+	<div class="body" style="display: block;">
+		<ul id="p-interaction-list">
+			<li id="n-help"><a href="http://en.wikipedia.org/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+			<li id="n-aboutsite"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+			<li id="n-portal"><a href="http://en.wikipedia.org/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-recentchanges"><a href="http://en.wikipedia.org/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+			<li id="n-contactpage"><a href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact page</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal collapsed" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+	<h3 id="p-tb-label" tabindex="3"><a href="http://en.wikipedia.org/wiki/Interval_tree#" aria-haspopup="true" aria-controls="p-tb-list" role="button" aria-pressed="false" aria-expanded="false">Tools</a></h3>
+	<div class="body">
+		<ul id="p-tb-list">
+			<li id="t-whatlinkshere"><a href="http://en.wikipedia.org/wiki/Special:WhatLinksHere/Interval_tree" title="List of all English Wikipedia pages containing links to this page [alt-shift-j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="http://en.wikipedia.org/wiki/Special:RecentChangesLinked/Interval_tree" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+			<li id="t-upload"><a href="http://en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [alt-shift-u]" accesskey="u">Upload file</a></li>
+			<li id="t-specialpages"><a href="http://en.wikipedia.org/wiki/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+			<li id="t-permalink"><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&oldid=569416067" title="Permanent link to this revision of the page">Permanent link</a></li>
+			<li id="t-info"><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&action=info">Page information</a></li>
+			<li id="t-wikibase"><a href="http://www.wikidata.org/wiki/Q6057306" title="Link to connected data repository item [alt-shift-g]" accesskey="g">Data item</a></li>
+<li id="t-cite"><a href="http://en.wikipedia.org/w/index.php?title=Special:Cite&page=Interval_tree&id=569416067" title="Information on how to cite this page">Cite this page</a></li>		</ul>
+	</div>
+</div>
+<div class="portal collapsed" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
+	<h3 id="p-coll-print_export-label" tabindex="4"><a href="http://en.wikipedia.org/wiki/Interval_tree#" aria-haspopup="true" aria-controls="p-coll-print_export-list" role="button" aria-pressed="false" aria-expanded="false">Print/export</a></h3>
+	<div class="body">
+		<ul id="p-coll-print_export-list">
+			<li id="coll-create_a_book"><a href="http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=book_creator&referer=Interval+tree">Create a book</a></li>
+			<li id="coll-download-as-rl"><a href="http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=render_article&arttitle=Interval+tree&oldid=569416067&writer=rl">Download as PDF</a></li>
+			<li id="t-print"><a href="http://en.wikipedia.org/w/index.php?title=Interval_tree&printable=yes" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal expanded" role="navigation" id="p-lang" aria-labelledby="p-lang-label"><span class="uls-settings-trigger" title="Language settings" tabindex="0" role="button" aria-haspopup="true"></span>
+	<h3 id="p-lang-label" tabindex="5"><a href="http://en.wikipedia.org/wiki/Interval_tree#" aria-haspopup="true" aria-controls="p-lang-list" role="button" aria-pressed="true" aria-expanded="true">Languages</a></h3>
+	<div class="body" style="display: block;">
+		<ul id="p-lang-list">
+			<li class="interlanguage-link interwiki-fa"><a href="http://fa.wikipedia.org/wiki/%D8%AF%D8%B1%D8%AE%D8%AA_%D8%A8%D8%A7%D8%B2%D9%87" title="درخت بازه – Persian" lang="fa" hreflang="fa">فارسی</a></li>
+			<li class="interlanguage-link interwiki-ja"><a href="http://ja.wikipedia.org/wiki/%E5%8C%BA%E9%96%93%E6%9C%A8" title="区間木 – Japanese" lang="ja" hreflang="ja">日本語</a></li>
+			<li class="interlanguage-link interwiki-pl"><a href="http://pl.wikipedia.org/wiki/Drzewo_przedzia%C5%82owe" title="Drzewo przedziałowe – Polish" lang="pl" hreflang="pl">Polski</a></li>
+			<li class="interlanguage-link interwiki-sr"><a href="http://sr.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D0%B0%D0%BB_%D1%81%D1%82%D0%B0%D0%B1%D0%BB%D0%B0" title="Интервал стабла – Serbian" lang="sr" hreflang="sr">Српски / srpski</a></li>
+			
+			<li class="wbc-editpage"><a href="http://www.wikidata.org/wiki/Q6057306#sitelinks-wikipedia" title="Edit interlanguage links">Edit links</a></li>
+		</ul>
+	</div>
+</div>
+			</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 20 August 2013 at 15:22.<br></li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="http://wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy.</a> <br>
+Wikipedia® is a registered trademark of the <a href="http://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="http://en.wikipedia.org/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a class="external" href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-mobileview"><a href="http://en.m.wikipedia.org/wiki/Interval_tree" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://wikimediafoundation.org/"><img src="./Interval tree - Wikipedia, the free encyclopedia_files/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="./Interval tree - Wikipedia, the free encyclopedia_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mobile.desktop","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","mw.MwEmbedSupport.style","ext.articleFeedbackv5.startup","ext.wikimediaEvents.moduleStorage","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","mw.PopUpMediaTransform","skins.vector.collapsibleNav"],null,true);
+}</script>
+<script src="./Interval tree - Wikipedia, the free encyclopedia_files/load(4).php"></script>
+<!-- Served by mw1170 in 0.139 secs. -->
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

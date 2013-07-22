@@ -1,0 +1,14 @@
+group 'vbmacher'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.12.2'
+    testCompile 'org.scalatest:scalatest_2.12:3.0.0'
+    testCompile 'junit:junit:4.12'
+}

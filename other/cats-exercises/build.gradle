@@ -1,0 +1,21 @@
+plugins {
+    id 'scala'
+}
+
+group 'com.github.vbmacher'
+version '1.0.0'
+
+repositories {
+    jcenter()
+}
+
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.additionalParameters = ["-Xfatal-warnings"]
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.13.3'
+    implementation 'org.typelevel:cats-core_2.13:2.2.0'
+
+    testImplementation 'junit:junit:4.13'
+}

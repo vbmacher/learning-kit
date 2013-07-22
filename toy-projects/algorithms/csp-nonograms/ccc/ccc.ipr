@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../universal-media-server" value="2933679873582" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="InspectionProjectProfileManager">
+    <profile version="1.0">
+      <option name="myName" value="Project Default" />
+    </profile>
+    <version value="1.0" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ccc.iml" filepath="$PROJECT_DIR$/ccc.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$USER_HOME$/courses/functional-design/week1/example" value="1457113070000" />
+        <entry key="$USER_HOME$/courses/functional-design/week2/streams" value="1481016142000" />
+        <entry key="$USER_HOME$/courses/functional-design/week3/quickcheck" value="1464280970000" />
+        <entry key="$USER_HOME$/courses/functional-design/week4/calculator" value="1465303746000" />
+        <entry key="$USER_HOME$/courses/scala/patmat" value="1462372864000" />
+        <entry key="$USER_HOME$/courses/scala/week1/example" value="1459512774000" />
+        <entry key="$USER_HOME$/courses/scala/week6/forcomp" value="1462309612000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

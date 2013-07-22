@@ -1,0 +1,7 @@
+target/
+*.class
+.ensime*
+.idea/
+*.ipr
+*.iws
+.DS_Store
