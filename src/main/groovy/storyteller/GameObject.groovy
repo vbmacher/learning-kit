@@ -2,6 +2,7 @@ package storyteller
 
 import java.awt.Point
 import java.util.concurrent.CopyOnWriteArrayList
+import java.awt.Graphics
 
 // Thread-safe, only if you use methods inside this class. Expando is not thread-safe.
 class GameObject extends Expando {
@@ -63,5 +64,21 @@ class GameObject extends Expando {
     def changeImage(imageFile) {
         updateImage(imageFile)
     }
+
+    def void paint(Graphics graphics, Point basePosition) {
+        Point newPosition = new Point(basePosition.x + position.x,basePosition.y + position.y)
+        graphics.drawImage(image, newPosition.x, newPosition.y, null)
+        children.each {
+            it.paint(graphics, newPosition)
+        }
+    }
+
+    def void paint(Graphics graphics) {
+        graphics.drawImage(image, position.x, position.y, null)
+        children.each {
+            it.paint(graphics, position)
+        }
+    }
+
 }
 

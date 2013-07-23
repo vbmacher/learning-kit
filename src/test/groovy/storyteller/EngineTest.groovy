@@ -8,12 +8,12 @@ class EngineTest extends GroovyTestCase {
 
             assert game instanceof Game
             assert player instanceof Player
-        """)
+        """, null)
         engine.newGame()
     }
 
     void testSyntaxErrorInGameScript() {
-        Engine engine = new Engine(" dffg spsodfk sp pw4443 55 srfscs")
+        Engine engine = new Engine(" dffg spsodfk sp pw4443 55 srfscs", null)
 
         shouldFail {
             engine.newGame()

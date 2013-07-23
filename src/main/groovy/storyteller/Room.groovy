@@ -2,10 +2,14 @@ package storyteller
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
+import java.awt.Graphics
+import java.awt.Dimension
+import java.awt.image.BufferedImage
+import javax.imageio.ImageIO;
 
 // Thread-safe only when using methods inside this class. Expando is not thread-safe.
 class Room extends Expando {
-    def volatile image
+    def volatile BufferedImage image
     def final objectName
     def final ConcurrentMap<String,GameObject> objects = new ConcurrentHashMap<String, GameObject>()
 
@@ -38,14 +42,16 @@ class Room extends Expando {
         objects.clear()
     }
 
-    private void updateImage(imageFile) {
+    protected void updateImage(imageFile) {
+        if (imageFile == null) {
+            return
+        }
         try {
-            this.image = image(file: imageFile)
+            this.image = ImageIO.read(imageFile)
         } catch (Throwable e) {
             e.printStackTrace()
         }
     }
-
 
     def leftShift(object) {
         insertObject(object)
@@ -53,6 +59,19 @@ class Room extends Expando {
 
     def String toString() {
         "{Room=$name}"
+    }
+
+    def void paint(Graphics graphics) {
+          graphics.drawLine(0,0,100,100)
+
+        graphics.drawImage(image, 0, 0, null)
+        objects.each {
+            it.paint(graphics)
+        }
+    }
+
+    def Dimension getSize() {
+        return new Dimension(image.getWidth(), image.getHeight())
     }
 }
 
