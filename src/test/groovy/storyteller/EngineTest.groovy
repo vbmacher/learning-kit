@@ -4,10 +4,8 @@ class EngineTest extends GroovyTestCase {
 
     void testGameAndPlayerInsideGameScript() {
         Engine engine = new Engine("""
-            package storyteller
-
-            assert game instanceof Game
-            assert player instanceof Player
+            assert game instanceof storyteller.Game
+            assert player instanceof storyteller.Player
         """, null)
         engine.newGame()
     }
@@ -18,6 +16,16 @@ class EngineTest extends GroovyTestCase {
         shouldFail {
             engine.newGame()
         }
+    }
+
+    void testGameClosure() {
+        Engine engine = new Engine("""
+            game {
+                name = 'My game'
+            }
+            """, null)
+        engine.newGame()
+        assert engine.getGameName() == 'My game'
     }
 }
 

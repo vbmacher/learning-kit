@@ -1,12 +1,22 @@
 package storyteller;
 
-public class MainDialog extends javax.swing.JFrame {
-    private final RoomCanvas roomCanvas;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JFrame;
 
-    public MainDialog(RoomCanvas canvas) {
-        this.roomCanvas = canvas;
+public class MainDialog extends JFrame implements KeyListener {
+    private final Board gameBoard;
+
+    private MainDialog(Board board) {
+        this.gameBoard = board;
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    public static MainDialog newInstance(Board canvas) {
+        MainDialog dialog = new MainDialog(canvas);
+        dialog.addKeyListener(dialog);
+        return dialog;
     }
 
     /**
@@ -21,30 +31,27 @@ public class MainDialog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Story Teller");
-        setResizable(false);
-
-        panelBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout panelBackgroundLayout = new javax.swing.GroupLayout(panelBackground);
         panelBackground.setLayout(panelBackgroundLayout);
         panelBackgroundLayout.setHorizontalGroup(
             panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 884, Short.MAX_VALUE)
+            .addGap(0, 886, Short.MAX_VALUE)
         );
         panelBackgroundLayout.setVerticalGroup(
             panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGap(0, 541, Short.MAX_VALUE)
         );
 
         panelBackgroundLayout.setHorizontalGroup(
             panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            //    .addComponent(roomCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, 884, Short.MAX_VALUE)
-            .addComponent(roomCanvas)
+            //    .addComponent(gameBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 884, Short.MAX_VALUE)
+            .addComponent(gameBoard)
         );
         panelBackgroundLayout.setVerticalGroup(
             panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomCanvas)
-            //    .addComponent(roomCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+            .addComponent(gameBoard)
+            //    .addComponent(gameBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -64,4 +71,21 @@ public class MainDialog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panelBackground;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyChar() == KeyEvent.VK_ESCAPE) {
+            removeMouseListener(gameBoard);
+            removeMouseMotionListener(gameBoard);
+            dispose();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
 }

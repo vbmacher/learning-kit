@@ -57,13 +57,11 @@ class GameObjectBuilderTest extends GroovyTestCase {
     }
 
     void testGameObjectHierarchy() {
-        def obj = new GameObjectBuilder(objects).someObject(name:'King', position: [0,0]) {
-            anotherObject position: [5,5], name:'Kings crown'
+        shouldFail {
+            def obj = new GameObjectBuilder(objects).someObject(name:'King', position: [0,0]) {
+                anotherObject position: [5,5], name:'Kings crown'
+            }
         }
-        assert obj instanceof GameObject
-        def children = ((GameObject)obj).children
-        assert children.size() == 1
-        assert children[0].position == new Point(5,5)
     }
 
 }

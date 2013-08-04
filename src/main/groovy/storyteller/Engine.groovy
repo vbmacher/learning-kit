@@ -5,16 +5,16 @@ class Engine {
     private final String gameScript
     private Game game; // Guarded by "this"
     private Player player = new Player();
-    private final RoomCanvas roomCanvas // Guarded by "this"
+    private final Board board // Guarded by "this"
 
-    Engine(File gameFile, RoomCanvas canvas) {
+    Engine(File gameFile, Board canvas) {
         this.gameScript = gameFile.text
-        this.roomCanvas = canvas
+        this.board = canvas
     }
 
-    Engine(String gameScript, RoomCanvas canvas) {
+    Engine(String gameScript, Board board) {
         this.gameScript = gameScript
-        this.roomCanvas = canvas
+        this.board = board
     }
 
     def newGame() {
@@ -22,8 +22,12 @@ class Engine {
         synchronized(this) {
             game = new Game()
             new GroovyShell(new Binding(game: game, player:player)).evaluate(gameScript)
-            roomCanvas?.setCurrentRoom(game.rooms.current)
+            board?.setCurrentRoom(game.rooms.current)
         }
+    }
+
+    def synchronized getGameName() {
+        return game.name
     }
 
     def synchronized start() {

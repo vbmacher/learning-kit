@@ -3,12 +3,13 @@ package storyteller
 import java.awt.Point
 import java.util.concurrent.CopyOnWriteArrayList
 import java.awt.Graphics
+import java.awt.image.BufferedImage
+import java.awt.Rectangle
 
-// Thread-safe, only if you use methods inside this class. Expando is not thread-safe.
+// Not thread-safe
 class GameObject extends Expando {
-    private final List<GameObject> children = new CopyOnWriteArrayList<GameObject>();
-    def volatile image
-    def volatile Point position = new Point(0,0)
+    def volatile BufferedImage image
+    protected volatile Rectangle positionRectangle = new Rectangle(0,0,0,0)
 
     GameObject(objectName) {
         this.objectName = objectName
@@ -16,8 +17,8 @@ class GameObject extends Expando {
 
     GameObject(objectName, Map attributes) {
         this(objectName)
-        updatePosition(attributes.remove("position"));
         updateImage(attributes.remove("image"));
+        updatePosition(attributes.remove("position"));
         attributes.each() { key, value ->
             this.setProperty(key, value)
         }
@@ -30,54 +31,53 @@ class GameObject extends Expando {
         } else if (positionFromArgs instanceof List) {
             List<Integer> listPosition = (List<Integer>)positionFromArgs;
             position = new Point(listPosition.get(0), listPosition.get(1));
+        } else if (positionFromArgs instanceof Point) {
+            position = positionFromArgs
+        } else {
+            position = new Point(0,0)
         }
+        createRectangle((int)position.x, (int)position.y, image?.getWidth() ?: 1, image?.getHeight() ?: 1)
+    }
+
+    protected final void createRectangle(int x, int y, int width, int height) {
+        positionRectangle = new Rectangle(x, y, width, height)
     }
 
     private void updateImage(imageFile) {
+        if (imageFile == null) {
+            return
+        }
         try {
-            this.image = image(file: imageFile)
+            this.image = ImageIO.read(imageFile)
         } catch (Throwable e) {
             e.printStackTrace()
         }
     }
 
-    def addChild(GameObject gameObject) {
-        children << gameObject
-    }
-
-    def removeChild(GameObject gameObject) {
-        children.remove(gameObject)
-    }
-
-    def leftShift(GameObject gameObject) {
-        addChild(gameObject)
-    }
-
     def String toString() {
-        "{GameObject=$name,children=$children}"
+        "{GameObject=$objectName}"
     }
 
     def move(Point newPosition) {
-        position = newPosition
+        updatePosition(newPosition)
     }
 
-    def changeImage(imageFile) {
+    final def changeImage(imageFile) {
         updateImage(imageFile)
-    }
-
-    def void paint(Graphics graphics, Point basePosition) {
-        Point newPosition = new Point(basePosition.x + position.x,basePosition.y + position.y)
-        graphics.drawImage(image, newPosition.x, newPosition.y, null)
-        children.each {
-            it.paint(graphics, newPosition)
-        }
+        updatePosition(positionRectangle.getLocation())
     }
 
     def void paint(Graphics graphics) {
-        graphics.drawImage(image, position.x, position.y, null)
-        children.each {
-            it.paint(graphics, position)
+        if (image != null) {
+            Rectangle rect = positionRectangle
+            graphics.drawImage(image, rect.x, rect.y, null)
+        } else {
+            this?.draw(graphics)
         }
+    }
+
+    def getRectangle() {
+        return new Rectangle(positionRectangle)
     }
 
 }

@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 class Room extends Expando {
     def volatile BufferedImage image
     def final objectName
-    def final ConcurrentMap<String,GameObject> objects = new ConcurrentHashMap<String, GameObject>()
+    protected final ConcurrentMap<String,GameObject> objects = new ConcurrentHashMap<String, GameObject>()
 
     Room(objectName, Map attributes, Map allObjects) {
         this.objectName = objectName
@@ -42,7 +42,7 @@ class Room extends Expando {
         objects.clear()
     }
 
-    protected void updateImage(imageFile) {
+    protected final void updateImage(imageFile) {
         if (imageFile == null) {
             return
         }
@@ -62,11 +62,9 @@ class Room extends Expando {
     }
 
     def void paint(Graphics graphics) {
-          graphics.drawLine(0,0,100,100)
-
         graphics.drawImage(image, 0, 0, null)
-        objects.each {
-            it.paint(graphics)
+        objects.each { k,v ->
+            v.paint(graphics)
         }
     }
 

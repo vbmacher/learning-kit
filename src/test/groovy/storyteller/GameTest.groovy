@@ -49,7 +49,7 @@ class GameTest extends GroovyTestCase {
         game.objects { sword(name:'Kings sword'); dragon(name:'Dragon') }
         game.rooms { start(name:'Sharewood land', objects: [ 'sword', 'dragon' ]); forest(name:'Deep forest') }
         game.action { rooms, objects ->
-            objects.with {
+            objects {
                 dragon.lives = 100
                 sword.moveable = true
                 sword.useable = { currentRoom ->
@@ -65,7 +65,7 @@ class GameTest extends GroovyTestCase {
 		    }
                 ]
             }
-            rooms.with {
+            rooms {
                 current = start
                 forest.init = { LOSER }
             }

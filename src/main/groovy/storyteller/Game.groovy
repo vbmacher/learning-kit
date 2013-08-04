@@ -13,6 +13,11 @@ class Game {
     final ConcurrentMap<String, Room> rooms = new ConcurrentHashMap<String, Room>();
     def volatile String name = 'A story'
 
+    public Game() {
+        objects.getMetaClass().call = { closure -> objects.with(closure) }
+        rooms.getMetaClass().call = { closure -> rooms.with(closure) }
+    }
+
     def objects(Closure closure) {
         def builder = new GameObjectBuilder(objects)
         closure.delegate = builder
@@ -28,6 +33,10 @@ class Game {
     def action(Closure closure) {
         closure.delegate = Game
         closure(rooms, objects)
+    }
+
+    def call(Closure closure) {
+        this.with(closure)
     }
 }
 

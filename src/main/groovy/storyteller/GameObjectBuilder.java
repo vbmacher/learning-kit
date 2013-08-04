@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class GameObjectBuilder extends BuilderSupport {
     private final static String MISSING_ERROR = "Missing object attributes";
+    private final static String CANNOT_HAVE_CHILDREN_ERROR = "Objects cannot have children objects";
+
     private final Map<String, GameObject> gameObjects;
 
     public GameObjectBuilder(Map<String, GameObject> gameObjects) {
@@ -14,7 +16,7 @@ public class GameObjectBuilder extends BuilderSupport {
 
     @Override
     protected void setParent(Object parent, Object child) {
-        ((GameObject)parent).addChild((GameObject)child);
+        throw new UnsupportedOperationException(CANNOT_HAVE_CHILDREN_ERROR);
     }
 
     public Iterator iterator() {
