@@ -2,6 +2,7 @@ package storyteller;
 
 import java.io.File;
 import javax.swing.SwingUtilities;
+import storyteller.menu.MainMenuRoom;
 
 public class Main {
     private static MainDialog dialog;
@@ -18,7 +19,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        final Board board = Board.newInstance(new MainMenuRoom());
+        final Board board = Board.newInstance();
+        board.setCurrentRoom(new MainMenuRoom(board));
 
         SwingUtilities.invokeLater(new Runnable() {
 

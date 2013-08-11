@@ -1,4 +1,5 @@
 apply plugin: 'groovy'
+apply plugin: 'eclipse'
 
 sourceCompatibility = '1.6'
 [compileJava, compileTestJava, compileGroovy]*.options*.encoding = 'UTF-8'
@@ -12,6 +13,15 @@ sourceCompatibility = '1.6'
 // your own implementation.
 if (!hasProperty('mainClass')) {
     ext.mainClass = 'storyteller.Main'
+}
+
+jar {
+    manifest {
+        attributes(
+            "Main-Class": 'storyteller.Main'
+        )
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 repositories {

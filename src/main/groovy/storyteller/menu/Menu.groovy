@@ -1,4 +1,4 @@
-package storyteller
+package storyteller.menu
 
 import java.awt.Point
 import java.awt.Graphics
@@ -9,9 +9,10 @@ import java.awt.image.BufferedImage
 import javax.swing.JComponent
 import java.awt.event.MouseMotionListener
 import java.awt.Rectangle
+import storyteller.menu.DialogComponent
+import storyteller.GameObject
 
-class Menu extends GameObject {
-    private final static String FONT_FILE_NAME = "/YEWBN___.ttf"
+public class Menu extends GameObject {
     private final static int VERTICAL_GAP = 10
     private final static int HORIZONTAL_GAP = 5
 
@@ -19,7 +20,6 @@ class Menu extends GameObject {
     private final int textHeight
 
     private final def menuFont;
-    private final def menuColor = new Color(0,0,0,50)
 
     private final menuOptions = []
     private MenuOption selectedOption
@@ -28,7 +28,7 @@ class Menu extends GameObject {
         private final Closure action
         private final Rectangle rectangle
         private final def name
-        private volatile Color color = Color.BLACK
+        private volatile Color color = DialogComponent.UNSELECTED_FOREGROUND_COLOR;
 
         public MenuOption(optionName, optionRect, action) {
             this.action = action
@@ -50,11 +50,11 @@ class Menu extends GameObject {
         }
 
         def select() {
-            color = Color.RED
+            color = DialogComponent.SELECTED_FOREGROUND_COLOR;
         }
 
         def unselect() {
-            color = Color.BLACK
+            color = DialogComponent.UNSELECTED_FOREGROUND_COLOR;
         }
 
         def String toString() {
@@ -66,9 +66,8 @@ class Menu extends GameObject {
     Menu(Map options, Point basePosition) {
         super('menu', [ position: basePosition ])
 
-        menuFont = Font.createFont(Font.TRUETYPE_FONT, Menu.class.getResourceAsStream(FONT_FILE_NAME)).deriveFont((float)32)
-        GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        def metrics = e.createGraphics(new BufferedImage(1,1,BufferedImage.TYPE_INT_RGB)).getFontMetrics(menuFont)
+        menuFont = DialogComponent.getDefaultFont();
+        def metrics = DialogComponent.getDefaultFontMetrics()
 
         textHeight = metrics.getHeight()
         def maxWidth = getMaxWidth(metrics, options.keySet())
@@ -112,7 +111,7 @@ class Menu extends GameObject {
 
     def draw(Graphics graphics) {
         graphics.setFont(menuFont)
-        graphics.setColor(menuColor)
+        graphics.setColor(DialogComponent.BACKGROUND_COLOR)
         graphics.fillRect(
             (int)positionRectangle.x,
             (int)positionRectangle.y,
