@@ -1,4 +1,4 @@
-package storyteller;
+package storyteller.gamemodel;
 
 import groovy.util.BuilderSupport;
 import java.util.Iterator;

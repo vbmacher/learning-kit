@@ -1,35 +1,34 @@
 package storyteller;
 
+import storyteller.gui.MainWindow;
 import java.io.File;
-import javax.swing.SwingUtilities;
-import storyteller.menu.MainMenuRoom;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import storyteller.gui.Board;
+import storyteller.rooms.MainMenuRoom;
+import storyteller.gamemodel.Engine;
 
-public class Main {
-    private static MainDialog dialog;
+public class Main extends Application {
+    private static MainWindow window;
 
-    public static void startGame(String fileName, Board canvas) {
-        Engine engine = new Engine(new File(fileName), canvas);
+    public static void main(String[] args) {
+        Application.launch(args);
+    }
 
-
+    @Override
+    public void start(final Stage primaryStage) {
+        Board board = new Board();
+        board.setCurrentRoom(new MainMenuRoom(board));
+        window = new MainWindow(primaryStage, board);
+        window.show();
     }
 
     public static void requestShutdown() {
-        dialog.dispose();
-
+        window.dispose();
     }
 
-    public static void main(String[] args) {
-        final Board board = Board.newInstance();
-        board.setCurrentRoom(new MainMenuRoom(board));
-
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-               dialog = MainDialog.newInstance(board);
-               dialog.setVisible(true);
-            }
-        });
+    public static void startGame(String fileName, Board canvas) {
+        Engine engine = new Engine(new File(fileName), canvas);
     }
 
 }

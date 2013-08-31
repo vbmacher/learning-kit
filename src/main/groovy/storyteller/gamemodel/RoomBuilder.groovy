@@ -1,4 +1,4 @@
-package storyteller
+package storyteller.gamemodel
 
 class RoomBuilder extends BuilderSupport {
     private final static String MISSING_ERROR = "Missing object attributes";

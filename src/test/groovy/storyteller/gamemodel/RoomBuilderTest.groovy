@@ -1,4 +1,4 @@
-package storyteller
+package storyteller.gamemodel
 
 class RoomBuilderTest extends GroovyTestCase {
 

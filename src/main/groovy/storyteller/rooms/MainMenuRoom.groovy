@@ -1,36 +1,41 @@
-package storyteller.menu
+package storyteller.rooms
 
 import java.awt.Graphics
 import java.awt.Point
 import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
-import storyteller.Room
-import storyteller.Board
+import storyteller.gui.RoomComponent
+import storyteller.gui.Menu
+import storyteller.gui.Board
+import storyteller.gamemodel.Room
 import storyteller.Main
 
-class MainMenuRoom extends Room {
+public class MainMenuRoom extends RoomComponent {
     private static final String IMAGE_FILE_NAME = "/storyteller.png"
     private final Menu menu
     private final Board board
 
     MainMenuRoom(Board board) {
-        super('mainMenu', [:], [:])
-        updateImage(MainMenuRoom.class.getResource(IMAGE_FILE_NAME))
-
+        super(new Room('mainMenu',
+            [
+                image:MainMenuRoom.class.getResourceAsStream(IMAGE_FILE_NAME)
+            ]
+        ))
         this.board = board
         menu = new Menu(
             [
                 'Start new game': {startNewGame()},
                 'Exit': {gameExit()}
             ], new Point(550,500))
-        objects.put(menu.objectName, menu)
+        getChildren().add(menu)
     }
 
     def startNewGame() {
-      board.setCurrentRoom(new SelectGameRoom(board))
+        board.setCurrentRoom(new SelectGameRoom(board))
     }
 
     def gameExit() {
+        board.setCurrentRoom(null)
         Main.requestShutdown()
     }
 

@@ -1,4 +1,4 @@
-package storyteller;
+package storyteller.gamemodel;
 
 import java.awt.Point
 class GameObjectBuilderTest extends GroovyTestCase {
@@ -23,7 +23,7 @@ class GameObjectBuilderTest extends GroovyTestCase {
         assert sword instanceof GameObject
         assert sword.name == 'Kings sword'
         assert sword.objectName == 'sword'
-        assert sword.position == new Point(500,1000)
+        assert sword.position() == new Point(500,1000)
         assert sword.image == null // image file does not exist so it's not converted into object
         assert sword.moveable == true
     }
@@ -31,7 +31,7 @@ class GameObjectBuilderTest extends GroovyTestCase {
     void testGameObjectPositionAsList() {
         def builder = new GameObjectBuilder(objects)
         def myObj = builder.obj position:[10,10]
-        assert myObj.position == new Point(10,10)
+        assert myObj.position() == new Point(10,10)
     }
 
     void testGameObjectWithoutParameters() {

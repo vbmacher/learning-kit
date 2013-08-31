@@ -1,11 +1,11 @@
-package storyteller
+package storyteller.gamemodel
 
 class EngineTest extends GroovyTestCase {
 
     void testGameAndPlayerInsideGameScript() {
         Engine engine = new Engine("""
-            assert game instanceof storyteller.Game
-            assert player instanceof storyteller.Player
+            assert game instanceof storyteller.gamemodel.Game
+            assert player instanceof storyteller.gamemodel.Player
         """, null)
         engine.newGame()
     }

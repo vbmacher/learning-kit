@@ -1,4 +1,4 @@
-package storyteller
+package storyteller.gui
 
 import org.easymock.*;
 import static org.easymock.EasyMock.*;

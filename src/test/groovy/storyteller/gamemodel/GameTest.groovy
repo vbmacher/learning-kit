@@ -1,4 +1,4 @@
-package storyteller
+package storyteller.gamemodel
 
 class GameTest extends GroovyTestCase {
     def Game game

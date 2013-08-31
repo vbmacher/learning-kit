@@ -1,4 +1,4 @@
-package storyteller
+package storyteller.gamemodel
 
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -18,7 +18,7 @@ class Player extends GameObject {
     }
 
     def String toString() {
-        "{Player=$playerName}"
+        playerName
     }
 
 }

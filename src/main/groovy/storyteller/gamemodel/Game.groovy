@@ -1,4 +1,4 @@
-package storyteller
+package storyteller.gamemodel
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap

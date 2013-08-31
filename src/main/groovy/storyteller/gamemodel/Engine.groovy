@@ -1,5 +1,6 @@
-package storyteller
+package storyteller.gamemodel
 
+import storyteller.gui.Board
 // Thread-safe.
 class Engine {
     private final String gameScript
