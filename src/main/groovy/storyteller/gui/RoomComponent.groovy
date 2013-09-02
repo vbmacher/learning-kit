@@ -7,11 +7,15 @@ import javafx.scene.shape.Rectangle
 import storyteller.gamemodel.Room
 
 public class RoomComponent extends Pane {
-    protected final Room room
+    protected Room room
+    protected final RoomComponent previous
     private final Canvas canvas = new Canvas()
+    protected final Board board
 
-    public RoomComponent(Room room) {
+    public RoomComponent(Room room, Board board, RoomComponent previous = null) {
+        this.previous = previous
         this.room = room
+        this.board = board
         def rect = room.rectangle()
         this.prefWidthProperty().bind(rect.widthProperty())
         this.prefHeightProperty().bind(rect.heightProperty())
@@ -24,6 +28,10 @@ public class RoomComponent extends Pane {
         room.paint(gc)
 
         getChildren().add(canvas)
+    }
+
+    def back() {
+        board.setCurrentRoom(previous)
     }
 
 }

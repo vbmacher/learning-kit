@@ -21,49 +21,56 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 
 public class Board extends Pane {
-    private volatile RoomComponent currentRoom;
+    private RoomComponent currentRoom; // Thread confinement (FX Thred)
 
-    public final void setCurrentRoom(RoomComponent room) {
-        RoomComponent oldRoom = currentRoom
-        if (oldRoom == null) {
-            setNewRoom(room)
-        } else {
-            Platform.runLater(new Runnable() {
-                    def void run() {
-                        FadeTransition fd = createFadeOut(oldRoom)
-                        fd.setOnFinished(new EventHandler<ActionEvent>() {
-
-                                public void handle(ActionEvent event) {
-                                    getChildren().remove(oldRoom)
-                                    setNewRoom(room)
-                                }
-
-                            })
-                        fd.play()
-                    }
-                })
-        }
+    public final void setCurrentRoom(final RoomComponent room) {
+        Platform.runLater(new Runnable() {
+                def void run() {
+                    setNewRoom(room)
+                }
+            })
     }
 
-    private void setNewRoom(room) {
-        if (room != null) {
-            room.setOpacity(0.0)
-            getChildren().add(room)
-            createFadeIn(room).play()
-        }
+    // Must be called before FX Application thread starts!
+    // TODO: applyCurrentRoom call is safe?
+    public final void setFirstRoom(room) {
         currentRoom = room
+        applyCurrentRoom()
+    }
+
+    // Must be called only in FX Application thread!
+    private void setNewRoom(room) {
+        FadeTransition fd = createFadeOut(currentRoom)
+        fd.setOnFinished(new EventHandler<ActionEvent>() {
+
+                public void handle(ActionEvent event) {
+                    if (currentRoom != null) {
+                        getChildren().remove(currentRoom)
+                    }
+                    currentRoom = room
+                    applyCurrentRoom()
+                }
+            })
+        fd.play()
+    }
+
+    // Must be called only in FX Application thread!
+    private void applyCurrentRoom() {
+        currentRoom.setOpacity(0.0)
+        getChildren().add(currentRoom)
         autosize()
+        createFadeIn(currentRoom).play()
     }
 
     private FadeTransition createFadeIn(room) {
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(1000), room);
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(700), room);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
         return fadeTransition;
     }
 
     private FadeTransition createFadeOut(room) {
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(1000), room);
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(700), room);
         fadeTransition.setFromValue(1.0);
         fadeTransition.setToValue(0.0);
         return fadeTransition;

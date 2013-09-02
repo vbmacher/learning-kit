@@ -1,12 +1,14 @@
 package storyteller.gamemodel
 
 import storyteller.gui.Board
-// Thread-safe.
+import storyteller.rooms.GameRoom
+
+// Not thread-safe.
 class Engine {
     private final String gameScript
-    private Game game; // Guarded by "this"
+    private Game game;
     private Player player = new Player();
-    private final Board board // Guarded by "this"
+    private final Board board
 
     Engine(File gameFile, Board canvas) {
         this.gameScript = gameFile.text
@@ -19,22 +21,20 @@ class Engine {
     }
 
     def newGame() {
-        stop()
-        synchronized(this) {
-            game = new Game()
-            new GroovyShell(new Binding(game: game, player:player)).evaluate(gameScript)
-            board?.setCurrentRoom(game.rooms.current)
-        }
+        game = new Game()
+        new GroovyShell(new Binding(game: game, player:player)).evaluate(gameScript)
     }
 
-    def synchronized getGameName() {
+    def getGameName() {
         return game.name
     }
 
-    def synchronized start() {
+    def start() {
+        def gameRoom = new GameRoom(game.rooms.current, board)
+        board.setCurrentRoom(gameRoom)
     }
 
-    def synchronized stop() {
+    def stop() {
 
     }
 }

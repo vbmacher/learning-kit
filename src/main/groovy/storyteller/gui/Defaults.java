@@ -3,11 +3,7 @@ package storyteller.gui;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-/**
- *
- * @author jakubco
- */
-public class DialogComponent {
+public class Defaults {
   public final static Color BACKGROUND_COLOR = new Color(0,0,0,0.5);
   public final static String FONT_FILE_NAME = "/YEWBN___.ttf";
   private static Font textFont;
@@ -17,7 +13,7 @@ public class DialogComponent {
 
   public static Font getDefaultFont() {
     if (textFont == null) {
-      textFont = Font.loadFont(DialogComponent.class.getResourceAsStream(FONT_FILE_NAME), 32);
+      textFont = Font.loadFont(Defaults.class.getResourceAsStream(FONT_FILE_NAME), 32);
     }
     return textFont;
   }

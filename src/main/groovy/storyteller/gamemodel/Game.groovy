@@ -3,7 +3,7 @@ package storyteller.gamemodel
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 
-// Thread safe.
+// Thread safe. Used in the script.
 class Game {
     static final int WINNER = 0;
     static final int LOSER = 1;

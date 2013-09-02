@@ -19,7 +19,6 @@ public class MainWindow {
         scene = new Scene(root, board.getWidth(), board.getHeight(), Color.rgb(0,0,0));
         scene.getStylesheets().add("css/listview.css");
 
-        // add the single node onto the scene graph
         root.getChildren().add(board);
         stage.setTitle("Story teller");
         stage.setResizable(false);
