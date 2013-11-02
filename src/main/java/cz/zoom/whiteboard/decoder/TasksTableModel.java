@@ -1,6 +1,6 @@
 package cz.zoom.whiteboard.decoder;
 
-import cz.zoom.whiteboard.generator.Task;
+import cz.zoom.whiteboard.Task;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 

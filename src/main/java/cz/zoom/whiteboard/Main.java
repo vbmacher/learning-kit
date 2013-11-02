@@ -5,7 +5,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import cz.zoom.whiteboard.CommandLineParser.CommandLine;
 import cz.zoom.whiteboard.decoder.Whiteboard;
-import cz.zoom.whiteboard.generator.TaskGenerator;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -14,8 +14,7 @@ import javax.swing.JOptionPane;
 public class Main {
     
     public static Result[] getQRCode(String fileName) throws NotFoundException, IOException {
-        QRCode qrCode = new QRCode();
-        return qrCode.decode(ImageIO.read(new File(fileName)));
+        return QRCode.decode(ImageIO.read(new File(fileName)));
     }
     
     public static void usageAndExit() {
@@ -29,8 +28,14 @@ public class Main {
         
         if (cmdLine.has("encode") && cmdLine.hasArgument("encode")) {
             try {
-                TaskGenerator generator = new TaskGenerator();
-                generator.generateTasks(cmdLine.getArgument("encode"));
+                TaskTransformations generator = new TaskTransformations();
+                
+                int i = 0;
+                ImageIO.setUseCache(false);
+                for (BufferedImage taskImage : generator.renderAll(cmdLine.getArgument("encode"))) {
+                    File file = new File("task-" + i + ".png");
+                    ImageIO.write(taskImage, "PNG", file);
+                }
             } catch (Exception e) {
                 System.err.println("Could not generate tasks: " + e.getMessage());
             }

@@ -2,7 +2,6 @@ package cz.zoom.whiteboard;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
-import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.WriterException;
@@ -16,14 +15,20 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class QRCode {
+    public final static int DEFAULT_QR_WIDTH = 250;
+    public final static int DEFAULT_QR_HEIGHT = 250;
 
-    public BufferedImage encode(String dumpedData, int width, int height) throws IOException, WriterException {
+    public static BufferedImage encode(String dumpedData) throws IOException, WriterException {
+        return encode(dumpedData, DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
+    }
+
+    public static BufferedImage encode(String dumpedData, int width, int height) throws IOException, WriterException {
         QRCodeWriter writer = new QRCodeWriter();
         BitMatrix bitMatrix = writer.encode(dumpedData, BarcodeFormat.QR_CODE, width, height);
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
-
-    public Result[] decode(BufferedImage image) throws NotFoundException {
+    
+    public static Result[] decode(BufferedImage image) throws NotFoundException {
         if (image == null) {
             return null;
         }

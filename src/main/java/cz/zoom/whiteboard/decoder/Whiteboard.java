@@ -6,10 +6,12 @@ import com.github.sarxos.webcam.WebcamListener;
 import com.github.sarxos.webcam.WebcamMotionEvent;
 import com.github.sarxos.webcam.WebcamMotionListener;
 import com.google.zxing.NotFoundException;
-import cz.zoom.whiteboard.generator.Task;
+import cz.zoom.whiteboard.Task;
+import cz.zoom.whiteboard.TaskTransformations;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.SpinnerNumberModel;
 
@@ -18,7 +20,6 @@ public class Whiteboard extends javax.swing.JFrame {
     private Webcam lastWebcam;
     private final WebcamListener webcamListener = new SnapshotListener();
     private final CameraCanvas canvas = new CameraCanvas();
-    private final TaskDecoder taskDecoder = new TaskDecoder();
     private final TasksTableModel tasksModel;
     
     private final List<Task> tasks = new ArrayList<Task>();
@@ -36,11 +37,11 @@ public class Whiteboard extends javax.swing.JFrame {
         private void scanTasks() {
             tasks.clear();
             try {
-                List<Task> tmpTasks = taskDecoder.decodeTasks(canvas.snapshot());
+                Task[] tmpTasks = TaskTransformations.decodeAll(canvas.snapshot());
                 if (tmpTasks == null) {
                     return;
                 }
-                tasks.addAll(tmpTasks);
+                tasks.addAll(Arrays.asList(tmpTasks));
                 tasksModel.fireTableDataChanged();
             } catch (NotFoundException e) {
                 // QR code was not found... ignore
