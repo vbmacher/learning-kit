@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import net.jcip.annotations.Immutable;
+import net.rcarz.jiraclient.Issue;
+import org.yaml.snakeyaml.Yaml;
 
 /**
  * A task can contain:
@@ -30,24 +32,44 @@ public class Task {
     private final static Font FONT_ID = new Font("Monospaced", Font.BOLD, 26);
     private final static Font FONT_SUMMARY = new Font("Tahoma", Font.PLAIN, 25);
 
-    private final static String DEFAULT_TASK_TYPE = JiraIssue.TYPE_TECHNICAL_TASK;    
+    private final static String DEFAULT_TASK_TYPE = JiraAdapter.TYPE_TECHNICAL_TASK;    
     private final Map<String, String> taskData;
     
-    public Task(Map<String, String> task) {
+    public Task(Map<String, String> task) throws TaskException {
         Map<String, String> tmpMap = new HashMap<String, String>();
         tmpMap.putAll(task);
         validate(tmpMap);
         taskData = Collections.unmodifiableMap(tmpMap);
     }
     
-    private void validate(Map<String, String> tmpMap) {
+    public Task(Issue issue) throws TaskException {
+        Map<String, String> issueData = new HashMap<String, String>();
+        
+        issueData.put("description", issue.getDescription());
+        issueData.put("summary", issue.getSummary());
+        issueData.put("key", issue.getKey());
+        issueData.put("type", issue.getIssueType().getName());
+        issueData.put("project", issue.getProject().getKey());
+        
+        validate(issueData);
+        taskData = Collections.unmodifiableMap(issueData);
+    }
+    
+    private void validate(Map<String, String> tmpMap) throws TaskException {
         if (!tmpMap.containsKey("type")) {
             tmpMap.put("type", DEFAULT_TASK_TYPE);
+        }
+        if (!tmpMap.containsKey("project")) {
+            throw new TaskException("Task must contain 'project' value!");
         }
     }    
     
     public String getSummary() {
         return taskData.get("summary");
+    }
+    
+    public String getDescription() {
+        return taskData.get("description");
     }
     
     public String getProject() {
@@ -62,8 +84,8 @@ public class Task {
         return taskData.get("type");
     }
         
-    public String getId() {
-        return taskData.get("id");
+    public String getKey() {
+        return taskData.get("key");
     }
     
     public Map<String, String> getData() {
@@ -110,7 +132,7 @@ public class Task {
         }
     }
     
-    private BufferedImage appendWithText(Task task, BufferedImage qrCodeImage, int qrWidth, int qrHeight) {
+    private BufferedImage appendWithText(BufferedImage qrCodeImage, int qrWidth, int qrHeight) {
         BufferedImage dimg = new BufferedImage(2 * qrWidth, qrHeight, qrCodeImage.getType());
         Graphics2D g = dimg.createGraphics();
 
@@ -122,15 +144,15 @@ public class Task {
         g.setFont(FONT_SUMMARY);
         
         int cursorHeight = 45;
-        if (task.getId() != null) {
+        if (getKey() != null) {
             g.setFont(FONT_ID);
-            g.drawString(task.getId(), qrWidth + 5, cursorHeight);
+            g.drawString(getKey(), qrWidth + 5, cursorHeight);
             cursorHeight += FONT_ID.getSize() + 10;
         }
         
-        if (task.getSummary() != null) {
+        if (getSummary() != null) {
             g.setFont(FONT_SUMMARY);
-            drawWrappedString(g, task.getSummary(), qrWidth + 10, cursorHeight, qrWidth - 5);
+            drawWrappedString(g, getSummary(), qrWidth + 10, cursorHeight, qrWidth - 5);
         }
         g.drawRect(5, 5, 2 * qrWidth - 10, qrHeight - 10);
 
@@ -139,12 +161,13 @@ public class Task {
     }
     
     public BufferedImage render() throws IOException, WriterException {
-        BufferedImage qrCodeImage = QRCode.encode(TaskTransformations.dumpYaml(taskData));
-        return appendWithText(
-                this,
-                qrCodeImage,
-                DEFAULT_QR_WIDTH,
-                DEFAULT_QR_HEIGHT);
+        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(taskData));
+        return appendWithText(qrCodeImage, DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
+    }
+    
+    private static String dumpToYaml(Object data) {
+        Yaml yaml = new Yaml();
+        return yaml.dump(data);
     }
 
 }
