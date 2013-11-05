@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Iterator;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import net.rcarz.jiraclient.JiraException;
@@ -68,9 +69,13 @@ public class Main {
     
     private static void findTasks(String url, String login, String password, String issueName) throws URISyntaxException, JiraException {
         JiraAdapter jira = new JiraAdapter(url, login, password, true);
-        for (Iterator<SprintIssue> it = jira.getSprintIssues().iterator(); it.hasNext();) {
-            SprintIssue issue = it.next();
-            System.out.println(issue);
+        List<SprintIssue> issues = jira.getOpenSprintIssues(issueName);
+        if (issues == null) {
+            System.out.println("No issues found");
+        } else {
+            for (SprintIssue issue : issues) {
+                System.out.println(issue);
+            }
         }
     }
     
