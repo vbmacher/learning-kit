@@ -19,7 +19,7 @@ public class CommandLineParser {
         { "login", "l", "userName", "User name used in JIRA authentication (optional)"},
         { "password", "p", "password", "Password used in JIRA authentication (optional)"},
 
-        { "boundary", "b", "yamlFields", "Render PNG boundary with specified JIRA issue fields" },
+        { "bounds", "b", "yamlFields pngFile", "Render 4 PNG boundaries with specified JIRA issue fields" },
         { "whiteboard", "w", null, "Display whiteboard GUI (experimental)" },
     };
     

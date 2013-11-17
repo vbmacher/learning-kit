@@ -1,7 +1,6 @@
 package cz.zoom.whiteboard.cmdline;
 
 import cz.zoom.whiteboard.JiraAdapter;
-import cz.zoom.whiteboard.cmdline.Command;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -29,6 +28,10 @@ public class SprintByIssue extends Command {
     
     @Override
     public void run(CommandLine commandLine, String[] issues) throws CommandException {
+        if (issues.length < 1) {
+            throw new CommandException("SprintByIssue: One or more arguments needed!");
+        }
+
         String login = commandLine.getFirstArgument("login");
         String password = commandLine.getFirstArgument("password");
         String url = commandLine.getFirstArgument("url");

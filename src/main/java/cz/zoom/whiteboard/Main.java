@@ -1,5 +1,6 @@
 package cz.zoom.whiteboard;
 
+import cz.zoom.whiteboard.cmdline.Bounds;
 import cz.zoom.whiteboard.cmdline.LaunchWhiteboard;
 import cz.zoom.whiteboard.cmdline.DecodePNG;
 import cz.zoom.whiteboard.cmdline.Render;
@@ -35,6 +36,7 @@ public class Main {
         composite.registerCommand("issue", new SprintByIssue());
         composite.registerCommand("sprint", new SprintByID());
         composite.registerCommand("create", new CreateIssues());
+        composite.registerCommand("bounds", new Bounds());
 
         try {
             if (cmdLine.hasOption("render")) {

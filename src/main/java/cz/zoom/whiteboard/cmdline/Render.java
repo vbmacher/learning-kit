@@ -31,7 +31,7 @@ public class Render extends Command {
         return dataSink;    
     }
     
-    public void run(CommandLine commandLine, String[] argument) throws CommandException {
+    public void run(CommandLine commandLine, String[] arguments) throws CommandException {
         if (!commandLine.hasOption("yaml")) {
             throw new CommandException("YAML output option must be set!");
         }

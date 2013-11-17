@@ -13,10 +13,14 @@ public class DecodePNG extends Command {
         return QRCode.decode(ImageIO.read(new File(fileName)));
     }
     
-    public void run(CommandLine commandLine, String[] pngFileName) throws CommandException {
+    public void run(CommandLine commandLine, String[] arguments) throws CommandException {
+        if (arguments.length < 1) {
+            throw new CommandException("DecodePNG: One argument needed!");
+        }
+
         boolean yamlOutput = commandLine.hasOption("yaml");
         try {
-            Result[] result = getQRCode(pngFileName[0]);
+            Result[] result = getQRCode(arguments[0]);
             if (!yamlOutput) {
                 out.println("Recognized " + result.length + " codes.\n");
             }

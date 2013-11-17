@@ -33,6 +33,10 @@ public class SprintByID extends Command {
 
     @Override
     public void run(CommandLine commandLine, String[] arguments) throws CommandException {
+        if (arguments.length < 2) {
+            throw new CommandException("SprintByID: Two arguments needed!");
+        }
+
         String login = commandLine.getFirstArgument("login");
         String password = commandLine.getFirstArgument("password");
         String url = commandLine.getFirstArgument("url");
