@@ -10,6 +10,7 @@ import cz.zoom.whiteboard.cmdline.CommandLine;
 import cz.zoom.whiteboard.cmdline.CommandLineComposite;
 import cz.zoom.whiteboard.cmdline.CommandLineParser;
 import cz.zoom.whiteboard.cmdline.CreateIssues;
+import cz.zoom.whiteboard.cmdline.Locate;
 import cz.zoom.whiteboard.cmdline.SprintByID;
 import java.io.PrintStream;
 
@@ -37,6 +38,7 @@ public class Main {
         composite.registerCommand("sprint", new SprintByID());
         composite.registerCommand("create", new CreateIssues());
         composite.registerCommand("bounds", new Bounds());
+        composite.registerCommand("locate", new Locate());
 
         try {
             if (cmdLine.hasOption("render")) {

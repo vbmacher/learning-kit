@@ -46,11 +46,6 @@ public class QRCode {
         image = ImageFilters.gammaCorrection(image, 0.1);
         image = ImageFilters.blackAndWhite(image);
 
-        try {
-            ImageIO.write(image, "PNG", new File("tmp.png"));
-        } catch (Exception e) {
-        }
-
         return image;
     }
 

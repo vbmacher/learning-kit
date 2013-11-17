@@ -15,7 +15,6 @@ public class Bounds extends Command {
         }
         
         Boundary boundary = new Boundary(arguments[0]);
-
         try {
             for (int i = 0; i < 4; i++) {
                 ImageIO.setUseCache(false);
