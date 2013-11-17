@@ -11,15 +11,16 @@ public class CommandLineParser {
         { "create", "c", "yamlFile", "Create/update JIRA issues from YAML file" },
         { "issue", "i", "issueKey", "Find all open issues from sprint based on issue key"},
         { "sprint", "s", "rapidViewID sprintID", "Find all open issues from sprint based on issue key"},
+        { "bounds", "b", "yamlFields pngFile", "Render 4 PNG boundaries with specified JIRA issue fields" },
+        { "locate", "L", "yamlFields pngFile", "Locate 4 PNG boundaries with specified JIRA issue fields" },
         
-        { "yaml", "y", null, "YAML output (relevant only for -s,-i,-d)" },
+        { "yaml", "y", null, "YAML output (relevant only for -s,-i,-d,-L)" },
         { "render", "r", null, "PNG output (-y is required)" },
         
         { "url", "u", "jiraURL", "Set JIRA URL (optional)"},
         { "login", "l", "userName", "User name used in JIRA authentication (optional)"},
         { "password", "p", "password", "Password used in JIRA authentication (optional)"},
 
-        { "bounds", "b", "yamlFields pngFile", "Render 4 PNG boundaries with specified JIRA issue fields" },
         { "whiteboard", "w", null, "Display whiteboard GUI (experimental)" },
     };
     

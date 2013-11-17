@@ -59,6 +59,21 @@ public class Boundary {
         return new Rectangle(x, y, width, height);
     }
     
+    public static Boundary findByText(BufferedImage capturedImage, String text) throws NotFoundException {
+        Result[] result = QRCode.decode(capturedImage);
+        
+        if (result == null) {
+            return null;
+        }
+        for (Result res : result) {
+            if (res.getText().equals(BOUNDARY_BEGIN + text)) {
+                return new Boundary(text);
+            }
+        }
+        return null;
+    }
+
+    
     public static List<Boundary> findAll(BufferedImage capturedImage) throws NotFoundException {
         Result[] result = QRCode.decode(capturedImage);
         
