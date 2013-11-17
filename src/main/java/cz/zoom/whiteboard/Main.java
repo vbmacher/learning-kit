@@ -2,12 +2,15 @@ package cz.zoom.whiteboard;
 
 import cz.zoom.whiteboard.cmdline.LaunchWhiteboard;
 import cz.zoom.whiteboard.cmdline.DecodePNG;
-import cz.zoom.whiteboard.cmdline.RenderYAML;
-import cz.zoom.whiteboard.cmdline.StoryIssues;
+import cz.zoom.whiteboard.cmdline.Render;
+import cz.zoom.whiteboard.cmdline.SprintByIssue;
 import cz.zoom.whiteboard.cmdline.CommandException;
 import cz.zoom.whiteboard.cmdline.CommandLine;
-import cz.zoom.whiteboard.cmdline.CommandLineMediator;
+import cz.zoom.whiteboard.cmdline.CommandLineComposite;
 import cz.zoom.whiteboard.cmdline.CommandLineParser;
+import cz.zoom.whiteboard.cmdline.CreateIssues;
+import cz.zoom.whiteboard.cmdline.SprintByID;
+import java.io.PrintStream;
 
 public class Main {
     
@@ -23,16 +26,23 @@ public class Main {
             usageAndExit();
         }
         
-        CommandLineMediator mediator = new CommandLineMediator(cmdLine);
-        mediator.registerCommand("render", new RenderYAML());
-        mediator.registerCommand("decode", new DecodePNG());
-        mediator.registerCommand("whiteboard", new LaunchWhiteboard());
-        mediator.registerCommand("story", new StoryIssues());
+        CommandLineComposite composite = new CommandLineComposite();
+        
+        Render render = new Render();
+        composite.registerCommand("render", render);
+        composite.registerCommand("decode", new DecodePNG());
+        composite.registerCommand("whiteboard", new LaunchWhiteboard());
+        composite.registerCommand("issue", new SprintByIssue());
+        composite.registerCommand("sprint", new SprintByID());
+        composite.registerCommand("create", new CreateIssues());
 
         try {
-            mediator.processCommandLine();
+            if (cmdLine.hasOption("render")) {
+                composite.setOutPrintStream(new PrintStream(render.getOutputStream()));
+            }
+            composite.run(cmdLine, null);
         } finally {
-            mediator.destroy();
+            composite.destroy();
         }
     }
 

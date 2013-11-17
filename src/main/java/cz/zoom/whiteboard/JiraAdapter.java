@@ -1,7 +1,10 @@
 package cz.zoom.whiteboard;
 
+import java.io.IOException;
+import java.io.PrintStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +31,16 @@ public class JiraAdapter {
     private final JiraClient jira;
     private final GreenHopperClient greenHopper;
     
-    public JiraAdapter(String jiraURL, String userName, String password, boolean useGreenHopper) throws URISyntaxException {
+    public JiraAdapter(String jiraURL, String userName, String password, boolean useGreenHopper) throws URISyntaxException, IOException {
+        if (jiraURL == null) {
+            jiraURL = readURL();
+        }
+        if (userName == null) {
+            userName = readUserName();
+        }
+        if (password == null) {
+            password = readPassword();
+        }
         credentials = new BasicCredentials(userName, password);
         jira = new JiraClient(jiraURL, credentials);
         if (useGreenHopper) {
@@ -38,17 +50,47 @@ public class JiraAdapter {
         }
     }
     
+    private String readUserName() throws IOException {
+        System.out.print("Enter user name: ");
+        return IOUtils.readString();
+    }
+    
+    private String readPassword() throws IOException {
+        System.out.print("Enter password: ");
+        return IOUtils.readStringSilently();
+    }
+    
+    private String readURL() throws IOException {
+        System.out.print("Enter JIRA URL: ");
+        return IOUtils.readString();
+    }
+
     public Issue getIssue(String issueKey) throws JiraException {
         return jira.getIssue(issueKey);
     }
     
-    private boolean containsIssue(List<Issue> issues, String issueKey) throws JiraException {
+    private void checkGreenHopper() {
+        if (greenHopper == null) {
+            throw new UnsupportedOperationException("GreenHopper JIRA plugin is not accessible");
+        }
+    }
+    
+    private boolean containsIssue(List<Issue> issues, String issueKey, List<Issue> alreadySearched) throws JiraException {
         for (Issue issue : issues) {
+            if (alreadySearched != null && alreadySearched.contains(issue)) {
+                continue;
+            }
+            
             if (issue.getKey().equals(issueKey)) {
                 return true;
             } else {
+                if (alreadySearched == null) {
+                    alreadySearched = new ArrayList<Issue>();
+                }
+                alreadySearched.add(issue);
+
                 SearchResult result = jira.searchIssues("parent=" + issue.getKey());
-                if (containsIssue(result.issues, issueKey)) {
+                if (containsIssue(result.issues, issueKey,alreadySearched)) {
                     return true;
                 }
             }
@@ -64,17 +106,19 @@ public class JiraAdapter {
         return jiraIssues;
     }
     
-    private List<SprintIssue> getOpenIssues(SprintReport report, String issueKey) throws JiraException {
+    public List<SprintIssue> getOpenSprintIssues(SprintReport report, String issueKey) throws JiraException {
         List<SprintIssue> issues = new ArrayList<SprintIssue>();
-        boolean found
-                = containsIssue(jiraIssues(report.getCompletedIssues()), issueKey)
-                || containsIssue(jiraIssues(report.getIncompletedIssues()), issueKey)
-                || containsIssue(jiraIssues(report.getPuntedIssues()), issueKey);
-
+        
+        List<SprintIssue> issuesToSearch = new ArrayList<SprintIssue>();
+        issuesToSearch.addAll(report.getCompletedIssues());
+        issuesToSearch.addAll(report.getPuntedIssues());
+        issuesToSearch.addAll(report.getIncompletedIssues());
+        
+        boolean found = containsIssue(jiraIssues(issuesToSearch), issueKey, null);
+        
         if (found) {
             for (SprintIssue issue : report.getIncompletedIssues()) {
                 if (!issue.isDone()) {
-                    //SearchResult result = jira.searchIssues("parent=" + issueKey);
                     issues.add(issue);
                 }
             }
@@ -83,10 +127,25 @@ public class JiraAdapter {
         return issues;
     }
     
-    public List<SprintIssue> getOpenSprintIssues(String issueKey) throws JiraException {
-        if (greenHopper == null) {
-            throw new UnsupportedOperationException("GreenHopper JIRA plugin is not accessible");
+    public List<SprintIssue> getOpenSprintIssues(int rapidViewID, int sprintID) throws JiraException {
+        checkGreenHopper();
+        RapidView rapidView = greenHopper.getRapidView(rapidViewID);
+        if (rapidView == null) {
+            throw new JiraException("Rapid view was not found");
         }
+        
+        for (Sprint sprint : rapidView.getSprints()) {
+            if (sprint.getId() == sprintID) {
+                SprintReport report = rapidView.getSprintReport(sprint);
+                return report.getIncompletedIssues();
+            }
+        }
+        return null;
+    }
+
+    
+    public List<SprintIssue> getOpenSprintIssues(String issueKey) throws JiraException {
+        checkGreenHopper();
 
         Set<Integer> sprintIds = new HashSet<Integer>();
         for (RapidView view : greenHopper.getRapidViews()) {
@@ -95,15 +154,10 @@ public class JiraAdapter {
                     continue;
                 }
                 sprintIds.add(sprint.getId());
-                try {
-                    SprintReport report = view.getSprintReport(sprint);
-                    System.out.println("sprint: id=" + sprint.getId() + "; " + sprint.getName());
-                    List<SprintIssue> issues = getOpenIssues(report, issueKey);
-                    if (!issues.isEmpty()) {
-                        return issues;
-                    }
-
-                } catch (JiraException e) {
+                SprintReport report = view.getSprintReport(sprint);
+                List<SprintIssue> issues = getOpenSprintIssues(report, issueKey);
+                if (!issues.isEmpty()) {
+                    return issues;
                 }
             }
         }
@@ -111,12 +165,40 @@ public class JiraAdapter {
     }
     
     public Issue createIssueFromTask(Task task) throws JiraException {
-        return jira.createIssue(task.getProject(), task.getType())
-                .field("summary", task.getSummary())
-                .field("description", task.getDescription())
+        return jira.createIssue(task.get("project"), task.get("type"))
+                .field("summary", task.get("summary"))
+                .field("description", task.get("description"))
                 .execute();
-        
     }
     
+    private void printWithCheck(PrintStream out, String key, String value) {
+        if (value != null) {
+            out.println(key + ": " + value);
+        }
+    }
+    
+    public void printYaml(SprintIssue issue, PrintStream out) {
+        printWithCheck(out, "key", issue.getKey());
+        printWithCheck(out, "summary", issue.getSummary());
+        out.println("---");
+    }
+    
+    public void print(SprintIssue issue, PrintStream out) {
+        out.println("[" + issue.getKey() + "] " + issue.getSummary());
+    }
+
+    public void printYaml(Collection<SprintIssue> issues, PrintStream out) {
+        for (SprintIssue issue : issues) {
+            printWithCheck(out, "key", issue.getKey());
+            printWithCheck(out, "summary", issue.getSummary());
+            out.println("---");
+        }
+    }
+
+    public void print(Collection<SprintIssue> issues, PrintStream out) {
+        for (SprintIssue issue : issues) {
+            System.out.println("[" + issue.getKey() + "] " + issue.getSummary());
+        }
+    }
 
 }

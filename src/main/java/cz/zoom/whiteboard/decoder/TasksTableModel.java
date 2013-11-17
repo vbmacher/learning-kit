@@ -32,7 +32,7 @@ public class TasksTableModel extends AbstractTableModel {
         
         switch (column) {
             case 0:
-                return task.getSummary();
+                return task.get("summary");
         }
         return "";
     }

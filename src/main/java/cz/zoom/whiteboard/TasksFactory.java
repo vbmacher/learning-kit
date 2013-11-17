@@ -17,9 +17,11 @@ public class TasksFactory {
     
     private static Tasks createFromYamlData(Iterable<Object> yamlData) throws TaskException {
         List<Task> tasks = new ArrayList<Task>();
-        
+
         for (Object task : yamlData) {
-            tasks.add(new Task((Map<String, String>) task));
+            if (task != null) {
+                tasks.add(new Task((Map<String, String>) task));
+            }
         }
         return new Tasks(tasks.toArray(new Task[0]));
     }

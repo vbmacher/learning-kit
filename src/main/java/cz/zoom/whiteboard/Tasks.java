@@ -5,13 +5,14 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import net.jcip.annotations.ThreadSafe;
 
 @ThreadSafe
-public class Tasks {
+public class Tasks implements Iterable<Task> {
     private final List<Task> tasks = new CopyOnWriteArrayList<Task>();
     
     public Tasks(Task[] tasks) {
@@ -34,6 +35,9 @@ public class Tasks {
         return tasks.toArray(new Task[0]);
     }
     
+    public Iterator<Task> iterator() {
+        return tasks.iterator();
+    }
     
     public boolean add(Task task) {
         return tasks.add(task);

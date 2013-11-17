@@ -1,48 +1,53 @@
 package cz.zoom.whiteboard.cmdline;
 
+import cz.zoom.whiteboard.cmdline.CommandLineParser.Option;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public final class CommandLine {
-    private final List<CommandLineParser.Option> options = new ArrayList<CommandLineParser.Option>();
+    private final List<Option> options = new ArrayList<Option>();
 
-    public CommandLine(Map<String, String> options) {
-        for (final Map.Entry<String, String> option : options.entrySet()) {
-            this.options.add(new CommandLineParser.Option() {
-                private final String argument = option.getValue();
-                private final String name = option.getKey();
-
-                public String getName() {
-                    return name;
-                }
-
-                public boolean hasArgument() {
-                    return argument != null;
-                }
-
-                public String getArgument() {
-                    return argument;
-                }
-            });
+    public CommandLine(Collection<Option> options) {
+        this.options.addAll(options);
+    }
+    
+    public boolean hasOption(String optionName) {
+        for (Option option : options) {
+            if (option.getName().equals(optionName)) {
+                return true;
+            }
         }
+        return false;
     }
 
-    public CommandLineParser.Option getOption(String optionName) {
-        for (CommandLineParser.Option option : options) {
+    public Option getOption(String optionName) {
+        for (Option option : options) {
             if (option.getName().equals(optionName)) {
                 return option;
             }
         }
         return null;
     }
+    
+    public String getFirstArgument(String optionName) throws CommandException {
+        Option option = getOption(optionName);
+        if (option == null) {
+            return null;
+        }
+        if (!option.hasArguments()) {
+            throw new CommandException(optionName + " must have argument!");
+        }
+        return option.getArguments()[0];
+    }
+    
 
     public boolean isEmpty() {
         return options.isEmpty();
     }
 
-    public Iterator<CommandLineParser.Option> iterator() {
+    public Iterator<Option> iterator() {
         return options.iterator();
     }
 

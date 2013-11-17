@@ -17,81 +17,32 @@ import net.jcip.annotations.Immutable;
 import net.rcarz.jiraclient.Issue;
 import org.yaml.snakeyaml.Yaml;
 
-/**
- * A task can contain:
- *  - Parent issue ID (optional)
- *  - Summary (mandatory)
- *  - ID (optional)
- *  - project (mandatory)
- *  - type (optional)
- * 
- * @author jakubco
- */
 @Immutable
 public class Task {
     private final static Font FONT_ID = new Font("Monospaced", Font.BOLD, 26);
     private final static Font FONT_SUMMARY = new Font("Tahoma", Font.PLAIN, 25);
 
-    private final static String DEFAULT_TASK_TYPE = JiraAdapter.TYPE_TECHNICAL_TASK;    
     private final Map<String, String> taskData;
     
     public Task(Map<String, String> task) throws TaskException {
         Map<String, String> tmpMap = new HashMap<String, String>();
         tmpMap.putAll(task);
-        validate(tmpMap);
         taskData = Collections.unmodifiableMap(tmpMap);
     }
     
     public Task(Issue issue) throws TaskException {
         Map<String, String> issueData = new HashMap<String, String>();
         
-        issueData.put("description", issue.getDescription());
         issueData.put("summary", issue.getSummary());
         issueData.put("key", issue.getKey());
-        issueData.put("type", issue.getIssueType().getName());
-        issueData.put("project", issue.getProject().getKey());
         
-        validate(issueData);
         taskData = Collections.unmodifiableMap(issueData);
     }
     
-    private void validate(Map<String, String> tmpMap) throws TaskException {
-        if (!tmpMap.containsKey("type")) {
-            tmpMap.put("type", DEFAULT_TASK_TYPE);
-        }
-        if (!tmpMap.containsKey("project")) {
-            throw new TaskException("Task must contain 'project' value!");
-        }
-    }    
-    
-    public String getSummary() {
-        return taskData.get("summary");
+    public String get(String key) {
+        return taskData.get(key);
     }
-    
-    public String getDescription() {
-        return taskData.get("description");
-    }
-    
-    public String getProject() {
-        return taskData.get("project");
-    }
-    
-    public String getParent() {
-        return taskData.get("parent");
-    }
-    
-    public String getType() {
-        return taskData.get("type");
-    }
-        
-    public String getKey() {
-        return taskData.get("key");
-    }
-    
-    public Map<String, String> getData() {
-        return taskData;
-    }
-    
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -144,15 +95,17 @@ public class Task {
         g.setFont(FONT_SUMMARY);
         
         int cursorHeight = 45;
-        if (getKey() != null) {
+        String issueKey = get("key");
+        if (issueKey != null) {
             g.setFont(FONT_ID);
-            g.drawString(getKey(), qrWidth + 5, cursorHeight);
+            g.drawString(issueKey, qrWidth + 5, cursorHeight);
             cursorHeight += FONT_ID.getSize() + 10;
         }
         
-        if (getSummary() != null) {
+        String summary = get("summary");
+        if (summary != null) {
             g.setFont(FONT_SUMMARY);
-            drawWrappedString(g, getSummary(), qrWidth + 10, cursorHeight, qrWidth - 5);
+            drawWrappedString(g, summary, qrWidth + 10, cursorHeight, qrWidth - 5);
         }
         g.drawRect(5, 5, 2 * qrWidth - 10, qrHeight - 10);
 
