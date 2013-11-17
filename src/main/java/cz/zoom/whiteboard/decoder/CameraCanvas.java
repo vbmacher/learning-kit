@@ -4,6 +4,7 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamMotionDetector;
 import com.github.sarxos.webcam.WebcamMotionEvent;
 import com.github.sarxos.webcam.WebcamMotionListener;
+import cz.zoom.whiteboard.QRCode;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
@@ -12,9 +13,6 @@ import javax.swing.JPanel;
 
 public class CameraCanvas extends JPanel implements WebcamMotionListener {
     private volatile BufferedImage snapshot;
-    
-    private volatile float brightness = 1.0f;
-    private volatile float contrast = 1.0f;
     
     private WebcamMotionDetector detector;
     private WebcamMotionListener externalListener;
@@ -25,14 +23,10 @@ public class CameraCanvas extends JPanel implements WebcamMotionListener {
         if (webcam.isOpen()) {
             setPreferredSize(webcam.getViewSize());
             setSize(webcam.getViewSize());
-            BufferedImage tmpImage = applyFilters(webcam.getImage());
+            BufferedImage tmpImage = QRCode.prepareForDecoding(webcam.getImage());
             snapshot = tmpImage;
             repaint();
         }
-    }
-    
-    private BufferedImage applyFilters(BufferedImage image) {
-        return ImageFilters.sharpen(ImageFilters.setBrightnessAndContrast(image, brightness, contrast));
     }
     
     public void setWebcam(Webcam webcam, WebcamMotionListener listener) {
@@ -65,14 +59,6 @@ public class CameraCanvas extends JPanel implements WebcamMotionListener {
         if (tmpImage != null) {
             g.drawImage(tmpImage, 0, 0, this);
         }
-    }
-    
-    public void setBrightness(float brightness) {
-        this.brightness = brightness; 
-    }
-    
-    public void setContrast(float contrast) {
-        this.contrast = contrast; 
     }
     
     public BufferedImage snapshot() {

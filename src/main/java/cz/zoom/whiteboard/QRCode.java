@@ -2,6 +2,7 @@ package cz.zoom.whiteboard;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.WriterException;
@@ -11,8 +12,17 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.multi.qrcode.QRCodeMultiReader;
 import com.google.zxing.qrcode.QRCodeWriter;
+import cz.zoom.whiteboard.decoder.ImageFilters;
+import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorConvertOp;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import javax.imageio.ImageIO;
 
 public class QRCode {
     public final static int DEFAULT_QR_WIDTH = 250;
@@ -27,16 +37,38 @@ public class QRCode {
         BitMatrix bitMatrix = writer.encode(dumpedData, BarcodeFormat.QR_CODE, width, height);
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
-    
+
+    public static BufferedImage prepareForDecoding(BufferedImage image) {
+        ColorConvertOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
+        op.filter(image, image);
+        
+        image = ImageFilters.setContrast(image, 150);
+        image = ImageFilters.gammaCorrection(image, 0.1);
+        image = ImageFilters.blackAndWhite(image);
+
+        try {
+            ImageIO.write(image, "PNG", new File("tmp.png"));
+        } catch (Exception e) {
+        }
+
+        return image;
+    }
+
     public static Result[] decode(BufferedImage image) throws NotFoundException {
         if (image == null) {
             return null;
         }
         
         BinaryBitmap binaryBitmap;
-
-        binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(image)));
-        return new QRCodeMultiReader().decodeMultiple(binaryBitmap);
+        Map<DecodeHintType, Object> hints = new EnumMap<DecodeHintType, Object>(DecodeHintType.class);
+        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+        
+        List<BarcodeFormat> formats = new ArrayList<BarcodeFormat>();
+        formats.add(BarcodeFormat.QR_CODE);
+        hints.put(DecodeHintType.POSSIBLE_FORMATS, formats);
+        
+        binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(prepareForDecoding(image))));
+        return new QRCodeMultiReader().decodeMultiple(binaryBitmap, hints);
     }
     
 }

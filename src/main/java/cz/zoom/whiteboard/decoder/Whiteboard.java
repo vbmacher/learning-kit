@@ -7,14 +7,11 @@ import com.github.sarxos.webcam.WebcamMotionEvent;
 import com.github.sarxos.webcam.WebcamMotionListener;
 import com.google.zxing.NotFoundException;
 import cz.zoom.whiteboard.Task;
-import cz.zoom.whiteboard.Tasks;
 import cz.zoom.whiteboard.TasksFactory;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.SpinnerNumberModel;
 
 public class Whiteboard extends javax.swing.JFrame {
     private final WebcamComboboxModel comboModel = new WebcamComboboxModel();
@@ -63,8 +60,6 @@ public class Whiteboard extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         comboWebcam.setModel(comboModel);
-        spinnerBrightness.setModel(new SpinnerNumberModel(1.0, 0.0, 500.0, 0.1));
-        spinnerContrast.setModel(new SpinnerNumberModel(1.0, 0.0, 500.0, 0.1));
         cameraPanel.setViewportView(canvas);
         
         tasksModel = new TasksTableModel(tasks);
@@ -84,11 +79,6 @@ public class Whiteboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
         comboWebcam = new javax.swing.JComboBox();
-        spinnerBrightness = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
-        spinnerContrast = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
-        btnApply = new javax.swing.JButton();
         btnStop = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         cameraPanel = new javax.swing.JScrollPane();
@@ -107,17 +97,6 @@ public class Whiteboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Brightness:");
-
-        jLabel3.setText("Contrast:");
-
-        btnApply.setText("Apply values");
-        btnApply.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApplyActionPerformed(evt);
-            }
-        });
-
         btnStop.setText("Stop");
         btnStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,24 +110,11 @@ public class Whiteboard extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(comboWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
-                        .addComponent(btnStart))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(spinnerBrightness, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spinnerContrast, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnApply)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(comboWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
+                .addComponent(btnStart)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnStop)
                 .addContainerGap())
@@ -162,13 +128,6 @@ public class Whiteboard extends javax.swing.JFrame {
                     .addComponent(btnStart)
                     .addComponent(comboWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStop))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(spinnerBrightness, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spinnerContrast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(btnApply))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -206,16 +165,24 @@ public class Whiteboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
+        if (lastWebcam != null) {
+            lastWebcam.close();
+            lastWebcam.removeWebcamListener(webcamListener);
+            lastWebcam = null;
+        }
+    }//GEN-LAST:event_btnStopActionPerformed
+
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         Webcam webcam = (Webcam)comboModel.getSelectedItem();
-        
+
         if (lastWebcam != webcam) {
             if (lastWebcam != null) {
                 lastWebcam.close();
@@ -227,33 +194,15 @@ public class Whiteboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnStartActionPerformed
 
-    private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
-        canvas.setBrightness(((Double)spinnerBrightness.getValue()).floatValue());
-        canvas.setContrast(((Double)spinnerContrast.getValue()).floatValue());
-    }//GEN-LAST:event_btnApplyActionPerformed
-
-    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
-        if (lastWebcam != null) {
-            lastWebcam.close();
-            lastWebcam.removeWebcamListener(webcamListener);
-            lastWebcam = null;
-        }
-    }//GEN-LAST:event_btnStopActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApply;
     private javax.swing.JButton btnStart;
     private javax.swing.JButton btnStop;
     private javax.swing.JScrollPane cameraPanel;
     private javax.swing.JComboBox comboWebcam;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSpinner spinnerBrightness;
-    private javax.swing.JSpinner spinnerContrast;
     private javax.swing.JTable tblTasks;
     // End of variables declaration//GEN-END:variables
 }
