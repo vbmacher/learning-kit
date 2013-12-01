@@ -1,4 +1,4 @@
-package cz.zoom.whiteboard;
+package cz.zoom.whiteboard.task;
 
 public class TaskException extends Exception {
 

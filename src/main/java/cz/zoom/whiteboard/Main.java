@@ -1,18 +1,18 @@
 package cz.zoom.whiteboard;
 
-import cz.zoom.whiteboard.cmdline.Bounds;
-import cz.zoom.whiteboard.cmdline.LaunchWhiteboard;
-import cz.zoom.whiteboard.cmdline.DecodePNG;
-import cz.zoom.whiteboard.cmdline.Render;
-import cz.zoom.whiteboard.cmdline.SprintByIssue;
+import cz.zoom.whiteboard.commands.RenderGroup;
+import cz.zoom.whiteboard.commands.LaunchWhiteboard;
+import cz.zoom.whiteboard.commands.DecodePNG;
+import cz.zoom.whiteboard.commands.RenderTasks;
+import cz.zoom.whiteboard.commands.OpenIssuesByKey;
 import cz.zoom.whiteboard.cmdline.CommandException;
 import cz.zoom.whiteboard.cmdline.CommandLine;
 import cz.zoom.whiteboard.cmdline.CommandLineComposite;
 import cz.zoom.whiteboard.cmdline.CommandLineParser;
-import cz.zoom.whiteboard.cmdline.CreateIssues;
-import cz.zoom.whiteboard.cmdline.Locate;
-import cz.zoom.whiteboard.cmdline.SprintByID;
-import java.io.PrintStream;
+import cz.zoom.whiteboard.commands.CreateIssues;
+import cz.zoom.whiteboard.commands.FindGroup;
+import cz.zoom.whiteboard.commands.OpenIssuesByID;
+import cz.zoom.whiteboard.commands.UpdateIssues;
 
 public class Main {
     
@@ -30,20 +30,17 @@ public class Main {
         
         CommandLineComposite composite = new CommandLineComposite();
         
-        Render render = new Render();
-        composite.registerCommand("render", render);
-        composite.registerCommand("decode", new DecodePNG());
-        composite.registerCommand("whiteboard", new LaunchWhiteboard());
-        composite.registerCommand("issue", new SprintByIssue());
-        composite.registerCommand("sprint", new SprintByID());
-        composite.registerCommand("create", new CreateIssues());
-        composite.registerCommand("bounds", new Bounds());
-        composite.registerCommand("locate", new Locate());
+        composite.registerCommand(CommandLineParser.OPT_RENDER, new RenderTasks());
+        composite.registerCommand(CommandLineParser.OPT_DECODE, new DecodePNG());
+        composite.registerCommand(CommandLineParser.OPT_WHITEBOARD, new LaunchWhiteboard());
+        composite.registerCommand(CommandLineParser.OPT_OPENBYKEY, new OpenIssuesByKey());
+        composite.registerCommand(CommandLineParser.OPT_OPENBYID, new OpenIssuesByID());
+        composite.registerCommand(CommandLineParser.OPT_CREATE, new CreateIssues());
+        composite.registerCommand(CommandLineParser.OPT_UPDATE, new UpdateIssues());
+        composite.registerCommand(CommandLineParser.OPT_GROUP, new RenderGroup());
+        composite.registerCommand(CommandLineParser.OPT_FIND, new FindGroup());
 
         try {
-            if (cmdLine.hasOption("render")) {
-                composite.setOutPrintStream(new PrintStream(render.getOutputStream()));
-            }
             composite.run(cmdLine, null);
         } finally {
             composite.destroy();

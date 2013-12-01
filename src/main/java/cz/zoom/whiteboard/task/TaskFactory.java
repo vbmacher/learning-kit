@@ -1,7 +1,8 @@
-package cz.zoom.whiteboard;
+package cz.zoom.whiteboard.task;
 
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
+import cz.zoom.whiteboard.QRCode;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

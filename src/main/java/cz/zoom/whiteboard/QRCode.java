@@ -16,13 +16,11 @@ import cz.zoom.whiteboard.decoder.ImageFilters;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import javax.imageio.ImageIO;
 
 public class QRCode {
     public final static int DEFAULT_QR_WIDTH = 250;

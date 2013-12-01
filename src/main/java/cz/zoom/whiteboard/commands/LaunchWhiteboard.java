@@ -1,7 +1,9 @@
-package cz.zoom.whiteboard.cmdline;
+package cz.zoom.whiteboard.commands;
 
 import com.github.sarxos.webcam.Webcam;
 import cz.zoom.whiteboard.cmdline.Command;
+import cz.zoom.whiteboard.cmdline.CommandException;
+import cz.zoom.whiteboard.cmdline.CommandLine;
 import cz.zoom.whiteboard.decoder.Whiteboard;
 
 public class LaunchWhiteboard extends Command {

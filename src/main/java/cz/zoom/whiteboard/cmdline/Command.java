@@ -7,8 +7,12 @@ public abstract class Command {
 
     public abstract void run(CommandLine commandLine, String[] arguments) throws CommandException;
 
-    public void setOutPrintStream(PrintStream out) {
+    public void registerOutput(PrintStream out) {
         this.out = out;
+    }
+    
+    public PrintStream getOutputStream() {
+        return System.out;
     }
     
 }

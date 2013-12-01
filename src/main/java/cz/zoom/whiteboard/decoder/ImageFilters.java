@@ -3,9 +3,6 @@ package cz.zoom.whiteboard.decoder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
 import java.awt.image.RescaleOp;
 
 public class ImageFilters {

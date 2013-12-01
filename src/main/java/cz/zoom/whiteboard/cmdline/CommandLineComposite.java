@@ -1,20 +1,40 @@
 package cz.zoom.whiteboard.cmdline;
 
 import cz.zoom.whiteboard.cmdline.CommandLineParser.Option;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class CommandLineComposite extends Command {
     private final Map<String, Command> commands = new HashMap<String, Command>();
+    private final Set<PrintStream> outputStreams = new HashSet<PrintStream>();
 
+    private class CompositeDataSink extends OutputStream {
+
+        @Override
+        public void write(int b) throws IOException {
+            for (PrintStream stream : outputStreams) {
+                stream.write(b);
+            }
+        }
+        
+    }
+    private final PrintStream compositeOutput = new PrintStream(new CompositeDataSink());
+    
     public void registerCommand(String name, Command command) {
+        command.registerOutput(compositeOutput);
         commands.put(name, command);
+        registerOutput(command.getOutputStream());
     }
 
     public void destroy() {
         commands.clear();
+        outputStreams.clear();
     }
 
     @Override
@@ -31,10 +51,8 @@ public class CommandLineComposite extends Command {
     }
     
     @Override
-    public void setOutPrintStream(PrintStream out) {
-        for (Command command : commands.values()) {
-            command.setOutPrintStream(out);
-        }
+    public void registerOutput(PrintStream out) {
+        outputStreams.add(out);
     }
 
 }

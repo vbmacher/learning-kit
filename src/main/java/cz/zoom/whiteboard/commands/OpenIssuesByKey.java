@@ -1,53 +1,52 @@
-package cz.zoom.whiteboard.cmdline;
+package cz.zoom.whiteboard.commands;
 
+import cz.zoom.whiteboard.ConnectionDetails;
 import cz.zoom.whiteboard.JiraAdapter;
+import cz.zoom.whiteboard.cmdline.Command;
+import cz.zoom.whiteboard.cmdline.CommandException;
+import cz.zoom.whiteboard.cmdline.CommandLine;
+import cz.zoom.whiteboard.cmdline.CommandLineParser;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 import net.rcarz.jiraclient.JiraException;
 import net.rcarz.jiraclient.greenhopper.SprintIssue;
 
-public class SprintByIssue extends Command {
+public class OpenIssuesByKey extends Command {
     
     private static class Specification {
-        public final String userName;
-        private final String password;
-        private final String url;
         private final String issueKey;
         public final boolean yamlOutput;
 
-        public Specification(String userName, String password, String url, String issueKey, boolean yamlOutput) {
-            this.userName = userName;
-            this.password = password;
-            this.url = url;
+        public Specification(String issueKey, boolean yamlOutput) {
             this.issueKey = issueKey;
             this.yamlOutput = yamlOutput; 
         }
-        
     }
     
     @Override
     public void run(CommandLine commandLine, String[] issues) throws CommandException {
         if (issues.length < 1) {
-            throw new CommandException("SprintByIssue: One or more arguments needed!");
+            throw new CommandException("OpenIssuesByKey: one or more arguments needed!");
         }
-
-        String login = commandLine.getFirstArgument("login");
-        String password = commandLine.getFirstArgument("password");
-        String url = commandLine.getFirstArgument("url");
-
-        boolean yamlOutput = commandLine.hasOption("yaml");
+        
+        ConnectionDetails details = new ConnectionDetails(
+                commandLine.getFirstArgument(CommandLineParser.OPT_LOGIN),
+                commandLine.getFirstArgument(CommandLineParser.OPT_PASSWORD),
+                commandLine.getFirstArgument(CommandLineParser.OPT_URL));
+        
+        boolean yamlOutput = commandLine.hasOption(CommandLineParser.OPT_YAML);
         for (String issue : issues) {
             try {
-                findTasks(new Specification(login, password, url, issue, yamlOutput));
+                findTasks(details, new Specification(issue, yamlOutput));
             } catch (Exception e) {
                 throw new CommandException(e);
             }
         }
     }
 
-    private void findTasks(Specification spec) throws URISyntaxException, JiraException, IOException {
-        JiraAdapter jira = new JiraAdapter(spec.url, spec.userName, spec.password, true);
+    private void findTasks(ConnectionDetails details, Specification spec) throws URISyntaxException, JiraException, IOException {
+        JiraAdapter jira = new JiraAdapter(details);
         List<SprintIssue> issues = jira.getOpenSprintIssues(spec.issueKey);
         if (issues == null) {
             if (!spec.yamlOutput) {

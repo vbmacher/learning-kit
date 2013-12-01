@@ -16,10 +16,10 @@ public class CommandLineParserTest {
     
     @Test
     public void testLoginLongOption() {
-        String[] args = new String[] { "--login", "test"};
+        String[] args = new String[] { "--" + CommandLineParser.OPT_LOGIN, "test"};
         CommandLine result = parser.parse(args);
         
-        Option user = result.getOption("login");
+        Option user = result.getOption(CommandLineParser.OPT_LOGIN);
         assertEquals("test",user.getArguments()[0]);
     }
     
@@ -28,26 +28,26 @@ public class CommandLineParserTest {
         String[] args = new String[] { "-l", "test"};
         CommandLine result = parser.parse(args);
         
-        Option user = result.getOption("login");
+        Option user = result.getOption(CommandLineParser.OPT_LOGIN);
         assertEquals("test",user.getArguments()[0]);
     }
     
     @Test
-    public void testSprintByIDLongOption() {
-        String[] args = new String[] { "--sprint", "38", "57"};
+    public void testOpenIssuesByIDLongOption() {
+        String[] args = new String[] { "--" + CommandLineParser.OPT_OPENBYID, "38", "57"};
         CommandLine result = parser.parse(args);
         
-        Option sprint = result.getOption("sprint");
+        Option sprint = result.getOption(CommandLineParser.OPT_OPENBYID);
         assertEquals("38",sprint.getArguments()[0]);
         assertEquals("57",sprint.getArguments()[1]);
     }
 
     @Test
-    public void testSprintByIDShortOption() {
-        String[] args = new String[] { "-s", "38", "57"};
+    public void testOpenIssuesByIDShortOption() {
+        String[] args = new String[] { "-O", "38", "57"};
         CommandLine result = parser.parse(args);
         
-        Option sprint = result.getOption("sprint");
+        Option sprint = result.getOption(CommandLineParser.OPT_OPENBYID);
         assertEquals("38",sprint.getArguments()[0]);
         assertEquals("57",sprint.getArguments()[1]);
     }
@@ -60,10 +60,10 @@ public class CommandLineParserTest {
         };
         CommandLine result = parser.parse(args);
 
-        Option user = result.getOption("login");
+        Option user = result.getOption(CommandLineParser.OPT_LOGIN);
         assertEquals("user",user.getArguments()[0]);
         
-        Option url = result.getOption("url");
+        Option url = result.getOption(CommandLineParser.OPT_URL);
         assertEquals("http://jira:81/",url.getArguments()[0]);
     }
     

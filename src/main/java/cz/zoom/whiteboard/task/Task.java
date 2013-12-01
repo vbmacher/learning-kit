@@ -1,6 +1,8 @@
-package cz.zoom.whiteboard;
+package cz.zoom.whiteboard.task;
 
 import com.google.zxing.WriterException;
+import cz.zoom.whiteboard.JiraAdapter;
+import cz.zoom.whiteboard.QRCode;
 import static cz.zoom.whiteboard.QRCode.DEFAULT_QR_HEIGHT;
 import static cz.zoom.whiteboard.QRCode.DEFAULT_QR_WIDTH;
 import java.awt.Color;
@@ -13,7 +15,10 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import net.jcip.annotations.Immutable;
+import net.rcarz.jiraclient.Field;
 import net.rcarz.jiraclient.Issue;
 import org.yaml.snakeyaml.Yaml;
 
@@ -33,14 +38,18 @@ public class Task {
     public Task(Issue issue) throws TaskException {
         Map<String, String> issueData = new HashMap<String, String>();
         
-        issueData.put("summary", issue.getSummary());
-        issueData.put("key", issue.getKey());
+        issueData.put(Field.SUMMARY, issue.getSummary());
+        issueData.put(JiraAdapter.ISSUE_KEY, issue.getKey());
         
         taskData = Collections.unmodifiableMap(issueData);
     }
     
     public String get(String key) {
         return taskData.get(key);
+    }
+    
+    public Set<Entry<String, String>> getTaskDataSet() {
+        return taskData.entrySet();
     }
 
     @Override
@@ -95,14 +104,14 @@ public class Task {
         g.setFont(FONT_SUMMARY);
         
         int cursorHeight = 45;
-        String issueKey = get("key");
+        String issueKey = get(JiraAdapter.ISSUE_KEY);
         if (issueKey != null) {
             g.setFont(FONT_ID);
             g.drawString(issueKey, qrWidth + 5, cursorHeight);
             cursorHeight += FONT_ID.getSize() + 10;
         }
         
-        String summary = get("summary");
+        String summary = get(Field.SUMMARY);
         if (summary != null) {
             g.setFont(FONT_SUMMARY);
             drawWrappedString(g, summary, qrWidth + 10, cursorHeight, qrWidth - 5);

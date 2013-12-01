@@ -1,4 +1,4 @@
-package cz.zoom.whiteboard;
+package cz.zoom.whiteboard.task;
 
 import com.google.zxing.WriterException;
 import java.awt.image.BufferedImage;
