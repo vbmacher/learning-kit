@@ -27,12 +27,12 @@ public class Task {
     private final static Font FONT_ID = new Font("Monospaced", Font.BOLD, 26);
     private final static Font FONT_SUMMARY = new Font("Tahoma", Font.PLAIN, 25);
 
-    private final Map<String, String> taskData;
+    private final Map<String, String> fields;
     
     public Task(Map<String, String> task) throws TaskException {
         Map<String, String> tmpMap = new HashMap<String, String>();
         tmpMap.putAll(task);
-        taskData = Collections.unmodifiableMap(tmpMap);
+        fields = Collections.unmodifiableMap(tmpMap);
     }
     
     public Task(Issue issue) throws TaskException {
@@ -41,15 +41,15 @@ public class Task {
         issueData.put(Field.SUMMARY, issue.getSummary());
         issueData.put(JiraAdapter.ISSUE_KEY, issue.getKey());
         
-        taskData = Collections.unmodifiableMap(issueData);
+        fields = Collections.unmodifiableMap(issueData);
     }
     
     public String get(String key) {
-        return taskData.get(key);
+        return fields.get(key);
     }
     
-    public Set<Entry<String, String>> getTaskDataSet() {
-        return taskData.entrySet();
+    public Set<Entry<String, String>> getFields() {
+        return fields.entrySet();
     }
 
     @Override
@@ -62,13 +62,13 @@ public class Task {
             return false;
         }
         
-        return taskData.equals(((Task)other).taskData);
+        return fields.equals(((Task)other).fields);
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + taskData.hashCode();
+        hash = 89 * hash + fields.hashCode();
         return hash;
     }
     
@@ -123,7 +123,7 @@ public class Task {
     }
     
     public BufferedImage render() throws IOException, WriterException {
-        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(taskData));
+        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(fields));
         return appendWithText(qrCodeImage, DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
     }
     

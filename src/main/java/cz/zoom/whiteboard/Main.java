@@ -9,6 +9,7 @@ import cz.zoom.whiteboard.cmdline.CommandException;
 import cz.zoom.whiteboard.cmdline.CommandLine;
 import cz.zoom.whiteboard.cmdline.CommandLineComposite;
 import cz.zoom.whiteboard.cmdline.CommandLineParser;
+import cz.zoom.whiteboard.commands.CheckIssues;
 import cz.zoom.whiteboard.commands.CreateIssues;
 import cz.zoom.whiteboard.commands.FindGroup;
 import cz.zoom.whiteboard.commands.OpenIssuesByID;
@@ -39,6 +40,7 @@ public class Main {
         composite.registerCommand(CommandLineParser.OPT_UPDATE, new UpdateIssues());
         composite.registerCommand(CommandLineParser.OPT_GROUP, new RenderGroup());
         composite.registerCommand(CommandLineParser.OPT_FIND, new FindGroup());
+        composite.registerCommand(CommandLineParser.OPT_CHECK, new CheckIssues());
 
         try {
             composite.run(cmdLine, null);

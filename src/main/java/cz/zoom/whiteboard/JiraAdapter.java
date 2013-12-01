@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import net.rcarz.jiraclient.BasicCredentials;
@@ -19,6 +20,7 @@ import net.rcarz.jiraclient.Issue.FluentUpdate;
 import net.rcarz.jiraclient.Issue.SearchResult;
 import net.rcarz.jiraclient.JiraClient;
 import net.rcarz.jiraclient.JiraException;
+import net.rcarz.jiraclient.Status;
 import net.rcarz.jiraclient.greenhopper.GreenHopperClient;
 import net.rcarz.jiraclient.greenhopper.RapidView;
 import net.rcarz.jiraclient.greenhopper.Sprint;
@@ -133,7 +135,7 @@ public class JiraAdapter {
                 task.get(Field.PROJECT),
                 task.get(Field.ISSUE_TYPE));
         
-        for (Entry<String, String> data : task.getTaskDataSet()) {
+        for (Entry<String, String> data : task.getFields()) {
             if (data.getKey().equals(Field.PROJECT)) {
                 continue;
             }
@@ -153,7 +155,7 @@ public class JiraAdapter {
     
     private void updateIssue(Issue issue, Task task) throws JiraException {
         FluentUpdate update = issue.update();
-        for (Entry<String, String> data : task.getTaskDataSet()) {
+        for (Entry<String, String> data : task.getFields()) {
             update.field(data.getKey(), data.getValue());
         }
         update.execute();
@@ -172,6 +174,49 @@ public class JiraAdapter {
             }
             Issue issue = result.issues.get(0);
             updateIssue(issue, task);
+        }
+    }
+    
+    private void printNotEqual(String issue, Entry<String, String> field, String what, PrintStream out) {
+        out.println(issue + " [" + field.getKey() + "] " + what + " != " + field.getValue());
+    }
+    
+    private void printDoesNotExist(String key, Entry<String, String> field, PrintStream out) {
+        out.println(key + " [" + field.getKey() + "] does not exist");
+    }
+
+    public void checkIssue(Task task, PrintStream out) throws JiraException {
+        Issue issue = getIssue(task.get(ISSUE_KEY));
+        if (issue != null) {
+            for (Entry<String, String> field : task.getFields()) {
+                String issueField = Field.getString((Map)issue.getField(field.getKey()));
+                String fieldKey = field.getKey();
+                String fieldValue = field.getValue();
+                
+                if (issueField != null) {
+                    if (!issueField.equals(fieldValue)) {
+                        printNotEqual(issue.getKey(), field, issueField, out);
+                    }
+                } else {
+                    if (fieldKey.equals(Field.STATUS)) {
+                        Status status = issue.getStatus();
+                        if (!status.getName().equals(fieldValue)) {
+                            printNotEqual(issue.getKey(), field, status.getName(), out);
+
+                        }
+                    } else if (fieldKey.equals(ISSUE_KEY)) {
+                        // nothing, they equal.
+                    } else {
+                        printDoesNotExist(issue.getKey(), field, out);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void checkIssues(Tasks tasks, PrintStream out) throws JiraException {
+        for (Task task : tasks.getTasks()) {
+            checkIssue(task, out);
         }
     }
     

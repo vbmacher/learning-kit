@@ -13,6 +13,7 @@ import java.util.Set;
 public class CommandLineComposite extends Command {
     private final Map<String, Command> commands = new HashMap<String, Command>();
     private final Set<PrintStream> outputStreams = new HashSet<PrintStream>();
+    private final PrintStream compositeOutput = new PrintStream(new CompositeDataSink());
 
     private class CompositeDataSink extends OutputStream {
 
@@ -24,7 +25,6 @@ public class CommandLineComposite extends Command {
         }
         
     }
-    private final PrintStream compositeOutput = new PrintStream(new CompositeDataSink());
     
     public void registerCommand(String name, Command command) {
         command.registerOutput(compositeOutput);
