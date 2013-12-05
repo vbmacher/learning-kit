@@ -17,6 +17,7 @@ public class CommandLineParser {
     public static final String OPT_YAML = "yaml";
     public static final String OPT_RENDER = "render";
     public static final String OPT_CHECK = "check";
+    public static final String OPT_RENDER_EMPTY = "empty";
     
     public static final String OPT_URL = "url";
     public static final String OPT_LOGIN = "login";
@@ -37,6 +38,7 @@ public class CommandLineParser {
         { OPT_YAML, "y", null, "Use strict YAML output (relevant only for -o,-O,-d,-f)" },
         { OPT_RENDER, "r", null, "Render YAML into PNG output (-y is required)" },
         { OPT_CHECK, "C", null, "Check if fields in JIRA equal to those in an YAML (-y is required)" },
+        { OPT_RENDER_EMPTY, "e", null, "If -r option is enabled, render PNG without any printed text" },
         
         { OPT_URL, "u", "jiraURL", "Set JIRA URL (optional)"},
         { OPT_LOGIN, "l", "userName", "Set user name used for JIRA authentication (optional)"},
@@ -101,7 +103,7 @@ public class CommandLineParser {
             } else {
                 usage.append("\t");
             }
-            usage.append("\n  ").append(option[OPTION_DESCRIPTION]).append("\n");
+            usage.append("\n  ").append(option[OPTION_DESCRIPTION]);
         }
         System.out.println(usage.toString());
     }

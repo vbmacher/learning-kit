@@ -9,6 +9,7 @@ import cz.zoom.whiteboard.cmdline.Command;
 import cz.zoom.whiteboard.cmdline.CommandException;
 import cz.zoom.whiteboard.cmdline.CommandLine;
 import cz.zoom.whiteboard.cmdline.CommandLineParser;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.PrintStream;
 import javax.imageio.ImageIO;
@@ -27,6 +28,7 @@ public class RenderTasks extends Command {
         if (!commandLine.hasOption(CommandLineParser.OPT_YAML)) {
             throw new CommandException("YAML output option must be set!");
         }
+        boolean renderEmpty = commandLine.hasOption(CommandLineParser.OPT_RENDER_EMPTY);
         try {
             Tasks tasks = TasksFactory.createFromYamlText(dataSink.getStringData());
             int i = 0;
@@ -38,8 +40,15 @@ public class RenderTasks extends Command {
                     key = "task-" + (i++);
                 }
                 
+                BufferedImage renderedTask;
+                if (renderEmpty) {
+                    renderedTask = task.renderEmpty();
+                } else {
+                    renderedTask = task.render();
+                }
+
                 File file = new File(key + ".png");
-                ImageIO.write(task.render(), "PNG", file);
+                ImageIO.write(renderedTask, "PNG", file);
             }
         } catch (Exception e) {
             throw new CommandException(e);

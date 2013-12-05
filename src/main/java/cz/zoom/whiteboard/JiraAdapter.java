@@ -202,7 +202,6 @@ public class JiraAdapter {
                         Status status = issue.getStatus();
                         if (!status.getName().equals(fieldValue)) {
                             printNotEqual(issue.getKey(), field, status.getName(), out);
-
                         }
                     } else if (fieldKey.equals(ISSUE_KEY)) {
                         // nothing, they equal.

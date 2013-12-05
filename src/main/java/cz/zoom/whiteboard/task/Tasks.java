@@ -27,6 +27,14 @@ public class Tasks implements Iterable<Task> {
         return taskImages.toArray(new BufferedImage[0]);
     }
     
+    public BufferedImage[] renderEmpty() throws IOException, WriterException {
+        List<BufferedImage> taskImages = new LinkedList<BufferedImage>();
+        for (Task task : tasks) {
+            taskImages.add(task.renderEmpty());
+        }
+        return taskImages.toArray(new BufferedImage[0]);
+    }
+
     public int size() {
         return tasks.size();
     }

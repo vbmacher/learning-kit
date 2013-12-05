@@ -122,11 +122,26 @@ public class Task {
         return dimg;
     }
     
+    private void appendWithBorder(BufferedImage qrCodeImage, int qrWidth, int qrHeight) {
+        Graphics2D g = qrCodeImage.createGraphics();
+
+        g.setColor(Color.BLACK);
+        g.drawRect(5, 5, qrWidth - 10, qrHeight - 10);
+
+        g.dispose();
+    }
+    
     public BufferedImage render() throws IOException, WriterException {
         BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(fields));
         return appendWithText(qrCodeImage, DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
     }
     
+    public BufferedImage renderEmpty() throws IOException, WriterException {
+        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(fields));
+        appendWithBorder(qrCodeImage, DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
+        return qrCodeImage;
+    }
+
     private static String dumpToYaml(Object data) {
         Yaml yaml = new Yaml();
         return yaml.dump(data);
