@@ -31,12 +31,12 @@ public class CommandLineParser {
         { OPT_FIND, "f", "groupName pngFile", "Find text content inside a named group found in specified image file" },
         
         { OPT_CREATE, "c", "yamlFile", "Create JIRA issues from a YAML file" },
-        { OPT_UPDATE, "U", "[yamlFile]", "Update JIRA issues from YAML (either -y is required or [yamlFile] must be specified" },
+        { OPT_UPDATE, "U", "[yamlFile]", "Update JIRA issues from YAML (either -y is required or [yamlFile] must be specified)" },
         { OPT_OPENBYKEY, "o", "issueKey", "List all open issues of a sprint based on issue key"},
         { OPT_OPENBYID, "O", "rapidViewID sprintID", "List all open issues of a sprint based on rapidViewID and sprintID"},
         
         { OPT_YAML, "y", null, "Use strict YAML output (relevant only for -o,-O,-d,-f)" },
-        { OPT_RENDER, "r", null, "Render YAML into PNG output (-y is required)" },
+        { OPT_RENDER, "r", "[yamlFile]", "Render YAML into PNG output (either -y is required or [yamlFile] must be specified)" },
         { OPT_CHECK, "C", null, "Check if fields in JIRA equal to those in an YAML (-y is required)" },
         { OPT_RENDER_EMPTY, "e", null, "If -r option is enabled, render PNG without any printed text" },
         

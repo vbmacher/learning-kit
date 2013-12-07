@@ -21,7 +21,7 @@ public class UpdateIssues extends Command {
 
     public void run(CommandLine commandLine, String[] arguments) throws CommandException {
         if (arguments.length == 0 && !commandLine.hasOption(CommandLineParser.OPT_YAML)) {
-            throw new CommandException("Argument or -y option must be set!");
+            throw new CommandException("YAML output or file argument must be set!");
         }
         
         ConnectionDetails details = new ConnectionDetails(
@@ -34,9 +34,6 @@ public class UpdateIssues extends Command {
             if (arguments.length > 0) {
                 tasks = TasksFactory.createFromYamlFile(arguments[0]);
             } else {
-                if (!commandLine.hasOption(CommandLineParser.OPT_YAML)) {
-                    throw new CommandException("Argument or -y option must be set!");
-                }
                 tasks = TasksFactory.createFromYamlText(dataSink.getStringData());
             }
 

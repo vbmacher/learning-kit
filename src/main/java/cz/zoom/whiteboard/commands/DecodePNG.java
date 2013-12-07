@@ -7,7 +7,6 @@ import cz.zoom.whiteboard.cmdline.Command;
 import cz.zoom.whiteboard.cmdline.CommandException;
 import cz.zoom.whiteboard.cmdline.CommandLine;
 import cz.zoom.whiteboard.cmdline.CommandLineParser;
-import cz.zoom.whiteboard.task.Task;
 import cz.zoom.whiteboard.task.TaskFactory;
 import java.io.File;
 import java.io.IOException;

@@ -25,12 +25,19 @@ public class RenderTasks extends Command {
     }
     
     public void run(CommandLine commandLine, String[] arguments) throws CommandException {
-        if (!commandLine.hasOption(CommandLineParser.OPT_YAML)) {
-            throw new CommandException("YAML output option must be set!");
+        if (arguments.length == 0 && !commandLine.hasOption(CommandLineParser.OPT_YAML)) {
+            throw new CommandException("YAML output or file argument must be set!");
         }
+        
         boolean renderEmpty = commandLine.hasOption(CommandLineParser.OPT_RENDER_EMPTY);
         try {
-            Tasks tasks = TasksFactory.createFromYamlText(dataSink.getStringData());
+            Tasks tasks;
+            if (arguments.length > 0) {
+                tasks = TasksFactory.createFromYamlFile(arguments[0]);
+            } else {
+                tasks = TasksFactory.createFromYamlText(dataSink.getStringData());
+            }
+            
             int i = 0;
             ImageIO.setUseCache(false);
             
