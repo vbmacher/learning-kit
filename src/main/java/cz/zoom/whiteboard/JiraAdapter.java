@@ -33,8 +33,10 @@ public class JiraAdapter {
     private final BasicCredentials credentials;
     private final JiraClient jira;
     private final GreenHopperClient greenHopper;
+    private final PrintStream out;
     
-    public JiraAdapter(ConnectionDetails details) throws URISyntaxException, IOException {
+    public JiraAdapter(ConnectionDetails details, PrintStream out) throws URISyntaxException, IOException {
+        this.out = out;
         credentials = new BasicCredentials(details.getUserName(), details.getPassword());
         jira = new JiraClient(details.getURL(), credentials);
         greenHopper = new GreenHopperClient(jira);
@@ -177,75 +179,75 @@ public class JiraAdapter {
         }
     }
     
-    private void printNotEqual(String issue, Entry<String, String> field, String what, PrintStream out) {
+    private void printNotEqual(String issue, Entry<String, String> field, String what) {
         out.println(issue + " [" + field.getKey() + "] " + what + " != " + field.getValue());
     }
     
-    private void printDoesNotExist(String key, Entry<String, String> field, PrintStream out) {
+    private void printDoesNotExist(String key, Entry<String, String> field) {
         out.println(key + " [" + field.getKey() + "] does not exist");
     }
 
-    public void checkIssue(Task task, PrintStream out) throws JiraException {
+    public void checkIssue(Task task) throws JiraException {
         Issue issue = getIssue(task.get(ISSUE_KEY));
         if (issue != null) {
             for (Entry<String, String> field : task.getFields()) {
-                String issueField = Field.getString((Map)issue.getField(field.getKey()));
+                String issueField = Field.getString(issue.getField(field.getKey()));
                 String fieldKey = field.getKey();
                 String fieldValue = field.getValue();
                 
                 if (issueField != null) {
                     if (!issueField.equals(fieldValue)) {
-                        printNotEqual(issue.getKey(), field, issueField, out);
+                        printNotEqual(issue.getKey(), field, issueField);
                     }
                 } else {
                     if (fieldKey.equals(Field.STATUS)) {
                         Status status = issue.getStatus();
                         if (!status.getName().equals(fieldValue)) {
-                            printNotEqual(issue.getKey(), field, status.getName(), out);
+                            printNotEqual(issue.getKey(), field, status.getName());
                         }
                     } else if (fieldKey.equals(ISSUE_KEY)) {
                         // nothing, they equal.
                     } else {
-                        printDoesNotExist(issue.getKey(), field, out);
+                        printDoesNotExist(issue.getKey(), field);
                     }
                 }
             }
         }
     }
     
-    public void checkIssues(Tasks tasks, PrintStream out) throws JiraException {
+    public void checkIssues(Tasks tasks) throws JiraException {
         for (Task task : tasks.getTasks()) {
-            checkIssue(task, out);
+            checkIssue(task);
         }
     }
     
-    private void printWithCheck(PrintStream out, String key, String value) {
+    private void printWithCheck(String key, String value) {
         if (value != null) {
             out.println(key + ": " + value);
         }
     }
     
-    public void printYaml(SprintIssue issue, PrintStream out) {
-        printWithCheck(out, ISSUE_KEY, issue.getKey());
-        printWithCheck(out, Field.SUMMARY, issue.getSummary());
+    public void printYaml(SprintIssue issue) {
+        printWithCheck(ISSUE_KEY, issue.getKey());
+        printWithCheck(Field.SUMMARY, issue.getSummary());
         out.println("---");
     }
     
-    public void print(SprintIssue issue, PrintStream out) {
+    public void print(SprintIssue issue) {
         out.println("[" + issue.getKey() + "] " + issue.getSummary());
     }
 
-    public void printYaml(Collection<SprintIssue> issues, PrintStream out) {
+    public void printYaml(Collection<SprintIssue> issues) {
         for (SprintIssue issue : issues) {
-            printWithCheck(out, ISSUE_KEY, issue.getKey());
-            printWithCheck(out, Field.SUMMARY, issue.getSummary());
+            printWithCheck(ISSUE_KEY, issue.getKey());
+            printWithCheck(Field.SUMMARY, issue.getSummary());
             out.println("---");
         }
     }
 
-    public void print(Collection<SprintIssue> issues, PrintStream out) {
+    public void print(Collection<SprintIssue> issues) {
         for (SprintIssue issue : issues) {
-            System.out.println("[" + issue.getKey() + "] " + issue.getSummary());
+            out.println("[" + issue.getKey() + "] " + issue.getSummary());
         }
     }
 

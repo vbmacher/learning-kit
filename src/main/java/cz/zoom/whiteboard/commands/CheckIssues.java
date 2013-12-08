@@ -33,8 +33,8 @@ public class CheckIssues extends Command {
                     commandLine.getFirstArgument(CommandLineParser.OPT_PASSWORD),
                     commandLine.getFirstArgument(CommandLineParser.OPT_URL));
             
-            JiraAdapter jira = new JiraAdapter(details);
-            jira.checkIssues(tasks, out);
+            JiraAdapter jira = new JiraAdapter(details, out);
+            jira.checkIssues(tasks);
         } catch (Exception e) {
             throw new CommandException(e);
         }

@@ -32,6 +32,10 @@ public final class CommandLine {
     }
     
     public String getFirstArgument(String optionName) throws CommandException {
+        return getArgument(optionName, 0);
+    }
+    
+    public String getArgument(String optionName, int index) throws CommandException {
         Option option = getOption(optionName);
         if (option == null) {
             return null;
@@ -39,9 +43,8 @@ public final class CommandLine {
         if (!option.hasArguments()) {
             throw new CommandException(optionName + " must have argument!");
         }
-        return option.getArguments()[0];
+        return option.getArguments()[index];
     }
-    
 
     public boolean isEmpty() {
         return options.isEmpty();

@@ -1,6 +1,7 @@
 package cz.zoom.whiteboard;
 
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class ConnectionDetails {
     private String userName;

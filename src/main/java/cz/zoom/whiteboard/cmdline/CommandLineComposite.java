@@ -55,4 +55,7 @@ public class CommandLineComposite extends Command {
         outputStreams.add(out);
     }
 
+    public void unregisterOutput(PrintStream out) {
+        outputStreams.remove(out);
+    }
 }

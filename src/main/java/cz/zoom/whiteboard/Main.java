@@ -22,7 +22,7 @@ public class Main {
         System.exit(1);
     }
 
-    public static void main( String[] args ) throws CommandException {
+    public static void main( String[] args ) {
         CommandLine cmdLine = new CommandLineParser().parse(args);
         
         if (cmdLine.isEmpty()) {
@@ -42,8 +42,15 @@ public class Main {
         composite.registerCommand(CommandLineParser.OPT_FIND, new FindGroup());
         composite.registerCommand(CommandLineParser.OPT_CHECK, new CheckIssues());
 
+//        if (cmdLine.hasOption(CommandLineParser.OPT_YAML)) {
+//            composite.unregisterOutput(System.out);
+//        }
+        
         try {
             composite.run(cmdLine, null);
+        } catch (CommandException e) {
+            System.err.println(e.getMessage());
+            usageAndExit();
         } finally {
             composite.destroy();
         }

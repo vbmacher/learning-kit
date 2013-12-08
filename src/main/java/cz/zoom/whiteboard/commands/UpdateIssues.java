@@ -37,7 +37,7 @@ public class UpdateIssues extends Command {
                 tasks = TasksFactory.createFromYamlText(dataSink.getStringData());
             }
 
-            JiraAdapter jira = new JiraAdapter(details);
+            JiraAdapter jira = new JiraAdapter(details, out);
             jira.updateIssues(tasks);
         } catch (Exception e) {
             throw new CommandException(e);

@@ -10,35 +10,49 @@ import cz.zoom.whiteboard.task.TaskFactory;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 import javax.imageio.ImageIO;
 
 public class FindGroup extends Command {
 
     @Override
     public void run(CommandLine commandLine, String[] arguments) throws CommandException {
-        if (arguments.length < 2) {
-            throw new CommandException("FindGroup: Two arguments are needed!");
+        if (arguments.length == 0) {
+            throw new CommandException("FindGroup: At least one argument is needed (PNG file)!");
         }
         boolean yamlOutput = commandLine.hasOption(CommandLineParser.OPT_YAML);
         
         try {
-            Group boundary = new Group(arguments[0]);
+            BufferedImage image = ImageIO.read(new File(arguments[0]));
 
-            BufferedImage image = ImageIO.read(new File(arguments[1]));
-            String[] issues = boundary.decode(image);
-            
-            if (!yamlOutput) {
-                out.println("Recognized " + issues.length + " issues in the specified boundary.\n");
+            Set<Group> groups;
+            if (arguments.length == 1) {
+                groups = Group.findAll(image);
+            } else {
+                groups = new HashSet<Group>();
+                
+                for (int i = 1; i < arguments.length; i++) {
+                    groups.add(new Group(arguments[i]));
+                }
             }
-            for (String issue : issues) {
-                if (yamlOutput) {
-                    out.println("{ " + JiraAdapter.ISSUE_KEY + ": "
-                            + TaskFactory.createFromYamlText(issue).get(JiraAdapter.ISSUE_KEY)
-                            + ", " + arguments[0]
-                            + "}");
-                    out.println("---");
-                } else {
-                    out.println(issue);
+
+            for (Group group : groups) {
+                String[] issues = group.decode(image);
+
+                if (!yamlOutput) {
+                    out.println("Recognized " + issues.length + " issues in group " + group + "\n");
+                }
+                for (String issue : issues) {
+                    if (yamlOutput) {
+                        out.println("{ " + JiraAdapter.ISSUE_KEY + ": "
+                                + TaskFactory.createFromYamlText(issue).get(JiraAdapter.ISSUE_KEY)
+                                + ", " + group.getName()
+                                + "}");
+                        out.println("---");
+                    } else {
+                        out.println(issue);
+                    }
                 }
             }
         } catch (Exception e) {

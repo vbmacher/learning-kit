@@ -46,7 +46,7 @@ public class OpenIssuesByKey extends Command {
     }
 
     private void findTasks(ConnectionDetails details, Specification spec) throws URISyntaxException, JiraException, IOException {
-        JiraAdapter jira = new JiraAdapter(details);
+        JiraAdapter jira = new JiraAdapter(details, out);
         List<SprintIssue> issues = jira.getOpenSprintIssues(spec.issueKey);
         if (issues == null) {
             if (!spec.yamlOutput) {
@@ -54,9 +54,9 @@ public class OpenIssuesByKey extends Command {
             }
         } else {
             if (spec.yamlOutput) {
-                jira.printYaml(issues, out);
+                jira.printYaml(issues);
             } else {
-                jira.print(issues, out);
+                jira.print(issues);
             }
         }
     }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class CommandLineParser {
+    public static final String OPT_RENDER = "render";
     public static final String OPT_DECODE = "decode";
     public static final String OPT_GROUP = "group";
     public static final String OPT_FIND = "find";
@@ -13,11 +14,11 @@ public class CommandLineParser {
     public static final String OPT_UPDATE = "update";
     public static final String OPT_OPENBYKEY = "openByKey";
     public static final String OPT_OPENBYID = "openByID";
+    public static final String OPT_CHECK = "check";
     
     public static final String OPT_YAML = "yaml";
-    public static final String OPT_RENDER = "render";
-    public static final String OPT_CHECK = "check";
     public static final String OPT_RENDER_EMPTY = "empty";
+    public static final String OPT_RENDER_SIZE = "size";
     
     public static final String OPT_URL = "url";
     public static final String OPT_LOGIN = "login";
@@ -26,19 +27,20 @@ public class CommandLineParser {
     public static final String OPT_WHITEBOARD = "whiteboard";
     
     private static final String[][] KNOWN_OPTIONS = {
+        { OPT_RENDER, "r", "[yamlFile]", "Render YAML into PNG output (either -y is required or [yamlFile] must be specified)" },
         { OPT_DECODE, "d", "pngFile", "Decode PNG image into YAML file" },
         { OPT_GROUP, "g", "groupName pngFileBase", "Render a named group - 4 image files. Name should be in YAML format" },
-        { OPT_FIND, "f", "groupName pngFile", "Find text content inside a named group found in specified image file" },
-        
+        { OPT_FIND, "f", "pngFile [groupName1 groupName2 ...]", "Find text content inside a named group found in specified image file" },
+
         { OPT_CREATE, "c", "yamlFile", "Create JIRA issues from a YAML file" },
         { OPT_UPDATE, "U", "[yamlFile]", "Update JIRA issues from YAML (either -y is required or [yamlFile] must be specified)" },
         { OPT_OPENBYKEY, "o", "issueKey", "List all open issues of a sprint based on issue key"},
         { OPT_OPENBYID, "O", "rapidViewID sprintID", "List all open issues of a sprint based on rapidViewID and sprintID"},
+        { OPT_CHECK, "C", null, "Check if fields in JIRA equal to those in an YAML (-y is required)" },
         
         { OPT_YAML, "y", null, "Use strict YAML output (relevant only for -o,-O,-d,-f)" },
-        { OPT_RENDER, "r", "[yamlFile]", "Render YAML into PNG output (either -y is required or [yamlFile] must be specified)" },
-        { OPT_CHECK, "C", null, "Check if fields in JIRA equal to those in an YAML (-y is required)" },
-        { OPT_RENDER_EMPTY, "e", null, "If -r option is enabled, render PNG without any printed text" },
+        { OPT_RENDER_EMPTY, "e", null, "Render PNG without any printed text (relevant only for -r)" },
+        { OPT_RENDER_SIZE, "s", "width height", "Render PNG with specified QR code size (relevant only for -r,-g)" },
         
         { OPT_URL, "u", "jiraURL", "Set JIRA URL (optional)"},
         { OPT_LOGIN, "l", "userName", "Set user name used for JIRA authentication (optional)"},

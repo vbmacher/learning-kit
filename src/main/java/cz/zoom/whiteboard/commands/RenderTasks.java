@@ -29,6 +29,16 @@ public class RenderTasks extends Command {
             throw new CommandException("YAML output or file argument must be set!");
         }
         
+        Integer width = null;
+        Integer height = null;
+        if (commandLine.hasOption(CommandLineParser.OPT_RENDER_SIZE)) {
+            if (!commandLine.hasOption(CommandLineParser.OPT_RENDER_EMPTY)) {
+                throw new CommandException("Render empty option must be set!");
+            }
+            width = Integer.parseInt(commandLine.getArgument(CommandLineParser.OPT_RENDER_SIZE, 0));
+            height = Integer.parseInt(commandLine.getArgument(CommandLineParser.OPT_RENDER_SIZE, 1));
+        }
+        
         boolean renderEmpty = commandLine.hasOption(CommandLineParser.OPT_RENDER_EMPTY);
         try {
             Tasks tasks;
@@ -49,7 +59,8 @@ public class RenderTasks extends Command {
                 
                 BufferedImage renderedTask;
                 if (renderEmpty) {
-                    renderedTask = task.renderEmpty();
+                    renderedTask = (width != null && height != null) 
+                            ? task.renderEmpty(width, height) : task.renderEmpty();
                 } else {
                     renderedTask = task.render();
                 }

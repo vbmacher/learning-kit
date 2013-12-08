@@ -19,14 +19,23 @@ import net.jcip.annotations.Immutable;
 @Immutable
 public class Group {
     private static final String GROUP_BEGIN = "*B*";
-    private final String yamlText;
+    private final String name;
     
-    public Group(String yamlText) {
-        this.yamlText = yamlText;
+    public Group(String name) {
+        this.name = name;
     }
     
+    public String getName() {
+        return name;
+    }
+    
+    
     public BufferedImage render(String text) throws IOException, WriterException {
-        BufferedImage image = QRCode.encode(GROUP_BEGIN + yamlText);
+        return render(text, QRCode.DEFAULT_QR_WIDTH, QRCode.DEFAULT_QR_HEIGHT);
+    }
+    
+    public BufferedImage render(String text, int width, int height) throws IOException, WriterException {
+        BufferedImage image = QRCode.encode(GROUP_BEGIN + name, width, height);
         
         Graphics2D gr = image.createGraphics();
         
@@ -36,7 +45,7 @@ public class Group {
         gr.dispose();
         return image;
     }
-    
+
     private Point getAveragePoint(ResultPoint[] points) {
         int x = 0;
         int y = 0;
@@ -47,6 +56,25 @@ public class Group {
         x /= points.length;
         y /= points.length;
         return new Point(x,y);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o instanceof Group) {
+            Group other = (Group)o;
+            return other.name.equals(name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (this.name != null ? this.name.hashCode() : 0);
+        return hash;
     }
     
     public static Group findByText(BufferedImage capturedImage, String text) throws NotFoundException {
@@ -64,14 +92,14 @@ public class Group {
     }
 
     
-    public static List<Group> findAll(BufferedImage capturedImage) throws NotFoundException {
+    public static Set<Group> findAll(BufferedImage capturedImage) throws NotFoundException {
         Result[] result = QRCode.decode(capturedImage);
         
         if (result == null) {
             return null;
         }
 
-        List<Group> groups = new ArrayList<Group>();
+        Set<Group> groups = new HashSet<Group>();
         Set<String> texts = new HashSet<String>();
 
         for (Result res : result) {
@@ -93,7 +121,7 @@ public class Group {
         if (result == null) {
             return null;
         }
-        String groupString = GROUP_BEGIN + yamlText;
+        String groupString = GROUP_BEGIN + name;
         
         int minX=Integer.MAX_VALUE, minY=Integer.MAX_VALUE, maxX=0, maxY=0;
         
@@ -137,16 +165,20 @@ public class Group {
         BufferedImage boundary = crop(capturedImage);
         
         Result[] results = QRCode.decode(boundary);
-        List<String> yamlResult = new ArrayList<String>();
+        List<String> contentResult = new ArrayList<String>();
         
         for (Result result : results) {
             String text = result.getText();
 
             if (!text.startsWith(GROUP_BEGIN)) {
-                yamlResult.add(result.getText());
+                contentResult.add(result.getText());
             }
         }
-        return yamlResult.toArray(new String[0]);
+        return contentResult.toArray(new String[0]);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

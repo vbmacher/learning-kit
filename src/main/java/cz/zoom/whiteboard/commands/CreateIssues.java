@@ -24,7 +24,7 @@ public class CreateIssues extends Command {
         try {
             Tasks tasks = TasksFactory.createFromYamlFile(arguments[0]);
 
-            JiraAdapter jira = new JiraAdapter(details);
+            JiraAdapter jira = new JiraAdapter(details, out);
             jira.createIssues(tasks);
         } catch (Exception e) {
             throw new CommandException(e);

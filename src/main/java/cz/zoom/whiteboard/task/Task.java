@@ -132,13 +132,21 @@ public class Task {
     }
     
     public BufferedImage render() throws IOException, WriterException {
-        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(fields));
-        return appendWithText(qrCodeImage, DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
+        return render(DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
     }
     
+    public BufferedImage render(int width, int height) throws IOException, WriterException {
+        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(fields), width, height);
+        return appendWithText(qrCodeImage, width+10, height+10);
+    }
+
     public BufferedImage renderEmpty() throws IOException, WriterException {
-        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(fields));
-        appendWithBorder(qrCodeImage, DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
+        return renderEmpty(DEFAULT_QR_WIDTH, DEFAULT_QR_HEIGHT);
+    }
+
+    public BufferedImage renderEmpty(int width, int height) throws IOException, WriterException {
+        BufferedImage qrCodeImage = QRCode.encode(dumpToYaml(fields), width, height);
+        appendWithBorder(qrCodeImage, width+10, height+10);
         return qrCodeImage;
     }
 
