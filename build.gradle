@@ -1,0 +1,84 @@
+import groovy.xml.NamespaceBuilder
+
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+def javaHome = System.properties['java.home']
+def javafxHome = System.getenv('JAVAFX_HOME')
+
+mainClassName = "storyteller.Main"
+
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
+[compileJava, compileTestJava, compileGroovy, compileTestGroovy]*.options*.encoding = 'UTF-8'
+
+// NetBeans will automatically add "run" and "debug" tasks relying on the
+// "mainClass" property. You may however define the property prior executing
+// tasks by passing a "-PmainClass=<QUALIFIED_CLASS_NAME>" argument.
+//
+// Note however, that you may define your own "run" and "debug" task if you
+// prefer. In this case NetBeans will not add these tasks but you may rely on
+// your own implementation.
+if (!hasProperty('mainClass')) {
+    ext.mainClass = mainClassName
+}
+
+configurations {
+    jfxant
+}
+
+dependencies {
+    compile localGroovy()
+    compile files("$javafxHome/rt/lib/jfxrt.jar")
+    jfxant files("$javafxHome/lib/ant-javafx.jar")
+    testCompile group: 'junit', name: 'junit', version: '4.10'
+    testCompile 'org.easymock:easymock:3.2'
+}
+
+jar {
+    actions = []
+
+    def appId = project.name
+    def fallbackClassName = 'com.javafx.main.NoJavaFXFallback'
+
+    def antfx = NamespaceBuilder.newInstance(
+        ant,
+        'javafx:com.sun.javafx.tools.ant')
+
+    ant.taskdef(
+        resource: 'com/sun/javafx/tools/ant/antlib.xml',
+        uri: 'javafx:com.sun.javafx.tools.ant',
+        classpath: configurations.jfxant.asPath)
+
+    doLast {
+        antfx.application(
+            id: appId,
+            name: project.name,
+            mainClass: mainClassName,
+            fallbackClass: fallbackClassName)
+
+        configurations.runtime.each { file ->
+            if (!file.isDirectory() && !file.name.contains('jfxrt')) {
+                println "Unpacking: ${file}"
+                copy {
+                    from zipTree(file)
+                    into "${buildDir}/unpacked/"
+                }
+            }
+        }
+
+        antfx.jar(destfile: archivePath) {
+            application(refid: appId)
+            fileset(dir: sourceSets.main.output.classesDir)
+            fileset(dir: sourceSets.main.output.resourcesDir)
+            fileset(dir: "${buildDir}/unpacked")
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenRepo name: 'Codehaus', url: 'http://repository.codehaus.org'
+    mavenRepo name: 'Sonatype', url: 'http://repository.sonatype.org/content/groups/public'
+    mavenRepo name: 'JBoss',    url: 'https://repository.jboss.org/nexus/content/groups/public-jboss'
+}
