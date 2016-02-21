@@ -1,0 +1,411 @@
+
+<!-- saved from url=(0068)http://www.dgp.utoronto.ca/people/JamesStewart/378notes/22intervals/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<title>CSC378: Interval Trees</title>
+<link rel="stylesheet" href="http://www.dgp.utoronto.ca/people/JamesStewart/378notes/style.css">
+</head>
+
+<body>
+
+<p class="title1">CSC 378: Data Structures and Algorithm Analysis</p>
+<p class="title2">INTERVAL TREES</p>
+
+<br><br>
+
+<!---------------------------------------------------------------->
+
+<h1>Elementary Intervals</h1>
+
+<div>
+
+<p>An <em>interval</em> is a pair of integers [<i>a</i>,<i>b</i>] such
+that <i>a</i> &lt; <i>b</i>.
+
+</p><p>The endpoints <i>a</i> and <i>b</i> of each interval
+[<i>a</i>,<i>b</i>] divide the integer line into partitions called
+<em>elementary intervals</em>.
+
+</p><p>The interval <em>x=[10, 20]</em> has been added to the integer line.  Notice
+that one interval cuts the line at two points: 
+
+</p><p><img class="example" src="./CSC378  Interval Trees_files/interval1.gif">
+
+</p><p>See what happens as we add new intervals.  Notice how many new
+elementary intervals we are creating.
+
+</p><p><br><br>Add <em>y = [15, 25]:</em>
+</p><p><img class="example" src="./CSC378  Interval Trees_files/interval2.gif">
+
+</p><p><br><br>Add <em>z = [18, 22]:</em>
+</p><p><img class="example" src="./CSC378  Interval Trees_files/interval3.gif">
+
+</p><p>Given <i>n</i> intervals [<i>a</i><sub><i>i</i></sub>,
+<i>b</i><sub><i>i</i></sub>], for <i>i = 1 ... n</i>, <em>exactly</em>
+how many <em>elementary</em> intervals are there, assuming that no
+intervals [<i>a</i><sub><i>i</i></sub>,<i>b</i><sub><i>i</i></sub>]
+share endpoints?
+
+</p><p>We get <em>2n + 1</em> sub-intervals when there are <em>n</em>
+intervals on the integer line that do not share endpoints.
+
+</p><p>Every interval can be expressed as an aggregate of the
+sub-intervals that it spans:
+
+</p><p></p><center>
+<table cellpadding="4" border="1">
+<tbody><tr><td align="CENTER"></td>
+<td align="LEFT">Interval</td>
+<td align="LEFT">spans Sub-Intervals</td>
+</tr>
+<tr><td align="CENTER">x</td>
+<td align="LEFT">[10,20]</td>
+<td align="LEFT">[10,15], [15,18], [18-20]</td>
+</tr>
+<tr><td align="CENTER">y</td>
+<td align="LEFT">[15,25]</td>
+<td align="LEFT">[15,18], [18,20], [20-22], [22,25]</td>
+</tr>
+<tr><td align="CENTER">z</td>
+<td align="LEFT">[18, 22]</td>
+<td align="LEFT">[18,20], [20,22]</td>
+</tr>
+</tbody></table>
+</center>
+
+</div>
+
+<!---------------------------------------------------------------->
+
+<h1>Interval Trees</h1>
+
+<div>
+
+<p><b>How would we store these intervals in a data structure?</b>
+
+</p><p>We would store them in an interval tree.  This is an augmentation
+of the BST data structure.
+
+</p><p>An interval tree has a leaf node for every elementary interval.  On
+top of these leaves is built a complete binary tree.  Each internal
+node of the tree stores, as its key, the integer that separates the
+elementary intervals in its left and right subrees.  The leaf nodes do
+not store any keys, and represent the elementary intervals.  In the
+interval tree below, the key is shown in the top of each node.
+
+
+</p><p><img class="example" src="./CSC378  Interval Trees_files/tree0a.gif">
+
+</p><p>Note that each leaf corresponds to exactly one elementary
+intervals.
+
+<!---------------------------------------------------------------->
+
+</p><h2>Insertion of Intervals</h2>
+
+<div>
+
+<p><b>How would we store the actual (non-elementary) intervals in this tree?</b>
+
+</p><p>Each node of the tree (both internal nodes and leaf nodes) can
+store a <em>set of intervals</em>.  In the tree above, this set is
+shown in the bottom of each node.
+
+</p><p>We could store these sets as linked lists.  Each leaf (which
+corresponds to an elementary interval) would contain a pointer to a
+list of non-elementary intervals that span the leaf's elementary
+interval.  For example:
+
+</p><p><img class="example" src="./CSC378  Interval Trees_files/tree1.gif">
+
+</p><p><b>What's wrong with this picture?!</b>
+
+</p><p>It uses up too much space: If each interval were very long, it
+could potentially be stored in every leaf. Since there are <em>n</em>
+leaves, we are looking at <em>O(n<sup>2</sup>)</em> storage!
+
+</p><p><b>So how do we improve the storage overhead?</b>
+
+</p><p>An internal node is said to <em>``span''</em> the union of the
+elementary intervals in its subtree.  For example, node 18 spans the
+interval from 15 to 20: In other words: span(18) = <em>[15,20]</em>.
+
+</p><p>Suppose that, rather than store an interval in each individual
+leaf, we will store it in the internal nodes.  Here is the rule:
+
+</p><blockquote>
+<p>An interval <em>[a,b]</em> is stored in a node <i>x</i> if and only if
+
+</p><p></p><dl compact="">
+
+<dt>1)
+</dt><dd><tt>span(</tt><i>x</i><tt>)</tt> is completely contained within
+<em>[a,b]</em> and
+
+</dd><dt>2)
+</dt><dd><tt>span(parent(</tt><i>x</i><tt>))</tt> is <em>not</em>
+completely contained in <em>[a,b]</em>.
+
+</dd></dl>
+</blockquote>
+
+<p>Let's incorporate this rule into our tree:
+
+</p><p><img class="example" src="./CSC378  Interval Trees_files/tree2.gif">
+
+</p><p>Each interval can be stored at most twice at each level.  (Can you
+prove this?)
+
+</p><p>This gives us <em>O(n log n)</em> storage - actually <em>2 n log
+n</em>, which has a very low coefficient.
+
+</p><p>MUCH BETTER!
+
+<!---------------------------------------------------------------->
+
+</p><h3>A More Complex Example</h3>
+
+<div>
+
+<p>Suppose we have a set of composers and their lifespans; each
+lifespan is an interval of years between the composer's birth and
+death.  The following table gives an example.  </p><p></p><center>
+
+<table cellpadding="4" border="1">
+<tbody><tr><td align="CENTER">Interval</td>
+<td align="LEFT">Composer</td>
+<td align="LEFT">Birth</td>
+<td align="LEFT">Death</td>
+</tr>
+<tr><td align="CENTER">A</td>
+<td align="LEFT">Stravinsky</td>
+<td align="LEFT">1888</td>
+<td align="LEFT">1971</td>
+</tr>
+<tr><td align="CENTER">B</td>
+<td align="LEFT">Schoenberg</td>
+<td align="LEFT">1874</td>
+<td align="LEFT">1951</td>
+</tr>
+<tr><td align="CENTER">C</td>
+<td align="LEFT">Grieg</td>
+<td align="LEFT">1843</td>
+<td align="LEFT">1907</td>
+</tr>
+<tr><td align="CENTER">D</td>
+<td align="LEFT">Schubert</td>
+<td align="LEFT">1779</td>
+<td align="LEFT">1828</td>
+</tr>
+<tr><td align="CENTER">E</td>
+<td align="LEFT">Mozart</td>
+<td align="LEFT">1756</td>
+<td align="LEFT">1791</td>
+</tr>
+<tr><td align="CENTER">F</td>
+<td align="LEFT">Schuetz</td>
+<td align="LEFT">1585</td>
+<td align="LEFT">1672</td>
+</tr>
+</tbody></table>
+</center>
+
+<p> The intervals are shown on the integer line.  Each interval is
+labelled with a letter corresponding to one of the composers in the
+table:
+
+</p><p><img class="example" src="./CSC378  Interval Trees_files/int.gif">
+
+</p><p>Notice that the endpoints <i>a</i> and <i>b</i> of each interval
+[<i>a</i>,<i>b</i>] divide the integer line into <em>elementary
+intervals</em>.  The elementary intervals for the composers are:
+
+</p><p></p><center>
+  [-infty,1585], [1585,1672], [1672,1756], [1756,1779], ...,
+  [1907,1951], [1951,1971], [1971,+infty].
+</center>
+
+<p>Here is the Interval Tree for our composers:
+
+</p><p><img class="example" src="./CSC378  Interval Trees_files/emptytree.gif">
+
+</p><p>Notice that node 1828 spans the four elementary intervals between 1779
+and 1874.  In this case, we say <tt>span(1828)</tt> =
+<i>[1779,1874]</i>.  A leaf node spans only one elementary interval.
+
+</p><p>And here's the tree with the intervals stored in each node according
+to the rule above:
+
+</p><p><img class="example" src="./CSC378  Interval Trees_files/treea.gif">
+
+</p><p>For example, the interval <em>C = [1843,1907]</em> corresponds to
+Grieg's lifetime.  This interval is stored in node <tt>1888</tt>
+because
+
+</p><p></p><blockquote>
+<dl compact="">
+
+<dt>1) </dt><dd><tt>span(1888)</tt> = <em>[1874,1907]</em> is completely
+contained within <em>[1843,1907]</em> and
+
+</dd><dt>2) </dt><dd><tt>span(parent(1888))</tt> = <em>[1874,1951]</em> is
+<em>not</em> completely contained within <em>[1843,1907]</em>.
+
+</dd></dl>
+</blockquote>
+
+<p>The interval <i>C</i> is also stored in the leaf node to the right
+of 1843 because this node also satisfies conditions (1) and (2).
+
+</p><p><b>Test your understanding:</b>
+
+</p><p>Suppose interval <em>G = [1672,1779]</em>.  Which nodes in the tree
+above would contain a <em>G</em>?  <em>Hint:</em> Start by adding
+<i>G</i> to each elementary node spanned by [1672,1779].  This
+satisfies condition (1) above.  However, if <i>G</i> is in <em>both
+children</em> of a node <i>x</i>, then condition (2) is not satisfied
+by the children because the span of their parent,
+<tt>span(</tt><i>x</i><tt>)</tt>, contains <i>G</i>.  Whenever this
+occurs, remove <i>G</i> from each child and add it to the parent,
+<i>x</i>.  Repeat this until <i>G</i> cannot be moved upward anywhere
+in the tree.
+
+</p><p><b>Try another:</b> In the tree above, write an <i>H</i> in each
+node that stores the interval [1756,1971].
+
+</p><p><b>Storage cost:</b> Each interval can be stored in many nodes of
+the tree.  However, the conditions (1) and (2) ensure that any
+particular interval is stored in at most two nodes on each level of
+the tree.
+
+</p><p>Given this information and the fact that a tree of <i>n</i>
+intervals has <em>O(n)</em> leaf nodes, what is an asymptotic upper
+bound on the space required to store the <i>n</i> intervals inside the
+tree nodes?  Assume that an interval requires <em>O(1)</em> space for
+each node in which it is stored.
+
+</p></div>
+</div>
+
+<h2>Query of Intervals</h2>
+
+<div>
+
+<p>How do we answer queries of the form ``What composers were alive in
+such-and-such a year?''  For example, the composers alive during 1910
+were Stravinsky (A) and Schoenberg (B).
+
+</p><p>In the abstract, the query algorithm must do the following: Given
+an integer <i>k</i> and an interval tree <i>T</i>, list all the
+intervals stored in <i>T</i> that contain <i>k</i>.  An interval
+[<i>a</i>,<i>b</i>] contains <i>k</i> if <em>a &lt;= k &lt;= b</em>.
+
+</p><p>The query algorithm must simply enumerate the intervals stored in
+the leaf that contains <em>k</em>.  It must also enumerate the
+intervals stored in internal nodes whose span includes <em>k</em>.
+These are the ancestors of the leaf that contains <em>k</em>.  So the
+query algorithm simply follows a root-to-leaf path to find the leaf
+corresponding to the elementary interval containing <em>k</em>, and
+enumerates all the intervals stored in nodes on that root-to-leaf
+path.
+
+</p><p>Each node stores the usual <tt>left</tt> and <tt>right</tt>
+pointers.  In addition, it stores <tt>separator</tt>, which is the
+value that separates elementary intervals in its left and right
+subtrees.  It also stores <tt>intervals</tt>, which is a pointer to a
+linked list of the intervals.
+
+</p><p></p><blockquote><pre>/* listIntervals( k, x )
+ *
+ * List all the intervals that contain k in the subtree rooted at x.
+ *
+ * This is intitially called as listIntervals( k, root ).
+ */
+
+
+listIntervals( k, x )
+
+  while x != NULL
+    output intervals(x)
+    if k &lt; separator(x)
+      x = left(x)
+    else
+      x = right(x)
+    endif
+  endwhile
+</pre></blockquote>
+
+</div>
+
+<!---------------------------------------------------------------->
+
+<h2>Inserting an Interval</h2>
+
+<div>
+
+<p>Here the problem is to add <em>[a,b]</em> to the tree, assuming
+that the endpoints <i>a</i> and <i>b</i> are already in the tree; that
+is, <i>a</i> and <i>b</i> already separate elementary intervals
+somewhere in the tree.  
+
+</p><p>Essentially, we've got to descend from the root <em>just until</em>
+we find a node <em>x</em> whose span is completely contained in
+<em>[a,b]</em>.  Then rule (1) is satisfied.  At this point we store
+the interval in <em>x</em> and stop.  Note that rule (2) is satisfied
+at <em>x</em> because we <em>didn't</em> stop at <em>x</em>'s parent
+(otherwise we wouldn't have reached <em>x</em>).  Also note that we're
+guaranteed to stop at a leaf.
+
+</p><p>But if we reach a node <em>x</em> whose span is not completely
+contained in <em>[a,b]</em> we simply recurse into each subtree of
+<em>x</em> that contains any part of <em>[a,b]</em>.  We know that
+condition (1) is not satisfied at <em>x</em>, but that it will be
+satisfied at some of <em>x</em>'s descendants.
+
+</p><p></p><blockquote><pre>/* addInterval( I, a, b, min, max, x )
+ *
+ * The interval to insert is [a,b] and is named I.  We assume that the
+ * values a and b separate elementary intervals somewhere in the tree.
+ * [min,max] is the span of the current subtree rooted at node x.
+ *
+ * This is initially called as addInterval( I, a, b, -infinity, +infinity, root ).
+ */
+
+addInterval( I, a, b, min, max, x )
+
+  if a &lt;= min and max &lt;= b
+
+    /* span(x) is completely within [a,b], so store the interval and stop */
+
+    store I in intervals(x)
+
+  else
+
+    /* span(x) contains some elementary intervals that aren't in [a,b].
+     * We must recurse until we find a subtree that is completely contained 
+     * in [a,b].  Note that we might recurse into both subtrees. */
+
+    if (a &lt; separator(x))
+      addInterval( I, a, b, min, separator(x), left(x) );
+    endif
+
+    if (separator(x) &lt; b)
+      addInterval( I, a, b, separator(x), max, left(x) );
+    endif
+
+  endif
+</pre></blockquote>
+
+<p>How long do this algorithm take in a tree of <em>n</em> elementary
+intervals?  The reasoning to answer this is not obvious.
+
+</p></div>
+</div>
+
+<br><hr>
+<br><b><i><a href="http://www.dgp.utoronto.ca/people/JamesStewart/378notes/">Back to the lecture index</a></i></b>
+<br><br><i>Copyright 2001 &nbsp;&nbsp;&nbsp; Faye Baron and James Stewart</i>
+
+
+
+
+</body></html>
