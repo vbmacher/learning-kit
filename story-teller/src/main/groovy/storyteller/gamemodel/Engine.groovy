@@ -2,6 +2,7 @@ package storyteller.gamemodel
 
 import storyteller.gui.Board
 import storyteller.rooms.GameRoom
+import javax.swing.JOptionPane
 
 // Not thread-safe.
 class Engine {

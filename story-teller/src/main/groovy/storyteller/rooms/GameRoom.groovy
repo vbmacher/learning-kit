@@ -5,7 +5,7 @@ import storyteller.gui.RoomComponent
 class GameRoom extends RoomComponent {
 
     public GameRoom(room, board) {
-        super(room, board) // , pauseRoom
+        super(room, board)
     }
 
 }

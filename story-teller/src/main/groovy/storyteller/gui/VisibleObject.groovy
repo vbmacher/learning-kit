@@ -74,7 +74,7 @@ class VisibleObject extends Expando {
         )
     }
 
-    def final Rectangle rectangle() {
+    public def final Rectangle rectangle() {
         return new Rectangle(
             positionRectangle.getX(),
             positionRectangle.getY(),

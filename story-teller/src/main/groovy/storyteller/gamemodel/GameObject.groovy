@@ -4,7 +4,6 @@ import java.awt.Point
 import java.util.concurrent.CopyOnWriteArrayList
 import java.awt.Graphics
 import java.awt.image.BufferedImage
-import java.awt.Rectangle
 import javafx.scene.canvas.GraphicsContext
 import storyteller.gui.VisibleObject
 

@@ -50,13 +50,14 @@ public class SelectGameRoom extends RoomComponent {
 
     def loadGame(gameFile) {
         println "loading game ${gameFile}"
-        def engine = new Engine(gameFile, board)
         try {
+            def engine = new Engine(gameFile, board)
             engine.newGame()
-        } catch (Exception e) {
-            
+            engine.start()
+        } catch (Throwable e) {
+          e.printStackTrace()
+          JOptionPane.showMessageDialog(null, "Cannot load selected game")
         }
-        engine.start()
     }
 
 }
