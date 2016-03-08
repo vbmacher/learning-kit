@@ -33,6 +33,10 @@ pack'' xs = joint $ foldr merge ([],[]) xs
     joint (ys, zs) = ys:zs
 
 pack''' [] = []
-pack''' (x:xs) = (x:[x | y <- xs, x == y]) : (pack''' $ dropWhile (==x) xs)
+pack''' xs = ys:pack''' zs 
+  where (ys,zs) = span (==head xs) xs
+
+
+
 
 
