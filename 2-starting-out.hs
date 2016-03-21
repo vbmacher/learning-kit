@@ -12,14 +12,23 @@
 -- Find the penultimate element in list l
 penultimate l = last (init l)
 
+penultimate' (x:y:[]) = x
+penultimate' (x:xs) = penultimate' xs
+
+
 -- Find the element at index k in list l
 -- For example: "findK 2 [0,0,1,0,0,0]" returns 1
 findK k = (head . drop k)
 
 findK' k l = l !! k
 
+findK'' 0 (x:xs) = x
+findK'' k (x:xs) = findK'' (k-1) xs
+
+
 -- Determine if list l is a palindrome
 isPalindrome l = and $ zipWith (==) (reverse l) l
+
 
 {-
  - Duplicate the elements in list xs, for example "duplicate [1,2,3]" would give the list [1,1,2,2,3,3]
