@@ -50,11 +50,31 @@ splitAtIndex' k l = (reverse ys, zs)
 
 -- Drop the element at index k in list l
 -- For example "dropK 3 [0,0,0,1,0,0,0]" returns [0,0,0,0,0,0]
-dropK k l = undefined
+dropK k l = let (xs,ys) = splitAt k l in xs ++ tail ys
+
+dropK' 0 l = tail l
+dropK' k l = (head l) : dropK' (k-1) (tail l)
+
+dropK'' k l = snd $ foldl (\(c,xs) x -> if c == k then (c+1,xs) else (c+1, xs ++ [x])) (0,[]) l
+
+dropK''' k = reverse . snd . foldl process (0,[])
+  where process (c, xs) x
+          | c == k     = (c+1, xs)
+          | otherwise  = (c+1, x:xs)
+
 
 -- Extract elements between ith and kth element in list l. Including i, but not k
 -- For example, "slice 3 6 [0,0,0,1,2,3,0,0,0]" returns [1,2,3]
-slice i k l = undefined
+slice i k = (drop i) . (take k)
+
+slice' i k l = take (k-i) $ drop i l
+
+slice'' 0 0 _ = []
+slice'' 0 k l = (head l) : (slice'' 0 (k-1) (tail l)) 
+slice'' i k l = slice'' (i-1) (k-1) $ tail l
+
+
+ 
 
 -- Insert element x in list l at index k
 -- For example, "insertElem 2 5 [0,0,0,0,0,0]" returns [0,0,0,0,0,2,0]
