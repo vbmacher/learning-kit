@@ -83,12 +83,36 @@ slice'' 0 k l = (head l) : (slice'' 0 (k-1) (tail l))
 slice'' i k l = slice'' (i-1) (k-1) $ tail l
 
 
- 
-
 -- Insert element x in list l at index k
 -- For example, "insertElem 2 5 [0,0,0,0,0,0]" returns [0,0,0,0,0,2,0]
-insertElem x k l = undefined
+insertElem x k l = (take k l) ++ [x] ++ (drop k l)
+
+insertElem' x 0 l = (x : l)
+insertElem' x k (l:ls) = l : (insertElem x (k-1) ls)
+
+insertElem'' x k = snd . (foldl process (0,[]))
+  where process (c, xs) i
+          | c == k      = (k+1, xs ++ [x] ++ [i])
+          | otherwise   = (c+1, xs ++ [i])
+
+insertElem''' x k l = snd $ foldr process (length l, []) l
+  where process i (c, xs)
+          | c == k      = (k-1, i:x:xs)
+          | otherwise   = (c-1, i:xs)
+
+insertElem'''' x k l = concat $ map (\(c,i) -> if i == k then [x,c] else [c]) $ zip l [0..]
+
 
 -- Rotate list l n places left.
 -- For example, "rotate 2 [1,2,3,4,5]" gives [3,4,5,1,2]
-rotate n l = undefined
+rotate _ [] = []
+rotate 0 xs = xs
+rotate n l = rotate (n-1) $ (tail l) ++ ([head l])
+
+rotate' n l = (drop ind l) ++ (take ind l) 
+  where ind = 1 + (length l) `mod` n
+
+
+
+
+
