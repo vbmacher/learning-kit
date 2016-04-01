@@ -112,7 +112,13 @@ rotate n l = rotate (n-1) $ (tail l) ++ ([head l])
 rotate' n l = (drop ind l) ++ (take ind l) 
   where ind = 1 + (length l) `mod` n
 
+rotate'' n l = let (_, ls, fs) = foldl acc (n,[],[]) l in fs ++ ls
+  where acc (c, ls, fs) x
+          | c > 0     = (c-1, ls ++ [x], fs)
+          | otherwise = (c, ls, fs ++ [x])
 
-
-
+rotate''' n l = let (_,fs,ls) = foldr acc (length l - n,[],[]) l in fs ++ ls
+  where acc x (c, fs, ls)
+          | c > 0     = (c-1, (x:fs), ls)
+          | otherwise = (c, fs, (x:ls))
 
