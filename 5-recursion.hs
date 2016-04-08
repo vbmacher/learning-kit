@@ -11,7 +11,10 @@ power x y = x * power x (y-1)
 --	     fib 10 = [55,34,21,13,8,5,3,2,1,1,0]	
 -- try to use a where clause
 fib :: (Num a, Eq a) => a -> [a]
-fib x = undefined
+fib 0 = [0]
+fib 1 = [1, 0]
+fib n = (sum (take 2 prevFib)) : prevFib
+  where prevFib = fib (n-1)
 
 -- This is not recursive, but have a go anyway.
 -- Create a function which takes two parameters, a number and a step
@@ -20,7 +23,8 @@ fib x = undefined
 --			    stepReverseSign -3 1 = 4
 --			    stepReverseSign 1 2 = -3
 stepReverseSign :: (Fractional a, Ord a) => a -> a -> a
-stepReverseSign a = undefined
+stepReverseSign a b = (-1) * (a / absA) * (absA + b)
+  where absA = abs a
 
 {- Lets calculate pi.
  - The Leibniz formula for pi (http://en.wikipedia.org/wiki/Leibniz_formula_for_%CF%80)
@@ -54,8 +58,16 @@ stepReverseSign a = undefined
  -}
 
 piCalc :: (Fractional a, Integral b, Ord a) => a -> (a, b)
-piCalc a = undefined
+piCalc a = piCalc' 1 0.0 a 0
 
 piCalc' :: (Ord a, Fractional a, Integral b) => a -> a -> a -> b -> (a, b)
-piCalc' w x y z = undefined
+piCalc' denom cpi tol c
+  | abs ratio <= tol = (cpi, c)
+  | otherwise        = piCalc' nextDenom (cpi + ratio) tol (c+1)
+  where nextDenom = stepReverseSign denom 2
+        ratio = 4 / denom
+
+
+
+
 
