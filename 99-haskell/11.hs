@@ -30,4 +30,4 @@ encodeModified = map transform . encode
         transform (c,a) = Multiple c a
 
 
-
+encodeModified' xs = [mx | x <- group xs, let mx = if (length x) == 1 then Single (head x) else Multiple (length x) (head x)]
