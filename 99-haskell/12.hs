@@ -20,4 +20,9 @@ decodeModified' [] = []
 decodeModified' ((Single a):xs) = a : (decodeModified' xs)
 decodeModified' ((Multiple n a):xs) = (replicate n a) ++ (decodeModified' xs)
 
+decodeModified'' = concatMap (uncurry replicate . toTuple) 
+  where toTuple (Multiple n a) = (n,a)
+        toTuple (Single a) = (1,a)
+
+
 
