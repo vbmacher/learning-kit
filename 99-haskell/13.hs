@@ -1,0 +1,32 @@
+-- Problem 13
+--
+-- (**) Run-length encoding of a list (direct solution).
+--
+-- Implement the so-called run-length encoding data compression method directly.
+-- I.e. don't explicitly create the sublists containing the duplicates, as in problem 9,
+-- but only count them. As in problem P11, simplify the result list by replacing the
+-- singleton lists (1 X) by X.
+--
+-- Example:
+--
+-- * (encode-direct '(a a a a b c c a a d e e e e))
+-- ((4 A) B (2 C) (2 A) D (4 E))
+-- Example in Haskell:
+--
+-- P13> encodeDirect "aaaabccaadeeee"
+-- [Multiple 4 'a',Single 'b',Multiple 2 'c',
+--  Multiple 2 'a',Single 'd',Multiple 4 'e']
+
+
+data Encoded a = Single a | Multiple Int a deriving (Show)
+
+encodeDirect [] = []
+encodeDirect (x:xs) = encode x xs 0
+  where encode x [] 0     = [Single x]
+        encode x [] n     = [Multiple (n+1) x]
+        encode x (y:ys) n
+          | x == y        = encode x ys (n+1)
+          | n == 0        = (Single x) : (encode y ys 0)
+          | otherwise     = (Multiple (n+1) x) : (encode y ys 0)
+
+
