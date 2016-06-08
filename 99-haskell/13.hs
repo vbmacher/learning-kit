@@ -30,3 +30,15 @@ encodeDirect (x:xs) = encode x xs 0
           | otherwise     = (Multiple (n+1) x) : (encode y ys 0)
 
 
+encodeDirect' [] = []
+encodeDirect' (x:xs) = (decide (1 + (length . takeWhile (==x)) xs) x) : (encodeDirect' $ dropWhile (==x) xs)
+  where decide 1 x = Single x
+        decide n x = Multiple n x
+
+encodeDirect'' [] = []
+encodeDirect'' (x:xs) = (decide (1 + length ys)) : (encodeDirect'' zs)
+  where decide 1 = Single x
+        decide n = Multiple n x
+        (ys, zs) = span (==x) xs
+
+
