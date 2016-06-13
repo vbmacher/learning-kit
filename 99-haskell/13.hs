@@ -41,4 +41,12 @@ encodeDirect'' (x:xs) = (decide (1 + length ys)) : (encodeDirect'' zs)
         decide n = Multiple n x
         (ys, zs) = span (==x) xs
 
+encodeDirect''' :: Eq a => [a] -> [Encoded a]
+encodeDirect''' = map helper . foldr acc []
+  where acc x [] = [(x, 1)]
+        acc x (y@(a, c):xs)
+            | a == x     = (a, c+1):xs
+            | otherwise  = (x, 1):y:xs 
+        helper (a,1) = Single a
+        helper (a,n) = Multiple n a
 
