@@ -19,4 +19,16 @@ dropEvery xs n = take (n-1) xs ++ dropEvery (drop n xs) n
 dropEvery' xs n = [x | (x,y) <- zip xs [1..], y `mod` n /= 0]
 
 
+dropEvery'' xs n = snd $ foldl onlyFirstN (0,[]) xs
+  where
+    onlyFirstN (c,xs) x
+      | c == n-1   = (0,xs)
+      | otherwise  = (c+1,xs ++ [x])
+
+dropEvery''' xs n = snd $ foldr onlyFirstN (length xs `mod` n, []) xs
+  where
+    onlyFirstN x (c,xs)
+      | c == 0   = (n-1,xs)
+      | otherwise  = (c-1, x:xs)
+
 
