@@ -32,3 +32,9 @@ dropEvery''' xs n = snd $ foldr onlyFirstN (length xs `mod` n, []) xs
       | otherwise  = (c-1, x:xs)
 
 
+dropEvery'''' xs n = foldl acc [] $ zip [1..] xs
+  where acc rs pair
+          | (fst pair) `mod` n /= 0 = rs ++ [snd pair]
+          | otherwise               = rs
+
+
