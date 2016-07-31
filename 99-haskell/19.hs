@@ -34,4 +34,13 @@ rotate' ys@(x:xs) n
         n' = n `mod` l
 
 
+rotate'' [] _ = []
+rotate'' xs 0 = xs
+rotate'' ys@(x:xs) n = rotate'' ((drop 1 ys) ++ [x]) (n'-1)
+  where l = length ys
+        n'' = n `mod` l
+        n'  = if n'' < 0 then n'' + l else n''
+
+
+
 
