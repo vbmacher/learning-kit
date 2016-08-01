@@ -42,5 +42,10 @@ rotate'' ys@(x:xs) n = rotate'' ((drop 1 ys) ++ [x]) (n'-1)
         n'  = if n'' < 0 then n'' + l else n''
 
 
+rotate''' xs n
+  | n > 0     = take l $ drop n' $ cycle xs
+  | otherwise = rotate''' xs (n' + l)
+  where l = length xs
+        n' = n `mod` l
 
 
