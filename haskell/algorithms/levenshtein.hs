@@ -3,18 +3,21 @@
 hrever = head . reverse
 
 
-leven xs ys
-  | min lxs lys == 0 = max lxs lys
-  | otherwise = minimum [
-                  (leven ixs ys) + 1,
-                  (leven xs iys) + 1,
-                  (leven ixs iys) + f
-                ]
-  where lxs = length xs
-        lys = length ys
-        ixs = init xs
+-- cut from the right side
+leven [] xs = length xs
+leven xs [] = length xs
+leven xs ys = minimum [1 + leven ixs ys, 1 + leven xs iys, f + leven ixs iys]
+  where ixs = init xs
         iys = init ys
         f = if (hrever xs == hrever ys) then 0 else 1
+
+-- cut from the left side
+leven' [] ys = length ys
+leven' xs [] = length xs
+leven' xs ys = minimum [1 + leven' txs ys, 1 + leven' xs tys, f + leven' txs tys]
+  where txs = tail xs
+        tys = tail ys
+        f = if head xs == head ys then 0 else 1
 
 
 -- Find the most similar word from database
@@ -22,7 +25,6 @@ leven xs ys
 -- db - database of words
 similar xs db = foldr f ([],maxBound::Int) $  zip db $ map (leven xs) db
   where f (rs,c) (ds,l) = if c < l then (rs,c) else (ds,l)
-
 
 
 
