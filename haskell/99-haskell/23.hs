@@ -14,11 +14,15 @@
 import System.Random
 
 rnd_select xs n = do
-  gen <- getStdGen
-  return $ map (\x -> xs!!x) $ take n $ randomRs (0,length xs-1) gen
+  gen <- newStdGen
+  return $ map (xs!!) $ take n $ randomRs (0,length xs-1) gen
 
 
-
-
+rnd_select' xs 0 = return []
+rnd_select' xs n = do
+  newStdGen
+  i <- randomRIO (0, length xs -1)
+  rest <- rnd_select' xs (n-1)
+  return $ (xs !! i) : rest
 
 
