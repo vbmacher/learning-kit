@@ -1,7 +1,7 @@
 # CMake generated Testfile for 
-# Source directory: /home/vbmacher/dev/gpl/pong/test
-# Build directory: /home/vbmacher/dev/gpl/pong/test
+# Source directory: /home/vbmacher/projects/learning-kit/turbo-pong/test
+# Build directory: /home/vbmacher/projects/learning-kit/turbo-pong/test
 # 
-# This file includes the relevent testing commands required for 
+# This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
-ADD_TEST(unit-tests "unit-tests")
+add_test(unit-tests "unit-tests")
