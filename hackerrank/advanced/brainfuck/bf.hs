@@ -2,6 +2,7 @@
 
 import Data.Char
 import System.IO
+-- import Data.Vector.Unboxed as VU
 
 data Instr = Instr Char Int deriving Show
 type Program = [Instr]
@@ -46,26 +47,30 @@ findLoops xs = snd $ foldr f ([],[]) xs
 
 -- simulator
 
-type IP     = ([Instr], [Instr])
-type Memory = ([Int], [Int])
+type T a = ([a], [a])
+
+type IP     = T Instr
+type Memory = T Int
 type Stack  = [IP]
 type State  = (IP, Stack, Memory)
 
 
-initial ps ms = (([],ps), [], ([0], ms))
+initT xs = ([], xs)
+initial ps ms = (initT ps, [], initT ms)
 
 
-save :: Memory -> (Int -> Int) -> Memory
-save (imm, x:xs) f = (imm, (f x):xs)
+save :: T a -> (a -> a) -> T a
+save (ps, x:ts) f = (ps, (f x):ts)
 
-roll :: Int -> ([a], [a]) -> ([a], [a])
-roll n mem@(as, bs)
-  | n < 0     = roll (n+1) (tail as,  (head as):bs)
-  | n > 0     = roll (n-1) ((head bs):as, tail bs)
-  | otherwise = mem
+roll :: Int -> T a -> T a
+roll 0 xs = xs
+roll n xs@(ps, ts)
+  | n < 0     = roll (n+1) (tail ps,  (head ps):ts)
+  | n > 0     = roll (n-1) ((head ts):ps, tail ts)
+  | otherwise = xs
 
 
-next :: ([a], [a]) -> ([a], [a])
+next :: T a -> T a
 next xs = roll 1 xs
 
 
