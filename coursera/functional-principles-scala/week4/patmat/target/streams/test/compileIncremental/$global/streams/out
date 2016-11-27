@@ -1,0 +1,33 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set()[0m
+[0m[[0mdebug[0m] [0m	modified: Set(/home/vbmacher/courses/functional-scala/week4/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated products: Set(/home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$TestTrees$class.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$8.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$1$$anon$1.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$2$$anon$2.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$6$$anon$3.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$4.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$TestTrees.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$5.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$1.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$7$$anon$4.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$6.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$7.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$8$$anon$5.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$2.class, /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$3.class)[0m
+[0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/vbmacher/courses/functional-scala/week4/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set(/home/vbmacher/courses/functional-scala/week4/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/vbmacher/courses/functional-scala/week4/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 65afecca, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-deprecation[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc23.x86_64/jre/classes:/home/vbmacher/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/test-classes:/home/vbmacher/courses/functional-scala/week4/patmat/target/scala-2.11/classes:/home/vbmacher/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.4.jar:/home/vbmacher/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.2.jar:/home/vbmacher/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar:/home/vbmacher/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.4.jar:/home/vbmacher/.ivy2/cache/junit/junit/jars/junit-4.10.jar:/home/vbmacher/.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.1.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 0.910631315 s[0m
+[0m[[0mdebug[0m] [0mNew invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mAll newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m
