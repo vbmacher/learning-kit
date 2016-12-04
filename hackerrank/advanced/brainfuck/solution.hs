@@ -1,8 +1,5 @@
--- Brainfuck interpreter
-
 import Data.Char
 import System.IO
--- import Data.Vector.Unboxed as VU
 
 data Instr = Instr Char Int deriving Show
 type Program = [Instr]
@@ -47,22 +44,24 @@ findLoops xs = snd $ foldr f ([],[]) xs
 
 -- simulator
 
-type T a = ([a], [a])
+type Zipper a = ([a], [a])
 
-type IP     = T Instr
-type Memory = T Int
+type IP     = Zipper Instr
+type Memory = Zipper Int
 type Stack  = [IP]
-type State  = (IP, Stack, Memory)
+type Input  = String
+type State  = (IP, Stack, Memory, Input, Int)
+
+killText = "\nPROCESS TIME OUT. KILLED!!!"
+
+initZipper xs = ([], xs)
+initial ps ms inp = (initZipper ps, [], initZipper ms, inp, 100000)
 
 
-initT xs = ([], xs)
-initial ps ms = (initT ps, [], initT ms)
-
-
-save :: T a -> (a -> a) -> T a
+save :: Zipper a -> (a -> a) -> Zipper a
 save (ps, x:ts) f = (ps, (f x):ts)
 
-roll :: Int -> T a -> T a
+roll :: Int -> Zipper a -> Zipper a
 roll 0 xs = xs
 roll n xs@(ps, ts)
   | n < 0     = roll (n+1) (tail ps,  (head ps):ts)
@@ -70,7 +69,7 @@ roll n xs@(ps, ts)
   | otherwise = xs
 
 
-next :: T a -> T a
+next :: Zipper a -> Zipper a
 next xs = roll 1 xs
 
 
@@ -79,47 +78,49 @@ printR 0 x = return ()
 printR c x = putChar (chr x) >> hFlush stdout >> printR (c-1) x
 
 
-loadR :: Int -> Int -> IO Int
-loadR 0 x = return x
-loadR c _ = getChar >>= \char -> loadR (c - 1) (ord char) >>= return
+loadR :: Int -> Input -> (Int, Input)
+loadR 1 (x:xs) = (ord x, xs)
+loadR c (x:xs) = loadR (c - 1) xs
 
 
 eval :: State -> IO State
-eval (ip@(_,(Instr c n):is), xs, mem@(_,m:ms)) = do
---  putStrLn $ (take (2 * length xs) (repeat ' ')) ++ [c] ++ "(" ++ show n ++ "), mem[p]=" ++ show m ++ ", loops=" ++ show (length xs)
-  
-
+eval (ip@(_,(Instr c n):is), xs, mem@(_,m:ms), inp, ops) = do
+  let cnt = howMany n ops
   case c of
-    '<' -> return (next ip, xs, roll (-n) mem)
-    '>' -> return (next ip, xs, roll n mem)
-    '-' -> return (next ip, xs, save mem (\b-> b - n))
-    '+' -> return (next ip, xs, save mem (\b-> b + n))
+    '<' -> return (next ip, xs, roll (-cnt) mem, inp, ops - cnt)
+    '>' -> return (next ip, xs, roll cnt mem, inp, ops - cnt)
+    '-' -> return (next ip, xs, save mem (\b-> (b - cnt) `mod` 256), inp, ops - cnt)
+    '+' -> return (next ip, xs, save mem (\b-> (b + cnt) `mod` 256), inp, ops - cnt)
     '.' -> do
-             printR n m
-             return (next ip, xs, mem)
+             printR cnt m
+             return (next ip, xs, mem, inp, ops - cnt)
     ',' -> do
-             char <- loadR n 0
-             return (next ip, xs, save mem (const char))
+             let (char, newInput) = loadR cnt inp
+             return (next ip, xs, save mem (const char), newInput, ops - cnt)
     '[' -> if m == 0
-           then return (roll (n + 1) ip, xs, mem)
-           else return (next ip, ip:xs, mem)
+           then return (roll (n + 1) ip, xs, mem, inp, ops - 2)
+           else return (next ip, ip:xs, mem, inp, ops - 1)
     ']' -> if m /= 0
-           then return (head xs, tail xs, mem)
-           else return (next ip, tail xs, mem)
+           then return (head xs, tail xs, mem, inp, ops - 1)
+           else return (next ip, tail xs, mem, inp, ops - 1)
 
-
+howMany n ops = if ops - n <= 0 then ops else n
 
 
 runProgram :: State -> IO ()
-runProgram ((_,[]), _, _) = return ()
+runProgram ((_,[]), _, _, _, _) = return ()
+runProgram (_, _, _, _, 0) = do
+  putStrLn killText
 runProgram state = do 
   newState <- eval state
   runProgram newState
 
 
 main = do
+  line <- getLine
+  rawinput <- getLine
+  let input = init rawinput
   rawtext <- getContents
   program <- return $ parse rawtext
   ps <- return $ findLoops program
-  runProgram $ initial ps (take 30000 (repeat 0))
-  
+  runProgram $ initial ps (take 6000 (repeat 0)) input
