@@ -16,7 +16,7 @@ organization or some online course. For example:
 
 - Cubra: haskell; program solution to cubra qube
 - Fixlines: haskell; remove newlines inside paragraphs in text files  
-- hcalc: haskell; calculator
+- hcalc: haskell; monadic calculator
 - story-teller: groovy+java; unfinished game engine + DSL
 - sudoku-c: C; sudoku solver
 - sudoku-csharp: C#; sudoku solver and experimental sudoku generator
