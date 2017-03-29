@@ -44,3 +44,4 @@ organization or some online course. For example:
 - [okresy](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/okresy) (Python, Google Maps) - Retrieve distances of villages/towns from their district cities
 - [game-of-life](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/game-of-life) (Elm) - Game-of-life in hexagonal grid
 - [fast-bf](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/fast-bf) (Java) - Very-fast brainfuck interpreter
+- [lecalc](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/lecalc) (C, Flex, Bison, AutoTools) - Interactive calculator, expression interpreter
