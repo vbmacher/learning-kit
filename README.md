@@ -1,14 +1,15 @@
-What's this?
-============
+# What is leCalc?
 
-kCalc is aimed to be extremely light-weight, simple, and powerful calculator. It is written in C. The main goal is to apply DRY principle into human mathematical work. In other words, it should provide automatic computation defined either in input file(s) or interactively from standard input stream. It prints results to standard output stream or at user-specified place (file). It can be used either as interactive calculator or in shell scripts as computation result generator.
+leCalc is just a tiny and simple calculator for programmers.
+It is written in C as my learning practice.
 
-I believe it could help people perform their daily computations, either students or scientists.
+## License
 
-Build and Install
-=================
+This is free software, released under [Apache 2 license](https://www.apache.org/licenses/LICENSE-2.0).
 
-This is free software, released under GNU GPL v2 license. The parser is written using FLEX [[1]] and YACC/Bison [[2]]. The source code was written in GNU C. To build it in easy way, execute following commands:
+# Build and Install
+
+The parser is written using FLEX [[1]] and YACC/Bison [[2]]. The source code was written in GNU C. To build it in easy way, execute following commands:
 
 1. `configure`
 2. `make`
@@ -19,8 +20,7 @@ If you want to install it, type `make install` in root environment. If you want 
 [2]: http://gnuwin32.sourceforge.net/packages/byacc.htm
 
 
-Usage
-======
+# Usage
 
 In interactive mode, the calculator supports following commands:
 
@@ -28,8 +28,7 @@ In interactive mode, the calculator supports following commands:
 * `use 'file'` - process external file.
 * `q`, `quit`  - quit the calculator.
 
-Radix
------
+## Radix
 
 There are supported integral and decimal numbers in many radixes and with any precision. 
 
@@ -48,8 +47,7 @@ Results are printed in all these radixes. The following operators are supported:
 * `^` - power (`2^3=8`)
 * `!` - factorial (`3!=6`)
 
-Math functions
---------------
+## Math functions
 
 The following math functions are supported:
 
@@ -64,16 +62,14 @@ The following math functions are supported:
 * `ceil`  - smallest integral value that is not less than input (`ceil 4.3=5`)
 * `floor` - greatest integral value that is not greater than input (`floor 4.6=4`)
 
-Constants
-----------
+## Constants
 
 The following constants are supported:
 
 *  `PI` - The Ludolf PI number (`3.141592`...)
 *  `E`  - The Euler number (`2.71828182`...)
 
-Variables, expressions
-----------------------
+## Variables, expressions
 
 This calculator also supports variables that store values AND expressions. However,
 recursion is not supported, e.g.:
@@ -87,9 +83,8 @@ recursion is not supported, e.g.:
 *  `x1` (prints `1.168034`)
 
 Every result is stored to the R variable.
-        
-Operator priorities and associativity
-=====================================
+
+# Operator priorities and associativity
 
 I tried to follow the associations and priorities like it is in real math.
 The higher number of the operator, the higher priority it has.
@@ -102,8 +97,7 @@ The higher number of the operator, the higher priority it has.
 6. (left)   `^`
 7. (left)   `!`
 
-Notes:
-------
+## Notes:
 
 Left associativity means:
 
@@ -113,11 +107,9 @@ Right associativity means:
 
 > `5 + 5 + 5 + 5 = (5 + (5 + (5 + 5)))`
 
-Examples:
-=========
+# Examples:
 
-Factorial (`!`)
--------------
+## Factorial (`!`)
 
 * `5!5!    =>` error (missing operator, `!` is unary)
 * `-5!     = -(5!)       = -120`
@@ -125,14 +117,12 @@ Factorial (`!`)
 * `5! ^ 5  = (5!) ^ 5    = 24883200000`
 
 
-Power (`^`)
------------
+## Power (`^`)
 
 * `5 ^ 5 * 5 = (5 ^ 5) * 5 = 125`
 * `-5 ^ 2    = - (5 ^ 2)   = -25`
 
-Modulo (`%`)
-------------
+## Modulo (`%`)
 
 * `5 % 3 * 5 = ((5 % 3) * 5) = 10`
 * `5 * 5 % 3 = (5 * (5 % 3)) = 10`
