@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e07f5f30-f8b3-4223-ad05-21269af13731" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/01.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/02.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/03.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/04.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/05.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/06.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/07.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/08.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/09.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/10.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/11.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/12.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/13.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/14.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/15.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/16.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/17.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/18.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/19.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/20.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/21.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/22.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/23.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../99-haskell-problems/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../acm/2015-fel-cvut/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../acm/2015-fel-cvut/cheetahs.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../acm/2015-fel-cvut/cheetahs.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../acm/2015-fel-cvut/cheetahs.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../acm/2015-fel-cvut/cheetahs.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../algorithms/eratostenes.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../algorithms/filterM.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../algorithms/fizzbuzz.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../algorithms/gcd.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../algorithms/levenshtein.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../algorithms/strongcomp.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/6kyu-wind-calculation/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/6kyu-wind-calculation/wind.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-all-none-any/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-all-none-any/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-complementary-dna/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-complementary-dna/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-invisible-cubes/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-invisible-cubes/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-no-oddities-here/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-no-oddities-here/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-russian-postal-code-checker/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-russian-postal-code-checker/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-sort-the-gift-code/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-sort-the-gift-code/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-trimming-a-string/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/7kyu-trimming-a-string/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/8kyu-broken-greetings/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/8kyu-broken-greetings/solution.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/8kyu-multiply/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/8kyu-multiply/solution.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/8kyu-square-n-sum/description.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../codewars/8kyu-square-n-sum/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/advanced/brainfuck/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/advanced/brainfuck/2/bf.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/advanced/brainfuck/custom.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/advanced/brainfuck/hanoi.b" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/advanced/brainfuck/hello2.b" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/advanced/brainfuck/mandelbrot.b" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/advanced/brainfuck/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/a-very-big-sum/a-very-big-sum-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/a-very-big-sum/a-very-big-sum-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/a-very-big-sum/solution.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/alternating-characters/alternating-characters-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/alternating-characters/alternating-characters-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/alternating-characters/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/arrays-ds/arrays-ds-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/arrays-ds/arrays-ds-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/arrays-ds/solution.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/compare-the-triplets/compare-the-triplets-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/compare-the-triplets/compare-the-triplets-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/compare-the-triplets/solution.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/computing-the-gcd/functional-programming-warmups-in-recursion---gcd-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/computing-the-gcd/functional-programming-warmups-in-recursion---gcd-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/computing-the-gcd/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/computing-the-gcd/solution.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/diagonal-difference/diagonal-difference-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/diagonal-difference/diagonal-difference-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/diagonal-difference/solution.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/functions/c-tutorial-functions-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/functions/c-tutorial-functions-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/functions/solution.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/hello-world/cpp-hello-world-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/hello-world/cpp-hello-world-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/hello-world/solution.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/min-max-sum/mini-max-sum-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/min-max-sum/mini-max-sum-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/min-max-sum/solution.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/pangrams/pangrams-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/pangrams/pangrams-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/pangrams/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/plus-minus/plus-minus-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/plus-minus/plus-minus-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/plus-minus/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/plus-minus/solution1.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/pointer/c-tutorial-pointer-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/pointer/c-tutorial-pointer-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/pointer/solution.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/simple-array-sum/simple-array-sum-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/simple-array-sum/simple-array-sum-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/simple-array-sum/solution.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/solve-me-first/solution.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/solve-me-first/solution.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/solve-me-first/solve-me-first-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/easy/solve-me-first/solve-me-first-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coin-change-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coin-change-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/libraries/SBT__org_scala_lang_scala_library_2_11_8_jar.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/modules/coins-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/modules/coins.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/sbt.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/scala_compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/build.sbt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/project/build.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/project/plugins.sbt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/coins/coins/src/main/scala/Solution.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/matrix-rotation/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/matrix-rotation/Cargo.toml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/matrix-rotation/matrix-rotation-algo-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/matrix-rotation/matrix-rotation-algo-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/hard/matrix-rotation/src/main.rs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/breadth-first-search/bfs.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/breadth-first-search/bfsshortreach-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/breadth-first-search/bfsshortreach-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/fibonacci-modified/fib.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/fibonacci-modified/fibonacci-modified-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/fibonacci-modified/fibonacci-modified-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/in-place-quicksort/quicksort.rs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/in-place-quicksort/quicksort3-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/in-place-quicksort/quicksort3-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/journey-to-the-moon/journey-to-the-moon-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/journey-to-the-moon/journey-to-the-moon-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/journey-to-the-moon/solution.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/sparse-arrays/solution.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/sparse-arrays/sparse-arrays-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/medium/sparse-arrays/sparse-arrays-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/boat-trip/boat-trip-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/boat-trip/boat-trip-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/boat-trip/solution.rs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/lucky-number-eight/lucky-number-eight-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/lucky-number-eight/lucky-number-eight-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/lucky-number-eight/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/lucky-number-eight/solution1.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/the-great-xor/solution.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/the-great-xor/the-great-xor-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/the-great-xor/the-great-xor-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/22938-value-of-friendship-English.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/Solution.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/Solution1.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/Testing.sc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/0.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/0.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/1.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/1.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/2.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/2.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/3.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/3.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/samples/value-of-friendship-testcases.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/solution3/build.sbt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/solution3/project/build.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/solution3/project/plugins.sbt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/28/value-of-friendship/solution3/src/main/scala/Solution.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../hackerrank/week-of-code/results.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/.9-input-and-output.hs.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/11-functors-applicative-functors-and-monoids.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/12-a-fistful-of-monads.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/13-for-a-few-monads-more.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/2-starting-out.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/3-types-and-typeclasses.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/4-syntax-in-functions.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/5-recursion.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/6-higher-order-functions.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/7-modules.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/8-making-our-own-types-and-typeclasses.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/9-input-and-output" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/9-input-and-output.hi" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/9-input-and-output.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/9-input-and-output.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/DistanceConversions.hs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../learn-you-a-haskell-exercises/README" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit0" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit10" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit11" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit12" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit13" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit14" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit15" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit16" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit6" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit7" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit8" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../overthewire/bandit/bandit9" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../bedminton/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../bedminton/BedmintonModel.elm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../bedminton/BedmintonView.elm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../bedminton/bedminton.elm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../bedminton/elm-package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../bedminton/main.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/gradlew" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/gradlew.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/settings.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/src/main/java/test/FindPath.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/src/main/java/test/FindPathSolved.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../findpath/src/test/java/test/FindPathTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/Jumpers.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/README.TXT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/doc/Prepojky.xls" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/doc/Prepojky_1.xls" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/doc/uloha.xls" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/doc/uloha1.xls" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/jad.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/jumpers.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/lib/poi-3.0.2-beta2-20080112.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/src/jumpers/ExcelDataManip.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/src/jumpers/Genetic.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/src/jumpers/gui/AboutDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/src/jumpers/gui/ExcelTableModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/src/jumpers/gui/MainFrame.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../jumper-sort/src/resources/chicken.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../magic-square/Form1.frm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../magic-square/Project1.vbp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../magic-square/Project1.vbw" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/inventory" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/patches/20080128103957-d1e71-964e5140c843a2703d7d9eeba3f2715a451a16f2.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/patches/20080128104027-d1e71-c5aa8d418460dc46ce59aa59785311436b764e18.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/patches/pending" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/prefs/author" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/prefs/binaries" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/prefs/boring" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/prefs/motd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/build.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/manifest.mf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/nbproject/build-impl.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/nbproject/genfiles.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/nbproject/private/private.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/nbproject/private/private.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/nbproject/project.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/nbproject/project.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/src/multichat/MultiChat.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/src/multichat/MultiChatFrame.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/_darcs/pristine/src/multichat/MultiChatFrame.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChat$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChat$MessageListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChat$OnlineGarbageCollector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChat$OnlineRequest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChat$OnlineSender.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChat.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame$WeirdListModel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/build/classes/multichat/MultiChatFrame.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/dist/MultiChat.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/dist/README.TXT" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/manifest.mf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/nbproject/build-impl.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/nbproject/genfiles.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/nbproject/private/private.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/nbproject/private/private.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/nbproject/project.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/nbproject/project.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/src/multichat/MultiChat.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/src/multichat/MultiChatFrame.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../multichat/src/multichat/MultiChatFrame.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/build.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/manifest.mf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/nbproject/build-impl.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/nbproject/genfiles.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/nbproject/private/config.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/nbproject/private/private.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/nbproject/private/private.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/nbproject/project.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/nbproject/project.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/db.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/dbex.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/log/log.ctrl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/log/log1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/log/log32.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/log/logmirror.ctrl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c101.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c111.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c121.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c130.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c141.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c150.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c161.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c171.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c180.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c191.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c1a1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c1b1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c1c0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c1d1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c1e0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c1f1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c20.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c200.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c211.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c221.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c230.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c241.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c251.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c260.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c271.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c281.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c290.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c2a1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c2b1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c2c1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c2d0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c2e1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c2f0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c300.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c31.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c311.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c321.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c331.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c340.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c351.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c361.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c371.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c380.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c391.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c3a1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c3b1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c3c0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c3d1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c3e1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c3f0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c401.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c41.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c411.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c421.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c430.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c441.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c451.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c51.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c60.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c71.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c81.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/c90.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/ca1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/cb1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/cc0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/cd1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/ce1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/seg0/cf0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/okna.db/service.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/Calculation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/Input.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/Report.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/ReportManipulation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/data/DerbyHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/data/Window.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/data/WindowSubtype.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/data/WindowType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AboutDialog.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AboutDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AddEditSubtypeDialog.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AddEditSubtypeDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AddEditTypeDialog.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AddEditTypeDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AddEditWindow.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/AddEditWindow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/CatalogueDialog.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/CatalogueDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/MainWindow.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/MainWindow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/ReportDialog.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/ReportDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/WorkingDialog.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/WorkingDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/utils/NiceFileFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/utils/SubtypesTableModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/utils/WSubtypeComboModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/utils/WTypeComboModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/oknatradika/gui/utils/WindowsTableModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/about.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/catalogue.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/delete.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/edit.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/new.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/newz.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/open.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/report.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../oknaTradika/src/resources/save.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/.nb-gradle-properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/apple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/castle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/dragon-war.game" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/dragon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/forest.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/monitor_delete.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/start.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/examples/sword.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/settings.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gamemodel/Engine.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gamemodel/Game.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gamemodel/GameObject.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gamemodel/GameObjectBuilder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gamemodel/Player.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gamemodel/Room.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gamemodel/RoomBuilder.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gui/Board.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gui/Defaults.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gui/MainWindow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gui/Menu.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gui/Option.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gui/RoomComponent.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/gui/VisibleObject.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/rooms/GameRoom.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/rooms/MainMenuRoom.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/groovy/storyteller/rooms/SelectGameRoom.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/resources/YEWBN___.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/resources/css/listview.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/main/resources/storyteller.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/test/groovy/storyteller/gamemodel/EngineTest.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/test/groovy/storyteller/gamemodel/GameObjectBuilderTest.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/test/groovy/storyteller/gamemodel/GameTest.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/test/groovy/storyteller/gamemodel/RoomBuilderTest.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../story-teller/src/test/groovy/storyteller/gui/BoardTest.groovy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/CAL-9738.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/CAL-9800.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/CAL-9932.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/CAL-9978.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/CAL-9986.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/IMG_1769.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/SC-5303.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/SC-5304.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/SC-5590.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/SC-5591.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/SC-5593.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/SC-5624.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/SCR-593.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/Snímka obrazovky z 2013-10-07 17:23:12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/Snímka obrazovky z 2013-10-07 21:42:54.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/bounds0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/bounds1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/bounds2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/examples/bounds3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/nb-configuration.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/nbactions.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/Code.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/ConnectionDetails.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/Group.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/IOUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/JiraAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/StringDataSink.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/cmdline/Command.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/cmdline/CommandException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/cmdline/CommandLine.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/cmdline/CommandLineComposite.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/cmdline/CommandLineParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/CheckIssues.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/CreateIssues.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/DecodeImage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/FindGroup.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/LaunchWhiteboard.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/OpenIssuesByID.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/OpenIssuesByKey.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/RenderGroup.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/RenderTasks.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/commands/UpdateIssues.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/decoder/CameraCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/decoder/ImageFilters.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/decoder/TasksTableModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/decoder/WebcamComboboxModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/decoder/Whiteboard.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/decoder/Whiteboard.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/task/Task.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/task/TaskException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/task/TaskFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/task/Tasks.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/main/java/cz/zoom/whiteboard/task/TasksFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../whiteboard/src/test/java/cz/zoom/whiteboard/cmdline/CommandLineParserTest.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../README.md" afterPath="$PROJECT_DIR$/../../README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../turbo-pong/README.md" afterPath="$PROJECT_DIR$/../turbo-pong/README.md" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/project/project/target/" />
+    <ignored path="$PROJECT_DIR$/project/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Results.scala" pinned="false" current-in-tab="true">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.4.2-sources.jar!/play/api/mvc/Results.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="679" column="19" lean-forward="false" selection-start-line="679" selection-start-column="19" selection-end-line="679" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/controllers/Application.scala" />
+        <option value="$PROJECT_DIR$/app/views/index.scala.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="Play2ProjectSettings">
+    <option name="LANGUAGE_IMPORTS">
+      <array>
+        <option value="play.api.templates.PlayMagic._" />
+      </array>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="19" />
+    <option name="width" value="1920" />
+    <option name="height" value="1061" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jobdetail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected="Play 2 App.Play2Run">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="Play2FrameworkRunConfigurations" factoryName="Play 2 App">
+      <module name="" />
+      <setting name="play2JpdaPort" value="9999" />
+      <setting name="play2JvmOptions" value="-Xms512M -Xmx1024M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M" />
+      <setting name="play2NeedOpenInBrowser" value="true" />
+      <setting name="play2OpenUrl" value="http://localhost:9000" />
+      <setting name="play2EnvVariables" value="" />
+      <setting name="play2IsNonDefaultInstallDirUsed" value="false" />
+      <setting name="play2NonDefaultInstallDir" value="" />
+      <setting name="play2isAutoReloadEnabled" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="Play2Run" type="Play2FrameworkRunConfigurations" factoryName="Play 2 App">
+      <module name="" />
+      <setting name="play2JpdaPort" value="9999" />
+      <setting name="play2JvmOptions" value="-Xms512M -Xmx1024M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M" />
+      <setting name="play2NeedOpenInBrowser" value="true" />
+      <setting name="play2OpenUrl" value="http://localhost:9000" />
+      <setting name="play2EnvVariables" value="" />
+      <setting name="play2IsNonDefaultInstallDirUsed" value="false" />
+      <setting name="play2NonDefaultInstallDir" value="" />
+      <setting name="play2isAutoReloadEnabled" value="false" />
+      <method>
+        <option name="Make" enabled="false" />
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Play 2 App.Play2Run" />
+    </list>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="lastUpdateTimestamp" value="1490779246219" />
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="jobdetail" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="jobdetail" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value="jobdetail-build" />
+                <option name="path" value="$PROJECT_DIR$/project" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$" value="1490698790926" />
+        <entry key="$PROJECT_DIR$/project" value="1490698790000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="19" width="1920" height="1061" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25186765" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IntelliCalc" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ApplicationSpec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ApplicationSpec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.4.2-sources.jar!/play/api/mvc/Action.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="340" column="6" lean-forward="false" selection-start-line="340" selection-start-column="6" selection-end-line="340" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-109">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/plugins.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="55" lean-forward="false" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/favicon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/scala-2.11/twirl/main/views/html/main.template.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="56" column="7" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.4.2-sources.jar!/play/api/mvc/Results.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="679" column="19" lean-forward="false" selection-start-line="679" selection-start-column="19" selection-end-line="679" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ApplicationSpec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ApplicationSpec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.4.2-sources.jar!/play/api/mvc/Action.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="340" column="6" lean-forward="false" selection-start-line="340" selection-start-column="6" selection-end-line="340" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-109">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/plugins.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="55" lean-forward="false" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.4.2-sources.jar!/play/api/mvc/Results.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="679" column="19" lean-forward="false" selection-start-line="679" selection-start-column="19" selection-end-line="679" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/favicon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/scala-2.11/twirl/main/views/html/main.template.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="56" column="7" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
