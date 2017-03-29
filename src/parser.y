@@ -39,7 +39,7 @@ char *filename=  NULL;
 
 %}
 
-%pure_parser
+%pure-parser
 %defines
 %lex-param {yyscan_t *scanner}
 %parse-param {void *scanner}

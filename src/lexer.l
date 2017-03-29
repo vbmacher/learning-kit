@@ -19,7 +19,7 @@
 
 #include <math.h>
 #include <string.h>
-#include "lecalc.h"
+#include <lecalc.h>
 #include "parser.h"
 
 //option reentrant noyywrap never-interactive nounistd yylineno

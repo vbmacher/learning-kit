@@ -1,6 +1,12 @@
 /* config.h.  Generated from config.h.in by configure.  */
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
+/* Defines automake version */
+#define AUTOMAKE_VERSION 1.15
+
+/* Use *.h extension for parser header file */
+/* #undef BISON_USE_PARSER_H_EXTENSION */
+
 /* Define to one of `_getb67', `GETB67', `getb67' for Cray-2 and Cray-YMP
    systems. This function is required for `alloca.c' support on those systems.
    */
@@ -78,23 +84,20 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
 
-/* Define to 1 if your C compiler doesn't accept -c and -o together. */
-/* #undef NO_MINUS_C_MINUS_O */
-
 /* Name of package */
-#define PACKAGE "kcalc"
+#define PACKAGE "lecalc"
 
 /* Define to the address where bug reports for this package should be sent. */
 #define PACKAGE_BUGREPORT "pjakubco@gmail.com"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "kcalc"
+#define PACKAGE_NAME "lecalc"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "kcalc 0.12b"
+#define PACKAGE_STRING "lecalc 0.12b"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "kcalc"
+#define PACKAGE_TARNAME "lecalc"
 
 /* Define to the home page for this package. */
 #define PACKAGE_URL ""
