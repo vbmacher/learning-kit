@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="astar:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/astar_jar</output-path>
-    <root id="archive" name="astar.jar">
-      <element id="module-output" name="astar" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/planner-data-importer-0.0.1-SNAPSHOT-jar-with-dependencies.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>

@@ -1,6 +1,0 @@
-[package]
-name = "matrix-rotation"
-version = "0.1.0"
-authors = ["Peter Jakubčo <peter.jakubco@zoomint.com>"]
-
-[dependencies]
