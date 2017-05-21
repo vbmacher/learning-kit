@@ -50,6 +50,8 @@ For example, in Haskell, we have:
 And in Scala we have:
     
     trait Parser[A] {
+
+      def apply(s: String): List[(A, String)]
     
       // ">>=" in Scala 
       def flatMap[B](f: A => Parser[B]): Parser[B] = s => for {
