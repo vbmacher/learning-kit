@@ -39,6 +39,7 @@ organization or some online course. For example:
 - [sudoku-csharp](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/sudoku-csharp) (C#) - sudoku solver and experimental generator
 - [hcalc](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/hcalc),
   [hcalc2](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/hcalc2) (Haskell, Cabal) - Monadic calculator
+- [scalc](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/scalc) (Scala, Gradle) - Monadic calculator in Scala (using parser combinators)
 - [fixlines](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/fixlines) (Haskell) - Remove newlines inside paragraphs in text files
 - [cubra](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/cubra) (Haskell) - cubra qube solver
 - [okresy](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/okresy) (Python, Google Maps) - Retrieve distances of villages/towns from their district cities
