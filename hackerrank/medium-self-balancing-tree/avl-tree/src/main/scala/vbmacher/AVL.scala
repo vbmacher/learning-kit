@@ -7,7 +7,7 @@ trait Tree {
 }
 
 case class Node(value: Int, l: Tree, r: Tree, override val height: Int) extends Tree {
-  override def toString: String = s"N[$value ($l, $r)]"
+  override def toString: String = s"N[$value;$height ($l, $r)]"
 }
 case object End extends Tree
 

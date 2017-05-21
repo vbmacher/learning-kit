@@ -96,17 +96,17 @@ reserved c = token (string c)
 
 -- Grammar
 --
--- expr   -> term { addOp term }
--- term   -> factor { mulOp factor }
--- factor -> "(" expr ")" | number
+-- expr   -> factor { addOp factor }
+-- factor -> term { mulOp term }
+-- term   -> "(" expr ")" | number
 -- addOp  -> "+" | "-"
 -- mulOp  -> "*" | "/"
 
-expr = term `chainl1` addOp
+expr = factor `chainl1` addOp
 
-term = factor `chainl1` mulOp
+factor = term `chainl1` mulOp
 
-factor = par <|> lit
+term = par <|> lit
 
 
 infixOp :: String -> (a -> a -> a) -> Parser (a -> a -> a)
