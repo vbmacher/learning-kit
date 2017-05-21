@@ -51,12 +51,12 @@ And in Scala we have:
     
     trait Parser[A] {
 
-      def apply(s: String): List[(A, String)]
+      def parse(s: String): List[(A, String)]
     
       // ">>=" in Scala 
       def flatMap[B](f: A => Parser[B]): Parser[B] = s => for {
-        (a, rest) <- this (s)
-        bs <- f(a)(rest)
+        (a, rest) <- parse(s)
+        bs <- f(a).parse(rest)
       } yield bs
 
     }

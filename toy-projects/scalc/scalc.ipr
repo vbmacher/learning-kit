@@ -49,7 +49,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_main.iml" group="scalc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_main.iml" group="scalc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_test.iml" group="scalc" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_test.iml" group="scalc" />
     </modules>
   </component>

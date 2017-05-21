@@ -2,23 +2,23 @@ package vbmacher
 
 trait Parser[A] {
 
-  def apply(s: String): List[(A, String)]
+  def parse(s: String): List[(A, String)]
 
   // Functor!
   def map[B](f: A => B): Parser[B] = s => for {
-    (a, rest) <- this (s)
+    (a, rest) <- parse(s)
   } yield (f(a), rest)
 
   // Monad!
   def flatMap[B](f: A => Parser[B]): Parser[B] = s => for {
-    (a, rest) <- this (s)
-    bs <- f(a)(rest)
+    (a, rest) <- parse(s)
+    bs <- f(a).parse(rest)
   } yield bs
 
   // Alternative!
   def or[B >: A](second: Parser[B]): Parser[B] = s => {
-    val first = this(s)
-    if (first.nonEmpty) first else second(s)
+    val firstParsed = parse(s)
+    if (firstParsed.nonEmpty) firstParsed else second.parse(s)
   }
 
   def oneOrMore(): Parser[List[A]] = for {
@@ -31,7 +31,7 @@ trait Parser[A] {
 
   def satisfy(f: A => Boolean): Parser[A] = s => {
     for {
-      (a, rest) <- this (s)
+      (a, rest) <- parse(s)
       if f(a)
     } yield (a, rest)
   }

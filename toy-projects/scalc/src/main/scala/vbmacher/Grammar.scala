@@ -66,7 +66,7 @@ trait Grammar {
     )
   }
 
-  def run(l: String): Int = start()(l) match {
+  def run(l: String): Int = start().parse(l) match {
     case Nil =>
       println(s"Unrecognized string: $l")
       0
