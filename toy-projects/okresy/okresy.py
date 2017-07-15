@@ -62,7 +62,7 @@ if __name__ == "__main__":
   os += [origins]
   ds += [dests]
 
-  key = 'AIzaSyDS8dHJJwKd9E2EunUxLM6V1NqvDh90wN4'
+  key = '' # your google client key
   client = googlemaps.Client(key)
 
   json = client.distance_matrix(os[index], ds[index])
