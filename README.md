@@ -51,3 +51,4 @@ organization or some online course. For example:
 - [fixlines](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/fixlines) (Haskell) - Remove newlines inside paragraphs in text files
 - [okresy](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/okresy) (Python, Google Maps) - Retrieve distances of villages/towns from their district cities
 - [fast-bf](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/fast-bf) (Java) - Very-fast brainfuck interpreter
+- [cosine-sim](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/cosine-sim) (Scala) - Cosine similarity of arbitrary documents
