@@ -11,17 +11,20 @@ object JavaDocument {
   case class SyntaxError(msg: String, pos: Position) extends Exception(msg + ", pos: " + pos)
 
   abstract sealed class Token extends Positional
-  case class CharLiteral(value: String) extends Token
-  case class StringLiteral(value: String) extends Token
-  case class IntegerLiteral(value: String) extends Token
-  case class FloatLiteral(value: String) extends Token
-  case class BooleanLiteral(value: String) extends Token
-  case class NullLiteral(value: String) extends Token
+  sealed trait NameLike { def name: String }
+  sealed trait ValueLike { def value: String }
 
-  case class Identifier(name: String) extends Token
-  case class Keyword(keyword: String) extends Token
-  case class Separator(separator: String) extends Token
-  case class Operator(operator: String) extends Token
+  case class CharLiteral(value: String) extends Token //with ValueLike
+  case class StringLiteral(value: String) extends Token //with ValueLike
+  case class IntegerLiteral(value: String) extends Token with ValueLike
+  case class FloatLiteral(value: String) extends Token with ValueLike
+  case class BooleanLiteral(value: String) extends Token with ValueLike
+  case class NullLiteral(value: String) extends Token with ValueLike
+
+  case class Identifier(name: String) extends Token with NameLike
+  case class Keyword(name: String) extends Token with NameLike
+  case class Separator(name: String) extends Token with NameLike
+  case class Operator(name: String) extends Token with NameLike
 
   def apply(fileName: String): JavaDocument = {
     val content = scala.io.Source.fromFile(fileName).getLines() mkString "\n"
@@ -39,7 +42,18 @@ class JavaDocument(override val content: String) extends JavaTokenParsers with D
       case NoSuccess(msg, next) => throw SyntaxError(msg, next.pos)
     }
 
-    tokens.map(_.getClass.getSimpleName).groupBy(c => c).mapValues(_.size)
+    val vec = tokens
+      .filter({
+        case x : Separator => false
+        case _ => true
+      }).map({
+      case x: NameLike => x.name
+      case x: ValueLike => x.value
+      case x => x.getClass.getSimpleName
+    }).groupBy(c => c).mapValues(_ => 1) //_.size)
+
+    println(vec)
+    vec
   }
 
 

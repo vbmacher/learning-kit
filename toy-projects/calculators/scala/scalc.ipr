@@ -35,6 +35,12 @@
       </GradleProjectSettings>
     </option>
   </component>
+  <component name="HydraSettings">
+    <option name="hydraStorePath" value="$PROJECT_DIR$/.hydra/idea" />
+    <option name="noOfCores" value="2" />
+    <option name="projectRoot" value="$PROJECT_DIR$" />
+    <option name="sourcePartitioner" value="auto" />
+  </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />
@@ -48,12 +54,9 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_main.iml" group="scalc" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_main.iml" group="scalc" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_test.iml" group="scalc" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/scalc_test.iml" group="scalc" />
+      <module fileurl="file://$PROJECT_DIR$/scalc.iml" filepath="$PROJECT_DIR$/scalc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scalc_main.iml" filepath="$PROJECT_DIR$/scalc_main.iml" group="scalc" />
+      <module fileurl="file://$PROJECT_DIR$/scalc_test.iml" filepath="$PROJECT_DIR$/scalc_test.iml" group="scalc" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
@@ -84,13 +87,16 @@
     </option>
   </component>
   <component name="ScalaCompilerConfiguration">
-    <profile name="Gradle 1" modules="scalc">
+    <profile name="Gradle 1" modules="scalc,scalc_main,scalc_main,scalc_test">
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <parameters>
         <parameter value="-target:jvm-1.8" />
       </parameters>
     </profile>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
   </component>
   <component name="libraryTable">
     <library name="Gradle: junit:junit:4.12">
@@ -131,7 +137,6 @@
     </library>
     <library name="Gradle: org.scala-lang:scala-library:2.12.2" type="Scala">
       <properties>
-        <option name="languageLevel" value="Scala_2_12" />
         <compiler-classpath>
           <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-compiler/2.12.2/81a6d5b9f514fc9a0027598c370e3477c7b002c0/scala-compiler-2.12.2.jar" />
           <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.12.2/fe9780170207ebdabd4ac5bb335c82bd0aead480/scala-library-2.12.2.jar" />

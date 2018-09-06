@@ -33,12 +33,7 @@ particular subdirectory can be found solutions for problems/courses where I have
 Directory `projects` contains standalone "toy" projects, which are not bound with any
 organization or some online course. For example:
 
-- Calculators:
-    - [hcalc](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/hcalc),
-      [hcalc2](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/hcalc2) (Haskell, Cabal) - Monadic calculator
-    - [scalc](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/scalc) (Scala, Gradle) - Monadic calculator in Scala (using parser combinators)
-    - [lecalc](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/lecalc) (C, Flex, Bison, AutoTools) - Interactive calculator, expression interpreter
-
+- [Calculators](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/calculators) - Haskell (monadic + applicative), Scala (parser combinators), C (YACC (bison), flex),
 - Games:
     - [turbo-pong](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/turbo-pong) (C++, Boost, SDL, GTest) - Sample Pong game for two players
     - [tsp-playing](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/tsp-playing) (Java, Swing) - solving Hamiltonian cycle by "convex hull" algorithm

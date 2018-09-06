@@ -1,0 +1,11 @@
+Čo budeme potrebovať
+
+- Trochu Haskellu: Learn You A Haskell For Great Good
+- Niečo o gramatikách: 
+- Trochu ako funguje recursive-descent parsing
+
+Syn Ack Fin Ack
+
+Tento tutoriál / článok bude čiastočne vychádzať z iného článku, ktorý som našiel tu: http://dev.stephendiehl.com/fun/002_parsers.html. Nájdete v ňom tiež parser aritmetických výrazov (plus niečo naviac), ale článok je trochu menej olepený textom a vysvetleniami. Pre začiatočníkov to vnímam ako trochu negatívum, hlavne keď ide o aplikáciu monád a podobných konštruktov.
+
+

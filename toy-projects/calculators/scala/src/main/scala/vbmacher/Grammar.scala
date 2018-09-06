@@ -25,7 +25,7 @@ trait Grammar {
 
   // start -> factor { '+'|'-' factor }
   def start(): Parser[Expr] = {
-    factor().foldLeft(plusFactor().or(minusFactor()))
+    factor().chainl(plusFactor() || minusFactor())
   }
 
   def plusFactor(): Parser[Expr => Expr] = for {
@@ -41,7 +41,7 @@ trait Grammar {
 
   // factor -> term { '*'|'/' term }
   def factor(): Parser[Expr] = {
-    term().foldLeft(mulTerm().or(divTerm()))
+    term().chainl(mulTerm() || divTerm())
   }
 
   def mulTerm(): Parser[Expr => Expr] = for {
@@ -57,7 +57,7 @@ trait Grammar {
 
   // term -> N | '(' start ')'
   def term(): Parser[Expr] = {
-    (for {n <- number()} yield Lit(n)).or(
+    (for {n <- number()} yield Lit(n)) || (
       for {
         _ <- symbol('(')
         e <- start()

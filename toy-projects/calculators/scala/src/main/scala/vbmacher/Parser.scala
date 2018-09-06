@@ -21,13 +21,15 @@ trait Parser[A] {
     if (firstParsed.nonEmpty) firstParsed else second.parse(s)
   }
 
+  def ||[B >: A](second: Parser[B]): Parser[B] = or(second)
+
   def oneOrMore(): Parser[List[A]] = for {
     a <- this
     next <- zeroOrMore()
   } yield a :: next
 
 
-  def zeroOrMore(): Parser[List[A]] = oneOrMore().or(Parser.unit(Nil))
+  def zeroOrMore(): Parser[List[A]] = oneOrMore() || Parser.unit(Nil)
 
   def satisfy(f: A => Boolean): Parser[A] = s => {
     for {
@@ -36,9 +38,7 @@ trait Parser[A] {
     } yield (a, rest)
   }
 
-  def foldLeft(p: Parser[A => A]): Parser[A] = {
-    flatMap(a => p.map(f => f(a)).foldLeft(p)).or(this)
-  }
+  def chainl(p: Parser[A => A]): Parser[A] = flatMap(a => p.map(f => f(a)).chainl(p)) || this
 
 }
 

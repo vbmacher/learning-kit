@@ -6,7 +6,13 @@ object Similarity {
     val magnitude = doc1.magnitude() * doc2.magnitude()
     val magg = if (magnitude == 0) 1 else magnitude
 
-    doc1.dot(doc2.vector) / magg
+    val dot = doc1.dot(doc2.vector)
+    val dot2 = doc2.dot(doc1.vector)
+
+    println(s"dot 1,2 = $dot; magg = $magg, sim = ${dot / magg}")
+    println(s"dot 2,1 = $dot2; magg = $magg, sim = ${dot2 / magg}")
+
+    dot / magg
   }
 
   def levenhstein(doc1: Document, doc2: Document): Double = {
