@@ -36,11 +36,9 @@ organization or some online course. For example:
 
 #### Calculators
 
-[Link](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/calculators) 
-
-- Haskell (monadic + applicative),
-- Scala (parser combinators),
-- C (YACC (bison), flex),
+- [Haskell](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/calculators/haskell) - monadic + applicative,
+- [Scala](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/calculators/scala) - parser combinators,
+- [C](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/calculators/c) - YACC (bison), flex
 
 #### Games
 
