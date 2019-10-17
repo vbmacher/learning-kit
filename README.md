@@ -33,17 +33,31 @@ particular subdirectory can be found solutions for problems/courses where I have
 Directory `projects` contains standalone "toy" projects, which are not bound with any
 organization or some online course. For example:
 
-- [Calculators](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/calculators) - Haskell (monadic + applicative), Scala (parser combinators), C (YACC (bison), flex),
-- Games:
-    - [turbo-pong](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/turbo-pong) (C++, Boost, SDL, GTest) - Sample Pong game for two players
-    - [tsp-playing](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/tsp-playing) (Java, Swing) - solving Hamiltonian cycle by "convex hull" algorithm
-    - [sudoku-c](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/sudoku-c) (C) - sudoku solver
-    - [sudoku-csharp](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/sudoku-csharp) (C#) - sudoku solver and experimental generator
-    - [cubra](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/cubra) (Haskell) - cubra qube solver
-    - [game-of-life](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/game-of-life) (Elm) - Game-of-life in hexagonal grid
+#### Calculators
 
+[Link](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/calculators) 
+
+- Haskell (monadic + applicative),
+- Scala (parser combinators),
+- C (YACC (bison), flex),
+
+#### Games
+
+- [turbo-pong](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/turbo-pong) (C++, Boost, SDL, GTest) - Sample Pong game for two players
+- [tsp-playing](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/tsp-playing) (Java, Swing) - Solving Hamiltonian cycle by "convex hull" algorithm
+- [sudoku-c](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/sudoku-c) (C) - sudoku solver
+- [sudoku-csharp](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/sudoku-csharp) (C#) - sudoku solver and experimental generator
+- [cubra](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/cubra) (Haskell) - cubra qube solver
+- [game-of-life](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/game-of-life) (Elm) - Game-of-life in hexagonal grid
+
+#### Text
 
 - [fixlines](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/fixlines) (Haskell) - Remove newlines inside paragraphs in text files
-- [okresy](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/okresy) (Python, Google Maps) - Retrieve distances of villages/towns from their district cities
-- [fast-bf](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/fast-bf) (Java) - Very-fast brainfuck interpreter
 - [cosine-sim](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/cosine-sim) (Scala) - Cosine similarity of arbitrary documents
+- [diffcode](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/diffcode) (Scala) - Multiple similarities between semantically similar documents (e.g. Java, plaintext, 8080 assembler)
+
+#### Other
+
+- [fast-bf](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/fast-bf) (Java) - Very-fast brainfuck interpreter
+- [okresy](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/okresy) (Python, Google Maps) - Retrieve distances of villages/towns from their district cities
+- [python-configstore](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/python-configstore) (Python) - Memory based "configuration" store, like a map, with interesting features
