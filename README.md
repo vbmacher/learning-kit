@@ -26,6 +26,7 @@ particular subdirectory can be found solutions for problems/courses where I have
 - [EdX](https://courses.edx.org/dashboard)
 - [HackerRank](https://www.hackerrank.com)
 - [Codility](https://codility.com/programmers/)
+- [LambdaConf 2018](https://github.com/vbmacher/learning-kit/tree/master/lambdaconf-2018) - Notes, excercises, workshops
 - Other ([Codewars](https://www.codewars.com), [OverTheWire](http://overthewire.org/wargames/), etc.)
 
 ## Toy projects
