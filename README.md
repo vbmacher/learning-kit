@@ -48,8 +48,8 @@ organization or some online course. For example:
 - [sudoku-csharp](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/sudoku-csharp) (C#) - sudoku solver and experimental generator
 - [cubra](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/cubra) (Haskell) - cubra qube solver
 - [game-of-life](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/game-of-life) (Elm) - Game-of-life in hexagonal grid
-- [clovece-nehnevaj-sa](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/clovece-nehnevaj-sa) (C/C++) - "Mensch ärgere Dich nicht" (Don't get angry, man) - using OpenGL, and 3D graphics
-
+- [clovece-nehnevaj-sa](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/clovece-nehnevaj-sa) (C/C++) - "Mensch ï¿½rgere Dich nicht" (Don't get angry, man) - using OpenGL, and 3D graphics
+- [snake](https://github.com/vbmacher/learning-kit/tree/master/toy-projects/snake) (Python) - simple Snake game - interactive + ascii
 
 #### Text
 
