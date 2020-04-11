@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/csp-nonograms.iml" filepath="$PROJECT_DIR$/.idea/modules/csp-nonograms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/csp-nonograms_main.iml" filepath="$PROJECT_DIR$/.idea/modules/csp-nonograms_main.iml" group="csp-nonograms" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/csp-nonograms_test.iml" filepath="$PROJECT_DIR$/.idea/modules/csp-nonograms_test.iml" group="csp-nonograms" />
+    </modules>
+  </component>
+</project>
