@@ -1,0 +1,17 @@
+object Solution {
+  def solution(a: Array[Int]): Array[Int] = {
+    var nondivisors = Array.fill[Int](2 * a.length)(0)
+    for (i <- a.indices) {
+        nondivisors(a(i) - 1) = a.length
+    }
+    for (ai <- a) {
+        for (j <- ai to nondivisors.length by ai) {
+            nondivisors(j - 1) -= 1
+        }
+    }
+
+    Array.tabulate[Int](a.length) {
+        i => nondivisors(a(i) - 1)
+    }
+  }
+}
